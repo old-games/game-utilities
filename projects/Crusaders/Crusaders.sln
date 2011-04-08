@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrusFont", "CrusFont\CrusFont.csproj", "{D09C6189-6E45-468D-8E4E-CC0DF41478EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrusAVI1", "CrusAVI\CrusAVI1.csproj", "{382AA7F3-14D7-4CC0-876F-912770550058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crus2Subs", "Crus2Subs\Crus2Subs.csproj", "{651C0E4A-1808-4DFA-AEE5-C26365120DF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D09C6189-6E45-468D-8E4E-CC0DF41478EC}.Debug|x86.ActiveCfg = Debug|x86
+		{D09C6189-6E45-468D-8E4E-CC0DF41478EC}.Debug|x86.Build.0 = Debug|x86
+		{D09C6189-6E45-468D-8E4E-CC0DF41478EC}.Release|x86.ActiveCfg = Release|x86
+		{D09C6189-6E45-468D-8E4E-CC0DF41478EC}.Release|x86.Build.0 = Release|x86
+		{382AA7F3-14D7-4CC0-876F-912770550058}.Debug|x86.ActiveCfg = Debug|x86
+		{382AA7F3-14D7-4CC0-876F-912770550058}.Debug|x86.Build.0 = Debug|x86
+		{382AA7F3-14D7-4CC0-876F-912770550058}.Release|x86.ActiveCfg = Release|x86
+		{382AA7F3-14D7-4CC0-876F-912770550058}.Release|x86.Build.0 = Release|x86
+		{651C0E4A-1808-4DFA-AEE5-C26365120DF7}.Debug|x86.ActiveCfg = Debug|x86
+		{651C0E4A-1808-4DFA-AEE5-C26365120DF7}.Debug|x86.Build.0 = Debug|x86
+		{651C0E4A-1808-4DFA-AEE5-C26365120DF7}.Release|x86.ActiveCfg = Release|x86
+		{651C0E4A-1808-4DFA-AEE5-C26365120DF7}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

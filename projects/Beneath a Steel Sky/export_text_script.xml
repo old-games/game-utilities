@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bassru-script>
+	<load path="D:\Games\ScummVM\bass-cd-1.2"/>
+	<export id="60600" file="./Text/eng0.xml"/>
+	<export id="60601" file="./Text/eng1.xml"/>
+	<export id="60602" file="./Text/eng2.xml"/>
+	<export id="60603" file="./Text/eng3.xml"/>
+	<export id="60604" file="./Text/eng4.xml"/>
+	<export id="60605" file="./Text/eng5.xml"/>
+	<export id="60606" file="./Text/eng6.xml"/>
+	<export id="60607" file="./Text/eng7.xml"/>
+</bassru-script>

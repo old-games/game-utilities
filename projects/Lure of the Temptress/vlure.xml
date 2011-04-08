@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vlure-config>
+  <path>D:\Games\ScummVM;D:\Games\scummvm\lure</path>
+  <files>
+    <file id="0x3f19" type="text_decode_table"/>
+    <file id="9" type="names"/>
+    <file id="0x10" type="text"/>
+    <file id="0x11" type="text"/>
+    <file id="0x12" type="text"/>
+    <file id="0x3f17" type="string_list"/>
+    <file id="4" type="font"/>
+    <file id="0x19" type="palette" name="intro1"/>
+    <file id="0x1B" type="palette" name="intro2"/>
+    <file id="0x1F" type="palette" name="intro3"/>
+    <file id="0x1D" type="palette" name="intro4"/>
+    <file id="0x32" type="palettes" name="mix1"/>
+    <file id="16129" type="palette" name="common"/>
+    <file id="16639" type="palette" name="dsk2"/>
+    <file id="5" type="image" width="320" height="8" palette="GRAYSCALE" name="menu" />
+    <file id="0x40" type="image" width="320" height="192" palette="mix1[1]" name="intro_txt_1"/>
+    <file id="0x24" type="image" width="320" height="192" palette="mix1[4]" name="intro_txt_2"/>
+    <file id="0x18" type="image" width="320" height="192" palette="intro1"/>
+    <!--file id="0x1A" type="image" width="320" height="192" palette="intro2"/>
+    <file id="0x1E" type="image" width="320" height="192" palette="intro3"/>
+    <file id="0x1C" type="image" width="320" height="192" palette="intro4"/>
+    <file id="0x42" type="image" width="320" height="192" palette="mix1[2]"/>
+    <file id="0x44" type="image" width="320" height="192" palette="mix1[3]"/>
+    <file id="0x46" type="image" width="320" height="192" palette="mix1[4]"/-->
+  </files>
+  <ruchars>
+    <char ru="А" en="F"/>
+    <char ru="Б" en=","/>
+    <char ru="В" en="D"/>
+    <char ru="Г" en="U"/>
+    <char ru="Д" en="L"/>
+    <char ru="Е" en="T"/>
+    <char ru="Ж" en=";"/>
+    <char ru="З" en="P"/>
+    <char ru="И" en="B"/>
+    <char ru="Й" en="Q"/>
+    <char ru="К" en="R"/>
+    <char ru="Л" en="K"/>
+    <char ru="М" en="V"/>
+    <char ru="Н" en="Y"/>
+    <char ru="О" en="J"/>
+    <char ru="П" en="G"/>
+    <char ru="Р" en="H"/>
+    <char ru="С" en="C"/>
+    <char ru="Т" en="N"/>
+    <char ru="У" en="E"/>
+    <char ru="Ф" en="A"/>
+    <char ru="Х" en="1"/>
+    <char ru="Ц" en="W"/>
+    <char ru="Ч" en="x"/>
+    <char ru="Ш" en="I"/>
+    <char ru="Щ" en="O"/>
+    <char ru="Ъ" en="3"/>
+    <char ru="Ы" en="S"/>
+    <char ru="Ь" en="M"/>
+    <char ru="Э" en="'"/>
+    <char ru="Ю" en="."/>
+    <char ru="Я" en="z"/>
+    <char ru="а" en="f"/>
+    <char ru="б" en=","/>
+    <char ru="в" en="d"/>
+    <char ru="г" en="u"/>
+    <char ru="д" en="l"/>
+    <char ru="е" en="t"/>
+    <char ru="ё" en="t"/>
+	<char ru="ж" en=";"/>
+    <char ru="з" en="p"/>
+    <char ru="и" en="b"/>
+    <char ru="й" en="q"/>
+    <char ru="к" en="r"/>
+    <char ru="л" en="k"/>
+    <char ru="м" en="v"/>
+    <char ru="н" en="y"/>
+    <char ru="о" en="j"/>
+    <char ru="п" en="g"/>
+    <char ru="р" en="h"/>
+    <char ru="с" en="c"/>
+    <char ru="т" en="n"/>
+    <char ru="у" en="e"/>
+    <char ru="ф" en="a"/>
+    <char ru="х" en="5"/>
+    <char ru="ц" en="w"/>
+    <char ru="ч" en="x"/>
+    <char ru="ш" en="i"/>
+    <char ru="щ" en="o"/>
+	<char ru="ъ" en="6"/>
+    <char ru="ы" en="s"/>
+    <char ru="ь" en="m"/>
+	<char ru="э" en="'"/>
+	<char ru="ю" en="."/>
+    <char ru="я" en="z"/>
+    <char ru="." en="/"/>
+    <char ru="," en="?"/>
+  </ruchars>
+</vlure-config>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bassru-script>
+	<load path="D:\Games\ScummVM\bassru"/>
+	<import id="60150" file="./remake/main_font_ru.bmp"/>
+	<import id="60600" file="./remake/eng0.xml"/>
+	<import id="60601" file="./remake/eng1.xml"/>
+	<import id="60602" file="./remake/eng2.xml"/>
+	<import id="60603" file="./remake/eng3.xml"/>
+	<import id="60604" file="./remake/eng4.xml"/>
+	<import id="60605" file="./remake/eng5.xml"/>
+	<import id="60606" file="./remake/eng6.xml"/>
+	<import id="60607" file="./remake/eng7.xml"/>
+	<save path="D:\Games\ScummVM\bassru"/>
+</bassru-script>

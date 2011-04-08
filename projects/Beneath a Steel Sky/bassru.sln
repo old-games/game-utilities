@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bassru", "bassru.csproj", "{D8D65E25-7391-4195-A2FA-90D3EF887D95}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519} = {1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}
+		{C06F51D4-756F-4B42-A9B7-506616A41FEF} = {C06F51D4-756F-4B42-A9B7-506616A41FEF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BJFN.rnc", "BJFN.rnc\BJFN.rnc.csproj", "{4553DEDA-2F30-4D31-AFED-220C914D761B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br_nb_parser", "br_not_parser\br_nb_parser.csproj", "{C06F51D4-756F-4B42-A9B7-506616A41FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bassru_patcher", "bassru_patcher\bassru_patcher.csproj", "{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "compactConverter", "compactConverter\compactConverter.csproj", "{42017C29-64F4-484C-9120-245C480F3123}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8D65E25-7391-4195-A2FA-90D3EF887D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D65E25-7391-4195-A2FA-90D3EF887D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D65E25-7391-4195-A2FA-90D3EF887D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D65E25-7391-4195-A2FA-90D3EF887D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4553DEDA-2F30-4D31-AFED-220C914D761B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4553DEDA-2F30-4D31-AFED-220C914D761B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4553DEDA-2F30-4D31-AFED-220C914D761B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4553DEDA-2F30-4D31-AFED-220C914D761B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C06F51D4-756F-4B42-A9B7-506616A41FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06F51D4-756F-4B42-A9B7-506616A41FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06F51D4-756F-4B42-A9B7-506616A41FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06F51D4-756F-4B42-A9B7-506616A41FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1574B705-4BB8-4AB6-AAEA-F4E3A1EE0519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42017C29-64F4-484C-9120-245C480F3123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42017C29-64F4-484C-9120-245C480F3123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42017C29-64F4-484C-9120-245C480F3123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42017C29-64F4-484C-9120-245C480F3123}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

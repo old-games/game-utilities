@@ -1,0 +1,102 @@
+﻿<html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<body>
+<center>Bassru описание</center><hr>
+Требования:<br>
+.Net 2.0<br>
+Тестилось на Phenom Quad-core (2.21GHz), 4 GiB оперативы - нормально.
+<hr>
+Текущие проблемы:<br>
+1)Иногда, при импорте нескольких файлов, sky.dsk может портиться. Если между импортами перегружать прогу - все норм. 
+Проблема, скорее всего, в изменении размера файла.<br>
+2)Сжатия как в оригинале добиться не получилось. У них самописная функция подбора последовательностей. 
+Подобрали похожую функцию. Маленькие файлы жмет хуже, большие - лучше.<br>
+3)Ну и, естественно, все надо бэкапить и хранить отдельно экспортнутые(оригинальные) ресурсы и переведенные.
+<hr>
+<img src="img/start.jpg"><hr>
+<img src="img/filelist.jpg"><br>
+В sky.dnr лежит список ресурсов и параметры (сжатый/не сжатый, включает ли заголовок, смещение в sky.dsk, размер).
+Все ресурсы доступны по номеру. Часто ресурсы одинакового типа располагаются рядом. Например текстовые - 60600 + 8(файлов)*8(языков), 
+скрипты - 60400+... В sky.sdk - файлы.
+<hr>
+<img src="img/pal.jpg"><br>
+Каждому ресурсу можно написать комментарий. При изменении типа,комментария или параметров ресурса надо сохранять конфиг.
+<hr>
+<img src="img/virgin_out.jpg"><br>
+Ресурс редактируется путем экспорта/импорта файлов.
+Картинки экспортируются в индексированном формате с палитрой.<br>
+<img src="img/virgin_in.jpg"><br>
+<img src="img/virgin_done.jpg">
+<hr>
+<img src="img/txt1.jpg"><br>
+Текст лежит в файлах, разбитых на Блоки. В каждом блоке - 32 строки. К каждой строке можно добавлять комментарий.
+Для облегчения перевода, можно экспортнуть начальные английские строки. Тогда под рабочей строкой будет выведена строка оригинала.
+Текст экспортируется в xml файлы.<br>
+<img src="img/txt2.jpg"><br>
+<img src="img/txt3.jpg">
+<hr>
+<img src="img/ru1.jpg"><br>
+Текст переводится с русского (на русский) по таблице русификации. В ней указано, какой символ английского алфавита(а, вернее, алфавита игры) 
+соответствует русскому символу.
+После изменения таблицы надо снова импортировать переведенный текст.
+<br>
+<img src="img/ru2.jpg"><br>
+<img src="img/ru3.jpg"><br>
+При импорте известные символы автоматом транслируются в английский алфавит.
+<br>
+<img src="img/ru4.jpg"><br>
+<img src="img/ru5.jpg"><br>
+Алфавит игры. Состоит из символа и его маски. Точка в маске и в символе - рисуется символ. Точка в маске - рисуется тень символа.
+<br> 
+<img src="img/ru6.jpg"><br>
+<img src="img/result.jpg"><br>
+<hr>
+v0.1
+<hr>
+<img src="img/newlook.jpg"><br>
+Добавлена возможность объединения конфигов. К существующему конфигу добавляются описания ресурсов из указанного конфига. 
+При несоответствии известных ресурсов(изменен тип,комментарий или параметры ресурса) будет задан вопрос: оставить старое описание 
+или использовать новое.
+<br>
+Появилась возможность работы по скриптам:<br>
+<table border="1">
+<tr><td>
+Пример скрипта для экспорта текстовых ресурсов из<br>D:\Games\ScummVM\bass-cd-1.2\old\sky.dsk<br>в<br>.\Text\eng*.xml
+</td></tr>
+<tr><td>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+&lt;bassru-script&gt;<br>
+	&lt;load path=&quot;D:\Games\ScummVM\bass-cd-1.2\old&quot;/&gt;<br>
+	&lt;export id=&quot;60600&quot; file=&quot;./Text/eng0.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60601&quot; file=&quot;./Text/eng1.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60602&quot; file=&quot;./Text/eng2.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60603&quot; file=&quot;./Text/eng3.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60604&quot; file=&quot;./Text/eng4.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60605&quot; file=&quot;./Text/eng5.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60606&quot; file=&quot;./Text/eng6.xml&quot;/&gt;<br>
+	&lt;export id=&quot;60607&quot; file=&quot;./Text/eng7.xml&quot;/&gt;<br>
+&lt;/bassru-script&gt;<br>
+</td></tr>
+<tr><td>
+Пример скрипта для импорта текстовых ресурсов из<br>.\Text\eng*.xml<br>в<br>D:\Games\ScummVM\bass-cd-1.2\old\sky.dsk<br>
+и последующей записью в<br>
+D:\Games\ScummVM\bass-cd-1.2\new\sky.dsk
+</td></tr>
+<tr><td>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+&lt;bassru-script&gt;<br>
+	&lt;load path=&quot;D:\Games\ScummVM\bass-cd-1.2\old&quot;/&gt;<br>
+	&lt;import id=&quot;60600&quot; file=&quot;./Text/eng0.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60601&quot; file=&quot;./Text/eng1.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60602&quot; file=&quot;./Text/eng2.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60603&quot; file=&quot;./Text/eng3.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60604&quot; file=&quot;./Text/eng4.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60605&quot; file=&quot;./Text/eng5.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60606&quot; file=&quot;./Text/eng6.xml&quot;/&gt;<br>
+	&lt;import id=&quot;60607&quot; file=&quot;./Text/eng7.xml&quot;/&gt;<br>
+	&lt;save path=&quot;D:\Games\ScummVM\bass-cd-1.2\new&quot;/&gt;<br>
+&lt;/bassru-script&gt;<br>
+</td></tr>
+</table>
+</body>
+</html>
