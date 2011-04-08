@@ -1,0 +1,45 @@
+TIE Interceptor (T/I)
+//BLOCK
+species.lfd
+tieint
+0 30 55
+//BLOCK
+species.lfd
+tieint
+0 30 35
+//BLOCK
+species.lfd
+tieint
+110 MGLT top speed
+Four laser cannons
+20 RU hull
+//BLOCK
+lnchint
+wpnint
+//BLOCK
+hi1w
+hi2w
+hi3m
+hi4m
+//BLOCK
+You will be trained in the use
+of targeting systems, the 3-D map
+and threat displays.  Inspect a
+variety of craft as they pass by
+an Imperial customs checkpoint.
+//BLOCK
+Attack enemy fighters that
+are protecting a space platform.
+Remove the threat of the enemy
+fighters before leading a direct
+attack on the platform.
+//BLOCK
+Clear a Rebel minefield while
+fending off attacks from enemy
+starfighters.
+//BLOCK
+Pilot a TIE Interceptor
+escorting TIE Bombers to their
+target. Ward off any Rebel
+starfighters!
+//BLOCK

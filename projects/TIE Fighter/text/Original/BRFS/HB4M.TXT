@@ -1,0 +1,278 @@
+// COMPLETION MESSAGES:
+Good work, Alpha 1, the Rebel installation has been destroyed
+Head back to the [Compton]
+
+
+
+
+// Number of objects: 21, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Compton
+
+
+
+// NEXT
+Calvary
+T. Ryagain
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Trail
+
+
+
+// NEXT
+Guild
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red 1
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Goode
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+T-DP
+
+
+
+// NEXT
+Clip
+
+Work area
+
+// NEXT
+Berm
+
+Storage
+Supplies
+// NEXT
+// Number of radio messages: 15, (2 lines for each)
+Don't let the Rebels fire torpedoes at [FRG Compton]
+
+// NEXT
+Make sure you take out the transports
+
+// NEXT
+Good work. The containers have been destroyed
+
+// NEXT
+All the transports have been destroyed
+
+// NEXT
+[FRG Compton] is taking heavy damage
+
+// NEXT
+Alpha 1, fly into the Calvary's hangar bay now
+
+// NEXT
+The [ISD Calvary] is here to recover all TIE starfighters
+
+// NEXT
+The battle has begun. Use your wingmen effectively, Alpha 1
+
+// NEXT
+You think you are a great fighter pilot? Do not be a traitor!
+
+// NEXT
+Alert! [FRG Compton] is under attack!
+
+// NEXT
+You should never attack Imperial forces!
+
+// NEXT
+Use Shift-A to order your wingmen to attack the transports
+
+// NEXT
+A disabled A-wing! Get it before it gets repaired!
+
+// NEXT
+Scratch one A-wing
+
+// NEXT
+You need to take this combat simulation seriously, Alpha 1
+
+// NEXT
+// NAMES: 
+T/B Alpha (You)
+Rebel Tugs
+Yard Containers
+FRG Compton
+(Your Command Ship)
+Rebel Shuttles
+Rebel Craft
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Bomber Combat #4: Bombers Armed with Missiles
+// NEXT
+Three [TIE Bombers] from Alpha Squadron will attack a Rebel storage yard.
+// NEXT
+[Alpha 1] should direct his wingmen in the attack by choosing a target and hitting ['Shift-A']. 
+// NEXT
+As soon as the yard has been destroyed, report back to your command ship, the [Frigate Compton].
+// NEXT
+// SKIP
+// SKIP
+THIS MISSION WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your objective is to destroy
+the Rebel storage facility.  Your
+primary targets are the
+transports and containers.  Next,
+the shuttles and starfighters
+should be targeted.
+// NEXT
+What craft will I be flying?
+   You will pilot a [TIE Bomber],
+designated [Beta 1] of a three ship
+flight group.  For this mission you
+will be the flight leader.  Your
+craft will be armed with a special
+double load of [16] concussion
+missiles.
+// NEXT
+What opposition will there be?
+   Most of the Rebel craft are
+just getting underway.  Expect
+the stiffest resistance from the
+Rebel shuttles who will fight
+fiercely to protect their base.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have destroyed the main
+Rebel assets at their base.  Good
+work, another strike against the
+Rebellion.
+// NEXT
+Are there any special instructions?
+   You should target the
+transports first for they pose
+the most immediate threat.  With
+the help of your wingman, launch a
+salvo of four missiles against each
+one.  After the transports have
+been dealt with, attack the
+containers and the shuttles.  ÿ
+// LAST

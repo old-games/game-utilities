@@ -1,0 +1,47 @@
+TIE Defender (T/D)
+//BLOCK
+species.lfd
+tiedel
+0 0 55
+//BLOCK
+species.lfd
+tiedel
+0 0 35
+//BLOCK
+species.lfd
+tiedel
+155 MGLT top speed
+Four laser and two ion cannons
+Two warhead launchers
+200 SBD shields and 20 RU hull
+//BLOCK
+lnchdlx
+wpndlx
+//BLOCK
+hd1w
+hd2w
+hd3m
+hd4m
+//BLOCK
+Use inflight orders to _
+customize a dogfight against _
+a variety of Rebel starfighters _
+at different skill levels.
+//BLOCK
+Learn to use a Tractor Beam
+to capture enemy craft fleeing _
+from a platform. Then help _
+capture the platform.
+//BLOCK
+Inspect cargo passing through
+your sector.  Watch for weapons
+being smuggled by Rebel freighters.
+Be ready to handle Rebel fighters
+running escort for the smugglers.
+//BLOCK
+You will hyperspace into
+combat against Rebel escort
+carriers.  Be ready to fight
+Rebel starfighters defending
+the carriers.
+//BLOCK

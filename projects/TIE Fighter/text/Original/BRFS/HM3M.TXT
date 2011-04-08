@@ -1,0 +1,300 @@
+// COMPLETION MESSAGES:
+Your skills are improving Tau 1
+You may stay in the simulation for more training if you wish
+
+
+
+
+// Number of objects: 21, (4 lines for each)
+Tau
+Madmax
+
+
+// NEXT
+Dagger
+
+TIE Parts
+Torpedoes
+// NEXT
+Mu
+
+
+
+// NEXT
+Omega
+
+Batteries
+
+// NEXT
+Omega
+
+Warheads
+
+// NEXT
+Planka
+Von Gield
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Lacoda
+
+Officers
+
+// NEXT
+M2
+
+
+
+// NEXT
+M2
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+// Number of radio messages: 14, (2 lines for each)
+Dagger 1 to Tau 1, requesting your assistance
+
+// NEXT
+Tau 1, stop those Y-wings!
+
+// NEXT
+Tau 1, they have launched B-wings, hurry!
+
+// NEXT
+You no longer have a wingman, Tau 1
+
+// NEXT
+Intercept the Rebel starfighters. Return for the mines later
+
+// NEXT
+CRV Dagger 1 to Tau 1, cover us while we make an exit
+
+// NEXT
+Be alert, Tau 1!
+
+// NEXT
+Tau 1, watch your shields!
+
+// NEXT
+That was good work clearing the minefield, Tau 1
+
+// NEXT
+Tau 1, your craft is taking hull damage! You must do better!
+
+// NEXT
+Alert! A Rebel cruiser has entered the area!
+
+// NEXT
+That's all the Rebels in this area, very good!
+
+// NEXT
+Tau 2 to Tau 1, I'm out of here
+
+// NEXT
+Transport Omega is here to reload you, Tau 1
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+M/CRV Dagger
+Type B Mines
+MIS Tau (You)
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Missile Boat Combat #3: Disabling Minefield
+// NEXT
+As a pair of Imperial [corvettes] came out of hyperspace, they found themselves in a [minefield].
+// NEXT
+You must save the [corvettes] by clearing the [minefield] so a repair transport can rescue them.
+// NEXT
+This is a [Type B] minefield. A [Type B] mine is equipped with an ION cannon to disable its targets.
+// NEXT
+// SKIP
+// SKIP
+This mission was created by David Maxwell for Peregrine Software 7/4/94.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   Your objective is to help
+rescue the corvette group [Dagger].
+Your part in this mission includes
+destroying all the [mines] around the
+corvettes, then providing
+starfighter cover for the
+corvettes and the repair craft
+until all three craft can hyperjump
+to safety.  You will have to
+intercept and eliminate any enemy
+craft in the area.  Remember, the
+repair craft will not enter the
+area until all the mines have been
+destroyed.
+// NEXT
+What craft will I be flying?
+   You will be the flight leader,
+[Missile Boat Tau 1].  You will have
+one wingman.  Your craft will be
+armed with [40] advanced missiles
+plus [10] space bombs.
+// NEXT
+What opposition will there be?
+   You will be encountering [Type B]
+mines.  These type of mines are
+armed with ION cannons instead of
+laser cannons.  They are used to
+disable pre-programmed targets, so
+the disabled craft can be
+captured or looted.  ION bolts
+move slower than laser blasts so
+they can be avoided easier if you
+jink.  It is likely that those who
+laid this minefield trap will return
+to see if they have snared
+anyone.  Pay attention to your
+inflight messages because they will
+alert you to important mission
+developments.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We saved the Imperial corvette
+group [Dagger].  We also defeated
+many Rebel craft.
+// NEXT
+Any special instructions?
+   Start destroying [mines] using
+your laser cannon, you have one
+minute before a Rebel cruiser
+enters the area and starts
+launching starfighters.  If the
+cruiser enters before you are
+done destroying the mines, forget
+about the mines until the enemy
+starfighters are all destroyed.
+Primary craft to intercept are the
+[Y-wings], [B-wings] and [X-wings].  They
+target the corvettes and carry
+torpedoes.  When firing from close
+range use your missiles like
+unguided rockets by firing without
+waiting for a complete red target
+lock.  ÿ
+// LAST

@@ -1,0 +1,47 @@
+TIE Advanced (T/A)
+//BLOCK
+species.lfd
+tieadv
+0 0 55
+//BLOCK
+species.lfd
+tieadv
+0 0 35
+//BLOCK
+species.lfd
+tieadv
+145 MGLT top speed
+Four laser cannons
+Two warhead launchers
+100 SBD shields and 20 RU hull
+//BLOCK
+lnchadv
+wpnadv
+//BLOCK
+ha1w
+ha2w
+ha3m
+ha4m
+//BLOCK
+Learn to use missiles and the
+targeting system.  Starting with a
+stationary target, work your way _
+through faster and more evasive _
+mobile targets.
+//BLOCK
+Learn to launch rocket _
+attacks against enemy starships.
+Destroy a Nebulon B frigate and
+a Calamari cruiser.
+//BLOCK
+Destroy all craft at a Rebel
+fighter base.  Be prepared to
+fight A-wings, B-wings, X-wings
+and Y-wings.
+//BLOCK
+Help the freighter Rasvin
+deliver cargo intact to your
+command ship.  Be prepared to
+battle enemy fighters that
+are in the area.
+//BLOCK

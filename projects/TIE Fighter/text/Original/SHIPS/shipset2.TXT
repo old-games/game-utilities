@@ -1,0 +1,99 @@
+T-Wing (T-W)
+FGHTA
+110 MGLT top speed
+Two laser cannons
+20 SBD shields and 15 RU hull
+//BLOCK
+R-41 Starchaser (R-41)
+FGHTB
+100 MGLT top speed
+Two laser cannons
+Two ion cannons
+30 SBD shields and 15 RU hull
+//BLOCK
+Scout Craft (SCT)
+PATRLB
+80 MGLT top speed
+Three turbo laser turrets
+150 SBD shields and 60 RU hull
+//BLOCK
+Escort Transport (ETR)
+ESCTRP
+70 MGLT top speed
+Many turbo laser turrets
+Two laser and two ion cannons
+Two proton torpedo launchers
+250 SBD shields and 125 RU hull
+//BLOCK
+Combat Utility Vehicle (CUV)
+UTILA
+35 MGLT top speed
+Two laser and two ion cannons
+8 RU hull
+Repairs and rearms other craft
+//BLOCK
+Muurian Transport (MUTR)
+LTFRTA
+90 MGLT top speed
+Two turbo laser turrets
+Three laser cannons
+80 SBD shields and 30 RU hull
+//BLOCK
+Carrack Cruiser (CRKC)
+CRUSA
+18 MGLT top speed
+Many turbo laser turrets
+Two warhead launchers
+160 SBD shields and 100 RU hull
+//BLOCK
+Strike Cruiser (STRKC)
+CRUSB
+18 MGLT top speed
+Many turbo laser turrets
+One warhead launcher
+160 SBD shields and 100 RU hull
+//BLOCK
+Dreadnaught (DREAD)
+DREAD
+14 MGLT top speed
+Many turbo laser turrets
+One warhead launcher
+160 SBD shields and 80 RU hull
+//BLOCK
+X7 Factory Station (FAC/1)
+FACTRY
+Many turbo laser turrets
+One warhead launcher
+200 SBD shields and 100 RU hull
+Stationary Manufacturing Facility
+//BLOCK
+C-3 Passenger Liner (LINER)
+PASNGR
+18 MGLT top speed
+160 SBD shields and 100 RU hull
+Civilian cruise ship
+//BLOCK
+Container F (CN/F)
+CONE
+Moved by other craft
+50 SBD shields and 10 RU hull
+Carries bulk cargo
+//BLOCK
+Container G (CN/G)
+CONF
+Moved by other craft
+50 SBD shields and 10 RU hull
+Carries bulk cargo
+//BLOCK
+Container H (CN/H)
+CONG
+Moved by other craft
+50 SBD shields and 10 RU hull
+Carries bulk cargo
+//BLOCK
+Container I (CN/I)
+CONH
+Moved by other craft
+50 SBD shields and 10 RU hull
+Carries bulk cargo
+//BLOCK

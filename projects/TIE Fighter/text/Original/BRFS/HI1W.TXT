@@ -1,0 +1,263 @@
+// COMPLETION MESSAGES:
+Ok, Gamma 1! You've shown you are competent for inspection work
+You may quit now or continue if you wish to learn more
+Very good, Gamma 1! You have helped stop a smuggling operation
+The captured freighter will be taken to an Imperial Navy Yard
+
+
+// Number of objects: 16, (4 lines for each)
+Gamma 1
+WODEN
+
+
+// NEXT
+Gamma 2
+Top Ace
+
+
+// NEXT
+Gamma 3
+Top Ace
+
+
+// NEXT
+Customs
+Vot'n
+Hangar
+
+// NEXT
+Nomannic
+Novice
+Spices
+
+// NEXT
+StarTour 7
+Novice
+Tourists
+
+// NEXT
+Seinar T4D
+Novice
+Workers
+
+// NEXT
+Seinar T5D
+Novice
+Workers
+
+// NEXT
+Ritam
+Novice
+Repulsors
+
+// NEXT
+Elorac
+Novice
+Amber
+
+// NEXT
+Epsilon 1
+Novice
+
+
+// NEXT
+Epsilon 2
+Ace
+St-Troops
+
+// NEXT
+Yagmar
+Officer
+Smugglers
+
+// NEXT
+Sunnida
+Novice
+StimStiks
+Narcotics
+// NEXT
+Red
+Ace
+
+
+// NEXT
+Gold
+Ace
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Gamma 1, your sensors show a number of craft are in the area
+Achtung
+// NEXT
+The brighter the sensor dot, the closer the craft is to you
+ID each
+// NEXT
+Toggle the Inflight Map to check the overall situation (['M'])
+Map
+// NEXT
+Target the craft called the Nomannic, a Corellian Transport
+Target
+// NEXT
+Use 'Z' to toggle your Threat Display on/off
+TD
+// NEXT
+Watch as the Nomannic flies through its flight path
+COR Nomammi
+// NEXT
+Notice as it comes to a stop within your sensor's range
+Gracious
+// NEXT
+It bears a cargo of spice as its manifest claims, so it may go
+Spice
+// NEXT
+The other craft can be inspected faster if you fly to them
+The rest
+// NEXT
+Throttle up and get to it, Gamma 1! Keep an eye out for trouble
+Get to it
+// NEXT
+FRT Sunnida and SHU Yagmar, you have entered Imperial space
+Imp Space
+// NEXT
+Gamma 1, check out the new arrivals. Start with the freighters
+Inspection
+// NEXT
+Gamma 1 has detected illicit narcotics aboard FRT Sunnida 1!
+Nark!
+// NEXT
+Take out the [FRT Sunnida's] shields, Epsilon 2 will capture!
+Epsilon 2
+// NEXT
+Epsilon 2 is under attack from SHU Yagmar! Gamma 1, intercept!
+Yagmar
+// NEXT
+Gamma 1, Rebel B-wings have entered the area! Move to intercept
+B-Wing
+// NEXT
+// NAMES: 
+Customs Checkpoint
+T/I Gamma 1 (You)
+Light Freighter
+Shuttle
+Transport
+Corvette
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Interceptor Combat #1: Threat Display
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+You will use short range sensors to [inspect] a variety of craft at a Customs Checkpoint.
+// NEXT
+For the sensors to be effective, you must fly your craft as close as 100 meters  ([0.10] in the CMD.)
+// NEXT
+Throughout you will be instructed in the use of your [Threat Display] and [Inflight Map].
+// NEXT
+You will receive further instructions in flight.  Follow your orders precisely.  Enter the simulation now.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   This mission will teach you the
+use of your short range sensors,
+threat display and inflight map.
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Interceptor
+Gamma 1] (T/I Gamma 1.) It is a
+faster and more powerful
+development of the basic TIE
+Fighter.  Armament consists of
+four wingtip-mounted lasers.  Like
+its predecessor it does not have
+shields.  Speed and maneuverablity
+are its chief means of defense.
+// NEXT
+What oppostion will there be?
+   There will be no opposition at
+first.  You are merely inspecting
+neutral vessels at a customs
+checkpoint.  If you elect to
+continue the mission you will
+discover an illicit cargo.  You will
+then face [Lambda-class shuttles]
+operated by smugglers.  Still later,
+you must defend against a raid by
+a small Rebel force.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to inspect unknown craft to
+determine the contents of their
+cargo bays.
+// NEXT
+Are there any special instructions?
+   The range at which your short
+range sensors are effective is
+related to the size of the
+targeted craft.  The smaller the
+target, the closer you must be.
+Generally, the nearest you'll have
+to get is 0.1 kilometers.  When
+making a "flyby" inspection aim for
+the rear of the target craft to
+minimize your risk of collision.  ÿ
+// LAST

@@ -1,0 +1,296 @@
+// COMPLETION MESSAGES:
+You have rescued the Emperor and saved the Empire!
+
+
+
+You failed in the ultimate challenge
+The Emperor and our great Empire is lost!
+// Number of objects: 21, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Alpha 4
+
+
+Lord Vader
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Iota
+
+
+
+// NEXT
+Z-Kappa
+
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Haven
+
+Troopers
+Emperor
+// NEXT
+Hellcat
+
+Troopers
+
+// NEXT
+Glory
+Zaarin
+
+
+// NEXT
+Majestic
+
+
+
+// NEXT
+Vanguard
+Thrawn
+
+
+// NEXT
+Mescue
+
+
+
+// NEXT
+Escape
+
+
+
+// NEXT
+// Number of radio messages: 11, (2 lines for each)
+May Day! May Day! This is the Star Destroyer Majestic..
+
+// NEXT
+...we have been boarded by Imperial traitors!
+
+// NEXT
+Corvette Mescue to Alpha, we are here to save the Emperor!
+
+// NEXT
+ISD Vanguard to Alpha 1, this is V. Admiral Thrawn here to help
+
+// NEXT
+Do not interfere with us, Alpha 1, go home
+
+// NEXT
+We have saved the Emperor! He is safe
+
+// NEXT
+Vader to Alpha 1, inspect all the shuttles. Find the Emperor!
+
+// NEXT
+You have located the Emperor, Alpha 1. Disable the ship NOW!
+
+// NEXT
+Vader to Alpha 1, Impressive work, you shall be rewarded
+
+// NEXT
+Vader to Alpha 1, be careful I have plans for you
+
+// NEXT
+You shall pay for your insolence, Imperial stooge
+
+// NEXT
+// NAMES: 
+// SKIP
+ISD Majestic
+ISD Glory
+T/D Alpha 1 (You)
+T/B Theta
+GUN Tau (You)
+CRVs
+T/I Gamma
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Treachery at Ottega, Mission #5: Save the Emperor
+// NEXT
+The Emperor's ship, the [Majestic], has been seized and the Emperor himself abducted by Zaarin. 
+// NEXT
+Zaarin's flagship, the [Glory], waits off in the distance for the shuttle holding the Emperor to arrive.
+// NEXT
+You will lead a group of [TIE Defenders] to locate and disable the craft carrying the Emperor.
+// NEXT
+The fate of the Emperor and the entire Empire is in your hands!
+// NEXT
+// SKIP
+This mission was created by David Maxwell$for Peregrine Software. 3-27-94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   Admiral Zaarin has committed the
+ultimate deceit.  While feigning
+support in the battle against
+Harkov's forces, Zaarin is
+attempting to overthrow the
+Emperor by abducting him from his
+Imperial Star Destroyer at
+Coruscant.  You must locate and
+save the Emperor.  [Inspect] all
+craft until you find the one that
+is carrying the Emperor.  Then
+[disable] the craft so it can be
+boarded.  The loyal Vice Admiral
+Thrawn will arrive to help in the
+effort to save the Emperor.
+// NEXT
+What craft will I be flying?
+   You will be flying the [TIE
+Defender] designated [Alpha 1].  Your
+craft will be armed with [16]
+advanced concussion missiles.  You
+will be the flight leader and have
+two wingmen in your group.  Lord
+Vader will oversee the action in his
+TIE Defender, designated Alpha 4.
+Be sure to follow any of his
+orders.
+// NEXT
+What opposition will there be?
+   Once again you will be engaging
+[Imperial craft].  Zaarin's forces are
+the most advanced and well
+equipped of all Imperial Navy craft.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   You have rescued the Emperor
+and saved the Empire!  The
+mutineer, Admiral Zaarin, was able
+to escape, though Vice Admiral
+Thrawn followed his starship into
+hyperspace.  We can only guess at
+what provoked Zaarin to attempt
+his coup d'etat.  Hopefully we can
+gain some answers when Thrawn
+tracks him down.  For now, Emperor
+Palpatine and Lord Vader are
+pleased that Imperial order has
+been restored.  Your efforts and
+accomplishments in the past
+battles have been impressive.  You
+have proved to be one of the
+greatest Imperial Navy starfighter
+pilots!
+// NEXT
+Any special instructions?
+   Order your wingmen to attack
+Zaarin's TIE Advanced starfighters.
+This will give you the breathing
+room you need to inspect the
+escort shuttles.  As soon as you
+find the one that is carrying the
+Emperor, disable it.  Your wingmen's
+zeal to attack the escort
+shuttles may get the better of
+them, so use [Shift I] to order
+them to ignore the Emperor's
+shuttle.  ÿ
+// LAST

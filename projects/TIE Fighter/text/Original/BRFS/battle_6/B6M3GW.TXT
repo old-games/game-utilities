@@ -1,0 +1,291 @@
+// COMPLETION MESSAGES:
+The vital supplies have been delivered
+Thanks to your efforts, Zaarin's project can move forward
+Zaarin will be very pleased with the captured B-wing!
+Another new technology to study!
+These Rebel attacks can not be allowed to continue!
+Zaarin can't afford any further delays in his research program!
+// Number of objects: 18, (4 lines for each)
+Tau
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Research
+Zaarin
+
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+U-3f14
+
+
+
+// NEXT
+Anterab
+
+Supplies
+
+// NEXT
+Degathem
+
+Supplies
+
+// NEXT
+Omicron 5
+
+
+
+// NEXT
+Sigma 1
+
+Stormtrprs
+
+// NEXT
+Sigma 2
+
+Stormtrprs
+
+// NEXT
+Sigma 3
+
+Repair Crew
+
+// NEXT
+Sigma 4
+
+Repair Crew
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Storm
+
+Commandos
+
+// NEXT
+Red
+
+
+
+// NEXT
+Docking Plt
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Stay alert, everyone, the convoy will arrive any moment
+Stay alert
+// NEXT
+Time to earn our pay! 6 X-wings just dropped out of hyperspace
+X-wings
+// NEXT
+More Rebels!  Looks like a capture team!
+Capture tm
+// NEXT
+The Rebel raiding party is trying to disable the convoy!
+Convoy
+// NEXT
+GUN Tau, you may have to split your flight group
+split
+// NEXT
+[FRT Anterab] requesting assistance, we are under attack!
+Convoy hit
+// NEXT
+[FTR Anterab] has been disabled, don't let it get captured!
+1CNVYR disa
+// NEXT
+[FTR Degathem] has been stopped!
+2CNVYR disa
+// NEXT
+FTR Anterab's been captured! Tau 2, go and disable it!
+Anterab cap
+// NEXT
+Degathem's been seized. Disable it before they escape!
+Degathem cp
+// NEXT
+The B-wings are using a [new weapon] we've never seen before!
+B-wings
+// NEXT
+Tau 1, disable one of the [B-wings] for capture!
+Disable B-w
+// NEXT
+Tau 1, there's only one B-wing left, don't destroy it!
+Last B-W
+// NEXT
+The X-wings may just be a diversion!
+Diversion
+// NEXT
+Sigma will deliver stormtroopers to recapture that freighter
+
+// NEXT
+Sigma will deliver a repair crew to the disabled freighter
+
+// NEXT
+// NAMES: 
+GUN Tau (You)
+PLT Research
+FRT Anterab
+FRT Degathem
+E/S Omicron 5
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Arms Race, Mission #3: Convoy Escort
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+[GUN Tau] is to escort a supply convoy bearing equipment for Admiral Zaarin's new beam weapon.
+// NEXT
+The development program has reached a critical phase and can't proceed without the new equipment.
+// NEXT
+The convoy will come out of hyperspace far from the research platform and will be temporarily vulnerable.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To protect the delivery of
+critical supplies to Zaarin's
+research platform.
+// NEXT
+What craft will I be flying?
+   You will fly an [Assault Gunboat]
+designated [Tau 2].  There will be
+four Gunboatsin your flight group.
+For this mission your craft has
+been loaded with a special
+armament of [16] advanced
+concussion missiles.
+// NEXT
+What opposition will there be?
+   Your opposition is unknown.
+After the last attack we can be
+sure the Rebels haven't finished
+trying.  The security leak will be
+ferreted out soon enough.  Until
+then, your vigilance is required.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   You have served the Emperor
+well.  Your loyalty will be rewarded.
+Continue to do your duty.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We prevented another Rebel
+raid and thwarted their attempt
+to capture the convoy.
+// NEXT
+Are there any special instructions?
+   Rendezvous with the convoy as
+quickly as you can.  Order your
+wingmen to engage the X-wings as
+soon as they arrive.  Switch to
+dual fire missiles and rapidly take
+out one or two B-wings.  Now take
+out the Rebel Assault Transports.
+Return your attention to the
+B-wings.  When they are all
+eliminated, you can help finish off
+the X-wings.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped capture one of the
+Rebel's B-wings with their new
+weapon.  It is a homing warhead
+that appears to disable only the
+weapon systems of the target
+craft.
+// NEXT
+Are there any special instructions?
+   When you intercept the B-wings,
+remember to disable one or two
+rather than destroy them all.
+When the A-wings arrive, disengage
+from the X-wings and go after the
+A-wings.  They will try to destroy
+any B-wings you have disabled for
+capture.  ÿ
+// LAST

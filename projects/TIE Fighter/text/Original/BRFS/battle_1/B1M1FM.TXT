@@ -1,0 +1,298 @@
+// COMPLETION MESSAGES:
+The first wave of freighters and transports has been inspected
+Good work, help with the capture operation or return to base
+Good work, the second wave of freighters was inspected
+More importantly, we have captured the Rebel freighter
+Some craft have slipped by you without being inspected
+Return to base
+// Number of objects: 22, (4 lines for each)
+Alpha 1
+Madmax
+
+
+// NEXT
+Beta 1
+
+
+
+// NEXT
+Gamma 1
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Sigma 1
+
+Troopers
+
+// NEXT
+Sigma 2
+
+
+
+// NEXT
+D-34
+
+TIE Fighter
+
+// NEXT
+Onece
+
+Foodstuff
+Rebels
+// NEXT
+Yander
+
+Foodstuffs
+Water
+// NEXT
+Taloos
+
+Machinery
+
+// NEXT
+Roe
+
+
+
+// NEXT
+Ravtin
+
+
+
+// NEXT
+Escro
+
+
+
+// NEXT
+Tough
+
+
+
+// NEXT
+Glich
+
+Rebels
+
+// NEXT
+Dayta
+
+Workers
+Tools
+// NEXT
+B-17
+
+
+
+// NEXT
+B-18
+
+
+
+// NEXT
+B-19
+
+
+
+// NEXT
+B-16
+
+
+
+// NEXT
+// Number of radio messages: 13, (2 lines for each)
+Incoming ships! They are entering the area near buoy B-18
+1/12
+// NEXT
+TIE Fighter Alpha 1, inspect all craft
+
+// NEXT
+3Freighters requesting permission to pass through this sector
+
+// NEXT
+3Transports requesting permission to pass through this sector
+
+// NEXT
+The incoming shuttles have not identified themselves
+
+// NEXT
+All TIE Fighters beware of enemy shuttles
+
+// NEXT
+Protect the captured freighter
+
+// NEXT
+Job well done, Alpha 1!
+
+// NEXT
+Warning! Illegal cargo located on one of the freighters
+
+// NEXT
+Imperial transports are being dispatched to board the freighter
+
+// NEXT
+Alpha 1, help the transports weaken the freighter's shields
+
+// NEXT
+Why did you destroy our base? Have you gone mad?
+
+// NEXT
+Alpha 1, there are some new craft to inspect
+
+// NEXT
+// NAMES: 
+Outpost D-34
+Javin Sector
+T/F Alpha 1 (You)
+T/F Beta 1
+T/F Gamma 1
+Nav Buoy B-17
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Aftermath of Hoth #1: Patrol Jump Point D-34
+// NEXT
+One [TIE Fighter] from Alpha, Beta and Gamma Squadrons will be out on patrol around [Outpost D-34].
+// NEXT
+Your mission is to [inspect] all cargo carrying vessels as they pass by our station.
+// NEXT
+We are on the lookout for Rebel forces that are fleeing from their base on [Hoth].
+// NEXT
+// SKIP
+// SKIP
+This mission was created by David Maxwell$for Peregrine Software
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   You are to inspect all cargo
+carrying vessels that pass
+through this area.  To accomplish
+this, target each freighter and
+transport, then fly close enough
+for your ship's sensors to
+determine what cargo the vessel
+has on board.  Check your
+progress on the [Mission Goals]
+screen, toggled by hitting 'G'.
+// NEXT
+What craft will I be flying?
+   You will fly the [TIE Fighter],
+designated [Alpha 1].  You will be the
+only craft in your flight group.
+Stay alert for radio messages as
+the mission progresses.  Use your
+[Message Log] (toggled by hitting 'L')
+to review this communication.
+// NEXT
+What opposition will there be?
+   Freighter traffic has been
+above normal in this area.  We
+think this is related to the
+retreat of Rebel forces in the
+aftermath of our attack on their
+base on Hoth.  Stay alert for
+Rebels hidden amongst the
+freighter convoys!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What was our main accomplishment?
+   You have discovered a
+freighter full of Rebels trying to
+escape from their base on Hoth.
+Excellent work.  As we expected,
+fleeing Rebels are trying to sneak
+through this sector.
+// NEXT
+What extra did we accomplish?
+   We captured a freighter full of
+Rebels trying to escape from the
+planet Hoth.  Hoth, a nearby ice
+planet, was the main base of the
+Rebels.  The recent Imperial attack
+on this base has driven their
+forces into flight.  The
+interrogation of these Rebel
+prisoners should help us track
+more of them down.
+// NEXT
+Any special instructions?
+   Just inspect the freighters
+and transports, avoid any
+dogfighting.  During inspections,
+slow your craft down and be extra
+careful to avoid colliding with one
+of the large freighters.  Your small
+TIE Fighter can not survive this
+type of collision.  ÿ
+// LAST

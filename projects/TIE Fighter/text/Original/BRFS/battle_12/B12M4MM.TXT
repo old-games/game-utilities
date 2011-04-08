@@ -1,0 +1,412 @@
+// COMPLETION MESSAGES:
+Many of the Bothan's starfighters have been destroyed
+This should seriously hamper their activities!
+
+
+You are one of our finest pilots in the fleet
+Your services are vital to the Imperial Navy
+// Number of objects: 29, (4 lines for each)
+Tau
+MadMax
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Garrett
+Maxwell
+Lord Vader
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Gnu
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Omega 1
+
+Troopers
+
+// NEXT
+Rover
+
+Prisoners
+Troopers
+// NEXT
+Mirv
+
+Vader
+
+// NEXT
+Kothlis II
+
+
+
+// NEXT
+Locus
+
+
+
+// NEXT
+Candoto
+
+
+
+// NEXT
+Primo
+
+
+
+// NEXT
+Miles
+
+
+
+// NEXT
+Norol
+
+
+
+// NEXT
+Limeei
+
+
+
+// NEXT
+Nomor
+
+
+
+// NEXT
+Korpul
+
+
+
+// NEXT
+Korpul
+
+
+
+// NEXT
+Kkask
+
+
+
+// NEXT
+Kkask
+
+
+
+// NEXT
+Freman
+
+
+
+// NEXT
+Freman
+
+
+
+// NEXT
+Perler
+
+
+
+// NEXT
+Pokoc
+
+
+
+// NEXT
+Timoth 4
+
+Decoders
+Decoders
+// NEXT
+Kil II
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Garrett to Tau 1, head to the hanger, we're leaving the area!
+
+// NEXT
+TIE Fighters Beta are on their way to assist
+
+// NEXT
+Assault Gunboats Mu, here as requested Tau 1
+
+// NEXT
+The Garrett is under fire! Protect her Tau 1!
+
+// NEXT
+The situation is getting serious Tau 1. Protect the Garrett!
+
+// NEXT
+Garrett to Tau 1, our situation is critical, stop them!
+
+// NEXT
+Tau 1, Tau 2 has failed to complete the mission
+
+// NEXT
+Bothan starfighters have come to the aid of their comrades
+
+// NEXT
+Be careful with that missile boat Tau 1. Few remain
+
+// NEXT
+The Garrett has been destroyed. You shall pay Tau 1!
+
+// NEXT
+Kothlis II to ISD Garrett, we have secured the station!
+
+// NEXT
+Garrett to Kothlis II, escort all prisoners back here now!
+
+// NEXT
+1Kothlis II to ISD Garrett, this is Bothan space
+
+// NEXT
+Gunboat Nu to Tau 1, we'll disable the station, cover us!
+
+// NEXT
+Gunboats Nu have been destroyed. Reinforcements may be needed
+
+// NEXT
+If the station is not disabled, you must call for help!
+
+// NEXT
+// NAMES: 
+Kothlis II
+Space Station
+M/CRV
+Bothan
+T/Fs Beta
+MIS Tau (You)
+ISD Garrett
+Starfighters
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Prelude to Endor, Mission #4: Strike on Kothlis
+// NEXT
+This mission was created by [David Maxwell]$for Totally Games 1995.
+// NEXT
+Information extracted from the [Bothan] prisoners reveals that the stolen [Imperial] freighter was here.
+// NEXT
+Our forces need to capture the Bothan station and destroy most of their forces in the general area.
+// NEXT
+Five [TIE Fighters] and two [Missile Boats] will make up the assault team to destroy their starfighters.
+// NEXT
+After most of their starfighters have been destroyed, Gunboats [Nu] will disable the station.
+// NEXT
+Once the station's shields drop, Assault Transport [Omega 1] will launch to board and capture it.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   In addition to capturing the
+Bothan space station, at least
+[75%] of the Bothan craft near the
+planet [Kothlis] must be destroyed.
+This Bothan station [Kothlis II]
+allowed the hijacked Imperial
+freighter to dock and take on
+supplies shortly after it was
+captured.  Information could have
+been removed from the freighter
+and may still be onboard this
+station.  Our forces must confirm
+the presence of any Imperial data
+or equipment before destroying
+[Kothlis II].  The Bothans have
+displayed great foolishness in
+bringing the stolen Imperial
+freighter to an installation so
+close to one of their colonies.
+Imperial forces will track down the
+Bothans involved and eliminate them.
+They must learn it is unwise to
+oppose the [Emperor].
+// NEXT
+What craft will I be flying?
+   You will fly a [Missile Boat]
+designated [Tau 1].  You will lead the
+two ships in your flight group.
+For this mission your craft has
+been loaded with the standard
+armament of [80 advanced missiles].
+Use your missiles sparingly.  Your
+craft will have the tractor beam
+installed.  Use your beam weapon
+to help acquire a missile lock on
+the more maneuverable enemy
+starfighters like the A-wings.
+// NEXT
+What opposition will there be?
+   The [Bothans] are using [Rebel]
+type starfighters.  X-wings along
+with a few A-wings are their best
+craft.  Their pilots are well
+trained, so don't underestimate
+them.  Be alert for Rebel
+reinforcements arriving to help
+their ill-fated comrades.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   The [Emperor] has communicated
+to me under the strictest of
+confidences that the recovery of
+the stolen freighter is not as
+important as gathering information
+about it.  It is too soon to
+divulge anything more about this
+highly sensitive matter.  There's a
+Bothan corvette that is docking
+with the space station.  Inspect
+its cargo.  There's no need to
+destroy the corvette, [Lord Vader]
+just wants to confirm its
+contents.  If the contents are
+what [Lord Vader] suspects, it is
+best to let the corvette escape
+from the area safely.  Don't
+question why, just follow the
+Emperor's bidding.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Our forces crushed the [Bothan]
+military force in the area of
+[Kothlis II].  The success of this
+engagement should reinforce the
+fact that resistance to the
+Emperor is futile.  The station was
+boarded and searched by our
+forces for any remnants of the
+seized Imperial freighter.  The
+stolen freighter was carrying
+classified data on the readiness
+of the Empire's new master weapon,
+a newly designed Death Star.
+Searching the station has revealed
+the Bothan's intentions to
+decipher and hand over the
+technical data acquired from the
+stolen freighter's databases to
+the Rebels.  The Bothans must be
+pursued to stop this treachery.
+// NEXT
+Are there any special instructions?
+   Order your wingman to attack
+an incoming A-wing, then go after
+the X-wings using dual missiles.
+Destroy all the X-wings and
+Y-wings immediately.  Concentrate
+on defending the [Garrett].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You have discovered a valuable
+piece of the Bothan puzzle.  Your
+efforts are of great value to the
+[Emperor].  The corvette's cargo of
+specialized code breaking computers
+proves they are trying to decipher
+the top secret data onboard the
+freighter.  This knowledge, along
+with material collected from the
+station, indicates the Bothans on
+the verge of unlocking the
+mysteries that the stolen
+freighter contained.  The [Emperor]
+is aware of your loyal work.
+// NEXT
+Are there any special instructions?
+   After destroying the first
+wave of [X-wings] use the missile
+boat's overdrive boosters to
+inspect the Bothan [corvette].  Get
+right back to dogfighting
+starfighters.  If you choose to
+destroy the corvette, attack it
+with warheads while remaining
+outside its laser range.  ÿ
+// LAST

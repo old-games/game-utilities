@@ -1,0 +1,502 @@
+// COMPLETION MESSAGES:
+Good work, Delta 1, you've killed enough enemies for one day
+Now enter Mssan 3's cargo bay so we can rendezvous with Thrawn
+You serve the Emperor well, Delta 1!
+Unfortunately, the pirate's capture operation was successful
+Have you any idea what will happen when the Emperor finds out!
+Your incompetence has doomed us all!
+// Number of objects: 41, (4 lines for each)
+Delta 1
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho 3
+
+
+
+// NEXT
+Rho 4
+
+
+
+// NEXT
+G'nabgib
+
+
+
+// NEXT
+Hashim 1
+
+T/D Proto
+
+// NEXT
+Hashim 2
+
+T/D Proto
+
+// NEXT
+Hashim 3
+
+
+
+// NEXT
+CL-Ou812
+
+Warheads
+
+// NEXT
+9f5
+
+Spares
+
+// NEXT
+Mssan 1
+
+
+
+// NEXT
+Mssan 2
+
+
+
+// NEXT
+Mssan 3
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Azul
+
+
+
+// NEXT
+Sumpntodo
+
+Rneekii
+
+// NEXT
+Su 2
+
+Scavngers
+
+// NEXT
+Adam 1
+
+
+
+// NEXT
+Adam 2
+
+
+
+// NEXT
+Adam 3
+
+
+
+// NEXT
+Adam 4
+
+
+
+// NEXT
+Adam 5
+
+
+
+// NEXT
+Adam 6
+
+
+
+// NEXT
+Adam 7
+
+
+
+// NEXT
+Adam 8
+
+
+
+// NEXT
+Adam 9
+
+
+
+// NEXT
+Adam 10
+
+
+
+// NEXT
+Adam 11
+
+
+
+// NEXT
+Adam 12
+
+
+
+// NEXT
+Dhoora
+
+Nami
+
+// NEXT
+Talon
+
+
+
+// NEXT
+Boegis
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+CRM-114
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+GUN Nu to Delta 1, you take the B-wings, we'll take the X-wings
+
+// NEXT
+[Delta 1], the corvettes are under attack!
+
+// NEXT
+SHU [G'nabgib]: we'll do what we can, then we're out of here!
+
+// NEXT
+Oh no! Another hostile force has arrived!  Alert, [Delta 1]!
+
+// NEXT
+Zaarin's forces have found us! Watch out for T/D [Z-Alpha]!
+
+// NEXT
+Save yourself, Delta 1, there's nothing you can do for us now!
+
+// NEXT
+Delta 1, CARG [Mssan] can't be lost, you must protect them!
+
+// NEXT
+Delta 1, this is CARG [Mssan], we've got two B-wings on us!
+
+// NEXT
+Delta 1, the M/CRV [Hashim 1] is about to be boarded!
+
+// NEXT
+Delta 1, Hashim 1 has been captured and the raiders are fleeing
+
+// NEXT
+Delta 1, watch out, another group of TIE Defenders has arrived!
+
+// NEXT
+[Mssan 3] to [Delta 1]: our shields are down! Preparing to jump
+
+// NEXT
+CARG [Mssan 2] has picked up a prototype and is heading out
+
+// NEXT
+See it safely into hyperspace then rendezvous with [Mssan 3]
+
+// NEXT
+How many people have been invited to this party?
+
+// NEXT
+Alright, [Delta 1]! Not even one of the Rebels got away!
+
+// NEXT
+// NAMES: 
+T/D Delta 1 (You)
+SHU G'nabgib
+M/CRV Hashim 1
+M/CRV Hashim 2
+M/CRV Hashim 3
+GUN Nu
+CARG Mssan
+M/CRV Hashim (bearing T/D Prototypes)
+X-wings
+CRM-114
+B-wings
+A-wings
+GUN Mu
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>T/D Technology, Mission #6: Transfer Prototypes
+// NEXT
+This mission designed for Peregrine Software by$>David Wessman  1994c
+// NEXT
+The pirates' trap was defeated, but the TIE Defender prototypes remain vulnerable. 
+// NEXT
+Three [Mssan] cargo ferries have been commandeered for us.  Each will dock with one of the corvettes.
+// NEXT
+The first two (of three) of these vessels arrived approximately [24 klicks] away just a few minutes ago.
+// NEXT
+The immediate danger is the arrival moments ago of a [Rebel] strike force.  They are about [20 klicks] out.
+// NEXT
+The force consists of [4] X-wings, [2] B-wings and [2] A-wings.  They are only [17 kilometers] from the CARGs.
+// NEXT
+GUN [Nu] is our only protection right now, and would be overwhelmed against such a force.
+// NEXT
+The Rebels will more than likely split their force to attack both groups of ships at once.
+// NEXT
+GUN [Mu] has not arrived yet.  Therefore, you will fly TIE Defender [Delta 1] once more.
+// NEXT
+Only a [TIE Defender] is fast enough to intercept an attack on the cargo ferries.  Launch immediately!!!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To protect the transfer of
+the TIE Defender prototypes from
+Modified Corvette group [Hashim] to
+Cargo Ferry group [Mssan].  The
+cargo ferries will then deliver the
+prototypes to Admiral Thrawn,
+whose orders are to safeguard
+them.
+   Cargo Ferries [Mssan 1] and [2]
+have arrived without escort and
+are completely vulnerable to a
+torpedo attack.  [Mssan 3] will arrive
+shortly, accompanied by Assault
+Gunboat group [Mu].
+   A tug has been dispatched to
+repair Shuttle [G'nabgib] so it can
+be used to ferry some personnel
+from the corvettes to the cargo
+ferries.
+   You are to protect the docking
+operations of Cargo Ferries [Mssan
+1] and [2].  Once they are safely
+away, you are to enter the hangar
+(cargo bay) of [Mssan 3].
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Defender]
+designated [Delta 1].  You will have
+no wingmen.  For this mission your
+craft has been loaded with a
+standard armament of [8 advanced
+concussion missiles].  As before,
+your ship will also have the
+[improved tractor beam].
+   Remember, your missiles are
+easily capable of intercepting
+torpedoes, so make sure you do
+so!
+// NEXT
+What opposition will there be?
+   The Rebel strike force is made
+up of [4 X-wings, 2 B-wings] and [2
+A-wings].  They will probably split
+their attack to hit all of our
+ships as quickly as possible.
+Assault Gunboat group [Nu] would
+have no chance of intercepting an
+attack on the Cargo Ferries, so
+you will have to.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Zaarin's forces may yet catch
+us while we're vulnerable.  Be
+prepared to respond immediately to
+the first sign of the traitors.
+Remember that depriving the
+Emperor of the TIE Defender
+technology is key to Zaarin's
+overall strategy.  You must do
+whatever is necessary to thwart
+Zaarin.
+   Know that your Emperor
+watches over you.  Many are called
+to serve the Emperor, but only
+the most skillful warriors are
+chosen for such dangerous
+assignments.  Serve the Emperor
+well and you will reap great
+rewards!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We stopped a Rebel strike
+force cold and prevented the
+destruction of the cargo ferries.
+Unfortunately, while we were killing
+Rebels, another pirate group was
+able to capture one of our
+modified corvettes.  As it was still
+carrying a prototype TIE Defender,
+we can assume we will soon be
+facing new threats.
+   There was little that could
+have been done given the
+circumstances, but we'll be lucky to
+survive the Emperor's scrutiny of
+our performance.  There are going
+to be some very serious
+repercussions to the spread of
+this technology.  Great efforts will
+have to be made to stop this.
+Your best hope is that skilled
+pilots such as you will be needed
+now more than ever.
+// NEXT
+Are there any special instructions?
+   Try to take out one or two
+X-wings on your way to the
+B-wings.  You can do this if you
+hurry, using one missile per X-wing
+followed up with a quad burst from
+your lasers.
+   Next, attack and kill the lead
+B-wing (it will require three
+missiles.) Use your last missiles on
+the remaining B-wing.  If they've
+launched any torpedoes you may
+have to use some of your missiles
+to intercept them.
+   Don't even try to stop the
+pirates.  There's no way to do it
+and still protect the cargo ferries.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You destroyed more enemies of
+the Emperor!  You are serving the
+Emperor in the most glorious way
+possible, in the fight of good
+against evil!  Many are the evils
+that threaten the galaxy.  Only
+the Emperor and those who serve
+him can protect the peace of the
+Empire.  You have served well.
+// NEXT
+Are there any special instructions?
+   When dogfighting TIE Defenders,
+you will have good success if you
+use the tractor beam.  Set your
+cannon recharge rate at maximum.
+Keep the shield and beam recharge
+rates at normal.  When engaging a
+target, redirect shield recharge
+entirely to the engines and reset
+the beam recharge to maximum.
+   Engage the beam only when
+your target is in front of you.
+Remember to rebalance the shields
+whenever you take a hit and keep
+up a steady transfer of cannon
+energy to the shields.  Use single
+missiles or quad laser fire, and be
+ready to select ion cannons as
+soon as the target's shields go.
+You can save valuable seconds by
+disabling a craft first, then killing
+it later when all other threats
+have been neutralized.
+   Let not your anger [blind] you.
+Rather, let it [consume] you and in
+the [purity] of your [hatred] you will
+find the [deaths] of your enemies.
+[Long live Emperor Palpatine!] ÿ
+// LAST

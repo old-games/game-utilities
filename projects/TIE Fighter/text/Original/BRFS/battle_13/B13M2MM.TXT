@@ -1,0 +1,414 @@
+// COMPLETION MESSAGES:
+A stolen Victory Star Destroyer is back in Imperial possession
+Lord Vader is ready to interrogate Namuura Din! Good work!
+
+
+You must have proven your skills in order to get this far
+Try again! Focus yourself on the primary goals!
+// Number of objects: 29, (4 lines for each)
+Tau
+MadMax
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Garrett
+Maxwell
+Lord Vader
+
+// NEXT
+Omega 1
+
+Troopers
+
+// NEXT
+Sigma 1
+
+Troopers
+
+// NEXT
+Sigma 2
+
+Troopers
+
+// NEXT
+Sigma 3
+
+Warheads
+
+// NEXT
+Lambda 1
+
+Officers
+
+// NEXT
+Zeplin
+N. Din
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Alpha 3
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Theta
+
+
+
+// NEXT
+Z-Pu
+
+
+
+// NEXT
+Link
+Skywalker
+MIS
+MIS
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Z-Epsilon 1
+
+Officers
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Gunboats Rho and TIE Advanced Beta will help as requested Tau 1
+
+// NEXT
+We'll still try to disable the Victory Star Destroyer Tau 1!
+
+// NEXT
+It's too late, the meeting is already in progress Tau 1!
+
+// NEXT
+The plan remains the same, capture the Zeplin!
+
+// NEXT
+Gunboats Mu have been destroyed. Reinforcements may be needed
+
+// NEXT
+There's a Rebel Calamari cruiser already here!
+
+// NEXT
+Assault transport Omega 1 is under attack! Help it Tau 1!
+
+// NEXT
+Assault transport Omega 1 has been launched
+
+// NEXT
+Tau 1, make sure Omega 1 makes it back to the Garrett!
+
+// NEXT
+The VSD Zeplin is being sent to Imperial Intelligence
+
+// NEXT
+The reinforcements will disable the VSD if not already disabled
+
+// NEXT
+Alert! Tau 1, A-wings have just entered the area!
+
+// NEXT
+Tau 1, ATR Omega is in critical condition! Save it NOW!
+
+// NEXT
+Sigma 3 to Tau 1, we're here to reload you!
+
+// NEXT
+Garrett to Tau 1, we are going after the Zeplin ..
+
+// NEXT
+... you must board now or hyper back to the Garrett later!
+
+// NEXT
+// NAMES: 
+VSD Zeplin
+GUNs Mu
+MIS Tau (You)
+ISD Garrett
+ATR Omega 1
+GUNs Nu
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Emperor's Will, Mission #2: Capture the Turncoat
+// NEXT
+The [Garrett] will arrive and launch assault transport [Omega 1] to capture the Zeplin and Commander Din.
+// NEXT
+The Victory Class Star Destroyer [Zeplin] must be captured along with its commander, [Namuura Din].
+// NEXT
+Six gunboats from [Mu] group have the task of disabling the [Zeplin]. 
+// NEXT
+Two missile boats from [Tau] group will escort gunboats and assist them in their attack if needed.
+// NEXT
+This mission was created by [David Maxwell]$for [Totally Games] 1995.
+// NEXT
+[Namuura Din] was one of Zaarin's top commanders. He may know the true status of the new [Death Star].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The Garrett's forces must
+capture the Victory Class Star
+Destroyer [Zeplin].  According to an
+Imperial spy, Zaarin and his senior
+staff know the truth about the
+Emperor's plans for the Rebels at
+Endor.  One of Zaarin's top
+commanders, [Namuura Din], upon
+discovering this information, has
+decided to defect to the Rebel
+side.  His command ship, the Zeplin,
+is already at a rendezvous point
+for a meeting with the Rebels.  He
+hopes to convince them that their
+planned attack on the Death Star,
+located near Endor, will play into
+the Emperor's hands.  Commander
+Din is also supposed to trade a
+missile boat that Zaarin had in his
+possession to the Rebels.  This is
+a dangerous turn of events.  If
+the Rebels learn the truth about
+the Death Star or gain the [Missile
+Boat] technology, the balance of
+power could shift greatly.  [Lord
+Vader] wishes to interrogate Din as
+soon as his ship is captured.
+// NEXT
+What craft will I be flying?
+   You will fly a [Missile Boat]
+designated [Tau 1].  You will be the
+leader of the two ships in your
+flight group.  For this mission your
+craft has been loaded with the
+standard armament of [40 advanced
+missiles] plus a load of [30 advanced
+torpedoes].  Your craft will have
+the tractor beam installed.
+// NEXT
+What opposition will there be?
+   You will be going against a
+[Victory Star Destroyer] plus its full
+complement of starfighters.  Be
+alert for Rebel forces as they are
+expected to meet up with Namuura
+Din soon.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   [Lord Vader] needs to know
+where the missing missile boat is
+located, in case it is not on the
+Zeplin.  Inspect all freighters and
+capital ships in the area.  The
+more information you gather, the
+better [Lord Vader] can deal with
+these enemies of the Empire.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   The Garrett's forces captured
+the Victory Star Destroyer [Zeplin],
+preventing it from being handed
+over to the Rebels.  The [Zeplin]
+has been sent to an Imperial
+shipyard where [Imperial Intelligence]
+will examine it.  The Commander,
+Namuura Din, was also captured in
+the operation.  [Lord Vader], in his
+usual efficient manner, has
+extracted important information
+from Din.  The news is not good.
+Ex-Commander Din learned from
+Zaarin that the [Death Star's]
+defenses are fully operational.
+This information and one [Missile
+Boat] were passed on to the
+Rebels before our forces could
+stop the Zeplin.  Vader also
+learned that Zaarin has not
+informed the Rebels of the
+Emperor's plan at Endor.  The
+[Emperor] has foreseen that Zaarin's
+extreme hatred of the Rebels has
+kept him silent on the matter.  He
+prefers that the Rebel cause be
+wiped out at Endor.
+// NEXT
+Are there any special instructions?
+   Head towards the Zeplin.  Order
+your wingman to attack TIE Fighter
+Beta 1 while you target Beta 2.
+Try to destroy two TIE Fighters
+on the first pass and leave the
+third alone for now.  Next, take
+out a couple of TIE Advanced that
+will be targeting the gunboats you
+are escorting.  Most important, do
+not get hung up dogfighting.
+Quickly take out Zeplin's warhead
+launchers, using dual missiles or
+torpedoes, to prevent its use of
+advanced missiles.  The warhead
+launchers are located near the
+bridge of the Victory Star
+Destroyer.  The safest place to
+attack the warhead launchers is
+from three kilometers above the
+Zeplin.  You may have to eliminate
+the launchers from up close if
+necessary.  Once this is
+accomplished, fire advanced
+torpedoes at the Victory Star
+Destroyer's hull until its shields
+are down.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You inspected the Rebel cruiser
+and located the missile boat.  The
+Garrett must immediately go after
+the Rebel cruiser and either
+recover the missile boat or
+destroy it.  Report for your next
+mission immediately.
+// NEXT
+Are there any special instructions?
+   Use your SLAM boosters to
+inspect the Rebel Cruiser at the
+very start of the mission.  ÿ
+// LAST

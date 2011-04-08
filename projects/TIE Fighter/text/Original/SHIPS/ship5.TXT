@@ -1,0 +1,44 @@
+Assault Gunboat (GUN)
+//BLOCK
+species.lfd
+assault
+0 80 10
+//BLOCK
+species.lfd
+assault
+0 80 -10
+//BLOCK
+species.lfd
+assault
+90 MGLT top speed
+Two laser and two ion cannons
+Two warhead launchers
+100 SBD shields and 50 RU hull
+//BLOCK
+lnchstr
+wpnstr
+//BLOCK
+hg1w
+hg2w
+hg3m
+hg4m
+//BLOCK
+Learn to use the Deflector
+Shield System.  Clear a minefield
+and inspect a rebel arms cache.
+//BLOCK
+A group of pirates have
+stolen munitions from the
+Empire.  You must destroy
+the munitions dump.
+//BLOCK
+Engage in increasingly difficult
+dogfights against enemy star-
+fighters.  Make sure to keep
+charging your shields to protect
+against enemy fire.
+//BLOCK
+Escort and defend Imperial
+craft as you work with wingmen
+to fight off enemy attackers.
+//BLOCK

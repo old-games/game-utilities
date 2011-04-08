@@ -1,0 +1,388 @@
+// COMPLETION MESSAGES:
+Well done, the operation was successful
+You may return to base
+Your performance was exceptional, well done!
+This operation has been very profitable
+We've had it! Zaarin was emphatic about capturing everybody!
+We have some explaining to do, hyperspace home!
+// Number of objects: 30, (4 lines for each)
+Tau
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Omega 1
+
+Stormtrprs
+
+// NEXT
+Omega 2
+
+Stormtrprs
+
+// NEXT
+Omega 3
+
+Stormtrprs
+
+// NEXT
+Omega 4
+
+Stormtrprs
+
+// NEXT
+Omega 5
+
+Stormtrprs
+
+// NEXT
+Omega 6
+
+Stormtrprs
+
+// NEXT
+Sigma 1
+
+Stormtrprs
+
+// NEXT
+Sigma 2
+
+Stormtrprs
+
+// NEXT
+Glory
+Zaarin
+
+
+// NEXT
+U-4f91
+
+
+
+// NEXT
+U-4f92
+
+
+
+// NEXT
+U-4f93
+
+
+
+// NEXT
+U-4f94
+
+
+
+// NEXT
+U-14f1
+
+Warheads
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Pondut
+
+Mag Pulse
+
+// NEXT
+Adam
+
+
+
+// NEXT
+Baker
+
+
+
+// NEXT
+Charli
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Bujiboi
+
+
+
+// NEXT
+GEC U47
+
+Tech Crew
+
+// NEXT
+Lucky Day
+
+Arms Dlr
+
+// NEXT
+Kalree
+
+VIPs
+
+// NEXT
+T. Chamber
+
+Mag Equip
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Look alive, Tau 2, we have Z-95s behind us!
+Z-95s behin
+// NEXT
+As soon as you can, disable the transports on the platform
+Dis TRNs
+// NEXT
+ATR Omega arrives in 15 seconds. Keep the Z-95s away from them
+ATRs arrive
+// NEXT
+Tau 2, TRN GEC U47 is getting away, disable it!
+GEC U47
+// NEXT
+[SHU Kalree] just left the platform, don't let it get away!
+SHU Kalree
+// NEXT
+A [Corellian Transport] just launched, intercept it, Tau 2!
+Lucky Day
+// NEXT
+Rebel ships have just entered the area, destroy them!
+Rebels
+// NEXT
+Belay that order, the Y-Ws are armed with the mag pulse weapon
+Y-Ws
+// NEXT
+Tau 2, we must try to disable at least one of the Y-wings!
+Dis Y-W
+// NEXT
+The cargo ferry is of no use to us, though, destroy it!
+CARG
+// NEXT
+Tau 2, return to base. All that's left here is the mopping up!
+Mop up
+// NEXT
+Tau 2, you may reload your missiles with TUG U-14f1
+Reload
+// NEXT
+Zaarin will be pleased we have captured the platform intact!
+Cap PLT
+// NEXT
+Zaarin wants the prisoners brought before him
+Zaarin
+// NEXT
+He has a demonstration prepared for them!
+Demonstrati
+// NEXT
+Tau 1 just bought it! You're the new leader, Tau 2
+Tau 1 dead
+// NEXT
+// NAMES: 
+Galactic Electronics
+Research Platform
+GUN Tau (You)
+ATR Omega
+ISD Glory
+Z-95 Headhunters
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Arms Race, Mission #4: Punitive Raid
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+The Rebels' new [Mag Pulse] technology was developed by [Galactic Electronics] in the [Corporate Sector].
+// NEXT
+Secretly developing new weapons is bad enough, selling them to enemies of the Empire is treason.
+// NEXT
+The traitors' deep space [research facility] is to be seized and stripped of all new technology.
+// NEXT
+[GUN Tau] will lead the attack. Destroy any opposition and disable any craft attempting to escape.
+// NEXT
+[ATR Omega] will enter the area [three minutes] after the attack starts.
+// NEXT
+Their Stormtroopers will conduct the boarding and seizure of assets and/or prisoners.
+// NEXT
+[ISD Glory] will then arrive to receive the captured prisoners and impounded materials.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Our objective in this mission is
+to make an example of [Galactic
+Electronics].  For trading with the
+enemy, the corporation's assets
+are to be seized by the Empire.
+Our task is to take over the
+research platform where they
+developed the [Mag Pulse]
+technology which they sold to the
+Rebels.
+// NEXT
+What craft will I be flying?
+   You will fly an [Assault Gunboat]
+designated [Tau 2].  Your flight
+group consists of six Gunboats.
+For this mission your craft has
+been loaded with a special
+armament of [16] advanced
+concussion missiles.  Assault
+Transport group Omega will enter
+after you've had three minutes to
+punch through the platform's
+fighter defenses.
+// NEXT
+What opposition will there be?
+   The research platform is well
+armed and has hangar facilities for
+an entire squadron of Z-95
+Headhunters.  They shouldn't cause
+you too much trouble.  Use a
+single missile on each to rapidly
+clear them away.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Assist with the capture of any
+craft fleeing from research
+facility.  Protect our Assault
+Transports as they board and
+capture the base personnel.  Also,
+be alert for an opportunity to
+disable a Rebel craft carrying the
+[Mag Pulse] technology.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We demonstrated the folly of
+working in opposition to the stated
+aims of the Empire.  Selling weapons
+to our enemies is an intolerable
+act of treason.  The punishment is
+death!
+   Now, some good news for you!
+You have been selected to receive
+advanced combat training in the
+new TIE Defender.  Report to the
+Combat Chamber and select the TIE
+Defender missions.
+// NEXT
+Are there any special instructions?
+   Use your missiles to quickly
+take out at least six of the Z-95
+Headhunters.  Since your wingmen
+will usually go after the #1 craft
+of each enemy flight group, you
+should target the #2 and proceed
+through your target list.
+   Place the Transport and
+Shuttle in memory and watch for
+the message that the Transport
+has finished docking.  Be sure to
+be close by when this happens so
+you can disable it quickly.  Now
+target the Shuttle and disable it.
+The Corellian Transport will launch
+from the platform now and you can
+intercept and disable it.
+   Go back to killing Z-95
+Headhunters.  When they're all
+gone, lend assistance to the
+Assault Transports trying to
+disable the platform.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped us capture another
+Rebel starfighter equipped with the
+[Mag Pulse] weapon.
+// NEXT
+Are there any special instructions?
+   Watch for the arrival of the
+Rebels soon after the capture
+operations begin.  Try to take out
+a couple of the Y-wings quickly,
+then disable one or two of the
+remainder.  It helps to have saved
+some missiles.  ÿ
+// LAST

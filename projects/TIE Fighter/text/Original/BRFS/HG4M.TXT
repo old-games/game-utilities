@@ -1,0 +1,254 @@
+// COMPLETION MESSAGES:
+You have done well against the Rebel starfighters
+
+
+
+You have done poorly in protecting the freighters
+
+// Number of objects: 23, (4 lines for each)
+Tau
+Madmax
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Sigma
+
+
+
+// NEXT
+NB-Z6
+
+
+
+// NEXT
+Rugle
+
+
+
+// NEXT
+Dodger
+Llimor
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Leap
+
+Officers
+
+// NEXT
+// Number of radio messages: 6, (2 lines for each)
+Imperial Gunboats Tau, we appreciate you escorting us
+
+// NEXT
+A friendly face out here is always welcome
+
+// NEXT
+Combat alert, Tau 1, Rebel war craft are in the area
+
+// NEXT
+The freighters are being attacked and taking damage!
+
+// NEXT
+The convoy has been lost. Hyperspace home to explain yourself
+
+// NEXT
+Good job, Tau 1, hyperspace home to base
+
+// NEXT
+// NAMES: 
+GUN Tau (You)
+Imperial Freighters
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Assault Gunboat Combat #4: Escort Duty
+// NEXT
+You are being assigned to [Gunboat Tau 1]. You will be assisted by one wingman. Order him using Shift-A.
+// NEXT
+You will be escorting three freighters to their hyperjump point which is several kilometers away.
+// NEXT
+Your primary task is to see that these freighters make it safely into hyperspace.
+// NEXT
+THIS MISSION WAS CREATED BY DAVID MAXWELL
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+This mission was created by David Maxwell$for Peregrine Software. 3-27-94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your primary task is to insure
+the safe passage of three
+freighters to their hyperspace
+point.
+// NEXT
+What craft will I be flying?
+   You will fly the [Assault Gunboat]'
+designated [Tau 1] of a two ship
+flight group.  You will be the flight
+leader.  For this mission your ship
+will be fitted with a standard load
+of [16] concussion missiles.
+// NEXT
+What opposition will there be?
+   The level and type of Rebel
+opposition is unknown.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   Excellent work, you have
+successfully protected the
+freighters from Rebel attack.
+// NEXT
+Are there any special instructions?
+   Get between the freighters and
+any attacking forces.  Don't let
+enemy craft fire any torpedoes at
+the freighters.  Save your missiles
+as long as possible.  They're best
+used in situations where you are
+severely outnumbered.  ÿ
+// LAST

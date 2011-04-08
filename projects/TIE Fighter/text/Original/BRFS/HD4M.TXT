@@ -1,0 +1,322 @@
+// COMPLETION MESSAGES:
+
+
+
+
+
+
+// Number of objects: 30, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Burke
+
+
+
+// NEXT
+James
+
+
+
+// NEXT
+Punisher
+Bly
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Suelu
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Egale
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Down
+
+Warheads
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Silver
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Prowler
+
+B-wings
+X-wings
+// NEXT
+Sharky
+
+
+
+// NEXT
+Spear
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+// Number of radio messages: 10, (2 lines for each)
+Move quickly to disable one of the Escort Carriers!
+
+// NEXT
+Alpha 2, use your heavy bombs on the target your leader picks
+
+// NEXT
+Alpha 2, fly to the Punisher's hangar bay now
+
+// NEXT
+Now it is time for someone to die!
+
+// NEXT
+Be careful, you got hit!
+
+// NEXT
+That was Imperial property
+
+// NEXT
+CRV Burke to Alpha 2, we are under attack!
+
+// NEXT
+Assault Gunboats Mu are here to help you, Alpha 2
+
+// NEXT
+CRV Burke to Flight Group Alpha, keep alert!
+
+// NEXT
+Board the James' hangar as soon as you can, Alpha 2
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+Rebel Probe
+Rebel Escort Carriers
+CRV Burke
+(Your Command Ship)
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Defender Combat #4: Disable and Capture
+// NEXT
+A reconnaissance patrol has come across a pair of Rebel Escort Carriers. 
+// NEXT
+Your orders are to disable at least one of the two Escort Carriers.
+// NEXT
+An Imperial starship will arrive to take their cargo of starfighters.
+// NEXT
+// SKIP
+// SKIP
+THIS MISSION WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The mission objective is to
+capture a Rebel Escort Carrier.
+Follow your leader as he picks one
+of the escort carriers to attack.
+Drop both bombs on your first
+pass.  Then switch to [ion cannons]
+and disable that carrier.  You only
+have time to disable one of the
+carriers but try and inspect both
+of their cargoes.  Attack and
+destroy any other Rebel craft
+that may arrive to help the
+escort carrier.
+// NEXT
+What craft will I be flying?
+   You will fly the [TIE Defender],
+designated [Alpha 2].  You will be the
+wingman of a 2 ship attack group.
+Your craft will be armed with [2]
+heavy space bombs.  A transport
+can be called in as part of the
+reinforcements to reload your ship
+with more bombs.
+// NEXT
+What opposition will there be?
+   The Escort Carriers appear to
+have no escort themselves,
+however, their fierce laser
+batteries are quite capable of
+putting up a powerful defense.
+The Rebels are likely to send
+backup forces when their carriers
+come under attack.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have played a key role in
+capturing the Rebel escort carrier
+along with its complement of
+starfighters.  This operation was a
+major success.  Good work.
+// NEXT
+Are there any special instructions?
+   Once you have dropped your
+bombs in the attack run get out
+of their path so when the escort
+carrier starts firing its laser
+batteries at you they won't hit
+your bombs.  Also, keep you laser
+recharge level on maximum so you
+can shift energy from your lasers
+to your shields whenever
+necessary.  ÿ
+// LAST

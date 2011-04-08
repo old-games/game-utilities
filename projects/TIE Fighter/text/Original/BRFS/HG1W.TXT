@@ -1,0 +1,266 @@
+// COMPLETION MESSAGES:
+Well done, Mu 1, you've cleared the minefield!
+You may go now or stay and inspect the container
+We're through here, let's return to base with our prisoners
+You may stay and destroy the container first if you want to
+Mu 1, have you got a problem with following orders?
+
+// Number of objects: 13, (4 lines for each)
+Mu 1
+WODEN
+
+
+// NEXT
+T1-A
+Novice
+
+
+// NEXT
+T1-A
+Novice
+
+
+// NEXT
+T1-B
+Novice
+
+
+// NEXT
+T1-B
+Novice
+
+
+// NEXT
+Pi
+
+Hangar
+
+// NEXT
+Weet
+Officer
+Reb Spies
+
+// NEXT
+Red
+Officer
+
+
+// NEXT
+Blue
+Veteran
+
+
+// NEXT
+Gold
+Veteran
+
+
+// NEXT
+Red
+Ace
+
+
+// NEXT
+Blue
+Ace
+
+
+// NEXT
+Scythis
+Vot'n
+Instructor
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Listen up, Mu 1! You will now learn to operate a shield system
+Target
+// NEXT
+Your Deflector Shield Strength Indicator shows an even charge
+Even shield
+// NEXT
+You can toggle it full Forward or full Rear by pressing ['S']
+Fwd/Rear
+// NEXT
+Restore to even and set your recharge rate to maximum ([F10])
+Full Shield
+// NEXT
+To quickly build up shield strength, transfer cannon power (')
+Quick Trans
+// NEXT
+This will drain the cannons, so reset their recharge rate (F9)
+Drained las
+// NEXT
+Press ['T'] until a mine is targeted in the CMD
+Target
+// NEXT
+It's just out of range so set your throttle to full and close
+Throttle up
+// NEXT
+Fire as soon as your targeting box lights up green
+Fire
+// NEXT
+It only takes one shot so target the next quickly
+One shot
+// NEXT
+Watch your shield strength and break off to recharge as needed
+Watch out
+// NEXT
+Turn and weave constantly, do not fly straight and level!
+No straight
+// NEXT
+You'll find it easier if you set your cannons to dual fire mode
+Dual Fire
+// NEXT
+We have rebel scum bolting from their hole! Stop them, Mu 1!
+Rebels!
+// NEXT
+To disable their craft, switch to ion cannons (['W'])
+Ions
+// NEXT
+Good, now patrol the area while we board and capture them
+We'll take 
+// NEXT
+// NAMES: 
+GUN Mu 1 (You)
+SPC Scythis (Instructor)
+Type A Mines
+Rebel Arms Cache?
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Assault Gunboat Combat #1: Shields
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+You will learn how to operate a [Deflector Shield System] while practicing your gunnery skills.
+// NEXT
+Stormtroopers aboard [SPC Scythis] are waiting nearby to seize any weapons or other contraband.
+// NEXT
+This mission simulates an inspection of a suspected Rebel arms cache protected by [Type A mines].
+// NEXT
+Watch your [Shield/Hull Strength Indicator].  Always be prepared to break off and recharge when necessary.
+// NEXT
+When unable to break off (say for reasons of pursuit) redirect shield energy often for balance.
+// NEXT
+Always remember a quick shunt of cannon energy can quickly boost shield strength at a critical moment!
+// NEXT
+Under no circumstances should you do anything without being ordered 
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   You will learn to manage your
+energy systems.  You now have to
+balance the energy between your
+cannons, shields and engines.
+Depending on the circumstances of
+the moment you will have to adjust
+for greater firepower, defense or
+speed.
+// NEXT
+What craft will I be flying?
+   You will fly [Assault Gunboat Mu
+1] (GUN Mu 1.) This is the first
+Imperial Navy starfighter to have
+deflector shields and a hyperdrive.
+Armament consists of two lasers
+and two ion cannons mounted in
+the nose.  There is also a dual
+warhead launcher.  For this mission
+your ship will be fitted with a
+standard load of [16] concussion
+missiles.
+// NEXT
+What opposition will there be?
+   Your "enemies" will be a small
+field of Type 1 mines.  They are
+armed with a single omni-directional
+laser cannon.  They can be
+destroyed with a single cannon
+shot.
+   Alternatively, you can use your
+missiles.  This will allow you to
+destroy the mines from outside
+their cannon range, but this is an
+expensive strategy and your score
+will be much lower!  Follow the
+orders you receive in flight.  You
+may be given the option to pursue
+other goals.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to clear a minefield.
+// NEXT
+Are there any special instructions?
+   Keep your speed up high and
+don't fly straight and level any
+longer than you have to to get
+off a shot.  Try setting your
+cannon recharge rate to [maximum]
+and your shield recharge rate to
+minimum.  Then remember to keep
+transferring energy from the
+cannons to the shields.
+   If you are still having trouble,
+use missiles.  Remember to stay
+outside the range of the mines.
+(Just stay at your starting
+position, throttle at zero, and pick
+them off at your leisure.) ÿ
+// LAST

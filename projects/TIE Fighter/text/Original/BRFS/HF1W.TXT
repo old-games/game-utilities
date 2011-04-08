@@ -1,0 +1,352 @@
+// COMPLETION MESSAGES:
+Congratulations, your basic gunnery skills are adequate! 
+Go to 2/3 throttle and prepare to engage moving targets
+Good shooting, Alpha 1! Quit now or stay to fight
+Be warned: the odds will steadily increase against you!
+Unauthorized destruction of Imperial property is forbidden!
+That was the wrong kind of initiative!
+// Number of objects: 31, (4 lines for each)
+Alpha 1
+WODEN
+
+
+// NEXT
+Target 1
+
+
+
+// NEXT
+Target 2
+
+
+
+// NEXT
+Target 3
+
+
+
+// NEXT
+Target 4
+
+
+
+// NEXT
+Target 5
+
+
+
+// NEXT
+Target 6
+
+
+
+// NEXT
+Target 7
+
+
+
+// NEXT
+Target 8
+
+
+
+// NEXT
+Mover 1
+Novice
+
+
+// NEXT
+Mover 2
+Officer
+
+
+// NEXT
+Mover 3
+Veteran
+
+
+// NEXT
+Mover 4
+Ace
+
+
+// NEXT
+Mover 5
+Top Ace
+
+
+// NEXT
+Fighter 1
+Novice
+
+
+// NEXT
+Fighter 2
+Officer
+
+
+// NEXT
+Fighter 3
+Veteran
+
+
+// NEXT
+Fighter 4
+Ace
+
+
+// NEXT
+Fighter 5
+Top Ace
+
+
+// NEXT
+Diad
+Ace
+
+
+// NEXT
+Triad
+Ace
+
+
+// NEXT
+Quad
+Ace
+
+
+// NEXT
+Quin
+Ace
+
+
+// NEXT
+Hex
+Ace
+
+
+// NEXT
+Dodec1
+Ace
+
+
+// NEXT
+Dodec2
+Ace
+
+
+// NEXT
+Dodec3
+Ace
+
+
+// NEXT
+Dodec4
+Ace
+
+
+// NEXT
+Training
+
+Drones
+
+// NEXT
+Revenge
+Top Ace
+
+
+// NEXT
+Dark Angel
+Top Ace
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Alpha 1, don't touch anything until told to!
+NOTHING
+// NEXT
+Hit the ['T'] key to target the container in front of you
+T KEY
+// NEXT
+Target 1 will turn yellow to indicate it is the current target
+Yellow
+// NEXT
+Your targeting box will turn green to indicate a good shot
+GREEN
+// NEXT
+Fire at will to destroy Target 1 (it should take eight hits)
+DESTROY
+// NEXT
+Press ['T'] to target the next container
+CONTINUE
+// NEXT
+Hit the ['9'] key to see your right forward view
+1:30
+// NEXT
+Return to forward view (['8']) and check your forward sensor
+RETURN
+// NEXT
+Steer your craft to the right toward the bracketed target
+TURN RIGHT
+// NEXT
+Align the target in your sights (targeting box will turn green)
+CENTER
+// NEXT
+Now destroy Target 2
+DESTROY2
+// NEXT
+Continue until you have destroyed all of the containers
+CONTINUE
+// NEXT
+Reset your laser recharge rate to maintain a full charge ([F9])
+RECHARGE
+// NEXT
+Target Mover 1 and engage it (['R'] key = nearest enemy)
+TARGET
+// NEXT
+To match speed with the target, press the ['RETURN'] key.
+ADJUST
+// NEXT
+Successive craft will increase your challenge!
+TOUGHER
+// NEXT
+// NAMES: 
+T/F Alpha 1 (You)
+Stationary Targets
+Moving Targets
+Fighting Targets
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Fighter Combat #1: Gunnery
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Follow the radio instructions during flight. Use ['L'] to toggle the message log to review your instructions.
+// NEXT
+In this mission you will learn the basic gunnery skills of targeting, aiming at and destroying fixed targets.
+// NEXT
+Then you'll combine these skills with your piloting ability to maneuver with and engage moving targets.
+// NEXT
+You may continue at your option to [one on one dogfighting] contests of increasing difficulty!
+// NEXT
+After the one on one encounters you will face multiple enemies as the odds increase against you. 
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To develop basic gunnery skills
+and then apply them against an
+increasingly challenging series of
+targets.  As the mission
+progresses you will have the option
+to continue with actual dogfighting.
+   Pay constant attention to
+your [Threat Indicator Array].  It is
+part of the HUD and will light up
+when an enemy is aiming a weapon
+at you.  Pressing the 'E' key will
+target the enemy craft in your
+CMD.  You can then "turn the
+tables" on your opponent by
+turning to attack.  Avoid head-on
+attacks as these are usually
+suicidal.
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Fighter Alpha 1]
+(T/F Alpha 1.) It is the standard
+starfighter of the Imperial Navy.
+Armament consists of twin
+chin-mounted lasers.  It has no
+shields, but relies instead on speed
+and agility to avoid enemy fire.
+That's where your skill as a pilot
+comes in!
+// NEXT
+What opposition will there be?
+   There will be no opposition at
+first.  In the dogfighting portion
+of the mission the [Z-95
+Headhunter] will be your enemy.  It
+isn't as fast or maneuverable as a
+TIE Fighter, but it has the same
+armament and also boasts
+deflector shields.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have shown you are
+capable of engaging enemy craft in
+gunnery combat.
+// NEXT
+Are there any special instructions?
+   You must always be ready to
+make sudden unexpected maneuvers
+to throw off an attacker.  Never
+fly straight and level when there
+is an enemy nearby.
+   When you are outnumbered it is
+sometimes best to put some
+distance between your enemies and
+yourself!  Try [redirecting] your
+cannon recharge energy to your
+engines at the [maximum] rate to
+get the necessary speed.  ÿ
+// LAST

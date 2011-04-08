@@ -1,0 +1,285 @@
+// COMPLETION MESSAGES:
+Keep up the good work, Alpha 2, you're doing well!
+The raiders have been stopped
+Well, the Rebels certainly are getting bolder!
+Too bad for them they're not getting any smarter!
+This is going to be difficult to explain
+I wouldn't want to be you!
+// Number of objects: 22, (4 lines for each)
+Alpha
+WODEN
+
+
+// NEXT
+I.N. Depot
+
+
+
+// NEXT
+Colossus
+
+
+
+// NEXT
+C/T
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Upsilon
+
+Rep Crew
+
+// NEXT
+Xi
+
+R'alla H2O
+
+// NEXT
+Chi
+
+Norv'n Grog
+
+// NEXT
+Pi
+
+Ebla Beer
+
+// NEXT
+Pelican
+
+
+
+// NEXT
+Pelican 3
+
+
+
+// NEXT
+Pelican 4
+
+
+
+// NEXT
+Pelican 5
+
+
+
+// NEXT
+Pelican 6
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Alpha 2, press ['T'] to target Alpha 1, (your flight leader)
+T Leader
+// NEXT
+Press ['Shift-F5'] to assign Alpha 1 to memory location F5
+Shift-F5
+// NEXT
+Target [PLT Depot] and assign to memory location F6
+Shift-F5
+// NEXT
+Now press ['F5'], then ['Shift-R'] for Alpha 1's status report
+Shift-R
+// NEXT
+First, target your flight leader with F5
+Keep tabs
+// NEXT
+Then use the Threat Display ('Z') and attack his target
+Same target
+// NEXT
+T/F Alpha, we have Rebel raiders exiting hyperspace!
+Alert!
+// NEXT
+Alpha 2, pay attention to your threat indicator light
+Threat
+// NEXT
+Bad news. We now have four Y-wings attacking the Platform!
+Y-Wings
+// NEXT
+Your flight leader, Alpha 1, has been hit!
+New leader
+// NEXT
+Alpha 1's been taken out! Alpha 2, you are the new leader
+New leader
+// NEXT
+Target an enemy and press ['Shift-A']
+Shift-A
+// NEXT
+All of your wingman will now attack that target!
+Wingman
+// NEXT
+Rebel HLFs have entered the area and are going for our supplies
+HLF
+// NEXT
+Two more X-wings just joined the party!
+More X-Ws
+// NEXT
+[ISD Colossus] to T/F Alpha: looks like you need some help!
+Help
+// NEXT
+// NAMES: 
+Imperial Navy
+Supply Depot
+T/F Alpha (You)
+X-W Blue
+Y-W Gold
+Heavy Lifters
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Fighter Combat #2: Flight Leaders & Wingmen
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+This mission recreates a typical Rebel raid on an Imperial Navy supply depot.
+// NEXT
+Six TIE Fighters from [Alpha] Squadron are maintaining a standard orbital patrol around [PLT Depot 5].
+// NEXT
+You will be expected to follow your flight leader's lead and do as he does.
+// NEXT
+If [Alpha 1] is taken out, [Alpha 2] (you) will assume command of the rest of [T/F Alpha].
+// NEXT
+Your primary objective is to intercept the raiders and destroy them!
+// NEXT
+Your secondary objective is to destroy any Rebel craft attempting to steal supplies.
+// NEXT
+Enter the simulation now and follow inflight instructions carefully.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To learn to use the memory
+locations of your targeting
+computer to keep track of your
+flight leader and the mission
+critical craft you are protecting
+(the platform).  Also, to practice
+issuing inflight orders to your
+wingman so you may see the
+advantages of group tactics.
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Fighter #2] in a
+flight group of six ships named TIE
+Fighter group [Alpha].
+// NEXT
+What opposition will there be?
+   The raid will commence with an
+attack by [X-wings] followed by
+[Y-wings].  If the Y-wings can
+disable the platform, [Heavy Lifters]
+will arrive to pick up as many
+containers as they can.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to defeat an enemy attack.
+// NEXT
+Are there any special instructions?
+   Use the "assign current target
+to wingman" order to mass fire on
+a particular target.  As soon as it
+is destroyed assign a new target.
+ÿ
+// LAST

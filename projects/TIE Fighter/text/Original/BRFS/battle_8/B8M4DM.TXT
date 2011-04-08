@@ -1,0 +1,316 @@
+// COMPLETION MESSAGES:
+The resupply was successful
+You were able to stop the Rebels' futile attempt
+
+
+
+
+// Number of objects: 21, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+ZA-13
+
+
+
+// NEXT
+Terry
+
+Foodstuff
+
+// NEXT
+Contel
+
+Medical
+
+// NEXT
+Vendor
+
+Equipment
+
+// NEXT
+Dromii
+
+Equipment
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Tatoo 1
+
+
+
+// NEXT
+Tatoo 2
+
+
+
+// NEXT
+Resupply
+
+Weapons
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Cobra
+
+
+
+// NEXT
+// Number of radio messages: 13, (2 lines for each)
+Plant ZA-13 to Alpha, please help us get supplied
+
+// NEXT
+Gunboats Tau here to help you, Alpha 1
+
+// NEXT
+Corvettes Tatoo are here to help also
+
+// NEXT
+Watch your shields, Alpha 1!
+
+// NEXT
+Your craft's hull is taking damage, be careful, Alpha 1
+
+// NEXT
+Dromii 2 to Alpha 1, we are the last to board
+
+// NEXT
+Cargo ferry Terry to Alpha 1, you're welcome to join in
+
+// NEXT
+The TIE Advanced plant is taking heavy damage
+
+// NEXT
+Scratch those Rebel Y-wings!
+
+// NEXT
+Do not allow the corvettes near us, Alpha 1. Get them now!
+
+// NEXT
+The Y-wings are headed for the plant, stop them!
+
+// NEXT
+Go for the B-wings next
+
+// NEXT
+Resupply transport awaiting orders to reload you, Alpha 1!
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+TIE Advanced Factory
+Rebel Y/Ws
+T/A
+ZA-13
+Imperial Convoy
+Boarding Craft
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Strategic Warfare #4: Supply TIE Advanced Plant
+// NEXT
+Again you are going back to save [TIE Advanced] plant [ZA-13] and our supply convoy bound for it.
+// NEXT
+We expect [Rebel] forces to attack our Imperial resupply convoy just before it reaches the plant.
+// NEXT
+With only a few [TIE Advanced] plants left in existence, this mission is one of great importance.
+// NEXT
+This mission was created by DAVID MAXWELL for Peregrine Software, 1994.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   To protect the TIE Advanced
+factory [ZA-13] and the Imperial
+convoy [Rope 17] that is enroute
+with important plant equipment.
+Since its recapture from Zaarin,
+the ZA-13 facility has been
+undergoing reconstruction and
+upgrade.  Previously, it had been
+responsible for hyperdrive engine
+production only, but since the loss
+of the Omar manufacturing
+facilities, its assembly lines are
+being expanded to allow for
+complete TIE Advanced production.
+The supply convoy that is
+delivering the final equipment for
+these assembly lines has come
+under [Rebel] attack.  No doubt the
+Rebels are trying to take
+advantage of the recent
+confusion going on inside the
+[Empire].  Above all else, you must
+ensure that the factory itself is
+not destroyed by enemy forces.
+// NEXT
+What craft will I be flying?
+   You will be the flight leader, [TIE
+Defender Alpha 1].  You will have
+two wingmen.  Your craft will be
+armed with [16] advanced missiles.
+// NEXT
+What opposition will there be?
+   [Rebel] spacecraft have already
+made one attack on the [Rope 17]
+convoy while enroute to ZA-13.
+[Y-wings] are now reported in the
+area, so more [Rebel] craft are
+expected once the [Y-wings] radio
+back their findings to Rebel
+command.  Hopefully the Rebels
+have not coordinated their attack
+with [Zaarin's] forces.  Defending
+against such a combined attack
+would be extremely perilous.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   The TIE Advanced plant has
+been resupplied and many [Rebel]
+craft have been destroyed.  As of
+now, the plant is guarded by a
+pair of Nebulon B frigates.  Soon
+the plant will be in full production
+of TIE Advanced starfighters.
+   During the recent engagement ,
+the [Rebels] were using [mag pulse]
+warheads.  This new warhead
+technology temporarily disables
+laser cannon weapon systems by
+draining their stored energy.  This
+latest advance in weaponry is not
+completely understood, but appears
+to be very useful.  Imperial
+Command wants us to acquire
+further information on this weapon.
+// NEXT
+Any special instructions?
+   Concentrate on the [Y-wings]
+and the [B-wings] because they are
+the ones attacking the convoy.
+Try to evade the [A-wings'] missiles
+and concentrate on your primary
+objective, saving the convoy.
+Don't forget to assign targets to
+your wingmen when needed.  When
+attacking the [corvettes], target
+their laser turrets to disarm them.
+Once their shields are down, use
+your ION cannons to disable them.
+Once disabled, they can be
+destroyed when convenient.
+Remember to go for warhead
+reloads whenever possible.  ÿ
+// LAST

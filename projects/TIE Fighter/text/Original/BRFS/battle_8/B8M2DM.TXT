@@ -1,0 +1,358 @@
+// COMPLETION MESSAGES:
+You have helped recapture a very important Imperial structure
+We can resume production of the TIE Advanced fighters
+
+
+
+
+// Number of objects: 19, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Tiger
+
+Board Crew
+
+// NEXT
+Sigma 1
+
+Board Crew
+
+// NEXT
+Sigma 2
+
+Board Crew
+
+// NEXT
+Sigma 3
+
+Board Crew
+
+// NEXT
+Omega 1
+
+Troops
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Renegade
+
+Warheads
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Cod 1
+
+Equipment
+
+// NEXT
+Z-Cod 2
+
+Equipment
+
+// NEXT
+Z-Elpi
+
+Officers
+
+// NEXT
+Z-Coral
+
+T/A Parts
+
+// NEXT
+Z-Oz
+
+Hyp Units
+
+// NEXT
+ZA-13
+
+Equipment
+Equipment
+// NEXT
+// Number of radio messages: 15, (2 lines for each)
+A transport has just left the station. Stop it, Alpha 1!
+
+// NEXT
+You have completed your primary mission, you may return to base
+
+// NEXT
+Transport Renegade here to reload you when ready, Alpha 1
+
+// NEXT
+You are being docked with. Remain at zero throttle
+
+// NEXT
+Imperial transport here to reload you when ready, Alpha 1
+
+// NEXT
+Assault Gunboats Mu here to help you, Alpha 1
+
+// NEXT
+ZA-13 to Imperial forces, we are not all allied with Zaarin
+
+// NEXT
+We need help. The plant is being stripped
+
+// NEXT
+The modular conveyors are boarding and taking more equipment
+
+// NEXT
+You have lost both your wingmen, it's up to you now, Alpha 1
+
+// NEXT
+That should cripple Zaarin's supply of TIE Advanced fighters
+
+// NEXT
+Please help us, the plant is about to be destroyed!
+
+// NEXT
+There you go, Alpha 1, good hunting!
+
+// NEXT
+Quick, Alpha group, get the corvettes before they get away!
+
+// NEXT
+ZA-13 to Imperials, we are under siege, hurry!
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+TIE Advanced Factory
+Zaarin's Craft
+T/As?
+ZA-13
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Strategic Warfare #2: Save TIE Advanced Factory
+// NEXT
+Now [Zaarin's] forces are on the run, looting or destroying everything as they flee.
+// NEXT
+Your mission is to stop any craft from escaping with materials stolen from the factory.
+// NEXT
+Beware of unfriendly starfighters. [Zaarin's] forces have some of the best craft in the Fleet.
+// NEXT
+[TIE Advanced] factory [ZA-13] was under the direct supervision and control of [Zaarin].
+// NEXT
+This mission was created by DAVID MAXWELL for Peregrine Software, 1994.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   You are to stop [Zaarin's]
+forces from stealing equipment
+from [TIE Advanced] hyperdrive
+manufacturing plant [ZA-13].  This
+facility assembles the hyperdrive
+engine unit that gives the TIE
+Advanced starfighter its unique
+hyperdrive capability.  This same
+hyperdrive unit can be converted
+for use in the TIE Defender.  You
+must destroy all of Zaarin's cargo
+craft that are loading and
+carrying off TIE Advanced
+components and equipment from
+ZA-13.
+   There are alerts coming in from
+all over the Empire, as [Zaarin's]
+forces are looting and destroying
+Imperial military manufacturing
+installations.  These attacks are
+focusing on TIE Advanced hi-tech
+centers like the [Factory ZA-13]
+plant.
+// NEXT
+What craft will I be flying?
+   You will be the flight leader, [TIE
+Defender Alpha 1].  You will have
+two wingmen.  Your craft will be
+armed with [6] torpedoes.
+// NEXT
+What opposition will there be?
+   You could come up against any
+craft in the entire [Imperial Navy].
+As head of new starfigher
+technology, [Zaarin] had access to
+all the latest Imperial spacecraft.
+Therefore, you can expect to see
+his forces equipped with the [TIE
+Advanced] and possibly other
+specially equipped TIE starfighters.
+Reports from other attacks include
+sketchy sightings of the [TIE
+Defender] amongst his forces.
+However, our intelligence analysis
+suggests that Zaarin will not
+commit his limited number of TIE
+Defenders in this operation.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Disable [Zaarin's] cargo-carrying
+craft and let their cargo be
+retrieved by our forces before
+you destroy them.  The ship logs
+on board will perhaps give us clues
+to where the bulk of Zaarin's
+forces are.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We stopped [Zaarin's] forces
+from stealing vitally important
+hyperdrive units that could have
+been used for building TIE
+Advanceds or converted for use in
+building TIE Defenders..  From the
+current round of attacks from
+[Zaarin's] forces, it is clear that
+they are securing supplies of
+starfighter components, while at
+the same time destroying the
+Empire's access to this same war
+material.  Zaarin is looking to gain
+a clear technological advantage.
+// NEXT
+Any special instructions?
+   First target and destroy the
+two [corvettes], then the two
+[mod/conveyors], and finally the
+[Corellian transport].  Order your
+wingmen to help attack a [corvette]
+while still at a distance so they
+can launch their warheads.  You
+should fire four warheads at the
+other [corvette].  Then move in
+together and use your lasers to
+blast them to space dust.  Use
+two more warheads on one of the
+[mod/conveyors] then switch back to
+laser cannons.  Use lasers to
+finish off the rest of the cargo
+craft.  Try not to get caught up
+in dogfighting until all the larger
+craft have been dealt with.
+Remember, they are your primary
+objective.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped us retrieve most of
+our top secret materials that were
+stolen from the ZA-13 facility by
+[Zaarin's] forces.  Not only would we
+have lost months of progress on
+TIE Advanced production, but
+[Zaarin] could have used these
+materials to undertake his own TIE
+Advanced and possibly TIE
+Defender manufacturing effort.
+// NEXT
+Any special instructions?
+   If you order your wingmen to
+help you attack the cargo craft,
+watch its shields and call them off
+as soon as its shields get low.
+You don't want your wingmen
+destroying any cargo craft before
+the important cargo can be
+reclaimed.  Disable the two
+[corvettes] first, the [two
+mod/conveyors] next and then the
+[corellian transport] last.  Try not
+to waste time dogfighting the
+TIEs, the cargo craft are not
+going to stick around long.
+Remember to switch to ION cannons
+as soon as the cargo craft's
+shields go down.  ÿ
+// LAST

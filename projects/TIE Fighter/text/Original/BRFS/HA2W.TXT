@@ -1,0 +1,298 @@
+// COMPLETION MESSAGES:
+Very good, Alpha 2, you may return to base now!
+Or we can stick around and try to take down that cruiser!
+Excellent work, Alpha 2! Lord Vader will hear of your skill!
+Return to base now
+Your performance is very disappointing
+Maybe the new Avengers are more than you're ready for?
+// Number of objects: 20, (4 lines for each)
+Alpha
+WODEN
+
+
+// NEXT
+Beta
+Top Ace
+
+
+// NEXT
+Inamo
+
+
+
+// NEXT
+Mule 1
+
+
+
+// NEXT
+Rho
+Top Ace
+
+
+// NEXT
+Rho
+Top Ace
+
+
+// NEXT
+Rho
+Top Ace
+
+
+// NEXT
+Pi
+
+Supplies
+
+// NEXT
+Chi
+
+Supplies
+
+// NEXT
+Xi
+
+Supplies
+
+// NEXT
+NB-73
+
+
+
+// NEXT
+
+
+
+
+// NEXT
+Ardent
+Ace
+
+
+// NEXT
+Argus
+
+Officers
+
+// NEXT
+Red
+Ace
+
+
+// NEXT
+Tiger
+Ace
+
+
+// NEXT
+Shark
+Ace
+
+
+// NEXT
+Demon
+Ace
+
+
+// NEXT
+Gold
+Ace
+
+
+// NEXT
+Blue
+Ace
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+T/A Alpha initiating rocket attack against [FRG Inamo]
+Attack
+// NEXT
+Take out the gun turrets first (press comma key until targeted)
+Turrets 1st
+// NEXT
+When you're out of rockets, switch to guns to finish the job
+Guns
+// NEXT
+"Sweep" your guns over the target's length to evade their guns
+Sweep
+// NEXT
+Remember to keep your shields charged and balanced
+Shields
+// NEXT
+Well, looks like some Mon Calamari party crashers!
+Partycrashr
+// NEXT
+Watch out for those X-wings, but stick to your objectives!
+X-Ws
+// NEXT
+How pathetic! They must really wish to die flying those Z-95s!
+Z-95s
+// NEXT
+We're taking too many casualties, time to withdraw!
+Withdraw
+// NEXT
+Well now, those A-wings might be a little more interesting!
+A-wings
+// NEXT
+Alright, T/A Alpha! One Rebel frigate wasted! Help T/A Beta now
+Inamo dead
+// NEXT
+Watch it, Alpha 2, you're under attack!
+Watch it
+// NEXT
+Anyone still have rockets? Use them on that cruiser!
+Anyrockets
+// NEXT
+Further losses are unacceptable. Let's head home, Alpha 2!
+T/A -25%
+// NEXT
+T/A Beta: we're down two ships. Withdrawing now!
+Beta out
+// NEXT
+T/A Beta initiating strafing attack on container field
+
+// NEXT
+// NAMES: 
+FRG Inamo
+Rebel Supply Base
+T/A Alpha (You)
+T/A Beta
+CRS Ardent
+// SKIP
+CRS Ardent
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Advanced Combat #2: Rocket Attack
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Patient observation of a Rebel supply cache has paid off!  The [FRG Inamo] will be vulnerable during refit.
+// NEXT
+The attack will be made by a full squadron of TIE Advanced split into two elements of six ships.
+// NEXT
+[T/A Alpha] will initiate the attack by launching heavy rockets at the Nebulon-B class frigate [Inamo].
+// NEXT
+[T/A Beta] will destroy the supply cache and watch for enemy fighters.  (Beta will be armed with missiles.)
+// NEXT
+Historically, the [Inamo] was destroyed quickly and then the Rebel cruiser [Ardent] arrived.
+// NEXT
+Though most of their rockets had already been used, [T/A Alpha] courageously attacked!
+// NEXT
+In the ensuing engagement, the [Ardent] was severely damaged before escaping into hyperspace.
+// NEXT
+Avoid taking unnecessary risks.  If you start taking excessive casualties you should withdraw.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To practice [rocket] attacks
+against enemy starships.  You
+should learn how to acquire and
+hold a lock for the rocket's homing
+system before firing.  When
+targeting large ships notice that
+you may target individual
+components of the hull, engines,
+etc.  You may even "surgically"
+remove the enemy ships armament
+by targeting the individual lasers!
+// NEXT
+What craft will I be flying?
+   You will fly the [TIE Advanced],
+designated [Alpha 2] of a six ship
+flight group.  Your ship has been
+fitted with rocket launchers and
+armed with the standard load of [4]
+warheads.
+   [Rockets] are similar to
+torpedoes but do more damage.
+They are also slower and do not
+track as well.  Remember, you can
+engage starships as far as [6]
+kilometers away.  This allows you to
+engage the enemy while remaining
+outside the range of his guns.
+// NEXT
+What opposition will there be?
+   First you will engage a
+[Nebulon-B class frigate].  This is a
+medium sized starship with
+formidable firepower.  A variety of
+Rebel starfighters will appear to
+harass you.
+   The second starship is a [Mon
+Calamari MC-80 class cruiser].  It is
+a larger starship with essentially
+the same armament.  They are
+almost always deployed with at
+least one squadron of
+starfighters.  (In this case, one
+squadron of [Z-95 Headhunters] is
+on board.)
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to destroy enemy starships
+using rockets.
+// NEXT
+Are there any special instructions?
+   During the attack, try to
+reduce the target's ability to
+defend itself by targeting its
+laser turrets and guns.  ÿ
+// LAST

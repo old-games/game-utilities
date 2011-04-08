@@ -1,0 +1,363 @@
+// COMPLETION MESSAGES:
+Outstanding, Alpha 1! You're an inspiration to us all!
+The battle isn't over yet, so keep it up as long as you're able
+Bravo, Alpha 1! Lord Vader has taken special notice of you!
+Return to the [Garrett's] hangar for some exciting news!
+Your failure is a black mark on us all
+You have made a mockery of all the brave pilots who have died!
+// Number of objects: 32, (4 lines for each)
+Alpha
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Harpax
+Ladi
+
+
+// NEXT
+Protector
+
+
+
+// NEXT
+Triumph
+
+
+
+// NEXT
+Arditi
+
+
+
+// NEXT
+Falcon
+
+
+
+// NEXT
+BaKaar
+
+
+
+// NEXT
+Upsilon
+
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Spitfire
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Warhawk
+
+
+
+// NEXT
+Garrett
+Lord Vader
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+CUV 18f1
+
+Adv Torps
+
+// NEXT
+Ottega
+
+
+
+// NEXT
+// Number of radio messages: 10, (2 lines for each)
+Hurry up, Alpha! [CRL Warhawk] is closing in on the [Harpax]
+
+// NEXT
+Try to take out the Warhawk's lasers with your torpedoes
+
+// NEXT
+[Admiral Zaarin's] forces will arrive soon
+
+// NEXT
+The first of [Zaarin's forces] have arrived
+
+// NEXT
+[Zaarin's ships] are attacking [ISD Garrett]!
+
+// NEXT
+The treachery is worse than we imagined!
+
+// NEXT
+The [Emperor] must be in danger! We must return to [Coruscant]!
+
+// NEXT
+Alpha 2, [TRN CUV 18f1] is available for you to reload
+Reload
+// NEXT
+Harpax is destroyed, the defectors and Rebels can escape now!
+INT dead
+// NEXT
+See who's closest to their jump point and attack them!
+
+// NEXT
+// NAMES: 
+ISD Garrett
+INT Harpax
+VSD Protector
+CRL Warhawk
+T/A Alpha (You)
+T/A Beta
+T/A Gamma
+T/A Delta
+T/A Theta
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Treachery at Ottega, Mission #3: Retribution
+// NEXT
+The Rebel and defecting forces are closing in on [INT Harpax].  If they can destroy it, they will escape.
+// NEXT
+Lord Vader's plan calls for [Admiral Zaarin] to bring his forces in for the final destruction of the enemy!
+// NEXT
+The [Interdictor] is the key to this plan.  As long as it survives, the enemy is trapped.
+// NEXT
+[T/A Alpha] will lead the attack force to eliminate any enemy vessel that gets too close to the Harpax.
+// NEXT
+[CRL Warhawk] is the greater threat because [VSD Protector] isn't fast enough to catch the Harpax.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The defecting forces led by
+[VSD Protector] and their Rebel
+allies are all to be destroyed.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Advanced]
+designated [Alpha 2].  For this
+mission your craft has been loaded
+with a special armament of [6]
+advanced proton torpedoes and a
+tractor beam weapon.  You will be
+able to reload via Transport [CUV
+18f1].  TIE Advanced group [Gamma]
+will make rocket attacks against
+the enemy starships, while TIE
+Advanced group [Theta] deals with
+any enemy fighters.
+// NEXT
+What opposition will there be?
+   [VSD Protector] is leading the
+defecting forces, but the Rebel's
+[CRL Warhawk] has taken the brunt
+of our counterattack so far.
+Both ships must be destroyed.
+Both sides are undoubtedly sending
+reinforcements so stay alert for
+any new arrivals.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Stay alert to new developments.
+Be prepared to take the initiative
+when appropriate.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We eliminated the defector's
+flagship.  At the same time we
+ensured the survival of Lord
+Vader's ship.
+   The arrival of Admiral Zaarin's
+forces on our enemies' side can
+mean only one thing.  Admiral Zaarin
+is moving against the Emperor!
+Lord Vader is determined to return
+to Coruscant to warn the Emperor
+if there is still time.
+   The [Garrett] has suffered some
+critical damage and can't make it.
+There is hope, however, because
+Lord Vader had transferred the
+new TIE Defender prototypes to
+this ship in the hope of
+conducting operational trials with
+them.  This isn't the kind of test
+he had in mind, but they are the
+only craft available that could
+make it in time.  You have been
+selected to lead the effort!  Lord
+Vader will accompany you.
+// NEXT
+Are there any special instructions?
+   If CRL Warhawk is present, take
+it out first.  Otherwise, go directly
+after VSD Protector.  Fire all of
+your torpedoes as soon as you're
+within range, then turn back for a
+reload.  Remember to try and take
+out your target's armament first.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped destroy all of the
+forces [Admiral Zaarin] sent against
+us.
+// NEXT
+Are there any special instructions?
+   The Modified Corvettes can be
+destroyed with 4 advanced
+torpedoes.  By the time Corvettes
+arrive you will undoubtedly be out
+of warheads.  Be sure to rearm
+from Transport [CUV 18f1].  ÿ
+// LAST

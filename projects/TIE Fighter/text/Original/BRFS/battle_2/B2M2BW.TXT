@@ -1,0 +1,426 @@
+// COMPLETION MESSAGES:
+The Ripoblus are breaking off their attack
+Keep up the good work, Beta 2! You may return to the hangar
+Your initiative is commendable, Beta 2!
+Thanks to you we may learn something useful here
+Attention all Imperial pilots, return to the Protector
+You have failed the Emperor!
+// Number of objects: 37, (4 lines for each)
+Alpha
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Beta
+WODEN
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+CUV/L 11f5
+
+Warheads
+
+// NEXT
+Toten
+
+1st Officr
+
+// NEXT
+Protector
+Harkov
+Harkov
+
+// NEXT
+Epsilon 1
+
+Stormtrps
+
+// NEXT
+Epsilon 2
+
+Stormtrps
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Omicron 1
+
+
+
+// NEXT
+Omicron 2
+
+
+
+// NEXT
+Selander
+
+Ripoblus
+
+// NEXT
+Galliot
+
+Ripoblus
+
+// NEXT
+Dromon
+
+Ripoblus
+
+// NEXT
+Pike
+
+Ripoblus
+
+// NEXT
+Musket
+
+Ripoblus
+
+// NEXT
+Sabre
+
+Ripoblus
+
+// NEXT
+Sword
+
+Ripoblus
+
+// NEXT
+Halberd
+
+Ripoblus
+
+// NEXT
+Pilum
+
+Ripoblus
+
+// NEXT
+Able
+
+Dimok
+
+// NEXT
+Able 3
+
+Dimok
+
+// NEXT
+Atawar
+
+Dimok
+
+// NEXT
+Nipasa
+
+Dimok
+
+// NEXT
+Malat
+
+Dimok
+
+// NEXT
+Retec
+
+Dimok
+
+// NEXT
+Lab Module
+
+Physics
+Weapons
+// NEXT
+Youst
+
+Science
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+2This is Science Station Youst requesting assistance!
+Request
+// NEXT
+2Attention Imperials, we are under attack, can you help us?
+Help us?
+// NEXT
+Attention Ripoblus forces, cease your attack at once!
+Cease attac
+// NEXT
+3Imperials, this is no science station, it is a weapons lab!
+Weapon lab
+// NEXT
+T/B Beta, M/FRG Dromon is attacking the Protector!
+M/FR Dromon
+// NEXT
+The Ripoblus should begin to feel the pressure now!
+25% SET 2
+// NEXT
+Beta 2 has discovered a weapons lab on the station!
+ID Special
+// NEXT
+TRN Epsilon has been dispatched to deliver a boarding party
+DispatchTRN
+// NEXT
+Dimok Station Youst, prepare to receive Imperial inspectors!
+Inspectors
+// NEXT
+Beta 2, assist TRN Epsilon. They are taking fire!
+Help TRN
+// NEXT
+Beta 2, Epsilon's shields are failing. Get over there now!
+Kill guns
+// NEXT
+PLT Youst is now under Imperial control!
+PLT seized
+// NEXT
+The weapons lab has been seized!
+Lab seized
+// NEXT
+You may reload torpedoes by having TUG CUV/L 11f5 board you
+Reload
+// NEXT
+Beta 1's been hit! Beta 2, take over as flight leader
+Beta 1 hit
+// NEXT
+Beta 2, watch it, you're under attack!
+Watch it
+// NEXT
+// NAMES: 
+Dimok Science Station Youst
+M/CRV Galliot
+M/CRV Selander
+VSD Protector
+T/B Beta (You)
+T/F Alpha
+Ripoblus ATRs
+T/I Gamma
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Sepan Civil War, Mission #2: Intercept Attack
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+We are going to intercept a [Ripoblus] reprisal raid on a [Dimok] deep space research facility.
+// NEXT
+The raiding forces are made up of a pair of Modified Corellian Corvettes and several Assault Transports.
+// NEXT
+[T/B Beta] will deploy to destroy one of the corvettes as an example to the rest of them.
+// NEXT
+The loss should convince the [Ripoblus] to break off their attack.  If not, continue your assault.
+// NEXT
+We are not seeking complete destruction of the attackers.  We merely want to force a withdrawal.
+// NEXT
+The [Ripoblus] leadership must also be taught that further acts of aggression will be severely punished!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The Sepan Civil War threatens
+to break out in full fury.  The
+Ripoblus are angered by the Dimoks'
+previous raid on their supply
+convoy.  They are seeking revenge
+by attacking a Dimok space
+installation.
+   The Empire's goal is to prevent
+this conflict from mushrooming and
+spilling over into neighboring star
+systems.  Therefore, Imperial
+forces must stop either side from
+gaining the advantage.
+   To this end, you will help to
+drive off the attacking [Ripoblus]
+forces before they can do too
+much damage to the [Dimok] space
+station.  When they've taken
+sufficient losses they will withdraw.
+// NEXT
+What craft will I be flying?
+   You will fly TIE Bomber [Beta 2]
+out of VSD [Protector].  Your flight
+group consists of three craft.
+For this mission your craft is
+armed with the standard load of [8
+proton torpedoes].
+   A Combat Utility Vehicle is
+available to provide reloads for
+your warhead launchers whenever
+they are empty.
+// NEXT
+What opposition will there be?
+   There are presently two
+[Modified Corvettes] and four
+[Assault Transports] attacking the
+station.  The M/CRVs are not yet
+in range, but the ATRs are within
+torpedo range.
+   The [Ripoblus] have a [Modified
+Frigate] and more ATRs in reserve.
+All of these craft are well armed
+and dangerous from almost any
+angle of approach.  Your best
+tactic is to stay outside of
+cannon range as much as possible.
+   The [Dimok] station itself is well
+armed and is defended by a
+handful of [Z-95 Headhunters] and
+a pair of [Escort Shuttles].
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   The [Dimoks] claim this is a
+scientific research station.
+Naturally, we are concerned to
+know what kind of research.  As
+opportunity allows attempt to
+inspect the platform and nearby
+cargo containers.
+   Anything out of the ordinary
+may require further actions.  Be
+prepared to receive new orders.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   By intercepting a [Ripoblus]
+attack on the [Dimoks] we
+demonstrated that the Empire
+favors neither side in this conflict.
+Soon they will all learn to obey
+Imperial rule.
+// NEXT
+Are there any special instructions?
+   Stay with your flight leader and
+assist his attacks.  You will be
+more effective fighting as a group.
+Also, enemy gunners are more likely
+to become confused when facing
+multiple threats.  This ensures
+that you won't have to take all of
+the defensive fire by yourself!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You discovered the existence
+of a secret weapons lab and
+played a role in its capture.
+Congratulations, such initiative is
+rare!
+// NEXT
+Are there any special instructions?
+   Wait until the [Ripoblus] are on
+the run before inspecting the
+platform and containers.  Try to
+have a full load of torpedoes
+ready so you can take out the
+Escort Shuttles as soon as they
+turn on Imperial forces.  They will
+concentrate their attacks on
+Transport Epsilon.  ÿ
+// LAST

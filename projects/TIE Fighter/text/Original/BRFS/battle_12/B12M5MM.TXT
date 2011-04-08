@@ -1,0 +1,373 @@
+// COMPLETION MESSAGES:
+The Bothans were eliminated, but the Rebels have a worse fate
+Lord Vader awaits the arrival of the new Rebel prisoners
+
+
+You have failed!
+Report back to the Garrett!
+// Number of objects: 26, (4 lines for each)
+Tau
+MadMax
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Omega
+
+Troopers
+
+// NEXT
+Resupply
+
+Warheads
+
+// NEXT
+Omega 5
+
+Troopers
+
+// NEXT
+Knights
+
+
+
+// NEXT
+Ccoobna
+Luke
+
+
+// NEXT
+Tarken
+Leia
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Rushu
+
+
+
+// NEXT
+Rushu
+
+
+
+// NEXT
+Polihs
+
+
+
+// NEXT
+Liijk
+
+
+
+// NEXT
+Bulihs
+
+
+
+// NEXT
+A
+
+
+
+// NEXT
+Doomer
+Jim
+
+
+// NEXT
+Doomet
+
+Officers
+
+// NEXT
+// Number of radio messages: 11, (2 lines for each)
+2DREAD Doomer to CRS Knights, time to leave the area!
+
+// NEXT
+Tau 2 to Tau 1, we came out of hyperspace too late!
+
+// NEXT
+We've lost our escorts. Call for reinforcements!
+
+// NEXT
+You've lost your wingman! We can't afford these losses
+
+// NEXT
+Tau 1, a Bothan shuttle is escaping. Stop it!
+
+// NEXT
+Tau 2 to Tau 1, blast it, no one mentioned a minefield
+
+// NEXT
+Transports Rho are here as requested Tau 1, glad to help
+
+// NEXT
+As expected the Tarken has come to the rescue, their mistake!
+
+// NEXT
+Tau 1, knock the shields down on the Tarken if you can
+
+// NEXT
+Assault Transports Omega have been destroyed
+
+// NEXT
+Call for reinforcements if the cruiser is not disabled!
+
+// NEXT
+// NAMES: 
+Bothan DREAD
+Rebel CRS
+T/A Delta
+MIS Tau (You)
+ATR Omega
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Prelude to Endor, Mission #5: Bothan Treachery
+// NEXT
+The [Bothans] persist in collaborating with the Rebels by handing over data from the stolen freighter.
+// NEXT
+Intelligence has been alerted to a meeting between the [Bothans] and the [Rebels]. It must be stopped.
+// NEXT
+TIE Advanced group [Delta] will lead Missile Boats [Tau] into battle and provide cover for the attack.
+// NEXT
+[This mission was created by David Maxwell$for Totally Games 1995.]
+// NEXT
+Missile Boats [Tau] must destroy all the [Bothans], then assist in the capture of the [Rebel] cruiser.
+// NEXT
+Assault Transports [Omega] will launch [4] minutes after Delta and Tau to disable and capture the cruiser.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The [Bothan] dreadnought must
+be destroyed and the Rebel
+Calamari cruiser must be captured.
+To accomplish this, our forces
+must first destroy the Rebel
+starfighters that are guarding
+their rendezvous.  [Lord Vader]
+believes that the Bothans have
+had the time to decipher the
+classified data from the Imperial
+freighter and are passing this
+information on to the Rebels.  The
+Bothans and the Rebels are risking
+much by having a meeting in this
+well traveled part of space.  The
+Bothans are not masters of
+deception as their reputation
+claims, in fact, this will be their
+downfall.
+// NEXT
+What craft will I be flying?
+   You will fly a [Missile Boat]
+designated [Tau 1].  You will lead the
+two ships in your flight group.
+For this mission your craft has
+been loaded with the standard
+armament of [40 advanced missiles]
+plus a load of [30 advanced
+torpedoes].  Your craft will have
+the tractor beam installed.
+// NEXT
+What opposition will there be?
+   The [Bothans] have only brought
+a Dreadnought to the rendezvous
+location but the [Rebels] have a
+Calamari cruiser that can carry
+several flight groups of
+starfighters.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   [Lord Vader] demands the
+apprehension of as many [Rebel]
+prisoners as possible.  Help in the
+capture of all the Rebel starships.
+Our technicians will learn much from
+their ships and equipment while
+[Lord Vader] will glean much from its
+crew.  It is important that [Lord
+Vader] learns exactly what the
+Rebels believe to be true about
+the freighter's classified data.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   The Garrett's forces destroyed
+the [Bothans] before they could
+escape.  In addition, our forces
+were able to capture a fully
+staffed [Rebel] cruiser.  The
+cruiser's personnel have been
+secured in the prisoner detention
+cells aboard the [Garrett] awaiting
+[Lord Vader's] examination.  Our
+forces are closer to recovering
+the missing freighter and its
+valuable databases.
+// NEXT
+Are there any special instructions?
+   Take out four or so mines on
+the first pass.  Order your
+wingman to attack an [A-wing] and
+go after one yourself using dual
+advanced missiles.  Destroy all the
+A-wings, [Z-95s] and [X-wings].  Then
+take out the rest of the mines
+before the assault transports
+enter the area, 3 minutes after
+the start of the mission.  Next,
+help the assault transports
+attack the cruiser.  Fire ten
+advanced torpedoes into the
+cruiser, then the rest into the
+dreadnought.  Finish off the
+dreadnought before the cruiser
+gets disabled.  Deal with
+starfighters whenever they
+appear, then get back to the
+starships.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped the Garrett's
+forces swell the number of [Rebel]
+prisoners captured recently.
+These new prisoners will enable
+[Lord Vader] to obtain a clear
+picture of what the Rebels believe
+to be true about the data that
+was given to them by the Bothans.
+It can now be revealed that the
+data the Bothans have decoded
+contains detailed technical data on
+the Empire's new Death Star.  It
+also included the location of the
+construction site in the Endor
+System as well as the new Death
+Star's operational status.
+// NEXT
+Are there any special instructions?
+   After attacking the [Bothan]
+dreadnought and the [Rebel] cruiser,
+use your SLAM to rendezvous with
+the reload transport.  A Rebel
+frigate enters soon after the
+cruiser gets disabled, attack it
+with a full payload of warheads so
+Assault Transport [Omega 5] can
+easily disable and capture it.  ÿ
+// LAST

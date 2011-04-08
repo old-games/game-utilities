@@ -1,0 +1,296 @@
+// COMPLETION MESSAGES:
+Alpha 1, we have regained full control of the factory..
+...thank you for your assistance!
+
+
+
+
+// Number of objects: 16, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Java
+
+Board Crew
+
+// NEXT
+Themor
+
+Troops
+
+// NEXT
+Sigma
+
+Work Crew
+
+// NEXT
+Omega
+
+Command
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Resupply
+
+Warheads
+
+// NEXT
+Render
+Blake
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Caplure
+
+
+
+// NEXT
+Z-Jumimi
+
+
+
+// NEXT
+Z-Omega
+
+
+
+// NEXT
+Z-Tau
+
+
+
+// NEXT
+ZA-13
+
+Equipment
+
+// NEXT
+// Number of radio messages: 15, (2 lines for each)
+Watch your shields. Be careful with your craft!
+
+// NEXT
+You have completed your primary mission, you may return to base
+
+// NEXT
+ISD Render to Alpha 1, we will relieve you now!
+
+// NEXT
+You are being docked with. Remain at zero throttle
+
+// NEXT
+Imperial transport here to reload you, Alpha 1
+
+// NEXT
+Assault Gunboats Mu here to help you, Alpha 1
+
+// NEXT
+Alpha 1, there is a Carrack Cruiser making a run on us! 
+
+// NEXT
+This is not good. We have lost the factory
+
+// NEXT
+Alpha 1, your wingmen are dead. You are on your own
+
+// NEXT
+Now that we have captured the plant, we must staff it
+
+// NEXT
+The rest of the boarding ships will try to slip in
+
+// NEXT
+Thanks, Alpha 1, for our safe arrival
+
+// NEXT
+There were command staff onboard the Omega
+
+// NEXT
+Some enemy transports have entered the area!
+
+// NEXT
+The transports are headed towards the station!
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+TIE Advanced Factory
+Zaarin's Craft
+T/A
+ZA-13
+ATR Delta
+Boarding Craft
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Strategic Warfare #3: Secure TIE Advanced Plant
+// NEXT
+We are going back to recapture and gain control of [TIE Advanced] factory [ZA-13].
+// NEXT
+Assault Transport [Delta] is going to land a team to secure the factory.
+// NEXT
+Your mission is to secure the space around the factory until all [boarding craft] have docked.
+// NEXT
+The rest of the [boarding craft] will enter and unload personnel after the [factory] has been captured.
+// NEXT
+This mission was created by DAVID MAXWELL for Peregrine Software, 1994.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   Your mission is to assist
+Imperial forces in boarding and
+completely regaining control over
+TIE Advanced plant [ZA-13].  Your
+task in this operation is to see
+that the transports carrying the
+factory supervisors and damage
+assessment team make it safely to
+the factory.  Along with providing
+escort cover, you must make sure
+that the factory is not destroyed
+by counterattacking forces.
+   [Emperor Palpatine] has ordered
+the continued construction of the
+TIE Advanced as a top military
+priority.  The Empire has lost a
+good part of its war production
+capabilities in the last few days.
+This plant is one of the few
+remaining factories involved in the
+production of the TIE Advanced
+anywhere in the Empire.  Imperial
+command believes that we have not
+seen the last of [Zaarin's] attempts
+to destroy this installation.
+// NEXT
+What craft will I be flying?
+   You will be the flight leader, [TIE
+Defender Alpha 1].  You will have
+two wingmen.  Your craft will be
+armed with [8] heavy rockets.
+// NEXT
+What opposition will there be?
+   Again you could come up against
+any craft in the entire Imperial
+Navy.  Remember, [Zaarin's] forces
+are well equipped and highly trained.
+We expect to see more [TIE
+Advanceds].  No other [TIE
+Defenders] besides yours are known
+to be in this area, so you should
+have the superior craft in this
+operation.  Be alert, [Zaarin's] pilots
+were recruited from the best in
+the [Imperial Navy] and were hand
+picked by his personal staff.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We regained control over TIE
+Advanced factory [ZA-13] and
+stopped [Zaarin's] forces from
+destroying it.  The factory will be
+back in operation once the damage
+has been assessed and repairs
+completed by the crews that you
+helped to deliver safely.  This
+facility will contribute a vital part
+in keeping the Empire's starfighter
+forces superior to those of
+Zaarin.
+// NEXT
+Any special instructions?
+   Target a [corvette] and order
+your wingmen to attack it
+immediately.  As soon as they
+destroy one [corvette], assign them
+to attack another.  At the same
+time, attack the [corvettes] with
+your lasers.  Deal with the
+gunboats in between runs on the
+[corvette's] laser turret.  These
+[gunboats] pose little threat to the
+station.  When the three enemy
+[transports] enter the area, stop
+them.  You should save your
+rockets for the [Carrack Cruiser]
+that enters later in the battle.
+Attack with your wingmen to divide
+the [cruiser's] defensive fire power.
+ÿ
+// LAST

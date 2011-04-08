@@ -1,0 +1,283 @@
+// COMPLETION MESSAGES:
+Superb attack, Alpha 1, the Rebel outpost has been destroyed
+
+
+
+The Corvette [Control] has been destroyed
+
+// Number of objects: 21, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Control
+
+
+
+// NEXT
+Calvary
+T. Rryagain
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Enouck
+
+
+
+// NEXT
+Xarxis
+
+
+
+// NEXT
+Walker 1
+
+Weapons
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Axet
+
+
+
+// NEXT
+Axet
+
+
+
+// NEXT
+Axet
+
+
+
+// NEXT
+T-ST
+
+
+
+// NEXT
+T-SP
+
+
+
+// NEXT
+Vic
+
+Storage
+Work area
+// NEXT
+Limi
+
+Storage
+Barracks
+// NEXT
+// Number of radio messages: 15, (2 lines for each)
+Don't let the transports fire torpedoes at [CRV Control]
+
+// NEXT
+Alpha 1, destroy all spacecraft before attacking the containers
+
+// NEXT
+Good work. All the containers have been destroyed
+
+// NEXT
+All the transports have been destroyed
+
+// NEXT
+Alert! The [CRV Control] is taking heavy damage
+
+// NEXT
+Alpha 1, fly into the Calvary's hangar bay now!
+
+// NEXT
+The [ISD Calvary] is here to recover all TIEs
+
+// NEXT
+[Walker 1] is here to reload you, Alpha 1
+
+// NEXT
+The battle has begun. Hone your skills, Alpha 1
+
+// NEXT
+You are a great fighter pilot, traitor
+
+// NEXT
+Corvette Control is under attack
+
+// NEXT
+You should never attack Imperial vessels
+
+// NEXT
+Time to break off mission, Alpha 1
+
+// NEXT
+by targeting a transport, then pressing [Shift A]
+
+// NEXT
+Direct your wingman to attack one of the transports ..
+
+// NEXT
+// NAMES: 
+T/B Alpha (You)
+Rebel Tugs
+Base Containers
+CRV Control
+(Your Command Ship)
+Rebel Shuttles
+Rebel Transports
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Bomber Combat #3: Torpedo Run
+// NEXT
+Alpha 1 will lead a group of three TIE Bombers in an attack on a Rebel outpost.
+// NEXT
+Alpha 1 should coordinate the attack by directing his wingmen to attack specific targets. 
+// NEXT
+As soon as the base has been destroyed Alpha group will report back to their command ship.
+// NEXT
+// SKIP
+// SKIP
+THIS MISSIN WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your objective is to completely
+destroy a Rebel depot of
+transports, shuttles and
+containers.  The Corvette Control
+is your command ship and will stand
+off while you attack.  The Rebel
+transports will most likely try to
+attack our Corvette.  So destroy
+the transports first with the help
+of your wingmen.
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Bomber Alpha 1].
+You will be the flight leader of a 3
+ship group.  Your craft will be
+armed with [6] proton torpedoes.
+// NEXT
+What opposition will there be?
+   This is a surprise attack so
+you have about 1 minute until the
+Rebels should be able to power up
+their craft and start
+counterattacking.  Beware of the
+shuttles as they are capable of
+attacking your starfighters.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have shown you are
+capable of being a flight leader.
+Remember, the more efficiently you
+instruct your wingmen in going
+after targets by using the
+[Shift-A] command, the more
+successful your flight group will be.
+// NEXT
+Are there any special instructions?
+   This mission requires a quick
+strike approach.  Target the
+transports first by sending your
+wingmen after them with a [Shift-A]
+command.  As flight leader you
+should keep your wingmen busy with
+frequent targeting orders.  ÿ
+// LAST

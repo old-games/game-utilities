@@ -1,0 +1,405 @@
+// COMPLETION MESSAGES:
+The platform is disabled, good job!
+All craft attempting to escape were disabled!
+Good work, Mu 2. You discovered which ship Harkov is on
+You may return to base or help with the clean up!
+This treacherous bunch should have been captured!
+When Lord Vader hears of this, you will be doomed!
+// Number of objects: 33, (4 lines for each)
+Mu
+WODEN
+
+
+// NEXT
+Omega
+
+Sltormtrprs
+
+// NEXT
+Omega 5
+
+Stormtrprs
+
+// NEXT
+Omega 6
+
+Stormtrprs
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Garrett
+
+Lord Vader
+
+// NEXT
+CUV 8f1
+
+Warheads
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Upsilon 1
+
+
+
+// NEXT
+Upsilon 2
+
+
+
+// NEXT
+DS 5
+
+
+
+// NEXT
+Olinor
+
+
+
+// NEXT
+Adam
+
+
+
+// NEXT
+Baker
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Wurger
+
+Troops
+
+// NEXT
+Toten
+
+Decoy
+
+// NEXT
+Kolermigon
+
+Rebels
+
+// NEXT
+Geddawai
+
+Harkov
+
+// NEXT
+Type 3
+
+
+
+// NEXT
+Type 3
+
+
+
+// NEXT
+H-Beta
+
+
+
+// NEXT
+H-Gamma
+
+
+
+// NEXT
+H-Delta
+
+
+
+// NEXT
+H-Theta
+
+
+
+// NEXT
+H-Iota
+
+
+
+// NEXT
+H-Alpha
+
+
+
+// NEXT
+// Number of radio messages: 12, (2 lines for each)
+Mu 2, we'll take X-W Red then we'll join you clearing the mines
+Mu2 mines
+// NEXT
+The minefield has been cleared!
+Mines clear
+// NEXT
+[ATR Omega] will arrive in ten seconds to assault the platform
+ATRs arrive
+// NEXT
+Keep an eye on the platform, disable any craft taking off!
+Toten
+// NEXT
+We should have guessed it would be a decoy!
+ID Toten
+// NEXT
+These Rebels will be interrogated, then sent to prison
+ID Kolermig
+// NEXT
+Mu 2 has located [Harkov] aboard the Corellian transport!
+ID Geddawai
+// NEXT
+We've taken control of the traitor's ship
+
+// NEXT
+Harkov will be taken to Lord Vader now!
+To Vader
+// NEXT
+A Rebel frigate just came out of hyperspace near the Garrett!
+Olinor
+// NEXT
+Two more Rebel starships have come out of hyperspace!
+Rebel CRVs
+// NEXT
+FRG Olinor's shields are down, go for the kill!
+FRG down
+// NEXT
+// NAMES: 
+Rebel Supply Depot DS 5
+Type 3 Mines
+X-wings
+A-wings
+Gun Mu (You)
+T/A Alpha
+ATR Omega
+SHU Toten
+Transports
+ISD Garrett (Vader)
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Battle for Honor, Mission #5: Capture Harkov
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Admiral Harkov has for unknown reasons taken refuge on the Rebel outpost.  [VSD Protector] has fled.
+// NEXT
+Mines have been deployed around the station and Rebel reinforcements are rushing to rescue Harkov.
+// NEXT
+[Recon Squadron Mu] will send T/As and GUNs to join with Special Operations Stormtroopers aboard ATRs.
+// NEXT
+The GUNs and T/As will take out any remaining fighter defenses and clear the minefield.
+// NEXT
+The ATRs will arrive [three minutes] after the GUNs and begin the assault on the platform.
+// NEXT
+[GUN Mu] and the [ATRs] will [disable] the platform and any craft attempting to escape.
+// NEXT
+The Stormtroopers will conduct boarding operations and take control of the platform.
+// NEXT
+[Lord Vader] will arrive aboard the Imperial Star Destroyer [Garrett] and Harkov will be brought to him.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The objective is to capture
+[Admiral Harkov].  He was last
+observed entering the Rebel
+platform DS 5.  He is probably
+waiting for the [Protector] to
+return, but may attempt to
+escape when he realizes our intent.
+   It will be your responsibility to
+disable any craft leaving the
+platform.  The platform and all
+disabled craft will be captured.
+When Lord Vader arrives, Admiral
+Harkov will be brought to him.
+// NEXT
+What craft will I be flying?
+   You will fly an [Assault Gunboat]
+designated [Mu 2].  Your flight group
+will consist of four craft.  For
+this mission your craft has been
+loaded with the standard armament
+of [16] concussion missiles.
+   Your strike team will also include
+a flight group of TIE Advanced to
+deal with enemy fighters.  Three
+minutes into the attack you will be
+joined by Assault Transport group
+Omega.  ATR Omega will have heavy
+rockets to take down the
+platform's shields quickly.  Be
+prepared to lend assistance if
+necessary.
+// NEXT
+What opposition will there be?
+   The starfighter defenses were
+substantially reduced during your
+last mission, but reinforcements
+may have arrived since then.  If
+so, your first task will be to work
+with TIE Advanced group Alpha to
+eliminate them.
+   After that is the Rebel
+platform itself.  It is well armed
+and a minefield was observed being
+laid.  The mines are the new Type
+3.  These have the nasty habit of
+launching a missile at the craft
+that destroys them.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   You must insure that Admiral
+Harkov is captured.  As you disable
+craft fleeing from the Rebel
+platform, be sure to inspect them
+as well.  He must be apprehended!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   All of our primary mission
+objectives were met.  Admiral
+Harkov will be interrogated by Lord
+Vader.  The location of [VSD
+Protector] and the rest of
+Harkov's band of defectors will be
+discovered.
+// NEXT
+Are there any special instructions?
+   Do as your flight leader
+suggests and split off to destroy
+the minefield.  Start with the set
+below the platform.  Use your
+missiles so you can start as far
+out as possible.
+   The ships on the platform will
+start leaving about two minutes
+into the mission (sooner if
+attacked.) The Corellian transport
+is the fastest so be sure check
+its status as often as you can.
+As soon as it takes off, get on
+its tail.  You may find it necessary
+to redirect all available energy to
+the engines so you'll have
+sufficient speed to overtake it.
+Disable it as quickly as you can
+and then go after Shuttle Toten,
+and finally Transport Kolermigon.
+   After that, take available
+targets as you find them.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You inspected all of the craft
+leaving the platform, thereby
+discovering which one Harkov was
+on.  Also, you were instrumental in
+the capture of the platform.
+// NEXT
+Are there any special instructions?
+   Take the time to inspect the
+craft you are disabling.  This
+should be done at same time you
+disable them.
+   To help the ATRs you can
+intercept any enemy craft that
+interfere with them, or simply lend
+your firepower to their attack on
+the platform.  Remember, the
+platform's defenses are weaker for
+its lower hemisphere.  ÿ
+// LAST

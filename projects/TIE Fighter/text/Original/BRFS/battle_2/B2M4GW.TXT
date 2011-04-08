@@ -1,0 +1,370 @@
+// COMPLETION MESSAGES:
+Well done, we have them now! Let's return to base
+Maybe now we can force an end to this civil war!
+Gook work, you have uncovered a shipment of Imperial supplies
+This material was either stolen or sold to these smugglers
+You failed to protect the boarding craft during their operation
+
+// Number of objects: 25, (4 lines for each)
+Nu
+WODEN
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Tau 3
+
+
+
+// NEXT
+Tau 4
+
+
+
+// NEXT
+Omega 1
+
+
+
+// NEXT
+Omega 2
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho 3
+
+
+
+// NEXT
+Rho 4
+
+
+
+// NEXT
+Falaricae
+
+Dimok
+
+// NEXT
+Glaive
+
+Imp Gds
+
+// NEXT
+Runka
+
+Imp Gds
+
+// NEXT
+Godendag
+
+Imp Gds
+
+// NEXT
+Manus Ferre
+
+Dimok
+
+// NEXT
+Keydon
+
+D. Children
+
+// NEXT
+Adam
+
+Dimok
+
+// NEXT
+Baker
+
+Dimok
+
+// NEXT
+Charlie
+
+Dimok
+
+// NEXT
+Shemsher
+
+Ripoblus
+
+// NEXT
+Phantele
+
+R. Children
+
+// NEXT
+Arabu
+
+Ripoblus
+
+// NEXT
+Berono
+
+Ripoblus
+
+// NEXT
+Calitana
+
+Ripoblus
+
+// NEXT
+Degio
+
+Ripoblus
+
+// NEXT
+Moran
+
+
+
+// NEXT
+// Number of radio messages: 14, (2 lines for each)
+Nu 2, target craft ahead! We'll take [SHU Keydon]
+Nu 2 start
+// NEXT
+GUN Tau, keep those Headhunters away from Omega 2!
+GUN Tau
+// NEXT
+GUN Nu, intercept the Escort Shuttles!
+GUN Nu
+// NEXT
+Omega 2: preparing to board [SHU Phantele]
+Omega 2
+// NEXT
+Omega 1: preparing to board [SHU Keydon]
+Omega 1
+// NEXT
+[Omega 2] has captured the [Ripoblus] leaders
+Dim capture
+// NEXT
+[Omega 1] has captured the [Dimok] leaders
+Rip capture
+// NEXT
+All craft, we've captured both sides' leaders, let's go!
+Vaminos
+// NEXT
+[Omega 1] is under attack, please assist!
+Help Omega1
+// NEXT
+[Omega 2] is under attack, please assist!
+Help Omega2
+// NEXT
+Remember, the escort shuttles can take at least 4 missiles!
+4 missiles
+// NEXT
+Try not to waste any on the Z-95s. Use cannons instead
+Not for Z95
+// NEXT
+Go ahead and destroy [SHU Keydon]
+
+// NEXT
+Go ahead and destroy [SHU Phantele]
+
+// NEXT
+// NAMES: 
+Ripoblus Leaders
+Dimok Starship
+Dimok Leaders
+TRN Omega 1
+TRN Omega 2
+GUN Nu (You)
+GUN Tau
+Dimok Support Craft
+Ripoblus Starship
+Planet Sepan 8
+Ripoblus Support Craft
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Sepan Civil War, Mission #4: Capture Enemies
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Intel has discovered the time and place for a high level meeting between the [Dimok] and [Ripoblus] leaders.
+// NEXT
+[TRN Omega] (two ships) will lead a Special Operations raid to capture the leaders of both sides.
+// NEXT
+Each transport will have a four ship flight group of Assault Gunboats for escort and assistance.
+// NEXT
+Assault Gunboat [Nu (You)] will team with [TRN Omega 1] and [GUN Tau] will team with [TRN Omega 2].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To capture the leadership of
+both sides in the Sepan Civil War.
+They will be vulnerable to capture
+during a deep space rendezvous
+near [Sepan 8].  Their shuttle craft
+are to be disabled, then boarded
+by Stormtrooper Transports.
+// NEXT
+What craft will I be flying?
+   You will fly the [Assault Gunboat]
+designated [Nu 2] of a four craft
+flight group.  For this mission your
+craft has been loaded with the
+standard warhead armament of [16]
+concussion missiles.
+   You will be teamed with [TRN
+Omega 1], while [GUN Tau] is teamed
+with [TRN Omega 2].  Get in fast and
+disable the leaders' shuttles.  Once
+disabled, they will be boarded by
+stormtroopers and the leaders
+captured.  You will protect the
+boarding operation by destroying
+any craft which try to interfere.
+Once the leaders have been
+captured you will all hyperspace
+out to a rendezvous with the
+[Protector].
+// NEXT
+What opposition will there be?
+   The [Dimok's] flagship, a modified
+Nebulon-B2 class frigate ([M/FRG
+Manus Ferre]) will be nearby.  During
+the battle it will deploy a full
+squadron of [Z-95 Headhunters].
+The [Ripoblus] will also have a
+frigate present, a standard
+Nebulon-B class ([FRG Shemsher]).
+Several [Ripoblus Escort Shuttles]
+will be on patrol.
+   The enemy will try to prevent
+the capture, they may even decide
+to kill their own rather than let
+them be taken.  Concentrate on
+any craft which attack either of
+our stormtrooper transports.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Keep an eye out for any large
+cargo carrying vessels.  Search
+their cargo holds for any evidence
+of captured or stolen Imperial
+equipment.  The Emperor is
+suspicious of how the Dimok and
+Ripoblus are arming themselves.
+Their industrial capacity is not
+sufficient to explain the quantity
+of weapons they have been
+throwing into battle.  They must
+have another source.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Our special operation was a
+success, with minimal casualties.  As
+it turns out, the individuals we
+captured are not the [Dimok] and
+[Ripoblus] leaders, but the children
+of both sides' leaders.  Apparently,
+they were to be used as hostages
+in a cynical attempt by each side
+to assure the others adherence
+to a new treaty.
+   This treaty calls for an
+immediate suspension of hostilities
+between them.  Furthermore, they
+intend to join forces against us!
+We had hoped to persuade them to
+negotiate a peace settlement
+under Imperial auspices.  This would
+have been preferable to the
+Imperial Navy imposing a settlement.
+Now, it seems we have no choice...
+   Sector HQ will not be happy
+about this, but we are going to
+need substantial reinforcements to
+pacify the Sepan system.
+// NEXT
+Are there any special instructions?
+   Immediately after both leader's
+shuttles are disabled, attack the
+nearest Escort Shuttles.  Use as
+many as [4] concussion missiles to
+reduce its shields quickly, then
+finish it with lasers.  Concentrate
+on the E/Ss and try to remain
+close to the Transports.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You have uncovered further
+evidence that someone within the
+Imperial Navy is selling arms to the
+Dimok and Ripoblus.  We must
+discover who this traitor is.
+// NEXT
+Are there any special instructions?
+   During the intense firefight
+with the enemy starfighters, keep
+an eye out for any large cargo
+carrying vessels.  Be sure to
+inspect them.  ÿ
+// LAST

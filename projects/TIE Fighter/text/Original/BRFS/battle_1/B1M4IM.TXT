@@ -1,0 +1,325 @@
+// COMPLETION MESSAGES:
+We have recaptured Outpost D-34 and have driven off the Rebels
+
+You have located the Rebels' cache of our stolen equipment
+[TRN Omega] will disable and capture this transport
+The Outpost recapture operation has failed
+
+// Number of objects: 27, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Iota
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Sigma
+
+Troopers
+
+// NEXT
+Omega
+
+
+
+// NEXT
+D-34
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Post
+
+Equipment
+
+// NEXT
+Claf
+
+Equipment
+
+// NEXT
+Ginger
+
+
+
+// NEXT
+Gopher
+
+Rebels
+Supplies
+// NEXT
+Hammer
+Flanken
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Fogger
+
+
+
+// NEXT
+B-17
+
+
+
+// NEXT
+B-18
+
+
+
+// NEXT
+B-19
+
+
+
+// NEXT
+B-16
+
+
+
+// NEXT
+// Number of radio messages: 7, (2 lines for each)
+TIE Interceptors Beta, destroy enemy shuttles and transports
+
+// NEXT
+All TIE Interceptors, good hunting
+
+// NEXT
+TIE Interceptors Alpha and Delta, stop the X-wings and Y-wings
+
+// NEXT
+Space Station D-34 has been destroyed!
+
+// NEXT
+The [FRG Fogger] is taking damage!
+
+// NEXT
+Be careful, Alpha 1
+
+// NEXT
+TIE Interceptors Iota to Alpha 1, we will help you
+
+// NEXT
+// NAMES: 
+Outpost D-34
+Javin Sector
+T/I Alpha (You)
+T/I Beta
+T/I Delta
+FRG Fogger
+Nav Buoy B-17
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Aftermath of Hoth #4: Outpost D-34 Has Fallen
+// NEXT
+Outpost D-34 has been captured. The Rebels and the Mugaari are looting it for arms and equipment.
+// NEXT
+The [Frigate Fogger] will launch a transport to recapture the station. 
+// NEXT
+Several flight groups of TIE starfighters will provide cover for this operation.
+// NEXT
+These groups will also hunt down the renegade craft that are making off with the station's equipment.
+// NEXT
+// SKIP
+This mission was created by David Maxwell$for Peregrine Software. 3-27-94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   During our attack on the
+Mugaari/Rebel weapons area, the
+Rebels launched a raid on Outpost
+D-34.  It fell to the Rebels
+despite a valiant fight.  The Rebel
+terrorists are in the process of
+looting the station for any arms
+or equipment they can steal.  Our
+objective for this mission is to
+retake the Outpost, recovering as
+much stolen material as we can.
+// NEXT
+What craft will I be flying?
+   You will be flying a [TIE
+Interceptor], designated [Alpha 1].
+You will be the flight leader of a
+three craft flight group.  Your
+craft will be equipped with [12]
+concussion missiles.
+// NEXT
+What opposition will there be?
+   Besides the usual Y-wings and
+X-wings, our intelligence believes
+that the Mugaari have sold the
+Rebels a squadron of the new
+Escort Shuttles that they stole
+from Cygnus Spaceworks.  These
+craft are a design modification of
+the [Lambda Class] Tyderian shuttle
+for use as military assault and
+heavily armed escort vehicle.  What
+makes them particularly deadly is
+their rear mounted, flexible laser
+turret.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   The Emperor is concerned by
+the Rebels' capture of Outpost
+D-34.  The most disturbing element
+is that they seem to know exactly
+how to time their attack, when
+Imperial forces are engaged in
+another sector.  Be alert for
+clues and opportunities to inspect
+or capture any Rebel craft leaving
+the Outpost when we recapture it.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Despite a heavy and intense
+battle, our forces prevailed in
+recapturing Outpost D-34.  The
+Rebellion's plan to loot and pillage
+Imperial property has been
+thwarted.
+// NEXT
+Any special instructions?
+   Protect the Frigate Fogger
+from Rebel attack.  Concentrate
+on those craft firing torpedoes
+at your command ship.  If they are
+able to fire their warheads, try
+shooting the torpedoes down with
+laser fire or even with your
+concussion missiles.  Give respect
+to the rear mounted laser turrets
+on the escort shuttles.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   Excellent, you have helped us
+locate the equipment the Rebels
+looted from Outpost D-34.
+// NEXT
+Any special instructions?
+   Inspect the container
+transport and other transports
+that are leaving the Outpost.  ÿ
+// LAST

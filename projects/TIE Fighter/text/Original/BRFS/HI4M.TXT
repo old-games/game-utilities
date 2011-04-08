@@ -1,0 +1,260 @@
+// COMPLETION MESSAGES:
+Good work, our combined attack has succeeded
+Return to the [FRG Lightning]
+Fine flying, Alpha 1, the Rebels have paid dearly
+We have taught the Rebels a lesson they will not soon forget
+
+
+// Number of objects: 21, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Sigma
+
+Staff
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Lightning
+
+
+
+// NEXT
+Calvary
+T. Ryagain
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Wreden
+
+
+
+// NEXT
+Revt
+
+
+
+// NEXT
+Bultz
+
+
+
+// NEXT
+T-SE
+
+
+
+// NEXT
+T-SF
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Duce 1
+
+Supplies
+
+// NEXT
+Duce 2
+
+Supplies
+
+// NEXT
+Duce 3
+
+Supplies
+
+// NEXT
+Moth
+
+Crew
+
+// NEXT
+Duce 4
+
+Supplies
+
+// NEXT
+// Number of radio messages: 11, (2 lines for each)
+All the containers have been destroyed
+
+// NEXT
+[FRG Lightning] is under attack
+
+// NEXT
+Alpha 1, fly into the Calvary's hangar bay now!
+
+// NEXT
+The STD Calvary is here to recover all TIE starfighters
+
+// NEXT
+The [Y-wings] have been destroyed
+
+// NEXT
+The [Shuttles] have been destroyed
+
+// NEXT
+The transports have been destroyed
+
+// NEXT
+You got all the tugs, very good!
+
+// NEXT
+There are some Rebel starfighters here. Get them first!
+
+// NEXT
+The tugs are delivering pilots to the Rebel ships!
+
+// NEXT
+Don't worry about the containers, the TIE Bombers will get them
+
+// NEXT
+// NAMES: 
+T/I Alpha (You)
+Rebel Craft
+Base Containers
+FRG Lightning
+(Your Command Ship)
+Rebel Cargo Containers
+Transports Sigma
+Mines
+T/B Theta
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Interceptor Combat #4: Combined Attack
+// NEXT
+The [TIE Interceptor] flight groups are to destroy all Rebel craft protecting the cargo containers.
+// NEXT
+The [TIE Bomber] flight groups are responsible for destroying all the Rebel cargo containers.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+THIS MISSION WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE! 3/27/94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Attack and destroy a Rebel
+space depot.  Direct attack
+against the starfighters and leave
+the containers for the TIE
+Bombers.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Interceptor],
+designated [Alpha 1], the flight
+leader in a three ship flight group.
+Your craft will not have any
+warheads.
+// NEXT
+What opposition will there be?
+   Y-wings and shuttles are your
+main adversaries.  The tugs are
+scrambling to ferry the
+starfighter pilots to their craft.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have successfully
+destroyed a Rebel outpost.
+Excellent work, the Rebel forces in
+this sector have suffered a large
+setback.
+// NEXT
+Are there any special instructions?
+   Fly directly to the Y-wings and
+take them out before they can
+get fully operational.  Assign your
+wingmen to different targets than
+to those that you are going after
+to speed up the attack.  ÿ
+// LAST

@@ -1,0 +1,384 @@
+// COMPLETION MESSAGES:
+[VSD Stalwart] has arrived with our reinforcements
+
+Excellent, you have helped capture the Rebel battle commanders
+
+You did not protect the station and its patrol craft
+Our efforts to get the base operational have been set back
+// Number of objects: 33, (4 lines for each)
+Tau
+Madmax
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Luft
+
+Staff
+
+// NEXT
+Clue
+
+Staff
+
+// NEXT
+Shark
+
+Troopers
+
+// NEXT
+NL-1
+Scott
+
+
+// NEXT
+Ranger 1
+Scott
+
+
+// NEXT
+Ranger 2
+Scott
+
+
+// NEXT
+Ludwick
+Buckeye
+
+
+// NEXT
+Stalwart
+
+Thrawn
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Stallion
+
+Troops
+
+// NEXT
+Stalwart
+
+Thrawn
+
+// NEXT
+Gaarni
+
+Troops
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Sivaa
+
+Walkers
+Weapons
+// NEXT
+Gold 1
+
+
+
+// NEXT
+Gold 1
+
+
+
+// NEXT
+Taxel
+
+
+
+// NEXT
+Electra
+
+Advisors
+Advisors
+// NEXT
+Electra
+
+Advisors
+Advisors
+// NEXT
+Thunder
+
+Shuttle
+
+// NEXT
+Rover
+
+
+
+// NEXT
+Thunder
+
+Shuttle
+
+// NEXT
+Clipper
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Pakuuni
+
+
+
+// NEXT
+// Number of radio messages: 13, (2 lines for each)
+Stay alert. Intercept any attacking craft
+START
+// NEXT
+A Rebel assault force is heading for the platform
+START
+// NEXT
+Rebel transports are aiming for the Patrol craft. Protect them!
+
+// NEXT
+Our command ship, the Ludwick, has been destroyed
+
+// NEXT
+Tau 1, splendid job. Return to the [Ludwick's] hangar
+
+// NEXT
+The area has been cleared of Rebel craft
+
+// NEXT
+All the Rebel assault transports have been destroyed. Good work
+
+// NEXT
+T/B Theta group has been completely destroyed
+
+// NEXT
+We just took out three of the Rebels' newest starfighters
+
+// NEXT
+T/I Gamma group has been completely destroyed
+
+// NEXT
+The [M/FRG Ludwick] is under attack
+
+// NEXT
+You allowed Space Station NL-1 to be destroyed
+
+// NEXT
+Imperial forces are here to relieve us
+
+// NEXT
+// NAMES: 
+Pakuuni
+Outpost NL-1
+Corvettes
+Y-wings
+T/B Theta
+GUN Tau (You)
+M/FRG Ludwick
+T/I Gamma
+System Patrol Craft
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Battle on the Frontier #6: Wait for Relief Forces
+// NEXT
+The Space Station [NL-1] is complete. An Imperial Task Force is on its way here to relieve us.
+// NEXT
+We are to protect the station and its new [System Patrol Craft] until Imperial reinforcements arrive. 
+// NEXT
+A standard defensive posture is to be maintained until our main forces arrive and relieve us.
+// NEXT
+// SKIP
+// SKIP
+This mission was created by David Maxwell$for Peregrine Software. 3-27-94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   The construction of [Station
+NL-1] is complete.  Final
+preparations are being made to
+make the outpost fully operational.
+Vice Admiral Thrawn's Star
+Destroyer [Stalwart] has just
+completed delivery of two IPV-1
+System Patrol Craft.  These high
+speed craft will be used to monitor
+and inspect vessels passing
+through this sector.
+   The [VSD Stalwart] will depart
+shortly to escort the final convoy
+to this station.  During its
+absence, you will fly space combat
+patrol to protect against Rebel
+attacks on the station.  The
+Rebels and their pirate allies
+continue to contest this region of
+space fiercely.  Protect the
+station and the two new Patrol
+Craft against enemy attack.
+// NEXT
+What craft will I be flying?
+   You will be flying an [Assault
+Gunboat] designated [Tau 1].  You will
+be paired with one wingman.  Your
+craft will be specially equipped with
+[12] proton torpedoes.
+// NEXT
+What opposition will there be?
+   The [Rebels] will be staging a last
+ditch effort to disrupt and
+destroy the Imperial efforts in
+this sector.  The attrition from
+previous engagements has stripped
+the Rebellion of its medium-sized
+capital ships, however they still
+have plenty of Assault Transports
+and captured Stormtrooper
+Transports.  Expect these to be
+used in the coming battle.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Be alert for an opportunity to
+capture members of the Rebel
+staff.  The Rebel battle
+commanders are typically aboard
+the transports.  It is from here
+that they direct their forces
+during the action.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   This last victory insures that
+the Rebels will be driven out of
+the Pakuuni sector for good.  With
+strong Imperial military presence
+now in place, the Empire has
+secured this sector from falling
+prey to banditry and piracy.  You
+are to be commended for your
+participation in this operation.
+// NEXT
+Any special instructions?
+   The Rebels are using a
+multi-pronged attack utilizing
+Assault Transports, Stormtrooper
+Transports and B-wings.  The
+other Rebel craft are
+concentrating on escort and
+attacking our starfighters.  Focus
+on protecting the most vulnerable
+of our craft first, the [System
+Patrol Craft].  These are being
+attacked by the Transport group
+[Rover].  Be sure to use your
+wingman.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped us to capture Rebel
+officers.  Excellent, they will tell
+us much.
+// NEXT
+Any special instructions?
+   When the transports are
+destroyed, be on the lookout for
+a shuttle escaping with Rebel
+staff members.  ÿ
+// LAST

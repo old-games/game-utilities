@@ -1,0 +1,374 @@
+// COMPLETION MESSAGES:
+Акаги больше нет. Отличная работа, Альфа 2.
+
+
+
+Наши здешние силы обречены
+
+// Number of objects: 29, (4 lines for each)
+Альфа
+Психопат
+
+
+// NEXT
+Бета
+
+
+
+// NEXT
+Гамма
+
+
+
+// NEXT
+Ню
+
+
+
+// NEXT
+Мю
+
+
+
+// NEXT
+Харпакс
+Лэди
+
+
+// NEXT
+Защитник
+
+Дезертиры
+
+// NEXT
+Химнер
+
+
+
+// NEXT
+Н-Альфа
+
+
+
+// NEXT
+Н-Дельта
+
+
+
+// NEXT
+Н-Бета
+
+
+
+// NEXT
+Н-Дзета
+
+
+
+// NEXT
+Н-Эта
+
+
+
+// NEXT
+Акага
+
+
+
+// NEXT
+Н-Бета
+
+
+
+// NEXT
+Н-Дзета
+
+
+
+// NEXT
+Н-Тета
+
+
+
+// NEXT
+Н-Каппа
+
+
+
+// NEXT
+Ястреб Войны
+
+
+
+// NEXT
+Красный
+
+
+
+// NEXT
+Золотой
+
+
+
+// NEXT
+Синий
+
+
+
+// NEXT
+Красный
+
+
+
+// NEXT
+Золотой
+
+
+
+// NEXT
+Гойя
+
+Боеприпасы
+
+// NEXT
+Гаррет
+Лорд Вейдер
+
+
+// NEXT
+Пи
+
+
+
+// NEXT
+Йота
+
+
+
+// NEXT
+Омега
+
+
+
+// NEXT
+// Number of radio messages: 12, (2 lines for each)
+Харпакс окружён! Мы должны избавиться от [Акаги]
+
+// NEXT
+Транспорт с боеприпасами [Гойя] ждёт вас на перезарядку, Альфа 2
+
+// NEXT
+Имперский звёздный разрушитель Гаррет всем силам, верным Империи...
+
+// NEXT
+...это [Лорд Вейдер], пришло время победы
+
+// NEXT
+Бейте по одному из главных кораблей Харкова
+
+// NEXT
+Мы вновь зависим от тебя, Альфа 2
+
+// NEXT
+Альфа 2, вы вернётесь на звёздный разрушитель [Гаррет]
+
+// NEXT
+Лорд Вейдер лично потребовал вашего присутствия, Альфа 2
+
+// NEXT
+Вы тоже дезертировали, Альфа 2?
+
+// NEXT
+Следите за щитами, Альфа 2
+
+// NEXT
+Вы получили серьёзные повреждения, Альфа 2
+
+// NEXT
+[ТРН Гойя] поможет вам поплонить боеприпасы
+
+// NEXT
+// NAMES: 
+ЗРП Защитник
+Грузовые контейнеры
+ФРГ Акага
+С/Ии
+С/Би
+С/Пи
+С/У Альфа (Вы)
+С/У Бета
+С/У Гамма
+ЗГР Харпакс
+ЛКСР Ястреб Войны
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Предательство у Оттеги №1: Уничтожение Акаги
+// NEXT
+Наш приказ - защищать [Харпакс]. Его положение действительно трудное.
+// NEXT
+Даже на самой высокой досветовой скорости Харпакс не сможет уйти от [ФРГ Акаги].
+// NEXT
+Мы должны атаковать Акагу. Два корабля С/У из Альфы доставят к цели по [2 мощные бомбы].
+// NEXT
+С/У Гамма обеспечит защиту кораблей от истребителей, запущенных с лёгкого крейсера каламари [Ястреба войны].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+Каковы задачи операции?
+   Харпакс, стремясь задержать
+силы, которыми командовал Харков,
+сам попал в сложную ситуацию.
+Прежний флагман Харкова, Защитник,
+фрегат Акага и управляемый
+Повстанцами лёгкий крейсер
+Ястреб Войны приближаются к
+Харпаксу, чтобы добить его.
+Ваша задача - атаковать фрегат
+[Акагу], выиграв тем самым немного
+времени до прибытия имперского
+звёздного разрушителя
+[Гаррета].
+What are the mission objectives?
+   The Harpax, in its attempt to
+pin down the forces that Harkov
+used to command, has put itself in
+a precarious position.  Harkov's old
+flagship, the Protector, the
+Frigate Akaga, and the Rebel
+commanded Lt.  Cruiser Warhawk are
+all closing in to finish the Harpax
+off.  Your mission goal is to
+attack the Frigate [Akaga], thus
+buying some time until Lord Vader
+can arrive in the Imperial Star
+Destroyer [Garrett].
+// NEXT
+На каком корабле я полечу?
+   Вы полетите на[СИД улучшенном]
+с позывными [Альфа 2].  Ваш корабль
+будет вооружён [2-мя] мощными
+космическими бомбами.  Вы будете
+единственным подчинённым лидера
+вашей группы.  Также ваш корабль
+будет оснащён
+лучевым оружием.
+What craft will I be flying?
+   You will be flying a [TIE
+Advanced] designated [Alpha 2].  Your
+craft will be armed with [2] heavy
+space bombs.  You will be the only
+wingman flying beside your flight
+leader.  Your craft will also be
+equipped with the tractor beam
+weapon.
+// NEXT
+Какие мне встретятся враги?
+   Вы вновь встретитесь со смесью
+имперских и повстанческих кораблей.
+Защитник выпустит стандартный набор
+истребителей имперского флота, а
+крейсер Повстанцев бросит в бой
+У-Крылы и
+зет-95е.
+What opposition will there be?
+   Once again you will face a
+mixture of Imperial and Rebel craft.
+The Protector will launch standard
+Imperial Navy starfighters and the
+Rebel Cruiser will throw its
+contingent of Y-wings and Z-95s
+into the fray.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+Что мы достигли?
+   Отлично!  мы уничтожили фрегат
+[Акагу] и выиграли ещё немного
+времени для [Харпакса].  Прибыл
+имперский звёздный разрушитель [Гаррет]
+под командованием самого Дарта
+Вейдера; он добьёт остатки флота
+Харкова и положит
+конец этому
+массовому дезертирству.
+What did we accomplish?
+   Excellent work!  We destroyed
+the Frigate [Akaga] and bought a
+little more time for the [Harpax].
+The Imperial Star Destroyer
+[Garrett] commanded by Darth Vader
+himself has arrived to take charge
+of finishing off Harkov's fleet and
+putting an end to this mass
+defection.
+// NEXT
+Будут особые распоряжения?
+   Сразу же атакуйте фрегат.
+Сбросьте бомбы на расстоянии
+и отлетайте подальше.  Если вы
+не попадёте с первого раза, можете
+запросить дополнительные бомбы
+у перезаряжающего корабля.
+Также приглядывайте
+за Харпаксом.
+Any special instructions?
+   Attack the frigate immediately.
+Drop your bombs at a distance and
+move out of their flight path.  If
+you miss with the first set of
+bombs, be sure to request a
+rearming from your reload craft.
+Keep an eye on the Harpax as well.
+я
+// LAST

@@ -1,0 +1,365 @@
+// COMPLETION MESSAGES:
+Good! The pirates' forces and their base have been destroyed
+
+Good!  Transports are being sent to board the containers
+
+
+
+// Number of objects: 30, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Sonia
+
+Warheads
+
+// NEXT
+Ludwick
+Buckeye
+
+
+// NEXT
+Stalwart
+Ritton
+
+
+// NEXT
+Iota
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Tiger
+
+Troopers
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Leach
+
+
+
+// NEXT
+Clavier
+
+
+
+// NEXT
+Grapler
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+DLC11A
+
+Supplies
+
+// NEXT
+Gold
+
+
+
+// NEXT
+CRM908A
+
+Pakuuni
+Rebels
+// NEXT
+CG-78
+
+Supplies
+Workshop
+// NEXT
+Blue 1
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Jiggs
+
+
+
+// NEXT
+Red 1
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Planet
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Destroy the opposing Pakuuni [Corvettes]
+START
+// NEXT
+Alpha 1, engage the targets
+START
+// NEXT
+We have engaged the enemy
+
+// NEXT
+Our command ship has been destroyed
+
+// NEXT
+Alpha 1, [TRN Sonia] is available for your rearming 
+
+// NEXT
+This area is cleared of base craft
+
+// NEXT
+The Pakuuni pirate outpost has been eliminated
+
+// NEXT
+TIE Fighters Theta have been destroyed
+
+// NEXT
+TIE Bombers Beta have been destroyed
+
+// NEXT
+TIE Interceptors Zeta have been destroyed
+
+// NEXT
+The [M/FRG Ludwick] is under attack
+
+// NEXT
+[VSD Stalwart] here to recover all surviving TIE starfighters
+
+// NEXT
+It is time to enter the Stalwart's hangar, Alpha 1
+
+// NEXT
+The Pakuuni Corvettes have been destroyed
+
+// NEXT
+All Y-wing starfighters have been destroyed
+
+// NEXT
+Warning, a Rebel A-wing has entered the area
+
+// NEXT
+// NAMES: 
+Pakuuni
+Pirate Outpost
+Corvette
+Z-95s
+T/B Beta
+T/B Alpha (You)
+M/FRG Ludwick
+Y-wings
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Battle on the Frontier #2: Destroy Pirate Outpost
+// NEXT
+The [Pakuuni] system is an area rife with pirates and smugglers, where intergalactic trade is perilous.
+// NEXT
+Under [Vice Admiral Thrawn], the Empire will establish a new space installation to bring order to this sector.
+// NEXT
+The outpost from which the Pirates operate must be neutralized.  The [M/FRG Ludwick] will lead the attack. 
+// NEXT
+Intelligence reports that the Pakuuni pirates are also getting protection from the [Rebels].
+// NEXT
+[TIE Bomber] groups Alpha and Beta are to strike the Corvettes first using proton torpedoes.
+// NEXT
+The pirates have assembled a strong armada of craft with which to defend themselves.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   [Vice Admiral Thrawn] has been
+given the duty of ridding the
+[Outer Rim Territories] of pirates
+and smugglers.  One of the bases
+they have been using is an
+outpost in the [Pakuuni] system.
+Your task is to lead the assault
+on this base and to destroy the
+Corellian Corvettes that are
+protecting it.  This base must be
+systematically and completely
+destroyed so that a new Imperial
+facility may be constructed in its
+place.
+// NEXT
+What craft will I be flying?
+   You will be flying [TIE Bomber]
+designated [Alpha 1].  Your flight
+group will consist of three craft
+and you will be flying lead.  Your
+craft will be armed with a double
+load of [12] proton torpedoes.
+// NEXT
+What opposition will there be?
+   We can expect to see [Z-95s]
+and [Y-wings] among the pirate
+forces.  There are also reports
+that the Rebels are providing
+protection.  So be on the lookout
+for the standard Rebel
+spacecraft.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Inspect the enemy [containers]
+before you destroy them.  You may
+find contraband for us to
+capture.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Excellent, you have helped
+destroy the pirates main staging
+area for launching attacks against
+intergalactic commerce.  Now we can
+begin to build an Imperial outpost
+to prevent further predatory
+attacks on legitimate trading
+vessels.  A strong Imperial
+presence here will help trade to
+flourish again.
+// NEXT
+Any special instructions?
+   Tell your wingmen to attack one
+of the [Corvettes] while you attack
+another.  Six torpedoes in a row
+should destroy a [Corvette].  Next,
+take out any [Z-95s] that are
+attacking you.  Leave the
+containers for last.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped us to find [Rebel
+advisors].  The Rebels have an
+extensive presence in the area.
+We have begun to interrogate the
+prisoners, and we hope to have a
+great deal of information soon.
+// NEXT
+Any special instructions?
+   Inspect all the [containers]
+before destroying them.  If [Rebels]
+are found, wait until they are
+captured before destroying the
+[container] they are using.  ÿ
+// LAST

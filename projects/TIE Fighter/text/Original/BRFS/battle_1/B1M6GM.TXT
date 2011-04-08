@@ -1,0 +1,335 @@
+// COMPLETION MESSAGES:
+The Cruiser Lulsla has been destroyed, excellent work
+Now hunt down the fleeing Rebel commander and disable his craft
+You disabled the transport carrying the Lulsla's commander
+We will send a boarding party, now hyperspace home
+The attack on the Rebel Cruiser Lulsla has failed
+Hyperspace home so we can regroup
+// Number of objects: 32, (4 lines for each)
+Tau
+Madmax
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Sigma
+
+
+
+// NEXT
+Omega
+
+
+
+// NEXT
+Zack 1
+
+
+
+// NEXT
+Charity
+
+
+
+// NEXT
+Lulsla
+Corbal
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold 1
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue 1
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Starway
+
+Crew
+
+// NEXT
+Gargon
+
+Officers
+
+// NEXT
+C440
+
+Missiles
+Im Probes
+// NEXT
+Derris
+
+Crew
+Cmder
+// NEXT
+MX-A
+
+
+
+// NEXT
+MX-B
+
+
+
+// NEXT
+MX-C
+
+
+
+// NEXT
+MX-D
+
+
+
+// NEXT
+MX-E
+
+
+
+// NEXT
+MX-F
+
+
+
+// NEXT
+RQ-A
+
+
+
+// NEXT
+RQ-B
+
+
+
+// NEXT
+RQ-C
+
+
+
+// NEXT
+RQ-D
+
+
+
+// NEXT
+RQ-E
+
+
+
+// NEXT
+RQ-F
+
+
+
+// NEXT
+RQ-G
+
+
+
+// NEXT
+// Number of radio messages: 5, (2 lines for each)
+There is the Cruiser Lulsla. The Rebels cannot escape now
+
+// NEXT
+This is [TRN Sigma], beginning attack on the cruiser
+
+// NEXT
+Good work, all the mines have been destroyed
+
+// NEXT
+Rebel transports are evacuating the Lulsla
+
+// NEXT
+More Rebel transports and shuttles are abandoning the Lulsla
+
+// NEXT
+// NAMES: 
+GUN Tau (You)
+Lulsla
+TRN Sigma
+GUN Nu
+TRN Omega
+Rebel Cruiser
+Mine Field?
+Mine Field?
+X-wings
+Y-wings
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Aftermath of Hoth #6: Destroy the Lulsla
+// NEXT
+Our last attack rendered the Rebel Cruiser [Lulsla] vulnerable for a direct attack using torpedoes. 
+// NEXT
+The Rebel starfighter threat is low since the last battle, however some fighters may have survived.
+// NEXT
+Besides the Lulsla's turbo lasers, the many mines that surround her may be the biggest threat.
+// NEXT
+Transports [Sigma] and [Omega] have been chosen for  the honor of destroying the Rebel Cruiser.
+// NEXT
+Gunboat Groups [Tau] and [Nu] will provide close escort for the attacking transports.
+// NEXT
+// SKIP
+The supply ships need to be destroyed to prevent the Cruiser from getting any reinforcements.
+// NEXT
+This mission was created by [David Maxwell]$for Peregrine Software. [3-27-94]
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   The Rebel Light Calamari Cruiser
+Lulsla is the target of this
+mission.  Two previous attacks have
+weakened its defenses to the
+critical point.  We are confident
+that a joint Assault Gunboat and
+Transport attack can finish it off.
+// NEXT
+What craft will I be flying?
+   You will be flying the [Assault
+Gunboat] designated [Tau 1].  You will
+be the flight leader of a two
+craft flight group.  Your craft will
+be equipped with the standard [16]
+concussion missiles.
+// NEXT
+What opposition will there be?
+   The Rebel cruiser probably has
+a small number of starfighters
+remaining to help in its defense.
+The cruiser's main protection lies in
+the minefield around it.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   The Imperial attack on the
+Rebel Cruiser will certainly succeed.
+Its impending destruction will
+probably cause its commander and
+crew to try to abandon ship.  Be
+prepared to track down its
+commander and disable his escaping
+craft.  Any other fleeing ships
+should be destroyed.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   You helped to destroy the
+Light Calamari Cruiser Lulsla.  This
+is a major achievement in our fight
+against the Rebellion in this
+sector.
+// NEXT
+Any special instructions?
+   Get your shields to full
+strength and keep them there.
+Once you get close to the
+minefield surrounding the Cruiser
+Lulsla, you'll need all the shield
+protection you can muster.  You
+can use your missiles to take out
+many of the mines, use only one
+missile on each mine.  Stay at a
+distance so fewer mines can
+target you at once.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You have helped capture the
+commander of the Lulsla, excellent
+work.
+// NEXT
+Any special instructions?
+   Watch carefully for any craft
+that are fleeing the Lulsla.  While
+inspecting all craft, keep an eye
+out for the Cruiser's commander.
+Destroy all other fleeing craft.  ÿ
+// LAST

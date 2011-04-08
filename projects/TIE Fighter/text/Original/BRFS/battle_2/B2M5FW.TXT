@@ -1,0 +1,450 @@
+// COMPLETION MESSAGES:
+Good work, Alpha 2, the new fighters are safely aboard!
+Return now and refresh your T/A skills in the simulator
+Your curiousity is going to cause you serious trouble some day!
+Return to the Protector's hangar now, Alpha 2!
+
+
+// Number of objects: 43, (4 lines for each)
+Alpha
+WODEN
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Protector
+Harkov
+Harkov
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Ben Het
+
+Dimok
+
+// NEXT
+Abo
+
+Dimok
+
+// NEXT
+Elba
+
+Dimok
+
+// NEXT
+Fuzzum
+
+Dimok
+
+// NEXT
+Ingo
+
+Dimok
+
+// NEXT
+Jenet
+
+Dimok
+
+// NEXT
+Killam 1
+
+Dimok
+
+// NEXT
+Killam 2
+
+Dimok
+
+// NEXT
+Killam 3
+
+Dimok
+
+// NEXT
+Killam 4
+
+Dimok
+
+// NEXT
+Suoi Tre
+
+Dimok
+
+// NEXT
+Can Giouc
+
+Dimok
+
+// NEXT
+Long Tan
+
+Dimok
+
+// NEXT
+Bordok
+
+Dimok
+
+// NEXT
+Chubb
+
+Dimok
+
+// NEXT
+Givin
+
+Dimok
+
+// NEXT
+Larkma
+
+Dimok
+
+// NEXT
+Farsi
+
+Dimok
+
+// NEXT
+Hurcha
+
+Dimok
+
+// NEXT
+Shemsher
+
+Ripoblus
+
+// NEXT
+Raven
+
+Ripoblus
+
+// NEXT
+Seakyte
+
+Ripoblus
+
+// NEXT
+Tropsobor
+
+T/Advanced
+
+// NEXT
+AA
+
+
+
+// NEXT
+AB
+
+
+
+// NEXT
+AC
+
+
+
+// NEXT
+AD
+
+
+
+// NEXT
+Omlaut
+Schwa
+Rebel Ldr
+
+// NEXT
+IDSNB G1
+
+
+
+// NEXT
+IDSNB G2
+
+
+
+// NEXT
+Gerbaud 2
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Escort Carrier Tropsobor hailing VSD Protector
+Tropsobor
+// NEXT
+We're ready to ferry over the new TIE Advanced
+Delivery
+// NEXT
+T/F Alpha, rendezvous with the Tropsobor
+Rendezvous
+// NEXT
+T/F Alpha, escort T/A AA to Protector's hangar
+Escort
+// NEXT
+Battle stations! Hostile ships have entered the system!
+Battle Stns
+// NEXT
+T/F Alpha, stay on escort. T/I Gamma will intercept the Z-95s!
+Intercept Z
+// NEXT
+Alpha 2, stick to your mission profile please!
+Profile
+// NEXT
+T/F Alpha, Y-wings are attacking the carrier, move to intercept
+Y-wings
+// NEXT
+T/B Beta here, initiating torpedo attack on enemy cruiser!
+T/B Beta
+// NEXT
+Dimok cruiser is at zero shield strength, finish it off!
+CRL down
+// NEXT
+Ripoblus frigate is at zero shields, go for the kill!
+M/FRG down
+// NEXT
+Tropsobor's shields just failed, you must defend him!
+ESC down
+// NEXT
+The Protector is under attack, all forces respond!
+VSD attack
+// NEXT
+Your wingmen are gone, Alpha 2, you're on your own
+On yer own
+// NEXT
+Take evasive action, Alpha 2, you're under attack!
+Evade!
+// NEXT
+Alpha 2, don't attack this shuttle or face a severe penalty
+
+// NEXT
+// NAMES: 
+ESC Tropsobor
+TIE Advanceds
+VSD Protector
+T/F Alpha (You)
+T/B Beta
+Gerbaud 2
+Dimoks
+Ripoblus
+T/I Gamma
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Sepan Civil War, Mission #5: Guard Resupply
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+VSD [Protector] is to rendezvous with the escort carrier [Tropsobor] near [Gerbaud 2]].
+// NEXT
+[Tropsobor] is delivering the new [TIE Advanced], or ["Avenger"] as the test pilots like to call it.
+// NEXT
+TIE Fighter [Alpha] (3 craft) will be deployed to patrol the area during the transfer operation.
+// NEXT
+The [Dimoks] and the [Ripoblus] are hoping to catch us while we're vulnerable with a joint attack.
+// NEXT
+TIE Bomber [Beta] and TIE Interceptor [Gamma] are on standby in case of trouble.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To ensure that Admiral Harkov's
+flagship, the [VSD Protector]
+receives new [TIE Advanced] to
+replace the TIE Fighters and
+Interceptors we've lost during this
+operation.  The [Escort Carrier
+Tropsobor] is to rendezvous with
+us shortly.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Fighter]
+designated [Alpha 2].  You will
+conduct defense of the
+rendezvous area where the
+Protector is scheduled to meet
+[ESC Tropsobor].  Any hostile craft
+which enter the area are to be
+immediately attacked and destroyed.
+// NEXT
+What opposition will there be?
+   Both sides of the Sepan Civil
+War have now determined that the
+Empire is their common enemy.
+Accordingly, they have decided to
+put aside their differences and
+join together to drive us out!
+There is, of course, no possibility
+of their succeeding.
+   Unfortunately, they do have an
+opportunity to do considerable
+harm while this rendezvous takes
+place.  Our probes have
+intercepted a frenzy of
+communications traffic that
+indicate they are preparing a major
+operation!
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Do as your commander orders,
+and, as always, keep an eye out
+for anything unusual.  We believe
+there may be another ship coming
+to this rendezvous.  If so, we
+want you to inspect it if you can.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   You fulfilled your duties as
+required.  The TIE Advanced will be
+entered into service immediately.
+It would appear that the attack
+was a desperate last ditch
+attempt to thwart Imperial
+ambitions in this sector.  We
+expect this sector to be much
+more cooperative from now on!
+   Since the TIE Advanced is
+ready for front line service, it
+would be wise of you to brush up
+on your skills for this craft in the
+Combat Chamber.
+// NEXT
+Are there any special instructions?
+   Follow the orders you receive
+over the radio.  That is, take out
+the Y-wings first, then help T/F
+Delta with the Z-95s.  Protect the
+TIE Bombers as much as you can.
+They will be attacking with rockets,
+(and doing a lot of damage) but
+they're pretty vulnerable to the
+Headhunters.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   The evidence you have
+gathered for us has been
+incredibly important!  Shuttle
+Omlaut's passenger was a member
+of the Rebel Alliance.  The individual
+was taken directly to [Admiral
+Harkov] and they have been alone
+ever since.  This is very alarming in
+light of our investigation into the
+chronic shortages of equipment
+reported by Harkov.  It seems
+clear he has be selling Imperial
+weapons and supplies to whoever
+has the credits...even the Rebel
+traitors!
+// NEXT
+Are there any special instructions?
+   Disregard the order to return
+to the hangar immediately and
+inspect Shuttle [Omlaut] instead.  ÿ
+// LAST

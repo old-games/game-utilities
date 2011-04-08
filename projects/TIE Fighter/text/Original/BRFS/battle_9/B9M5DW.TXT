@@ -1,0 +1,343 @@
+// COMPLETION MESSAGES:
+The Rneekii pirates have been driven off!
+Delta 1, report back to the hangar of Hashim 3 immediately!
+
+
+Have you any idea what will happen when the Emperor finds out!
+Your incompetence has doomed us all!
+// Number of objects: 28, (4 lines for each)
+Delta 1
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+G'nabgib
+
+
+
+// NEXT
+Hashim 1
+
+T/D Proto
+
+// NEXT
+Hashim 2
+
+T/D Proto
+
+// NEXT
+Hashim 3
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+PAN
+
+
+
+// NEXT
+PAN
+
+
+
+// NEXT
+PAS
+
+
+
+// NEXT
+PAS
+
+
+
+// NEXT
+Intombe
+
+
+
+// NEXT
+Ibutho 1
+
+T/D Scients
+
+// NEXT
+Ibutho 2
+
+Boarders
+
+// NEXT
+Ibutho 3
+
+Boarders
+
+// NEXT
+Ibutho 4
+
+Boarders
+
+// NEXT
+Ibutho 5
+
+Boarders
+
+// NEXT
+Ibutho 6
+
+Boarders
+
+// NEXT
+Eshowe
+
+
+
+// NEXT
+Gingin
+
+
+
+// NEXT
+Dhlovo
+
+
+
+// NEXT
+Khambula
+
+
+
+// NEXT
+Hlobane
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+CRM-114
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Alright, Delta 1, get to it! We're in serious trouble here!
+
+// NEXT
+Take out the troop transports first to prevent any boardings
+
+// NEXT
+Then take out the fighters
+
+// NEXT
+Don't overlook the opportunity to take out mines in passing
+
+// NEXT
+Disable M/CRV Hashim 1 before the pirates escape with it!
+
+// NEXT
+Disable M/CRV Hashim 2 before the pirates escape with it!
+
+// NEXT
+Disable M/CRV Hashim 3 before the pirates escape with it!
+
+// NEXT
+All M/CRVs are disabled, Delta 1. You must prevent any boarding
+
+// NEXT
+Delta 1, take out TRN Ibutho 2 before they breach our hull!
+
+// NEXT
+Delta 1, we need you to shoot TRN Ibutho 3 off of us!
+
+// NEXT
+Delta 1, if you don't kill TRN Ibutho 4 quickly we've had it!
+
+// NEXT
+GUN Nu entering battle, here to assist you, Delta 1
+
+// NEXT
+GUN Nu will go to get help now. Return to Hashim 3's hangar
+GUN Nu gone
+// NEXT
+Delta 1, you let the pirates to get away with M/CRV Hashim 1!
+
+// NEXT
+Delta 1, you let the pirates escape with M/CRV Hashim 2!
+
+// NEXT
+Delta 1, the pirates have gotten away with M/CRV Hashim 3!
+
+// NEXT
+// NAMES: 
+T/D Delta 1 (You)
+M/CRV Hashim 1
+M/CRV Hashim 2
+M/CRV Hashim 3
+Type B Ion Cannon Mines
+STRKC Intombe
+R-41 Starchasers
+Troop Transports
+GUN Nu
+M/CRV Hashim
+SHU G'nabgib
+TRN Ibutho 1
+GUN Tau
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>T/D Technology, Mission #5: Trapped by Pirates!
+// NEXT
+This mission designed for Peregrine Software by$>David Wessman  1994c
+// NEXT
+We have come out of hyperspace into the middle of a trap!  A large ion cannon minefield surrounds us.
+// NEXT
+The pirates have a [Lorinar] Strike Cruiser and several [R-41 Starchaser] fighters and troop transports.
+// NEXT
+GUN [Nu] and GUN [Tau] will arrive soon, but maybe not soon enough!  Protect the corvettes until then!
+// NEXT
+Right now you are our only hope.  You will pilot TIE Defender [Delta 1] against great odds!
+// NEXT
+[SHU G'nabgib] has already been disabled and boarded.  The personnel and data on board were captured.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To break Modified Corvette
+group [Hashim] out of an ion cannon
+minefield and prevent their capture
+by the [Rneekii Pirates].
+Reinforcements have been called,
+but if we don't do something
+immediately these pirates will have
+captured our ships and be gone by
+the time help arrives.  The [TIE
+Defender] prototypes must not fall
+into enemy hands!
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Defender]
+designated [Delta 1].  You will have
+no wingmen.  For this mission your
+craft has been loaded with the
+standard armament of [8 advanced
+concussion missiles].  You will also
+have the [improved tractor beam].
+// NEXT
+What opposition will there be?
+   The [Rneekii Pirates] have a
+Lorinar strike cruiser, several small
+troop transports and a number of
+R-41 Starchasers.  The minefield is
+made up of [Type B ion cannon
+mines].
+   The troop transports are
+probably the biggest worry.  If
+they can be eliminated, we can at
+least avoid capture for now.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We stopped the [Rneekii Pirates]
+from capturing any of the modified
+corvettes containing TIE Defender
+prototypes.  For now.  The
+corvettes are still disabled and
+the prototypes remain vulnerable
+to capture.  Additional help is on
+the way and will arrive soon.
+   The most disturbing turn of
+events is that the pirates did
+capture some of the key
+scientists and data from aboard
+[SHU G'nabgib].  This presents a very
+serious problem.  Though it may
+take a long time to duplicate the
+TIE Defender technology, it will be
+done eventually.  A crash program
+to develop a counter to the TIE
+Defender will have to be started
+immediately.
+// NEXT
+Are there any special instructions?
+   Go to the map and target each
+of the enemy Transports and
+proceed to take them out as
+quickly as you can (a couple of
+missiles for each.) Then take out
+the R-41 Starchasers.  Finally,
+clear the minefield.  ÿ
+// LAST

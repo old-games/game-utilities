@@ -1,0 +1,307 @@
+// COMPLETION MESSAGES:
+
+
+Harkov's 1st Officer is on his way to a Rebel ship!
+Harkov is obviously leading a vast conspiracy of traitors!
+The logs will show you were killed in a minefield
+Your family will receive a certificate with the Imperial stamp
+// Number of objects: 20, (4 lines for each)
+Gamma 1
+WODEN
+
+
+// NEXT
+Gamma 2
+
+
+
+// NEXT
+Gamma 3
+
+
+
+// NEXT
+H-Alpha
+
+
+
+// NEXT
+H-Delta
+
+
+
+// NEXT
+H-Beta
+
+
+
+// NEXT
+Protector
+
+Harkov
+
+// NEXT
+Lambda
+
+Officer
+
+// NEXT
+Osprey
+Vot'n
+Sec. Order
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Type 1A
+
+
+
+// NEXT
+Type 1A
+
+
+
+// NEXT
+Type 1B
+
+
+
+// NEXT
+Type 1B
+
+
+
+// NEXT
+Chi
+
+Supplies
+
+// NEXT
+Psi
+
+Supplies
+
+// NEXT
+Margaret
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Alright, Gamma 1, show us how a great pilot clears a minefield!
+Mines
+// NEXT
+Gamma 2 and 3, here's your chance to learn from the expert!
+Expert
+// NEXT
+Osprey to Gamma 1, you've been set up! We're here to rescue you
+Rescue
+// NEXT
+T/I Theta will cover you as you enter our hangar but move it!
+Our hangar
+// NEXT
+Gamma 1, it seems you don't get along or play well with others!
+Get along
+// NEXT
+Gamma 1, do you think maybe you should call for reinforcements?
+Reinforce
+// NEXT
+The Emperor is far, far away and out here Harkov rules!
+Far away
+// NEXT
+A Rebel cruiser has entered the area. What's [Harkov] up to?
+Rebel LtCal
+// NEXT
+Harkov has sent a shuttle to rendezvous with the Rebel cruiser
+Shu Lambda
+// NEXT
+Gamma 1, inspect [SHU Lambda]. T/I Delta will assist you
+Intercept
+// NEXT
+This would be a really good time to request reinforcements!
+Really time
+// NEXT
+Get going, Gamma 1, your loyalty is being questioned
+Get going!
+// NEXT
+Enough of this charade, Gamma 1 is the Emperor's stool pigeon!
+Enough
+// NEXT
+[Gamma 2 and 3], destroy Gamma 1 now!
+Kill Gamma1
+// NEXT
+Osprey's shields are down, Gamma 1, get on board now!
+FRG shlds
+// NEXT
+Osprey to Gamma 1, we're heading out. Fly to our hangar!
+FRG going
+// NEXT
+// NAMES: 
+T/I Gamma 1 (You)
+Type 1 Mines
+Rebel Supply Cache
+T/I Gamma 2
+T/I Gamma 3
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Battle for Honor, Mission #1: Mineclearing
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+[T/I Gamma 1] will clear the mines around this Rebel supply cache, then inspect the containers.
+// NEXT
+[Gamma 2] and [3] will observe and learn how a hotshot pilot clears a minefield in an unshielded craft!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your objective is to
+demonstrate your superior flying
+skill by clearing a minefield in an
+unshielded craft.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Interceptor]
+designated [Gamma 1].  Your two
+wingmen will be along to observe
+only.
+// NEXT
+What opposition will there be?
+   You will face a number of [Type
+1 Mines].  These should not present
+a pilot of your skill with any real
+difficulty.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Do as your commander orders,
+but remain alert for the
+unexpected.  This mission puts you
+at unnecessary risk.  We believe
+you may be in danger.  If so, do
+not hesitate to call for
+reinforcements.  We have made
+special arrangements.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We now have incontrovertible
+evidence of Admiral Harkov's crimes.
+[Lord Vader] himself is coming to
+deal with him personally.  Your
+knowledge of operations aboard his
+flagship will be very helpful in
+determining where Harkov is likely
+to go next.
+   Harkov knows his crimes are
+punishable by death, so he must
+be planning to defect to the
+Rebels.  The Rebel Alliance is his
+only hope of avoiding our
+retribution.  This debacle may yet
+work to our advantage if he leads
+us to the remnants of the Rebel
+fleet!
+// NEXT
+Are there any special instructions?
+   Send for reinforcements
+immediately.  Redirect your cannon
+energy to the engines at maximum
+rate and fly towards the
+containers.  As you close in, keep
+jinking and weaving to avoid fire
+from the mines.  Be prepared to
+quickly cycle forward through the
+target list when you get close
+enough to inspect the first
+container.
+   While you're waiting for Shuttle
+Lambda to appear, stay near [M/FRG
+Osprey] and the protection of its
+guns.  When Lambda is launched,
+make your flyby to inspect it.  As
+through most of this mission, you
+will have to evade enemy fire
+constantly.  ÿ
+// LAST

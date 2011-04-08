@@ -1,0 +1,304 @@
+// COMPLETION MESSAGES:
+Very good, Beta 1.  You may quit now or try a hostile target
+The next target is an enemy corvette, don't get too close!
+Well done, Beta 1! You may quit now or try even harder targets
+TRN Omicron can reload your torpedoes up to twenty times
+
+
+// Number of objects: 19, (4 lines for each)
+Beta 1
+WODEN
+
+
+// NEXT
+Target
+
+
+
+// NEXT
+Target 3
+
+
+
+// NEXT
+Target 4
+
+
+
+// NEXT
+Target 5
+
+
+
+// NEXT
+Target 6
+
+
+
+// NEXT
+Target 7
+
+
+
+// NEXT
+Adam 1
+
+
+
+// NEXT
+Adam 2
+
+
+
+// NEXT
+Adam 3
+
+
+
+// NEXT
+Adam 4
+
+
+
+// NEXT
+Adam 5
+
+
+
+// NEXT
+Adam 6
+
+
+
+// NEXT
+Adam 7
+
+
+
+// NEXT
+Adam 8
+
+
+
+// NEXT
+Adam 9
+
+
+
+// NEXT
+Adam 10
+
+
+
+// NEXT
+Training
+Vot'n
+Hangar
+
+// NEXT
+Omicron
+Top Ace
+Warheads
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Pay attention, Beta 1! We'll do this by the book
+By the book
+// NEXT
+Press ['T'] to select your first target, the first container
+Target
+// NEXT
+The target appears to turn yellow and also displays in your CMD
+CMD
+// NEXT
+Press ['W'] to toggle the weapon system to Proton Torpedo Mode
+Weapon
+// NEXT
+The targeting box will turn yellow to indicate it is locking on
+Yellow
+// NEXT
+When the box turns red, you have a lock and may fire the weapon
+Red
+// NEXT
+Press ['F2'] to select the warhead view, then ['F1'] to return
+Warhead vw
+// NEXT
+Press ['T'] to target the second container
+T again
+// NEXT
+You will have to turn your craft to acquire a lock, do so
+Turn
+// NEXT
+Fire when ready and destroy the second container
+Kill 2 con
+// NEXT
+Target the freighter and steer your craft to maintain the lock
+Steer
+// NEXT
+Fire one torpedo as soon as you have a solid lock (red box)
+Fire one
+// NEXT
+The CMD will show the target's hull has been severely damaged
+Damaged
+// NEXT
+Throttle up and close to cannon range and finish it with lasers
+Throttle up
+// NEXT
+[TRN Omicron] is available for reloading operations
+Reload
+// NEXT
+With the Omicron targeted, press [Shift-B] and come to a stop
+Shift-B
+// NEXT
+// NAMES: 
+T/B Beta 1 (You)
+Target CONs
+Training Platform
+TRN Omicron
+Target FRT
+Hostile CRV
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Bomber Combat #1: Proton Torpedoes
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+You will learn how to target and destroy enemy craft using [proton torpedoes].
+// NEXT
+Your first targets will be two stationary containers followed by a moving freighter.
+// NEXT
+If you wish, you may then engage a hostile corvette but watch your distance!  It can kill at [two] kms.
+// NEXT
+When you run out of torpedoes, [TRN Omicron] will be launched from the Training Platform.
+// NEXT
+To receive a reload, target it and press [Shift-B]. Rendezvous with the TRN and come to a full stop.
+// NEXT
+[Omicron] will dock with you and your warhead launchers will be replenished.  This will take [5] seconds.
+// NEXT
+[Omicron] will remain "on call" to replenish your warheads as you need them. 
+// NEXT
+When you're ready for another reload, use [Shift-B] again.  You can get [20] reloads this way.
+// NEXT
+You will receive further instructions in flight.  Follow your instructor's commands to the letter!
+// NEXT
+If you like, you may continue to practice against even tougher targets.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To practice [proton torpedo]
+attacks.  You will learn how to
+acquire and hold a lock for the
+torpedo's homing system before
+firing.  When targeting large ships
+you may target individual
+components of the hull, engines,
+etc.  You may even "surgically"
+remove the enemy ships armament
+by targeting the individual lasers!
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Bomber Beta 1]
+(T/B Beta 1).  It is a special heavy
+version of the basic TIE
+starfighter.  Armament consists of
+twin warhead launchers and two
+wing panel mounted lasers.  It is
+slower and less maneuverable than
+the TIE Fighter but has a much
+stronger hull.
+   For this mission your craft is
+armed with the standard load of [6
+proton torpedoes].  Proton
+torpedoes are self-propelled
+warheads with a tracking and
+homing system.  You may acquire a
+lock as far as [six] kilometers away
+from your target.  This allows you
+to stay well outside the range of
+enemy guns.
+// NEXT
+What opposition will there be?
+   There will be no opposition at
+first.  If you like, you may
+continue the combat to practice
+against targets that will shoot
+back.
+   When you run out of torpedoes
+you will want to get reloaded.
+Transport Omicron will leave the
+hangar when you have launched all
+of your torpedoes.  You may
+request that the Transport
+"board" you to resupply your
+warhead load.
+   To request a reload, target
+the Transport and press [Shift-B].
+Your throttle will be set to zero
+so the Transport can dock with
+you.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have shown the ability to
+track and acquire a target lock
+for launching proton torpedoes.
+// NEXT
+Are there any special instructions?
+   Keep the targeted craft inside
+your targeting box.  To do this
+you might try placing the center
+pip of your HUD over the target
+and keeping it there until the
+targeting box turns red.  ÿ
+// LAST

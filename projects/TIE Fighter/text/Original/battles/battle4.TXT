@@ -1,0 +1,57 @@
+Battle Four
+Battle Four Cutscene
+//BLOCK
+CONFLICT AT MYLOK IV
+Battle pirates in outer rim.
+Admiral Zaarin gains hyper- _
+drive capability for TIEs.
+//BLOCK
+b4gal
+Mylok System
+128 12 160 32
+//BLOCK
+b4m1fm
+b4m2bm
+b4m3bm
+b4m4im
+b4m5gm
+//BLOCK
+Escort an Habeen convoy of _
+cargo ferries to a rendezvous _
+with Zaarin's star destroyer. _
+You will fly a TIE Fighter _
+against Nharwaak Y-wings and _
+Z-95s. Intercept the torpedo _
+craft and save the convoy!
+//BLOCK
+Lead an attack on a Nharwaak _
+space station. You will fly a _
+TIE Bomber against the station _
+and its protecting Y-wings and _
+corvettes. Punish the Nharwaak _
+for their refusal to cooperate!
+//BLOCK
+Thwart a Nharwaak retaliation _
+against an Habeen research station. _
+You will fly a TIE Bomber against _
+several Y-wings. The Habeen's _
+research team and vital equipment _
+must be safely evacuated!
+//BLOCK
+Protect a rendezvous with _
+the Habeen wherein they deliver _
+the new hyperdrive technology. _
+You will fly a TIE Interceptor _
+against Nharwaak Y-wings and _
+corvettes. Ensure the Empire's _
+acquisition of the new hyperdrive!
+//BLOCK
+Stop the Nharwaak from _
+providing the Rebels with the _
+new hyperdrive technology. You _
+will fly an Assault Gunboat _
+against a Rebel frigate and its _
+A-wings, X-wings and Y-wings. _
+Make sure none of the enemy _
+escape!
+//BLOCK

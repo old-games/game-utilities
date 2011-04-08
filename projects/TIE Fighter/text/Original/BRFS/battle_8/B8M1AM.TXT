@@ -1,0 +1,365 @@
+// COMPLETION MESSAGES:
+Thanks to your gallant efforts we saved almost everyone
+By saving key personnel, you've helped the Empire!
+
+
+
+
+// Number of objects: 30, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Omar 1
+
+Personnel
+
+// NEXT
+Omar 3
+
+
+
+// NEXT
+Omar 2
+
+Personnel
+
+// NEXT
+Timber
+
+
+
+// NEXT
+Hut
+
+
+
+// NEXT
+Libro
+
+Personnel
+
+// NEXT
+Subcom
+
+
+
+// NEXT
+Teal
+
+
+
+// NEXT
+Nomme
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Raptor
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Theta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Omega
+
+
+
+// NEXT
+Z-Sigma
+
+
+
+// NEXT
+Z-Epsilon
+
+
+
+// NEXT
+Z-Lambda
+
+
+
+// NEXT
+Z-Tau
+
+
+
+// NEXT
+Z-Nu
+
+
+
+// NEXT
+Z-Mu
+
+
+
+// NEXT
+Runner
+
+Workers
+
+// NEXT
+Resro
+
+Machinery
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Omar 1 to Alpha 1, we are all glad that you're here!
+
+// NEXT
+Container Transport [Nomme], finishing our evacuation of Omar 2
+
+// NEXT
+Omar 1 has been almost completely evacuated
+
+// NEXT
+We have already lost two of the three plants here
+
+// NEXT
+Assault Gunboats Nu here to help you Alpha 1
+
+// NEXT
+Omar 1 is under attack, Alpha 1, it is your primary concern
+
+// NEXT
+We have lost TIE Advanced plant [Omar 1]
+
+// NEXT
+Good, the frigate Raptor has been destroyed!
+
+// NEXT
+Omar 1 is in very serious condition, Alpha 1
+
+// NEXT
+Enemy transports have entered the area!
+
+// NEXT
+It looks like you have defeated all of their starfighters
+
+// NEXT
+This is Omar 1, we are being overwhelmed!
+
+// NEXT
+Omar 2 is falling! The situation is looking very precarious
+
+// NEXT
+May Day! May Day! We are..
+
+// NEXT
+We've just lost TIE Advanced plant [Omar 3], we need more help!
+
+// NEXT
+HELP, anyone, there are still some of us left on Omar 2!
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+T/A Plant Omar 1
+T/A Plant Omar 2
+T/A Plant Omar 3
+C/TRN Libro
+Broarding Craft
+C/FRT Nomme
+C/TRN Hut
+Zaarin's M/FRG
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Strategic Warfare #1: Evacuate TIE Advanced Plants
+// NEXT
+We have received a distress call from the [TIE Advanced] plants of [Omar]. They are under attack.
+// NEXT
+Three [TIE Defenders] from [Alpha] group will hyper in to assist in the evacuation of all remaining personnel. 
+// NEXT
+We would like to save the plants, but the lives of Imperial personnel are our primary concern.
+// NEXT
+You are to provide protection over the withdrawal of our people and see our rescue craft to safety.
+// NEXT
+This mission was created by DAVID MAXWELL for Peregrine Software, 1994.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   In an attempt to seriously
+weaken the Empire's [TIE Advanced]
+manufacturing capabilities, Admiral
+Zaarin's forces are launching a
+strike against the Empire's three
+starfighter production facilities at
+[Omar].  The Imperial forces
+currently at Omar can't stop this
+attack, so the Emperor has
+ordered, as a precautionary
+measure, the temporary evacuation
+of the base personnel.  The highly
+skilled workforce at these plants is
+vital to keeping the Imperial Navy
+equipped with the most advanced
+starfighter technology.  They must
+be saved!  Two of the factories,
+Omar 2 and Omar 3, have been
+completely evacuated, but plant
+personnel are still awaiting rescue
+from [Omar 1].  Your mission is to
+ensure the safe withdrawal of all
+personnel from this facility.  Omar
+1 must survive long enough for the
+last craft, Corellian transport
+Timber, to board it.
+// NEXT
+What craft will I be flying?
+   You will be the flight leader, [TIE
+Defender Alpha 1].  You will have
+two wingmen.  Your craft will be
+armed with [8] advanced missiles.
+// NEXT
+What opposition will there be?
+   One of Zaarin's [modified
+frigates] with all of its complement
+of starfighters is already in the
+area.  We expect [TIE Bombers]
+launched from the [frigate] to
+spearhead the attack.  Watch for
+other enemy craft that hyper into
+the area and reinforce the attack.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We saved a great number of
+skilled Imperial technicians from
+certain death at the hands of
+[Zaarin's] traitorous forces.  The
+surprise coup attempt by Admiral
+Zaarin, former head of research
+and development for starfighter
+technology, has left Imperial
+forces on the defensive.  His
+inside knowledge of the Empire's
+key military industrial facilities
+leave them extremely vulnerable to
+attack.  While Zaarin's exact
+motivations and ultimate plans are
+unclear at this point, his forces
+are as great a threat as the
+Rebels to the survival of the
+Empire.  We can certainly expect
+more attacks from Zaarin very
+soon.
+// NEXT
+Any special instructions?
+   Ignore the [frigate] and
+concentrate on taking out all the
+[TIE Bombers] it launches.  Position
+yourself between the [frigate] and
+[Omar 1].  Try not to let too many
+[TIE Bombers] launch warheads.  If
+any warheads are launched, try to
+blast them as they pass.
+Remember to order your wingmen to
+help when needed.  ÿ
+// LAST

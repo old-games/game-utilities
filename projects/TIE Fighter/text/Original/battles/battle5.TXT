@@ -1,0 +1,51 @@
+Battle Five
+Battle Five Cutscene
+//BLOCK
+BATTLE FOR HONOR
+Capture a defecting officer.
+Admiral Harkov is captured
+and brought to Darth Vader
+//BLOCK
+b5gal
+Parmel System
+110 12 142 32
+//BLOCK
+b5m1iw
+b5m2gw
+b5m3gw
+b5m4aw
+b5m5gw
+//BLOCK
+Escape a trap set for you.
+Fly a TIE Interceptor through _
+a minefield to safety aboard a _
+loyal ship. Uncover Admiral Harkov
+as a traitor to the Empire.
+//BLOCK
+Conduct a hit and fade attack _
+against a Rebel supply base. You _
+will fly an Assault Gunboat to do
+armed reconnaissance. Keep _
+Harkov from getting resupplied!
+//BLOCK
+Prevent a supply convoy from
+reaching Harkov's forces. Fly an _
+Assault Gunboat against a variety
+of armed freighters. Interdict the _
+convoy to keep Harkov's forces _
+from leaving the area!
+//BLOCK
+Attack Harkov's fighter defenses _
+to prepare for the final assault.
+Fly a TIE Advanced against
+defecting TIE Advanceds. Corner
+Harkov and the traitors he is
+leading!
+//BLOCK
+Make the final assault on
+the Rebel platform. Fly an Assault _
+Gunboat to strip away the last
+of Harkov's fighters and mines. _
+Ensure that Harkov is captured _
+and brought to Lord Vader!
+//BLOCK

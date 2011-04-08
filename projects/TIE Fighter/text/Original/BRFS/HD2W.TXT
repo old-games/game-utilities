@@ -1,0 +1,362 @@
+// COMPLETION MESSAGES:
+Well done, Delta 1. The Rebel spy will have much to tell us!
+You may return to the hangar or continue at your discretion
+Outstanding, Delta 1! These criminals will soon be in prison!
+This sector smells cleaner already!
+Apparently our confidence in your abilities is misplaced
+Return to base while we consider your future as a pilot
+// Number of objects: 30, (4 lines for each)
+Delta 1
+WODEN
+
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Sigma 1
+
+Stormtrprs
+
+// NEXT
+Sigma 2
+
+Stormtrprs
+
+// NEXT
+Glory
+Zaarin
+
+
+// NEXT
+Recovery
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+AZ 77
+
+Repair
+
+// NEXT
+Xi
+
+Fuel
+
+// NEXT
+Psi
+
+Food
+
+// NEXT
+Poltroon
+
+Repair Crew
+
+// NEXT
+Nemzet
+
+
+
+// NEXT
+Lin
+
+Criminals
+
+// NEXT
+Kaar
+
+Rebel Spy
+
+// NEXT
+Rogue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Ko
+
+Smugglers
+
+// NEXT
+Thunder
+
+
+
+// NEXT
+Sague 1
+
+
+
+// NEXT
+Sague 2
+
+
+
+// NEXT
+Sague 3
+
+
+
+// NEXT
+Renspecs
+
+False hold
+
+// NEXT
+Scarlet 4
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Target CORT Lin, it's powering up its hyperdrive to escape!
+Target CORT
+// NEXT
+Press ['F8'] to set your beam weapon recharge rate
+F8 key
+// NEXT
+Press ['B'] to engage the beam weapon on the current target
+B key
+// NEXT
+The range of the tractor beam is no more than 1.5 kms
+Range
+// NEXT
+The target will turn blue to indicate the beam is working
+Blue light
+// NEXT
+Your other weapons remain available for use with the beam
+All weapons
+// NEXT
+Delta 1, disable that [B-wing] for capture!
+B-wing!
+// NEXT
+Get to it, Delta 1, stop that ship!
+Get to it
+// NEXT
+Quickly, Delta 1, stop that other Corellian Transport!
+COR Kaar
+// NEXT
+Another Corellian Transport just launched from the station
+CORT Ko
+// NEXT
+It must be the one we want, it's got a pair of A-wing escorts!
+A-Ws
+// NEXT
+[ATR Sigma] is under attack, please assist!
+ATR Sigma
+// NEXT
+The crew of the [Lin] are wanted. Back to jail for them!
+Criminals
+// NEXT
+The Rebel spy has been captured. Off to the interrogation now!
+Rebel Spy
+// NEXT
+The [Ko] is a smuggler's ship, it will be impounded.
+Smugglers
+// NEXT
+[SPC] Nemzet has powered up for combat, take it out!
+Nemzet
+// NEXT
+// NAMES: 
+T/D Delta 1 (You)
+T/A Alpha
+T/A Gamma
+ATR Sigma
+Salvage Station
+Corellian Transport
+(Rebel Spy)
+Escort Shuttles
+Storage Containers
+Disabled Ships
+ISD Glory
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Defender Combat #2: Tractor Beam
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+We have tracked a Rebel spy to this salvage yard near [Venzeiia 2 Prime].  The spy must be taken alive!
+// NEXT
+The individual we want is flying a [YT-1300 Corellian Transport] that has been modified for extra speed.
+// NEXT
+Since it's capable of outrunning our Gunboats, a TIE Defender will be necessary to catch it.
+// NEXT
+Your primary objective is to intercept and disable any [Corellian Transports] in the area.
+// NEXT
+Six TIE Advanced will support you.  They will destroy any opposition and then attack the platform.
+// NEXT
+Assault Transport group [Sigma] will stand by ready to board and capture any craft that are disabled.
+// NEXT
+For harboring fugitives, the station will be seized.  [ISD Glory] will arrive to oversee its capture.
+// NEXT
+Your secondary objective is to assist this effort in any way you can (shield reduction, area patrol, etc.)
+// NEXT
+Prisoners and captured vessels will be taken aboard the [Glory] for "processing".  
+// NEXT
+Remain alert at all times to the unexpected opportunity.  Be prepared to follow new orders.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To practice using a [tractor
+beam].  A tractor beam is a
+controlled force field that can be
+used to reduce a target ship's
+mobility.  This allows your craft's
+other offensive weaponry to be
+used more effectively.  Whether
+you are trying to destroy or
+disable the enemy craft, the
+tractor beam will make your job
+easier.
+// NEXT
+What craft will I be flying?
+   You will fly the [TIE Defender]
+designated [Delta 1].  For this
+mission your ship will be equipped
+with a [tractor beam emitter], as
+well as the standard load of [8]
+advanced concussion missiles.
+   The tractor beam uses a lot of
+power.  This power has to come
+either from your engines, cannons,
+or shields; so finding the optimal
+balance for a particular
+circumstance may prove quite a
+challenge.  The beam emitter's
+range is approximately 1.5
+kilometers.
+// NEXT
+What opposition will there be?
+   The main threat you will face is
+the platform's gun batteries.  Stay
+out of range while your [TIE
+Advanced] escorts attack the
+platform.  They will flush out your
+quarry if it doesn't attempt to
+flee at first sight of you.
+   The [Corellian Transports] you
+must disable are very fast.  You
+will need to be careful with your
+energy management to catch them.
+   There are some [A-wings] to be
+wary of, but your escorts should
+take care of them.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to use the incredible power
+of the TIE Defender in the service
+of your Emperor!
+// NEXT
+Are there any special instructions?
+   The Corellian Transports
+attempt their escapes one at a
+time, but right after one another
+so you must move quickly to catch
+them all in time.  Try weakening
+their shields with missiles as you
+close in, (each warhead will take
+out about 20%.)
+   Once you are within range for
+your ion cannons, (about 0.8
+kilometers) try the following energy
+balance:  tractor beam recharge at
+[maximum], cannon recharge at
+[increased] rate and maintain shields
+at [normal] recharge.  ÿ
+// LAST

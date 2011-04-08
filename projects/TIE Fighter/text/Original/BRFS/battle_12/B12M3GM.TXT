@@ -1,0 +1,332 @@
+// COMPLETION MESSAGES:
+Good work Tau 1. Head back to the hangar, immediately!
+The Garrett is making preparations to depart soon
+
+
+Lord Vader is losing patience!
+You could be re-assigned to a freighter crew
+// Number of objects: 19, (4 lines for each)
+Tau
+MadMax
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Omega 1
+
+
+
+// NEXT
+Omega 2
+
+
+
+// NEXT
+Omega 3
+
+
+
+// NEXT
+Sigma 1
+
+
+
+// NEXT
+Garrett
+Maxwell
+Lord Vader
+
+// NEXT
+Botani 1
+
+
+
+// NEXT
+Botani 2
+
+
+
+// NEXT
+Botani 3
+
+
+
+// NEXT
+B135
+
+Grenades
+
+// NEXT
+B134
+
+Electronics
+
+// NEXT
+B133
+
+Blasters
+
+// NEXT
+Junker
+
+
+
+// NEXT
+Logan
+
+
+
+// NEXT
+Yme
+
+
+
+// NEXT
+Yme
+
+
+
+// NEXT
+Com 1
+
+
+Officers
+// NEXT
+// Number of radio messages: 8, (2 lines for each)
+Mu 1 to Tau 1, we'll lead you in
+
+// NEXT
+Mu 1 to Tau 1, we're engaging the X-wings!
+
+// NEXT
+Get the freighters before they get away Tau 1!
+
+// NEXT
+Excellent Tau 1, four X-wings down, four to go
+
+// NEXT
+Garrett to Tau 1, we have arrived!
+
+// NEXT
+Rho 1 to Tau 1, we are here as requested
+
+// NEXT
+Assault Gunboats Mu are both gone Tau 1
+
+// NEXT
+A-wings have just entered the area, be careful Tau 1!
+
+// NEXT
+// NAMES: 
+GUNs Tau (You)
+Bothan TRNs
+GUN Mu
+Cargo Containers
+GUNs Mu
+ISD Garrett
+ATRs Omega
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Prelude to Endor, Mission #3: Attack at Bothuwui
+// NEXT
+Not long ago the [Bothans] captured an Imperial freighter that was carrying classified cargo.
+// NEXT
+To obtain news about this missing freighter, our forces are going to capture some of their ships. 
+// NEXT
+Gunboats [Tau] will disable the transports, then provide cover over the capture operation.
+// NEXT
+Once a transport is disabled, the [Garrett] will enter and launch assault transports [Omega] to capture it.
+// NEXT
+This mission was created by [David Maxwell]$for [Totally Games] 1995.
+// NEXT
+Gunboats [Mu] will escort Gunboats [Tau] against the Bothans.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   You must disable the three
+Bothan transports and provide
+cover for assault transports
+Omega during their capture
+operation.  [Imperial] scouts located
+this group of three transports
+taking on cargo.  Not long ago,
+the [Bothans], known to be
+sympathetic to the Rebels,
+attacked and captured an [Imperial]
+freighter carrying top secret
+information in its computers.  This
+information is important enough
+that the [Emperor] has assigned
+[Lord Vader] to personally
+investigate the incident.  At
+present, Imperial Intelligence
+doesn't know where the Bothans
+have hidden the freighter.  Imperial
+forces are going to attack the
+[Bothans] along all of their known
+trade routes and bases in hopes
+of gathering information on the
+missing freighter.
+// NEXT
+What craft will I be flying?
+   You will fly a [Gunboat]
+designated [Tau 1].  You will lead the
+two ships in your flight group.
+For this mission your craft has
+been loaded with the standard
+armament of [8 advanced proton
+torpedoes].
+// NEXT
+What opposition will there be?
+   The [Bothans] have acquired
+various technologies, most of it
+from the [Rebels].  Therefore,
+expect [Rebel] type starfighters to
+defend their transports.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   The [Emperor] wants any and all
+information on the [Bothans].  The
+Bothans are noted for their
+extensive spy network and have
+foolishly allied themselves with the
+Rebels.  Until now, the Bothans
+have not been a serious threat to
+the Empire.  They attracted the
+[Emperor's] attention when they
+captured one of our freighters.
+This Imperial freighter was carrying
+encrypted data files concerning a
+top secret Imperial weapons
+program.  Imperial Intelligence
+believes that the Bothan computer
+specialists are capable of decoding
+the data, but it will take them
+some time.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Imperial forces captured three
+of the [Bothans'] transports along
+with their crews.  [Lord Vader] is
+currently interrogating these new
+prisoners.  Imperial technicians are
+scouring the transports for clues
+as to the whereabouts of the
+stolen freighter.  The ships'
+onboard computers are being
+closely scrutinized and our
+analysts are reviewing the ships'
+logs.  [Lord Vader] has already
+learned that the stolen freighter
+was taken to the Bothan space
+installation near Kothlis.  He is
+certain the Empire will know all the
+[Bothan's] secrets shortly.
+// NEXT
+Are there any special instructions?
+   Order your wingman to attack
+[Botani 1].  Then fire two torpedoes
+each at [Botani 2] and [Botani 3].
+Destroy any X-wings that maneuver
+into your line of fire and use a
+single torpedo at point blank
+range.  Don't waste time, as the
+Bothan transports will try to
+escape as soon as Imperial forces
+arrive.  When disabling the
+transports, approach them from
+below so the containers block their
+bottom turret and the top turret
+cannot get a clear shot at your
+craft.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped capture a [Bothan
+commander] for interrogation.  He
+should have more valuable
+information than the rest of the
+Bothan rabble.  It has been noted
+that you performed above and
+beyond your regular mission
+assignment.  Any intelligence
+gathered by [Lord Vader] will go
+straight to the [Emperor].  We
+cannot tell you more at this time,
+except everything is not as it
+seems.
+// NEXT
+Are there any special instructions?
+   Let no craft escape.  Hurry to
+disable the escort shuttle [Com 1]
+before it leaves the area with the
+Bothan commander.  Fire one
+torpedo at it to lower its shields.
+ÿ
+// LAST

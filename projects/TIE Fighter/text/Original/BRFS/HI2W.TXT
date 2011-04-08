@@ -1,0 +1,317 @@
+// COMPLETION MESSAGES:
+Very good, T/I Gamma 2, you have done well
+You may return to the hangar or continue at your discretion
+Congratulations on destroying so many enemy fighters
+You're going to build a fine reputation this way!
+The trap was flawless! YOU are to blame for this failure!
+Now we are all going to die a slow death, marooned in space!
+// Number of objects: 28, (4 lines for each)
+Gamma
+WODEN
+
+
+// NEXT
+Eta
+Top Ace
+
+
+// NEXT
+Zeta
+Top Ace
+
+
+// NEXT
+Eta
+Top Ace
+
+
+// NEXT
+Beta
+Top Ace
+
+
+// NEXT
+Delta
+Top Ace
+
+
+// NEXT
+Beta
+Top Ace
+
+
+// NEXT
+Delta
+Top Ace
+
+
+// NEXT
+Implacable
+Vot'N
+
+
+// NEXT
+Rho
+Top Ace
+Assist
+
+// NEXT
+Rho
+Top Ace
+Assist
+
+// NEXT
+Rho
+Top Ace
+Assist
+
+// NEXT
+AZ 77
+Officer
+Supplies
+
+// NEXT
+Chi
+
+Supplies
+
+// NEXT
+Xi
+
+Liquid Gas
+
+// NEXT
+Psi
+
+Grain
+
+// NEXT
+Neenoc
+
+Comp Eq
+
+// NEXT
+Derdmin
+Officer
+
+
+// NEXT
+Red
+Officer
+
+
+// NEXT
+Gold
+Veteran
+
+
+// NEXT
+Red 4
+Ace
+
+
+// NEXT
+Ardent
+Officer
+
+
+// NEXT
+Red
+Officer
+
+
+// NEXT
+Gold
+Veteran
+
+
+// NEXT
+Blue
+Veteran
+
+
+// NEXT
+Red
+Ace
+
+
+// NEXT
+Gold
+Veteran
+
+
+// NEXT
+Red
+Veteran
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Begin the attack! T/I Gamma, engage Rebel fighters
+Begin
+// NEXT
+T/I Gamma, there's a Corellian transport trying to escape!
+Neenoc
+// NEXT
+T/I Eta, intercept [SPC Derdmin]. Remember, no prisoners!
+Demeet
+// NEXT
+The Rebels took the bait! Bombers, your target is [CRL Ardent]
+Took bait
+// NEXT
+T/I Gamma, take out those X-wings!
+X-Ws
+// NEXT
+Rebel Y-wings are preparing to launch torpedoes!
+Y-Ws
+// NEXT
+The platform's shields have failed, help to finish it quickly!
+PLT down
+// NEXT
+CRL Ardent's shields have failed, go for the kill!
+CRL down
+// NEXT
+Gamma 2, pay attention, you're under attack!
+Pay attent
+// NEXT
+Those 3 lights above the targeting box are threat indicators
+Threat
+// NEXT
+The left one turns red when enemy fighters are targeting you
+Laser Left
+// NEXT
+The right one warns you of missile attacks (yellow then red)
+Mis Right
+// NEXT
+The middle one lights up when a large ship is shooting at you
+Middle
+// NEXT
+FRG Implacable is taking enemy fire!
+Help FRG
+// NEXT
+Implacable just lost shields, you better do something quick!
+FRG shield0
+// NEXT
+More Rebels have entered the area, watch out for those A-wings
+More Rebs
+// NEXT
+// NAMES: 
+FRG Implacable
+Rebel Supply Depot
+T/I Gamma (You)
+T/I Eta
+T/B Beta
+T/B Delta
+CRL Ardent
+Z-95s
+X-W Blue
+Y-W Red
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Interceptor Combat #2: Ambush!
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+A critical Rebel supply depot will be attacked in order to draw a Rebel cruiser into an ambush.
+// NEXT
+[FRG Implacable] will attack with four TIE squadrons, two of Bombers and two of Interceptors.
+// NEXT
+[T/I Gamma] and [Eta] will clear any fighter defenses while [T/B Beta] and [Delta] attack the platform.
+// NEXT
+The Mon Calamari Light Cruiser [Ardent] will arrive about the time the platform is destroyed.
+// NEXT
+After finishing with the platform, the Bombers will attack the cruiser, with the Interceptors covering.
+// NEXT
+The [Ardent] will launch [X-wings] and [Y-wings]. The Rebel fighters must be prevented from attacking.
+// NEXT
+Be alert to the arrival of additional enemy forces. Be sure to intercept any threats to the [Implacable].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your objective is to lure a
+Rebel cruiser into an ambush.
+// NEXT
+What craft will I be flying?
+   You will fly [TIE Interceptor]
+designated [Gamma 2].  You will be a
+wingman in a three ship flight
+group.
+// NEXT
+What opposition will there be?
+   The platform is well armed with
+defensive lasers.  There are a
+number of [Z-95 Headhunters] and a
+[System Patrol Craft] for local area
+defense.  The Rebel cruiser is a
+medium sized starship of significant
+combat power.  It can launch up
+to one full squadron of [X-wing]
+and/or [Y-wing] starfighters.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have taken part in a major
+operation to strike a Rebel base
+and lure a capital ship to its doom!
+// NEXT
+Are there any special instructions?
+   Use the "assign current target
+to wingman" order often.  If there
+are no starfighters for you to
+engage, attack the platform (or
+the cruiser) to draw fire away
+from the Bombers.  Your ability to
+evade is much greater than theirs,
+but they have the heavy weapons.
+ÿ
+// LAST

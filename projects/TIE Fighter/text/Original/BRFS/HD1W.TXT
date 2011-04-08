@@ -1,0 +1,386 @@
+// COMPLETION MESSAGES:
+Good enough, Delta 1, you may return to the hangar now
+You may remain, but you will face overwhelming odds!
+Outstanding, Delta 1! Your performance was amazing!
+
+Keep trying, Delta 1, you will succeed!
+
+// Number of objects: 32, (4 lines for each)
+Delta 1
+WODEN
+
+
+// NEXT
+Challenge
+
+Enemy T/Ds
+
+// NEXT
+Novice
+Novice
+
+
+// NEXT
+Officer
+Officer
+
+
+// NEXT
+Veteran
+Veteran
+
+
+// NEXT
+Ace
+Ace
+
+
+// NEXT
+Top Ace
+Top Ace
+
+
+// NEXT
+Reload
+Top Ace
+Warheads
+
+// NEXT
+X-Wing
+Novice
+X-wings
+
+// NEXT
+Y-Wing
+Novice
+Y-wings
+
+// NEXT
+A-Wing
+Novice
+A-wings
+
+// NEXT
+B-Wing
+Novice
+B-wings
+
+// NEXT
+Novice
+Novice
+
+
+// NEXT
+Officer
+Officer
+
+
+// NEXT
+Veteran
+Veteran
+
+
+// NEXT
+Ace
+Ace
+
+
+// NEXT
+Top Ace
+Top Ace
+
+
+// NEXT
+Novice
+Novice
+
+
+// NEXT
+Officer
+Officer
+
+
+// NEXT
+Veteran
+Veteran
+
+
+// NEXT
+Ace
+Ace
+
+
+// NEXT
+Top Ace
+Top Ace
+
+
+// NEXT
+Novice
+Novice
+
+
+// NEXT
+Officer
+Officer
+
+
+// NEXT
+Veteran
+Veteran
+
+
+// NEXT
+Ace
+Ace
+
+
+// NEXT
+Top Ace
+Top Ace
+
+
+// NEXT
+Novice
+Novice
+
+
+// NEXT
+Officer
+Officer
+
+
+// NEXT
+Veteran
+Veteran
+
+
+// NEXT
+Ace
+Ace
+
+
+// NEXT
+Top Ace
+Top Ace
+
+
+// NEXT
+// Number of radio messages: 12, (2 lines for each)
+Delta 1, target each of the Neutral CN/Es and note the names!
+Delta 1
+// NEXT
+Inspect the CN/E with the name of the craft you wish to fight
+CN Buttons
+// NEXT
+The craft you have selected will enter now
+Enter now
+// NEXT
+To face all five skill levels at once, fire 1 shot at the CN/E
+All 5
+// NEXT
+The 1st will be a Novice pilot, the next an Officer, the next..
+AI level
+// NEXT
+a Veteran, the next an Ace and then a Top Ace Pilot!
+AI cont.
+// NEXT
+[A-wings] are fast, agile and they have missiles!
+A-Wings
+// NEXT
+[B-wings] are heavily armed and can take a lot of hits
+B-wing
+// NEXT
+[Y-wings] are powerful but sluggish. Made obsolete by B-Wing
+Y-wings
+// NEXT
+[X-wings] are well balanced and very challenging
+X-wings
+// NEXT
+So, you wanna run with the big dogs, eh?
+Equal?
+// NEXT
+Are you really that sure of yourself, Delta 1?
+T/Ds
+// NEXT
+// NAMES: 
+T/D Delta 1 (You)
+CN/E X-wing
+CN/E Y-wing
+CN/E A-wing
+CN/E B-wing
+X-W Novice
+X-W Officer
+X-W Veteran
+X-W Ace
+X-W Top Ace
+CUV Reload
+X-wings
+Y-wings
+A-wings
+B-wings
+Y-W Novice
+B-W Novice
+A-W Novice
+CN/E Challenge
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Defender Combat #1: Dogfighting!
+// NEXT
+This mission designed for Peregrine Software by >David Wessman  1994c
+// NEXT
+You will begin surrounded by [four class E cargo containers] designated with Rebel starfighter names.
+// NEXT
+To initiate a dogfight of escalating difficulty with a particular craft, [inspect] its namesake container.
+// NEXT
+To initiate all five skill levels at once, [attack] (but do NOT destroy) the particular craft's namesake CN/E.
+// NEXT
+You will face pilots flying at each of five pilot skill levels: [Novice, Officer, Veteran, Ace] and [Top Ace].
+// NEXT
+Your primary objective is to destroy at least one of each craft at the [Novice] pilot level.  Only [4] kills!
+// NEXT
+The optional secondary goal is to destroy at least one of each craft at each skill level ([16] more kills!)
+// NEXT
+Combat utility vehicle [Reload] will reload your warheads when your launchers are empty (press [Shift-B].)
+// NEXT
+This will automatically shut off your engines to allow the CUV to board you, so try to be close to it.
+// NEXT
+It will follow you unless ordered to wait between reloads ([Shift-W], then [Shift-G] to resume docking.)
+// NEXT
+For additional bonus points [inspect] (or [attack]) CN/E [Challenge] to face ENEMY TIE Defenders.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To further develop your
+dogfighting abilities.  Energy
+management will be a bit more
+complex, but the Defender has
+much more powerful energy
+systems.  This will allow you to
+maintain most systems at maximum
+recharge and still retain a high
+speed.
+// NEXT
+What craft will I be flying?
+   You will fly the [TIE Defender
+Delta 1] (T/D Delta 1.) This is the
+Imperial Navy's newest starfighter.
+Standard armament consists of
+four laser and two ion cannons, as
+well as a dual warhead launcher.
+   It is also equipped with a
+specialized tractor beam system
+that can inhibit a target craft's
+ability to maneuver.  Its deflector
+shields are the new fast charging
+type.  Add to all this hyperdrive
+capability, high maneuverablity, the
+quickest acceleration and fastest
+sublight speed yet achieved, and
+you have the most powerful
+starighter in the galaxy!
+   For this mission your ship will be
+equipped with the standard load of
+[8] advanced concussion missiles.
+The [advanced concussion missile] is
+faster, tracks better and has a
+more powerful warhead than its
+predecessor.
+// NEXT
+What opposition will there be?
+   You will be able to select any
+of the four principal starfighters
+used by the Rebel Alliance.  These
+include the Y-wing, X-wing, A-wing
+and B-wing.  You may also choose
+to engage hostile TIE Defenders!
+   Arrival of a particular craft
+type is triggered by inspecting or
+attacking its namesake container.
+Each craft has nine replacement
+waves at each of the five pilot
+skill levels.
+   The order of entry is
+determined by craft destruction.
+The destruction of the first
+[Novice] enemy will trigger a [Novice]
+replacement and cause the arrival
+of the first [Officer] craft.  The
+replacement of the first [Officer]
+destoyed will be joined by the
+first [Veteran] and so on.
+   [ALL] craft will respond to
+inflight orders for waiting,
+proceeding with the mission and
+going home.  You may thereby tailor
+a mission to your liking by giving
+the appropriate commands to the
+various craft
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to dogfight with the best
+the Rebels have to offer!  Use
+this mission to challenge yourself
+to your utmost.  Try attacking all
+of the containers as quickly as
+you can from the start.  This will
+put you in the midst of 25 enemy
+craft.
+   Note that they will not all
+attack simultaneously, they would
+get in each others way if they
+did, but you will always be under
+attack from somebody.  The TIE
+Defenders may even become
+engaged in dogfights with Rebel
+fighters.
+// NEXT
+Are there any special instructions?
+   If you're getting overwhelmed,
+don't forget to use the inflight
+orders to make some of the enemy
+craft "wait" or "go home." To send
+all current and replacement craft
+of a particular type home at once,
+[destroy] the namesake container.  ÿ
+// LAST

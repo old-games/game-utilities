@@ -1,0 +1,286 @@
+// COMPLETION MESSAGES:
+Supply convoy destroyed! Return to base immediately
+The next phase of the attack on [Harkov] is ready now
+Good work, Mu 2. The intelligence you gathered is invaluable
+We'll be well prepared for our next operation
+We've had it now, there's no way we can stop Harkov
+Now the Rebels will be emboldened to continue their insurgency
+// Number of objects: 18, (4 lines for each)
+Mu
+WODEN
+
+
+// NEXT
+Rho
+
+Charity
+
+// NEXT
+DS 5
+
+Supplies
+
+// NEXT
+Pi
+
+Supplies
+
+// NEXT
+Protector
+
+Harkov
+
+// NEXT
+AAA Tow
+
+
+
+// NEXT
+A1 Tow
+
+
+
+// NEXT
+A2 Tow
+
+
+
+// NEXT
+H-Alpha
+Ace
+
+
+// NEXT
+H-Beta
+
+
+
+// NEXT
+H-Gamma
+
+
+
+// NEXT
+H-Delta
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Karflo
+
+Supplies
+
+// NEXT
+SoroSuub
+
+Water
+Hydrazine
+// NEXT
+Morgath 1
+
+Spares
+
+// NEXT
+Morgath 5
+
+Munitions
+
+// NEXT
+Sundog
+
+Troops
+
+// NEXT
+// Number of radio messages: 9, (2 lines for each)
+Looks like we're right on time. The convoy is due any second
+Any second
+// NEXT
+Keep it tight and watch out for those T/As
+Keep tight
+// NEXT
+Keep your shields up and press the attack on the convoy
+Press
+// NEXT
+Do [NOT] engage enemy fighters, you'll only waste time!
+Avoid T/As
+// NEXT
+Ok, here's the convoy, let's take it down!
+Here it is
+// NEXT
+Mu 1's been hit! Mu 2, you're the new leader!
+Mu 1 dead
+// NEXT
+Mu 2, it's just the two of us now, I think we better go!
+Mu 50% dead
+// NEXT
+Remember, FRTs only require [two] heavy rockets to destroy
+FRT
+// NEXT
+Mu 2, take out the CTRN Morgath. You'll only need one rocket
+CTRNs
+// NEXT
+// NAMES: 
+VSD Protector
+Rebel Outpost
+GUN Mu (You)
+Supply Convoy
+TIE Advanced
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Battle for Honor, Mission #3: Convoy Attack
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Your reconnaissance mission hit the jackpot!  Admiral Harkov's flagship, [VSD Protector], has been located.
+// NEXT
+[GUN Mu] will be sent back immediately in order to interdict an emergency supply convoy now enroute.
+// NEXT
+Your [concussion missile] launchers have been replaced with [rocket] launchers for this mission.
+// NEXT
+The [TIE Advanced] which gave you such a hard time on your last mission will still be there so be careful!
+// NEXT
+You'll be hitting the convoy far enough out that the T/As won't be able to stop you in time to save it.
+// NEXT
+As soon as the convoy has been destroyed return to base to prepare for the next mission.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   The objective is to interdict a
+supply convoy before it can reach
+the safety of the Rebel platform
+and Harkov's Star Destroyer.
+// NEXT
+What craft will I be flying?
+   You will fly an [Assault Gunboat]
+designated [Mu 2].  For this mission
+your craft has been loaded with a
+special heavy warhead armament of
+[8] rockets.
+   Remember that rockets have
+poor tracking and homing ability.
+They are best used against
+stationary or very slowly moving
+ships.  If the target ship is at all
+evasive, the rocket may well miss.
+In such cases, wait until you're at
+pointblank range to fire.
+// NEXT
+What opposition will there be?
+   The convoy consists of a
+variety of cargo ships, most of
+them armed.  A small starfighter
+escort is likely.  This operation will
+take place well away from the Rebel
+base platform and [VSD Protector].
+As many as two squadrons of the
+new [TIE Advanced] are with the
+Protector.  They will come to the
+aid of the convoy very quickly, so
+make your attack as fast as you
+can!
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Inspect the ships of the Rebel
+convoy.  They are carrying supplies
+destined for Harkov's forces.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   By destroying the convoy, we
+have weakened Harkov's task force.
+Their ability to conduct even
+limited operations has been
+severely curtailed.  This success
+will again be followed up by another
+quick strike.  The next operation
+will attempt to eliminate Harkov's
+TIE Advanced squadrons.
+// NEXT
+Are there any special instructions?
+   Use only one rocket on each
+ship, then finish off with cannons.
+Focus on the cargo vessels and
+don't get distracted by the
+starfighters!  Work quickly!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   Your inspection flybys have
+provided us with a pretty clear
+picture of what sort of supplies
+are most critical for Harkov.  This
+will help us anticipate his next
+move.
+// NEXT
+Are there any special instructions?
+   Order your wingmen to attack
+an A-wing anytime a new arrival of
+the convoy appears.  While your
+wingmen are busy, you'll have time
+to inspect the new ship.  Once
+inspected, you can order your
+wingmen to attack it and move on
+to next ship.  ÿ
+// LAST

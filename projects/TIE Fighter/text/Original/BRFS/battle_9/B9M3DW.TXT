@@ -1,0 +1,325 @@
+// COMPLETION MESSAGES:
+FRT Mharsup is safely away with the last T/D prototypes
+Well done, Delta 1! Follow the Mharsup to the rendezvous point
+
+
+This is a catastrophe, Delta 1!
+The Emperor will have your head!
+// Number of objects: 26, (4 lines for each)
+Delta 1
+WODEN
+
+
+// NEXT
+Proto 11
+
+
+
+// NEXT
+Proto 12
+
+
+
+// NEXT
+Red Knight
+
+
+
+// NEXT
+Dragonfly
+
+
+
+// NEXT
+Tau
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+R+D Lab
+
+T/D Tech
+
+// NEXT
+Mharsup
+
+
+
+// NEXT
+G'nabgib
+
+T/D Techs.
+
+// NEXT
+G'nabgib
+
+T/D Scient.
+
+// NEXT
+Z-Mu
+
+
+
+// NEXT
+Glory
+Zaarin
+
+
+// NEXT
+Z-Sigma
+
+Stormtrprs
+
+// NEXT
+Z-Sigma 3
+
+Stormtrprs
+
+// NEXT
+Z-Sigma 4
+
+Stormtrprs
+
+// NEXT
+Z-Sigma 5
+
+Stormtrprs
+
+// NEXT
+Z-Sigma 6
+
+Stormtrprs
+
+// NEXT
+20f16
+
+Repair
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Theta
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Iota
+
+
+
+// NEXT
+// Number of radio messages: 14, (2 lines for each)
+FRT Mharsup will arrive in a moment, Delta 1, go to full power!
+
+// NEXT
+G'nabgib will deliver the T/D technicians to FRT Mharsup
+
+// NEXT
+FRT Mharsup here, with a couple of extra Escorts!
+
+// NEXT
+Battle Stations! Looks like another attack is starting!
+
+// NEXT
+Delta 1, use your ions to disable these guys and we'll finish'm
+
+// NEXT
+OK, the T/D Techs will remotely pilot the T/Ds to the Mharsup
+
+// NEXT
+GUN Tau here to assist you, Delta 1!
+
+// NEXT
+Game over, Delta 1! FRT Mharsup isn't going anywhere now!
+
+// NEXT
+The Platform is under attack, make sure the prototypes get away
+
+// NEXT
+The platform's shields have just failed!
+
+// NEXT
+This is SHU G'nabgib, we're under attack and bugging out, over!
+
+// NEXT
+The platform is doomed, hull is down to 50%
+
+// NEXT
+Looks like Zaarin's pulling out all the stops now!
+
+// NEXT
+Delta 1, those transports are probably our greatest danger
+
+// NEXT
+// NAMES: 
+T/D Delta 1 (You)
+PLT R+D Lab
+E/S Red Knight
+FRT Mharsup
+SHU G'nabgib
+T/D Prototypes
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>T/D Technology, Mission #3: Protect Evacuation
+// NEXT
+This mission designed for Peregrine Software by$>David Wessman  1994c
+// NEXT
+The T/D research facility can't be held much longer.  There are no other Imperialist forces nearby.
+// NEXT
+All that is available is an ordinary bulk freighter which will be used to evacuate the last prototypes.
+// NEXT
+[T/D Delta 1] and [E/S Red Knight] will cover the evacuation and escort [FRT Mharsup] to safety.
+// NEXT
+Do not fail!  This technology must be preserved for the greater glory of the Empire!
+// NEXT
+The last handful of personnel will leave aboard [SHU G'nabgib].  Among them is the lead research scientist.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To evacuate the TIE Defender
+R&D platform and get the remaining
+prototypes to safety.  The bulk
+freighter [Mharsup] is the nearest
+available craft and will arrive
+shortly.  The two surviving
+prototypes will be loaded onto it.
+   A couple of shuttles are being
+sent also.  The few remaining key
+personnel and copies of the most
+critical data will be evacuated on
+the shuttles.  You are to ensure
+that these craft escape into
+hyperspace before the next
+attack of Zaarin's forces.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Defender]
+designated [Delta 1].  You will have
+no wingmen.  For this mission your
+craft has been loaded with the
+standard armament of [8 advanced
+concussion missiles].
+// NEXT
+What opposition will there be?
+   Interrogation of prisoners
+indicates the next attack will be
+to DESTROY the facility!  The
+failure of the last attack leaves
+him with little choice.  Zaarin is
+determined to keep the Emperor
+from holding the platform or
+benefitting from the TIE Defender
+technology.  Clearly, Zaarin believes
+the TIE Defender offers him a
+technological edge...provided he is
+the only one who can take
+advantage of it!
+   Expect at least one Nebulon-B
+frigate with a full complement of
+TIE fighters (two squadrons.) The
+actual fighters will probably be TIE
+Advanced or modified versions of
+older designs.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We successfully evacuated the
+last prototypes aboard [FRT
+Mharsup].  We were also able to
+secure some key personnel from
+the facility before its destruction.
+Among them, surprisingly was the
+chief scientist.
+// NEXT
+Are there any special instructions?
+   Keep the [Mharsup] and the
+evacuation shuttles in memory
+('[Shift-F5]' through '[F7]').
+Frequently check to see who's
+attacking them (eg., '[F5]' then '[A]')
+and then take out the attacker.  ÿ
+// LAST

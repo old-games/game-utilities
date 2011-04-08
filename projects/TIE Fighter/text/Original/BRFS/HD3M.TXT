@@ -1,0 +1,236 @@
+// COMPLETION MESSAGES:
+Good job, all cargo carrying vessels have been inspected
+Hyperspace home or help in the capture of the Juble 2
+Superb work, the Rebels have been captured
+
+Some of the cargo vessels have escaped without being inspected
+Hyperspace home, you have failed in your mission
+// Number of objects: 19, (4 lines for each)
+Alpha 1
+Madmax
+
+
+// NEXT
+Omega 1
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Elite
+Notagin
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Slasher
+
+
+
+// NEXT
+Red 1
+
+
+
+// NEXT
+Red
+
+Crew
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Hatch
+
+Equipment
+
+// NEXT
+Olumpa
+
+Foodstuff
+
+// NEXT
+Gold
+
+
+
+// NEXT
+B-53
+
+
+
+// NEXT
+B-52
+
+
+
+// NEXT
+Trawler
+
+Foodstuff
+
+// NEXT
+Switch
+
+Supplies
+
+// NEXT
+Juble
+
+Supplies
+Rebels
+// NEXT
+// Number of radio messages: 5, (2 lines for each)
+The transport being used for capture has been destroyed
+
+// NEXT
+Good! You got the A-wing
+
+// NEXT
+The B-wings have all been destroyed
+
+// NEXT
+Alert! There are Rebels on the Cargo Ferry Juble 2
+
+// NEXT
+An Imperial transport has been dispatched to capture the Rebels
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+Nav Buoy B-52
+Nav Buoy B-53
+FRG Lightning
+(Your Command Ship)
+TRN Sigma
+Rebel Transport
+// SKIP
+T/B Theta
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Defender Combat #3: Inspect and Disable
+// NEXT
+There is heavy freighter traffic in the area between the two navigation buoys, B-52 and B-53.
+// NEXT
+You need to inspect all the cargo vessels traveling through this jump point area.
+// NEXT
+Disable any ships carrying contraband, and an Imperial transport will arrive to seize their cargo.
+// NEXT
+// SKIP
+// SKIP
+THIS MISSION WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE! 3/27/94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   A convoy of ships are going to
+pass through your patrol area.
+You are to inspect their cargoes.
+Be on alert for Rebel weaponry
+that may be concealed onboard.
+If any illegal cargo is found, help
+the Imperial transport that arrives
+to disable and capture the ship.
+// NEXT
+What craft will I be flying?
+   You will fly the new [TIE
+Defender] designated [Alpha 1].  You
+are the only ship in your flight
+group.  Your craft will be armed
+with [8] concussion missiles.
+// NEXT
+What opposition will there be?
+   We suspect that Rebel craft
+may be nearby to come to the aid
+of any Rebel ship that you may
+discover.  Stay alert!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have remained vigilant and
+have discovered a Rebel attempt
+to sneak their contraband past
+you.  Excellent job.
+// NEXT
+Are there any special instructions?
+   You will have to move fast to
+inspect all freighters before they
+reach their hyperspace points.
+Avoid getting distracted by the
+starfighter support.  Inspecting
+the cargo vessels is your main
+priority.  ÿ
+// LAST

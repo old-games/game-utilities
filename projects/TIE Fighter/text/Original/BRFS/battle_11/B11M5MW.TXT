@@ -1,0 +1,462 @@
+// COMPLETION MESSAGES:
+Great going, Mu 1! The convoy has escaped to safety!
+Now kill what traitor forces you can before they flee!
+Very good, Mu 1. Intel will need to analyze your sensor data
+And without any ATRs, Zaarin can not capture any CTRNs!
+The Missile Boats have been lost and Zaarin is still free
+Our forces are in serious trouble, Mu 1. Return at once!
+// Number of objects: 40, (4 lines for each)
+Mu 1
+WODEN
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Omicron 1
+
+
+
+// NEXT
+Omicron 2
+
+
+
+// NEXT
+Omicron 3
+
+
+
+// NEXT
+Omicron 4
+
+
+
+// NEXT
+Nichevo 1
+
+Mis. Boat
+
+// NEXT
+Nichevo 2
+
+Mis. Boat
+
+// NEXT
+Nichevo 3
+
+Mis. Boat
+
+// NEXT
+Grey Wolf
+Thrawn
+
+
+// NEXT
+Lambda 1
+
+Repair Crew
+
+// NEXT
+Lambda 2
+
+Repair Crew
+
+// NEXT
+Lambda 3
+
+Repair Crew
+
+// NEXT
+Lambda 4
+
+S.O. Ofc
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Resolution
+
+
+
+// NEXT
+Reload
+
+Warheads
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Triumph
+
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Indomitable
+
+
+
+// NEXT
+Iota
+
+
+
+// NEXT
+Glory
+Zaarin
+
+
+// NEXT
+Z-Omega 1
+
+
+
+// NEXT
+Z-Omega 2
+
+
+
+// NEXT
+Z-Omega 3
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Eta 4
+
+
+
+// NEXT
+Z-Eta 5
+
+
+
+// NEXT
+Z-Eta 6
+
+
+
+// NEXT
+Yaai
+
+
+
+// NEXT
+Thinin
+
+
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Mu
+
+
+
+// NEXT
+Z-Nu
+
+
+
+// NEXT
+Z-Tau
+
+
+
+// NEXT
+Z-Iota
+
+
+
+// NEXT
+Z-Iota 5
+
+
+
+// NEXT
+Z-Iota 6
+
+
+
+// NEXT
+Ho229A-1
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Mu 1, thank the Emperor you've arrived in time!
+
+// NEXT
+Don't let that Container Transport get captured!
+
+// NEXT
+Things have just gotten twice as difficult!
+
+// NEXT
+Life couldn't get any more complicated now, could it?
+
+// NEXT
+Careful, that ship of yours is priceless if we lose the convoy!
+
+// NEXT
+Oh blast, one of Zaarin's TIE Defenders made it to safety!
+
+// NEXT
+They've captured a Container Transport. What can we do?
+
+// NEXT
+You sure have destroyed a lot of Zaarin's fighters, Mu 1!
+
+// NEXT
+[SHU Lambda] will ferry over a repair crew to the disabled CTRN
+
+// NEXT
+That's ISD [Glory]! [Mu 1] inspect the enemy starships
+
+// NEXT
+ATR [Omega's] target will be the Container Transports!
+
+// NEXT
+We've still not quite sorted out this boarding order..
+
+// NEXT
+T/B Zeta and Iota are ordered to destroy the captured CTRNs
+
+// NEXT
+CUV [Reload] will rendezvous with you if you wish
+
+// NEXT
+This is the only way we have to keep Zaarin from getting these!
+
+// NEXT
+Zaarin must hate you almost as much as he hates Thrawn!
+
+// NEXT
+// NAMES: 
+MIS Mu 1 (You)
+CTRN Nichevo
+E/S Omicron
+ISD Grey Wolf
+ISD Resolution
+TIE Defenders
+Assault Gunboats
+Nav Buoy Ho229A-1
+TIE Interceptors
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Hunt for Zaarin, Mission #5: The Real Thing
+// NEXT
+>[This mission designed by David Wessman  c1995]
+// NEXT
+A convoy that really is carrying new Missile Boats is already under attack by Zaarin's forces.
+// NEXT
+Missile Boat group [Mu] will be the first craft able to intercept Zaarin's raiders in time to stop them.
+// NEXT
+If MIS [Mu] can wreak havoc quickly enough, their entire operation will be thrown in disarray.
+// NEXT
+Thrawn's plan for this battle has been thrown into shambles due to Zaarin's unexpected attacks!
+// NEXT
+Protect the Container Transports and prevent their capture until reinforcements arrive.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Grand Admiral Thrawn's plans are
+in jeopardy due to the unexpected
+attack by Zaarin's forces.  The
+coordination of our forces has
+been disrupted and now the
+convoy carrying our new missile
+boats is at risk.
+   Your highest priority is to save
+the convoy.  In order for them to
+make it safely into hyperspace,
+you will have to protect them from
+harm for about [seven] minutes.
+Thrawn's strike force is on the
+way, but only you and your Missile
+Boat can reach the convoy in time
+to prevent its loss.
+   Destroy at least half of
+Zaarin's forces.  The heavy losses
+we have inflicted on the traitors
+are beginning to make a difference.
+When this is over, these criminals
+will be just another bad memory!
+// NEXT
+What craft will I be flying?
+   You will fly [Missile Boat Mu 1]
+(MIS Mu 1) out of Imperial Star
+Destroyer [Grey Wolf] under the
+command of Admiral Thrawn.  With
+the standard load of [40 advanced
+concussion missiles] your craft will
+also have [30 advanced proton
+torpedoes] in case anything heavy
+shows up.  Your craft is fitted
+with the [tractor beam].
+   The convoy consists of three
+Container Transports and four
+Escort Shuttles.  The Imperial Star
+Destroyers [Grey Wolf] and
+[Resolution] will arrive in minutes, but
+for now you are our only hope!
+// NEXT
+What opposition will there be?
+   There is a squadron of twelve
+Assault Gunboats and a flight
+group of four TIE Defenders.  This
+may just be the advance wave so
+be alert and prepared for new
+threats!
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   If any of the convoy ships
+become disabled, you must prevent
+them from being captured.  Watch
+for the arrival of enemy
+transports and destroy them.  If
+any enemy starships arrive, get
+close enough to do a short range
+sensor scan, but don't worry
+about destroying them.  Our two
+Star Destroyers will take care of
+that!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have we accomplished?
+   We destroyed quite a number of
+enemy starfighters and prevented
+the capture of any missile boats
+from the convoy.  For the traitors
+the loss of so many craft,
+especially the TIE Defenders, has
+to be devastating.  Still, Zaarin
+was very successful in concealing
+the extent of his preparations
+and he may have a few surprises
+left.
+   The missile boats you protected
+will be delivered to a training
+facility where a cadre of elite
+pilots such as yourself will form a
+new unit.  Just think of the
+possibilities when several missile
+boats are fighting together!
+// NEXT
+Are there any special instructions?
+   Kill the Assault Gunboats as
+quickly as you can.  Use your
+SLAMs to get in range and destroy
+them with a single advanced
+torpedo.  If any of them get by
+you to disable a container
+transport, be sure to destroy any
+enemy craft which attempt to
+board the disabled ship.  (When it
+is safe enough for them to enter,
+there are Shuttles standing by to
+deliver repair crews if needed.)
+   When all the Assault Gunboats
+are destroyed and no friendly
+ships are at risk of capture, take
+out the TIE Defenders.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You destroyed Zaarin's Assault
+Transports and prevented the
+capture of any Container
+Transports.  Also, you were able to
+get short range sensor scans on
+Zaarin's flagship and its two
+escorting starships.  The data will
+be analyzed for clues that might
+reveal weaknesses to exploit.
+// NEXT
+Are there any special instructions?
+   Try to inspect the [Glory] and
+its two escorts soon after they
+arrive, while they're still in close
+formation.  If you've been
+successful in sweeping the area of
+enemy fighters, you won't have any
+trouble eliminating the Assault
+Transports.  ÿ
+// LAST

@@ -1,0 +1,346 @@
+// COMPLETION MESSAGES:
+You have helped us capture a very important Rebel structure
+We are now in possession of mag pulse technology!
+
+
+
+
+// Number of objects: 20, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Leopard
+
+Troops
+
+// NEXT
+Omega 1
+
+Troops
+
+// NEXT
+Omega 2
+
+Troops
+
+// NEXT
+Sigma 1
+
+Officers
+
+// NEXT
+Muraat
+
+
+
+// NEXT
+Resupply
+
+Warheads
+Warheads
+// NEXT
+Lambda
+
+Troops
+
+// NEXT
+Sceltor
+Thrawn
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+Officers
+Officers
+// NEXT
+Yellow
+
+
+
+// NEXT
+TT-109
+
+Personel
+
+// NEXT
+Rampart
+
+
+
+// NEXT
+RS-32
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Watch your shields. Be careful, we don't want to lose you!
+
+// NEXT
+You have completed your mission, you may return to the Sceltor
+
+// NEXT
+Assault Transport Leopard to Alpha 1, we are under fire!
+
+// NEXT
+You are being docked with. Remain at zero throttle!
+
+// NEXT
+Imperial transport here to reload you when ready, Alpha 1
+
+// NEXT
+Corvettes Muraat here to assist you, Alpha 1
+
+// NEXT
+1Corvettes Rampart to RS-32, we are here to help
+
+// NEXT
+We've captured the plant, but we still need to unload troops
+
+// NEXT
+The rest of our boarding craft are on their way
+
+// NEXT
+3May Day! May Day! Platform RS-32 is falling!
+
+// NEXT
+Resupply to Alpha 1, good hunting!
+
+// NEXT
+Sceltor to Alpha 1, we have arrived. Good work!
+
+// NEXT
+Remember your primary task is to disable the platform!
+
+// NEXT
+Good work in disabling the platform, Alpha 1!
+
+// NEXT
+We need to capture the platform, quickly disable it!
+
+// NEXT
+Our goal was to capture the base and obtain the mag pulse
+
+// NEXT
+// NAMES: 
+T/D Alpha (You)
+Rebel Platform
+Y-Ws?
+Z-95s?
+ZA-13
+Boarding Craft
+VSD Sceltor
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Strategic Warfare #5: Capture Mag Pulse Weapon
+// NEXT
+Our scouts have followed the attacking [Rebels] to their base platform. We have orders to capture it.
+// NEXT
+You in [Alpha] group will hyper in first. The platform must be disabled. Watch out for [Rebel] starfighters.
+// NEXT
+Once [Alpha] group disables the platform, troops will land to secure the structure. 
+// NEXT
+We will arrive to retrieve you and some [mag pulse] warheads after the platform has been secured.
+// NEXT
+This mission was created by DAVID MAXWELL for Peregrine Software, 1994.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   Our intelligence network has
+uncovered the [Rebels'] source for
+the mag pulse weapon which was
+used against the Rope 17 convoy.
+Our forces are to launch an
+assault on the installation where
+production of this weapon occurs.
+We hope to obtain working copies
+of the mag pulse weapon from the
+platform.  Gaining this technology
+will help in our arms race with
+Zaarin.  We believe he already has
+access to this technology.
+// NEXT
+What craft will I be flying?
+   You will be wingman [TIE Defender
+Alpha 2].  There will be three craft
+in your group.  Your craft will be
+armed with [8] heavy rockets.
+// NEXT
+What opposition will there be?
+   The [Rebels] are expected to
+mount a strong defense of their
+installation.  Currently only a small
+number of Rebel starfighters are
+stationed there, but we anticipate
+reinforcements will be sent.  There
+are also rumors that the Rebels
+have a new experimental
+starfighter, but information is
+extremely limited.  Expect the
+unexpected.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   Disable any craft fleeing from
+the platform so our forces can
+capture the occupants.  We wish
+to capture prisoners to
+interrogate, preferably officers
+and technicians who worked on the
+mag pulse weapons development
+program.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We were successful in our
+mission to capture several working
+copies of the [mag pulse] warhead.
+Unfortunately, while this operation
+was underway, the [ZA-13] facility
+came under attack by more of
+[Zaarin's] forces.  Initial reports
+indicate that Zaarin's forces were
+successful in destroying the plant
+along with a Nebulon B frigate.
+Latest reports state that most
+of the other TIE Advanced plants
+have also fallen.  [Zaarin] has been
+very thorough in ravaging Imperial
+factories.  The [Emperor] is not
+pleased with the news of the loss
+of the TIE Advanced plants.
+// NEXT
+Any special instructions?
+   Immediately target the platform
+and order your wingmen to attack
+it.  With any luck they will get a
+couple of rockets off while you
+quickly launch five of your own.
+Then engage the [Z-95s] that are
+trying to intercept you.  Toggle to
+full laser and shield recharge.
+Concentrate on taking out the
+starfighters.  [X-wings] and [T-wings]
+will enter the battle next.  Try to
+dogfight outside the range of the
+platform's turbo lasers if it is not
+disabled already.  Use your wingmen
+to assist you in destroying the
+starfighters.  When the Rebel
+[corvettes] enter, attack using two
+more rockets on one of the
+[corvettes].  Use wingmen to assist
+in destroying the second [corvette]
+when it becomes a threat to the
+platform.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   You helped us capture most of
+the top [Rebel] staff trying to
+escape.  We were also able to
+capture many important specialists
+who worked on developing and
+manufacturing the mag pulse
+weapon aboard the platform.
+Excellent work.
+// NEXT
+Any special instructions?
+   When the platform is disabled, a
+transport will try to make its way
+to safety.  Break off whatever
+you are doing and disable it as
+soon as possible.  Tell your wingmen
+to ignore that transport so they
+do not destroy it in the heat of
+the battle.  ÿ
+// LAST

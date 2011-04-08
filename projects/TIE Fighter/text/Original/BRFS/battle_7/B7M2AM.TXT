@@ -1,0 +1,324 @@
+// COMPLETION MESSAGES:
+The Akaga is no longer. Good work Alpha 2
+
+
+
+Our forces here are doomed
+
+// Number of objects: 29, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Harpax
+Ladi
+
+
+// NEXT
+Protector
+
+Defectors
+
+// NEXT
+Himner
+
+
+
+// NEXT
+H-Alpha
+
+
+
+// NEXT
+H-Delta
+
+
+
+// NEXT
+H-Beta
+
+
+
+// NEXT
+H-Zeta
+
+
+
+// NEXT
+H-Eta
+
+
+
+// NEXT
+Akaga
+
+
+
+// NEXT
+H-Beta
+
+
+
+// NEXT
+H-Zeta
+
+
+
+// NEXT
+H-Theta
+
+
+
+// NEXT
+H-Kappa
+
+
+
+// NEXT
+Warhawk
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Goya
+
+Reloads
+
+// NEXT
+Garrett
+Lord Vader
+
+
+// NEXT
+Pi
+
+
+
+// NEXT
+Iota
+
+
+
+// NEXT
+Omega
+
+
+
+// NEXT
+// Number of radio messages: 12, (2 lines for each)
+The Harpax is surrounded! We must take out the [Akaga]
+
+// NEXT
+Reload transport [Goya] is waiting to rearm you Alpha 2
+
+// NEXT
+Imperial Star Destroyer Garrett to all loyal Imperial forces...
+
+// NEXT
+...this is [Lord Vader], the time for victory is now
+
+// NEXT
+Scratch one of Harkov's command ships
+
+// NEXT
+Once again we are depending on you Alpha 2
+
+// NEXT
+Alpha 2, you will return to the Star Destroyer [Garrett]
+
+// NEXT
+Lord Vader himself has requested your presence Alpha 2
+
+// NEXT
+Have you defected also Alpha 2?
+
+// NEXT
+Check your shields Alpha 2
+
+// NEXT
+Your damage level is dangerously high Alpha 2
+
+// NEXT
+[TRN Goya] is available for weapons reloading
+
+// NEXT
+// NAMES: 
+VSD Protector
+Storage Containers
+FRG Akaga
+T/Fs
+T/Bs
+T/Is
+T/A Alpha (You)
+T/A Beta
+T/A Gamma
+INT Harpax
+CRL Warhawk
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Treachery at Ottega, Mission #2: Destroy the Akaga
+// NEXT
+Our flight orders are to protect the [Harpax].  Its situation is precarious indeed.
+// NEXT
+Even at top sublight speed the Harpax cannot outrun the [FRG Akaga]. 
+// NEXT
+We must attack the Akaga. Two T/A craft from Alpha will deliver [2 heavy bombs] each to the target.
+// NEXT
+T/A Gamma will provide fighter protection against starfighters launched from the Lt. Calamari [Warhawk]. 
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   The Harpax, in its attempt to
+pin down the forces that Harkov
+used to command, has put itself in
+a precarious position.  Harkov's old
+flagship, the Protector, the
+Frigate Akaga, and the Rebel
+commanded Lt.  Cruiser Warhawk are
+all closing in to finish the Harpax
+off.  Your mission goal is to
+attack the Frigate [Akaga], thus
+buying some time until Lord Vader
+can arrive in the Imperial Star
+Destroyer [Garrett].
+// NEXT
+What craft will I be flying?
+   You will be flying a [TIE
+Advanced] designated [Alpha 2].  Your
+craft will be armed with [2] heavy
+space bombs.  You will be the only
+wingman flying beside your flight
+leader.  Your craft will also be
+equipped with the tractor beam
+weapon.
+// NEXT
+What opposition will there be?
+   Once again you will face a
+mixture of Imperial and Rebel craft.
+The Protector will launch standard
+Imperial Navy starfighters and the
+Rebel Cruiser will throw its
+contingent of Y-wings and Z-95s
+into the fray.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   Excellent work!  We destroyed
+the Frigate [Akaga] and bought a
+little more time for the [Harpax].
+The Imperial Star Destroyer
+[Garrett] commanded by Darth Vader
+himself has arrived to take charge
+of finishing off Harkov's fleet and
+putting an end to this mass
+defection.
+// NEXT
+Any special instructions?
+   Attack the frigate immediately.
+Drop your bombs at a distance and
+move out of their flight path.  If
+you miss with the first set of
+bombs, be sure to request a
+rearming from your reload craft.
+Keep an eye on the Harpax as well.
+ÿ
+// LAST

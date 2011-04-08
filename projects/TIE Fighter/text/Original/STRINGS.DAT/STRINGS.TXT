@@ -1,0 +1,695 @@
+Auto Ejection System
+Hyper Drive System
+Lasers and Ion Cannons
+Flight Control System
+Engines
+Targeting Computer
+Shield System
+Warhead Launch System
+Beam System
+Communications System
+Error! Not Enough Memory!
+Error! The following file is missing or inaccessible: 
+Initializing Combat Sequence...
+Charging Weapons Systems...
+Powering Up Sensor Arrays...
+Aligning Targeting HUD...
+Configuring Combat Multi-view Display...
+Disk Error! Is CD-ROM Inserted?
+Press 'R' to Retry, 'F' to Fail
+Center joystick, then click button.
+Move joystick to upper left, then click button.
+Move joystick to lower right, then click button.
+Level:
+Segments Left:
+Segments Done:
+Targets Hit:
+Score:
+Press SPACEBAR or button to continue
+---
+arrived.
+destroyed.
+attacked.
+captured.
+inspected.
+boarded.
+finished docking.
+disabled.
+survived until other goals completed.
+---
+---
+completed mission.
+---
+---
+---
+---
+---
+---
+dropped off.
+reinforced.
+---
+was 
+was not 
+---
+must be 
+---
+has 
+has not 
+---
+must have 
+---
+were 
+were not 
+---
+must be 
+---
+have 
+have not 
+---
+must have 
+100%
+75%
+50%
+25%
+At least one
+All but one
+---
+---
+All but you
+You
+All
+75%
+50%
+25%
+At least one
+All but one
+AND
+OR
+Primary Goals Failed
+Primary Goals Incomplete
+Primary Goals Completed
+Secondary Goals Failed
+Secondary Goals Incomplete
+Secondary Goals Completed
+Bonus Goals Failed
+Bonus Goals Incomplete
+Bonus Goals Completed
+ of 
+ of all 
+group 
+All But 
+and 
+, 
+flight groups
+rookie pilots
+novice pilots
+veteran pilots
+officer pilots
+ace pilots
+top-ace pilots
+stationary craft
+craft returning to base
+non-evading craft
+craft flying in formation
+rendezvous craft
+disabled craft
+craft awaiting boarding
+craft on free patrol
+craft attacking escorts
+craft attacking in response
+escorting fighters
+craft attempting to disable
+craft delivering cargo
+craft seizing cargo
+craft exchanging cargo
+capturing craft
+craft destroying cargo
+craft picking-up cargo
+craft seizing cargo
+waiting fighters
+waiting starships
+patrolling starships
+starships waiting for all returning craft
+starships waiting to dispatch all craft
+starships waiting for boarding craft
+starships waiting for boarding craft to appear
+craft on free patrol
+craft attempting to disable
+craft attempting to disable
+starships returning to base
+Rebel craft
+Imperial craft
+ craft
+space craft
+weapons
+satellites
+---
+---
+---
+---
+starfighters
+transport craft
+utility craft
+freighter craft
+starships
+platforms
+---
+---
+mines
+---
+---
+---
+---
+---
+---
+---
+ +/-
+ [
+ ]
+ BACKSPACE
+ \
+ RETURN
+ H
+ ALT-E
+ Q
+ C
+ V
+ F8
+ F9
+ ; or SHIFTF9
+ F10
+ ' or SHIFTF10
+ S
+ 0-9
+ .
+ F1
+ F2
+ / or F3
+ * or F4
+ Z
+ T/Y
+ U
+ R
+ E
+ A
+ I
+ ,/<
+ SHIFTF5-F7
+ F5-F7
+ W
+ X
+ B
+ N
+ ALT-P or P
+ ALT-T
+ ALT-D
+ ALT-M/S
+ M
+ L
+ G
+ D
+ SHIFT-Z
+ K
+ ESCAPE
+Increase/Decrease Throttle
+Set Throttle to 1/3
+Set Throttle to 2/3
+Set Full Throttle
+Set Zero Throttle
+Match Speed of Target
+Enter/Abort Hyperspace
+Eject
+Quit; Abort Mission
+Start/Stop Camera
+View Film
+Set Beam Weapon Recharge Lvl
+Set Laser Recharge Level
+Boost Lasers from Shields
+Set Shield Recharge Level
+Boost Shields from Lasers
+Toggle Shields Fwd/Back/Even
+Select View Direction
+Toggle Cockpit
+Reset to Forward View
+Follow Missile View
+External View
+Toggle Camera Pan Mode
+Toggle Threat Display
+Select Next/Prev Target
+Select Newest Bogie
+Select Closest Bogie
+Select Nearest Attacker
+Select Attacker of Current Target
+Toggle Target Boxes
+Select Next/Prev Component
+Store current target
+Recall stored target
+Select Weapon
+Cross-link Weapon
+Activate Beam Weapon
+Toggle SLAM system
+Pause game
+Select 2X/4X/1X Time Acceleration
+Set Graphics Detail
+Toggle Music/Sound FX
+Toggle Inflight Map
+Toggle Message Log
+Toggle Mission Goals
+Toggle Damage Assessment
+Toggle Wingman Orders
+Toggle Key Reference
+Toggle Inflight Options
+Shown
+Icons
+Hidden
+þOHþRostiles:
+þOIþJmperials:
+þONþFeutrals:
+þOSPACEBARþV: Toggles þW2-DþV/3-D mode
+þOSPACEBARþV: Toggles 2-D/þW3-DþV mode
+þOCþV: Centers map on þOtþVarget
+TIE Fighter Collector's CD for Windows 95/98 (05/22/98)
+Mission paused.  Press any key to continue
+Mission resumed
+Laser cannons armed
+Ion cannons armed
+* launchers armed
+* launchers set to [single fire
+* launchers set to [dual fire
+Proton torpedo
+Concussion missile
+Cannons set to [single fire
+Cannons set to [dual fire
+Cannons [fire linked
+Deflector shields set *
+[full strength forward
+[even strength forward and aft
+[full strength aft
+Cannon* rate
+Shield* rate
+ power redirected to engines at [maximum]
+ power redirected to engines at [minimum]
+s recharging at [normal]
+s recharging at [increased]
+s recharging at [maximum]
+[*] system is *
+damaged and inoperative
+repaired
+Engine
+Flight control
+Laser
+Ion Cannon
+Warhead Launcher
+Beam Weapon
+Targeting computer
+Auto-ejection system
+Deflector shield
+Hyperdrive
+Graphics detail set to [*] level
+lowest
+low
+high
+highest
+Preparing for jump to light speed..
+Hyperspace jump aborted
+Hyperspace jump completed
+New craft alert, [& *] at [&] km
+New craft alert, [& *s] at [&] km
+                     
+Congratulations! Level Completed.  Time Left:       Bonus:
+Bonus points awarded: &
+An enemy craft is attempting missile lock, [should it be targeted?
+Missile Warning! [Key to Target?
+Missile was targeted
+Object detected in jump path, hyperspace jump aborted
+Replay camera [on
+Replay camera [off
+Error! Failed to start camera
+Camera footage is being saved to disk
+Camera footage saved
+Camera film used up
+Loading camera footage from disk
+No film recorded
+At end of film
+Film started
+Film stopped
+Film advance on
+Film advance off
+Film rewound to start
+Camera now in [FOLLOW] mode
+Camera now in [FREE] mode
+Mission ends in [2] minutes
+Mission ends in [1] minute
+Mission time expired, hyperspace sequence begun..
+Hit [Space Bar] to activate tractor beam and enter hangar
+Mission objectives can not be finished, abort mission!
+Enter file name:
+File Exists! Replace it?
+Replay clip saved
+Replay clip not saved
+File Error!
+Engine throttle set to [*
+no power
+1/3 power
+2/3 power
+full power
+Component tracking in CMD display turned [*]
+OFF
+ON
+S-Foils opening
+S-Foils closing
+S-Foils have reached [*] position
+open
+closed
+Transfering partial power from shields to [cannon system
+Transfering partial power from cannons to [shields
+[* * &] *
+[* *] *
+has entered hyperspace
+has been [destroyed
+has been [disabled
+has been [repaired
+has been [captured
+has [docked
+has been targeted
+[* &] from flight group [*] *
+[* *] *
+* launcher empty
+* fired
+*s fired
+has entered hangar
+Message acknowledged: [* * &] *
+Message acknowledged: [* *] *
+heading home
+coming to your aid
+making evasive maneuver
+waiting for further orders
+proceeding with mission
+using designated target
+ignoring target
+reports docking operation complete
+[* * &] reporting in: *
+[* *] reporting in: *
+holding steady
+on patrol
+protecting craft
+patrolling for craft to attack
+patrolling for escorters
+setting up for attack run
+attacking target
+doing evasive maneuver
+following flight leader
+looking for craft to disable
+flying escort
+looking for craft to board
+looking for craft to capture
+looking for craft to pick up
+performing docking operation
+flying to rendezvous point
+awaiting boarding craft
+awaiting boarding
+holding station
+flying home
+entering hangar
+exiting hangar
+entering hyperspace
+exiting hyperspace
+following flight plan
+awaiting return of craft
+awaiting launch of craft
+changing orders
+awaiting further orders
+waiting
+dropping off craft
+
+
+
+
+
+
+
+Excellent job!  Primary mission objectives completed
+*
+You have ejected safely
+&0000 points awarded for previous levels
+Cannot enter simulation at this point!
+Launcher
+Cannon
+You have died
+
+Entering hyperspace
+Threat display target no longer available
+has been [inspected
+This craft is not equipped with a [*] system
+No craft targeted
+*
+Craft not responding to order
+Superb work! Secondary mission objectives completed
+Superlative job! Bonus mission objectives completed
+No reinforcements available
+Request for reinforcements acknowledged
+Reinforcements already sent, no more available
+[*] has docked with [*]
+[* *] entering area at [&] km
+[& *s] from FG [*] entering area at [&] km
+Advanced proton torpedo
+Advanced concussion missile
+Heavy space bomb
+Heavy rocket
+Magnetic pulse
+No hyperdrive unit, return to [*]
+No hyperdrive unit, return to [*] or to [*]
+* beam] system activated
+* beam] system de-activated
+Tractor
+Jamming
+Decoy
+Beam* rate
+Hit [Space Bar] to confirm reinforcement request
+resupplies are on the way
+Time accelerated to [&]X normal time
+Normal time set
+Warhead targeted
+Press [Space Bar] to end mission
+Collision with another craft has occured!
+Enemy Interdictor prevents hyperdrive unit from functioning!
+Message acknowledged: [Flight Group *] *
+Matching speed with target
+Trying to match speeds with target, throttle set to maximum
+You have destroyed a craft on your own side
+Missile destroyed
+Warhead impact drained all cannon energy!
+Engine overdrive boosters [engaged]
+Engine overdrive boosters [disengaged]
+Engine overdrive boosters can not be engaged
+Brightness set to level [&]
+ Local Light Sources are:
+ Backdrop Planets, Galaxies and Nebulae are:
+ Space Debris is:
+ Starfield Detail Setting is:
+ Player vs. Starfighter Collision Damage is:
+ Player's Spacecraft is:
+ Player's Ammunition is:
+ Inflight Sound Effects Volume Setting is:
+ Inflight Music Volume Setting is:
+ Inflight Speech Volume Setting is:
+ 
+ 
+ 
+ 
+Off
+On
+Low
+High
+Low
+Medium
+High
+Lowest
+Low
+High
+Highest
+Vulnerable
+Invulnerable
+Limited
+Unlimited
+DIST
+SHD
+HULL
+SYS
+TRG:
+NO CARGO
+THIS CRAFT
+CURRENT ORDERS: 
+NONE
+CURRENT TARGET:
+CURRENT DESTINATION:
+DISTANCE FROM TARGET:
+DISTANCE TO DESTINATION:
+TIME REMAINING:
+TIME TO TARGET:
+TIME TO DESTINATION:
+START POSITION 1
+START POSITION 2
+START POSITION 3
+START POSITION 4
+WAYPOINT 1
+WAYPOINT 2
+WAYPOINT 3
+WAYPOINT 4
+WAYPOINT 5
+WAYPOINT 6
+WAYPOINT 7
+WAYPOINT 8
+RENDEZVOUS POINT
+HYPERSPACE POINT
+HULL
+HULL
+WING
+FUSELAGE
+LASR TUR
+LASR GUN
+ENGINE
+BRIDGE
+SHLD GEN
+ENRG GEN
+WHEAD LN
+COMM SYS
+BEAM SYS
+COMM SYS
+DOCK PLT
+LAND PLT
+HANGAR
+CARGO
+HULL
+ANTENNA
+WING
+LASR TUR
+WHEAD LN
+COMM SYS
+BEAM SYS
+COMM SYS
+COCKPIT
+HULL
+HULL
+HULL
+HULL
+HULL
+--------
+      OK
+ STOPPED
+DISABLED
+CAPTURED
+        
+  HOMING
+SHLDS DN
+HULL DMG
+ WAITING
+TORPEDO
+MISSILE
+LASER
+LASER
+ION
+ADV TORPEDO
+ADV MISSILE
+SPACE BOMB
+ROCKET
+MAG PULSE
+MAG PULSE
+MAG PULSE
+UNKNOWN
+Comm Sat
+Comm Sat
+Comm Sat
+Comm Sat
+Comm Sat
+Mine
+Mine
+Mine
+Mine
+Mine
+Probe
+Probe
+Probe
+Nav Buoy
+Nav Buoy
+Pilot
+X-wing
+Y-wing
+A-wing
+B-wing
+TIE Fighter
+TIE Interceptor
+TIE Bomber
+TIE Advanced
+TIE Defender
+
+
+Missile Boat
+T-wing
+Z-95 Headhunter
+R-41 Starchaser
+Assault Gunboat
+Shuttle
+Escort Shuttle
+Patrol Craft
+Scout Craft
+Transport
+Assault Trans
+Escort Trans
+Tug
+Utility Tug
+Container A
+Container B
+Container C
+Container D
+Heavy Lifter
+
+Freighter
+Cargo Ferry
+Modular Conveyor
+Container Trans
+
+Muurian Trans
+Corellian Trans
+
+Corellian Corvette
+Mod. Corvette
+Nebulon B Frigate
+Nebulon B-2 Frigate
+C-3 Passenger Liner
+Carrack Cruiser
+Strike Cruiser
+Escort Carrier
+Dreadnaught
+Calamari Cruiser
+Lt Calamari Cruiser
+Interdictor
+Victory Star Dest
+Imperial Star Dest
+Superstar
+Container E
+Container F
+Container G
+Container H
+Container I
+Platform XQ1
+Platform XQ2
+Platform XQ3
+Platform XQ4
+Platform XQ5
+Platform XQ6
+Platform
+Platform
+Platform
+X7 Factory
+Do you want to view your flight recorder film (Y/N)?
+ SHIFT-A    Assign current target to wingman.
+ SHIFT-B    Board me to reload and repair.
+ SHIFT-C    Cover me.
+ SHIFT-E    Evasive action!
+ SHIFT-G    Go ahead; continue with mission.
+ SHIFT-H    Head home.
+ SHIFT-I    Ignore current target.
+ SHIFT-R    Report in.
+ SHIFT-S    Send reinforcements.
+ SHIFT-W    Wait for further orders.

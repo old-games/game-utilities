@@ -1,0 +1,381 @@
+// COMPLETION MESSAGES:
+The Rebels have failed in their attempt to rescue the prisoners
+Good job Alpha 1!
+
+
+Things are not going very well
+Lord Vader is displeased with you!
+// Number of objects: 32, (4 lines for each)
+Alpha
+MadMax
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Sigma
+
+Rebels
+Bothans
+// NEXT
+Tau
+
+
+
+// NEXT
+Dargon
+
+Prisoners
+Prisoners
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Keeper
+
+Explosives
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Silver
+
+
+
+// NEXT
+White
+
+
+
+// NEXT
+Purple
+
+
+
+// NEXT
+Silver
+
+
+
+// NEXT
+Orange
+
+
+
+// NEXT
+Orange
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Hut'to
+
+Explosives
+
+// NEXT
+Columbia
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Yellow
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Gray
+
+
+
+// NEXT
+Rescue
+
+
+
+// NEXT
+Darg 3
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Delta 1 to Alpha 1, the Dargon is all yours
+
+// NEXT
+Dargon to Alpha squadron, glad you're here!
+
+// NEXT
+Assault Gunboat Tau 1 to Alpha 1, we are here as requested
+
+// NEXT
+Attention! Rebel craft entering the area!
+
+// NEXT
+The prisoners are trying to escape in transports, stop them!
+
+// NEXT
+You have failed your mission, Alpha 1, return home for report!
+
+// NEXT
+Alpha 1, a Rebel cruiser has entered the area
+
+// NEXT
+Alpha 1, the Dargon is taking damage!
+
+// NEXT
+Dargon to Alpha 1, a Rebel corvette is in our path!
+
+// NEXT
+Dargon to Alpha 1, we're doomed!
+
+// NEXT
+1Alpha 1, you're doomed too
+
+// NEXT
+The M/CRV Hut'to is their last attempt to stop the Dargon..
+
+// NEXT
+... the corvette is targeting the Dargon to destroy it!
+
+// NEXT
+Looks like they're willing to kill their own people..
+
+// NEXT
+... instead of letting them be taken to the Garrett!
+
+// NEXT
+Be careful Alpha 1!
+
+// NEXT
+// NAMES: 
+T/A Alpha (You)
+T/A Delta
+DREAD Dargon
+Dargonea
+Jump Point
+Darg 3
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Prelude to Endor, Mission #1: Escort Prison Ship
+// NEXT
+TIE Advanced from [Alpha] Group will relieve [Delta] Group by assuming their escort mission.
+// NEXT
+The [Dargon] needs your protection to reach jump point Darg-3.
+// NEXT
+This mission was created by [David Maxwell]$for Totally Games 1995.
+// NEXT
+The Dreadnought [Dargon] is transporting a group of recently captured [Rebel] and [Bothan] prisoners.
+// NEXT
+[Lord Vader], waiting on the Garrett, will personally interrogate these prisoners.
+// NEXT
+The [Dargon] is heading back here to rendezvous with the [Garrett].
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Imperial forces from the Star
+Destroyer Garrett must ensure
+that the [Dreadnought Dargon]
+reaches its hyperspace jump point
+at Darg 3.  You are to relieve the
+pilots escorting it.  The Dargon is
+carrying important prisoners that
+[Lord Vader] has requested be
+brought here for interrogation.
+High ranking [Rebel] and [Bothan]
+officers are listed on the prisoner
+chart.  [Lord Vader] is interested in
+these prisoners' possible
+involvement in the recent theft of
+an Imperial freighter near
+Coruscant.  You must ensure the
+safety of the Dargon.  [Lord Vader]
+will not accept the escape or
+rescue of these prisoners.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Advanced]
+designated [Alpha 1].  You will lead
+the three ships in your flight
+group.  For this mission your craft
+has been loaded with the standard
+armament of [8 advanced
+concussion missiles].  You have been
+stationed onboard the [ISD Garrett].
+[Lord Vader] is commanding the
+Garrett and has specifically
+requested your assignment to this
+operation.
+// NEXT
+What opposition will there be?
+   Imperial Intelligence does not
+expect trouble, but, as always, be
+ready for any surprises that may
+occur.  Recently, a few [Rebel]
+scouts have been spotted in the
+area.  Also, the Bothans have good
+reason to want their people back.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   The Dargon, her crew, and her
+cargo of prisoners were all saved
+from capture by the Rebels.
+There is good reason to believe
+that this group of prisoners was
+involved in a recent hijacking of
+one of our freighters.  They were
+caught heading away from
+Coruscant just after the attack
+on the missing freighter.
+   [Lord Vader] is still awaiting the
+arrival of these prisoners.  The
+Dargon has experienced engine
+failure upon exiting hyperspace for
+its rendezvous with Garrett.  It's
+a little more than twenty-three
+kilometers away.  You need to help
+secure the transport of the
+prisoners from the Dargon back to
+the Garrett.  [Lord Vader] is
+impatient about any further delay.
+// NEXT
+Are there any special instructions?
+   Order your wingman to attack
+an [A-wing] when they enter the
+area.  Hold back a little, then go
+after a different A-wing with dual
+missiles.  As soon as your two
+missiles are launched, target the
+[X-wings] and fire more missiles at
+them.  Then, use your lasers to
+destroy the [B-wings].  Try to
+destroy as many torpedoes as you
+can using your lasers.  If you
+stop most of the warheads
+launched at the [Dargon] it should
+survive.  ÿ
+// LAST

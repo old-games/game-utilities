@@ -1,0 +1,65 @@
+Battle Three
+Battle Three Cutscene
+//BLOCK
+BATTLE ON THE FRONTIER
+Establish a new Imperial base.
+Admiral Thrawn oversees _
+repairs after a Rebel attack.
+//BLOCK
+b3gal
+Pakuuni System
+124 16 156 36
+//BLOCK
+b3m1bm
+b3m2bm
+b3m3fm
+b3m4gm
+b3m5bm
+b3m6gm
+//BLOCK
+Inspect cargo containers at _
+an abandoned manufacturing _
+facility. You will fly a TIE _
+Bomber against hostile forces. _
+Secure the area while heavy _
+lifters load base equipment on _
+board VSD Stalwart.
+//BLOCK
+Destroy a pirate base to _
+prepare the system for the _
+establishment of an Imperial _
+outpost. You will fly a TIE _
+Bomber in the attack. Y-wings _
+and Z-95s will defend the base. _
+Eliminate all opposition!
+//BLOCK
+Protect an Imperial frigate _
+while awaiting the base _
+construction unit. You will fly _
+a TIE Fighter against Z-95s and _
+X-wings. Stop any attacks by _
+enemy craft!
+//BLOCK
+Maintain a defensive patrol _
+around the new Imperial platform _
+while construction is completed. _
+You will fly an Assault Gunboat _
+against Rebel and pirate fighters _
+and corvettes. Demonstrate the _
+resolve of the Imperial Navy! _
+//BLOCK
+Escort Admiral Thrawn's _
+transport to the new platform _
+so that he may inspect it. You _
+will fly a TIE Bomber against _
+enemy shuttles. Keep Admiral _
+Thrawn safe from attack!
+//BLOCK
+Continue to guard the new _
+base from attack while you await
+reinforcements and supplies. _
+You will fly an Assault Gunboat _
+against Rebel transports and _
+B-wings. Ensure that the Empire _
+establishes its presence!
+//BLOCK

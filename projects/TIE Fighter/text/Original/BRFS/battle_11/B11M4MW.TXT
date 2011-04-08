@@ -1,0 +1,479 @@
+// COMPLETION MESSAGES:
+All fighters return at once, Zaarin is attacking our convoy!
+Mu 1, you and your Missile Boat are needed there
+
+
+Return at once, Mu 1! Thrawn demands an explanation
+Do not delay or you will be severely reprimanded!
+// Number of objects: 45, (4 lines for each)
+Mu 1
+WODEN
+
+
+// NEXT
+Duk
+
+
+
+// NEXT
+Tonto
+
+Warheads
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Whirlwind
+
+
+
+// NEXT
+Omicron 6
+
+Officers
+
+// NEXT
+Triumph
+
+
+
+// NEXT
+Alpha
+
+
+
+// NEXT
+Alpha 4
+
+
+
+// NEXT
+Alpha 5
+
+
+
+// NEXT
+Alpha 6
+
+
+
+// NEXT
+Alpha 7
+
+
+
+// NEXT
+Alpha 8
+
+
+
+// NEXT
+Alpha 9
+
+
+
+// NEXT
+Alpha 10
+
+
+
+// NEXT
+Alpha 11
+
+
+
+// NEXT
+Alpha 12
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Indomitable
+
+
+
+// NEXT
+Gamma 1
+
+
+
+// NEXT
+Gamma 2
+
+
+
+// NEXT
+Gamma 3
+
+
+
+// NEXT
+Gamma 4
+
+
+
+// NEXT
+Gamma 5
+
+
+
+// NEXT
+Gamma 6
+
+
+
+// NEXT
+Gamma 7
+
+
+
+// NEXT
+Gamma 8
+
+
+
+// NEXT
+Gamma 9
+
+
+
+// NEXT
+Gamma 10
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+G'neeznow
+
+
+
+// NEXT
+Iron Duke
+
+
+
+// NEXT
+Maelstrom
+
+
+
+// NEXT
+Z-Sigma 1
+
+Officers
+
+// NEXT
+Z-Alpha
+
+
+
+// NEXT
+Z-Alpha 3
+
+
+
+// NEXT
+Z-Beta
+
+
+
+// NEXT
+Z-Beta 3
+
+
+
+// NEXT
+Z-Gamma
+
+
+
+// NEXT
+Z-Gamma 3
+
+
+
+// NEXT
+Z-Delta
+
+
+
+// NEXT
+Z-Eta
+
+
+
+// NEXT
+Z-Theta
+
+
+
+// NEXT
+Z-Zeta
+
+
+
+// NEXT
+Z-Iota
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+Mu 1, engage SLAMs and move to intercept enemy craft!
+
+// NEXT
+The TIE Advanced are attempting to suppress our fighters
+
+// NEXT
+That will allow the TIE Defenders to attack INT Whirlwind
+
+// NEXT
+Intercept those rockets, you must protect INT Whirlwind!
+
+// NEXT
+INT Whirlwind's systems are failing, prevent any further hits!
+
+// NEXT
+That's it! Whirlwind's gravity well generators are out!
+
+// NEXT
+Zaarin's forces have succeeded in ruining our plans
+
+// NEXT
+We can't allow these criminals to escape, destroy the enemy!
+
+// NEXT
+The TIE Defenders are all destroyed, go after INT Maelstrom now
+
+// NEXT
+Mu 1, we're counting on you to take out those TIE Defenders!
+
+// NEXT
+Hurry up, Mu 1, we're supposed to jump in two minutes!
+
+// NEXT
+If we're not ready to jump in one minute, our plan will fail!
+
+// NEXT
+Every second lost now will cost us dearly, do your utmost!
+
+// NEXT
+Mu 1, are you having difficulty? Report at once!
+
+// NEXT
+Mu 1, consider yourself a traitor if you don't return now!
+
+// NEXT
+Mission objectives failed! One of the traitors got away!
+
+// NEXT
+// NAMES: 
+MIS Mu 1 (You)
+INT Whirlwind
+Strike Cruisers
+INT Maelstrom
+Traitor TIE Advanceds
+Traitor TIE Defenders
+T/B Beta
+T/B Delta
+T/I Alpha
+T/I Gamma
+Task Force Whirlwind
+STRKC Triumph
+STRKC Iron Duke
+STRKC G'neeznow
+STRKC Indomitable
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Hunt for Zaarin, Mission #4: An Unexpected Attack
+// NEXT
+>[This mission designed by David Wessman  1995c]
+// NEXT
+An Interdictor cruiser has pinned our strike force just as we were preparing our final trap for Zaarin!
+// NEXT
+A mixed heavy attack squadron of TIE Defenders and TIE Advanced is closing rapidly on our position.
+// NEXT
+Interdictor cruiser [Whirlwind] is their probable target. If it is lost, Thrawn's plan will fall apart.
+// NEXT
+Strike cruisers [Triumph, Iron Duke, G'neeznow, ]and[ Indomitable] cannot protect [Whirlwind] well enough.
+// NEXT
+Missile Boat [Mu 1] will join TIE Interceptor squadrons [Alpha] and [Gamma] to defeat the enemy fighters.
+// NEXT
+Immediately after the threat to INT [Whirlwind] is eliminated, all forces will attack INT [Maelstrom].
+// NEXT
+Speed is critical. Thrawn is expecting our jump into hyperspace in exactly five minutes!  Get to it!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Our last trap failed to snare
+Zaarin.  The relatively small strike
+force he used has raised Thrawn's
+suspicions.  We may yet find more
+traitors among us who continue to
+spy for Zaarin.
+   Grand Admiral Thrawn has
+decided to use more tempting bait
+to lure the traitor.  This time a
+convoy transporting an entire
+squadron worth of new Missile
+Boats will be risked.  Unfortunately,
+the plan is already at risk as we
+have just had an enemy force
+enter our area!
+   Your highest priority is to
+safeguard our Interdictor.  To
+ensure that our strike force joins
+the rest of Admiral Thrawn's on
+time, the enemy Interdictor must
+also be destroyed as quickly as
+possible.  We're not interested in
+prisoners now, we need to finish
+this quickly!
+// NEXT
+What craft will I be flying?
+   You will fly [Missile Boat Mu 1]
+(MIS Mu 1) out of Interdictor
+cruiser [Whirlwind].  In addition to
+the standard load of [40 advanced
+concussion missiles] you are being
+given [10 heavy concussion bombs]
+to take out the enemy Interdictor.
+Also, your craft remains fitted
+with the [tractor beam].
+   Our task force consists of the
+Interdictor cruiser [Whirlwind] and its
+four escorting Strike cruisers.
+The [Triumph] and the [Indomitable]
+each carry a squadron of TIE
+Interceptors.  The [Iron Duke] and
+the [G'neezgnow] each carry a few
+TIE Bombers.
+// NEXT
+What opposition will there be?
+   Zaarin's Interdictor cruiser
+[Maelstrom] is keeping our task
+force pinned to prevent our
+coordination with the rest of
+Admiral Thrawn's fleet.  Eight TIE
+Defenders and six TIE Advanced
+are closing on our position.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have we accomplished?
+   We destroyed all of the
+attacking enemy forces and
+prevented the loss of Interdictor
+cruiser [Whirlwind].  As should be
+clear now, the Interdictor class
+vessels are of absolutely critical
+importance.  We can't afford to
+lose them...and neither can Zaarin!
+   Despite your brave fighting,
+the enemy plan was partially
+successful.  Thrawn's plan required
+precise timing to work and we are
+now hopelessly behind schedule.
+Also, the battle damage to the
+[Whirlwind] requires that it put in
+for repairs at once.  Worse still,
+we have just learned that Zaarin
+is already attacking the rest of
+the convoy!
+   Your prowess in the Missile Boat
+means that you now must now fly
+to the rendezvous point with the
+convoy and prevent its
+destruction or capture by Zaarin!
+// NEXT
+Are there any special instructions?
+   Destroy the TIE Defenders with
+dual missiles as quickly as you can.
+Try to stay close to the [Whirlwind]
+and intercept enemy rockets
+whenever you can.  A good energy
+balance is to set the cannon and
+tractor beams to maximum recharge
+and redirect shield recharge to
+the engines.
+   Once the TIE Defenders are
+finished, your next priority is the
+destruction of the [Maelstrom], but
+you should try to take out a few
+TIE Advanced on the way.
+   The enemy Interdictor can be
+destroyed quickly in two passes.
+On the first you'll be approaching
+from the stern.  With dual missiles
+selected, target the cruiser's
+warhead launcher.  As you close
+within 2 kilometers engage the
+SLAMs and skim past the cruiser
+as near as you can, then fire
+just as you pass in front of its
+nose.  Your missiles will still have a
+lock on the warhead launcher and
+will loop back to take it out.  Now
+swing around to make your second
+pass using heavy concussion bombs.
+ÿ
+// LAST

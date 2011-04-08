@@ -1,0 +1,348 @@
+// COMPLETION MESSAGES:
+The ISD Hammer has arrived to take command of the battle
+Good work, you have fought well in defending [D-34 Outpost]
+Good work, you've discovered a shuttle carrying Rebel officers
+Assault gunboats have been dispatched to disable and capture it
+You have failed in defending the Outpost
+The Rebels have won a victory.  The emperor is displeased
+// Number of objects: 30, (4 lines for each)
+Alpha
+Madmax
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Gamma
+
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Omega
+
+Officers
+
+// NEXT
+Epsilon
+
+Troopers
+
+// NEXT
+Nu
+
+
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Mu
+
+
+ss
+// NEXT
+D-34
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Ubote
+
+
+
+// NEXT
+Scutz
+
+Officers
+Officers
+// NEXT
+Petdur
+
+
+
+// NEXT
+Petdur
+
+
+
+// NEXT
+Laire
+
+
+
+// NEXT
+Laire
+
+
+
+// NEXT
+Derk
+
+
+
+// NEXT
+Derk
+
+
+
+// NEXT
+Hammer
+Flanken
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Iota
+
+
+
+// NEXT
+B-17
+
+
+
+// NEXT
+B-18
+
+
+
+// NEXT
+B-19
+
+
+
+// NEXT
+B-16
+
+
+
+// NEXT
+// Number of radio messages: 8, (2 lines for each)
+Sector alert! There are unknown craft entering our area
+START
+// NEXT
+Beta and Gamma Squadrons, engaging enemy forces
+
+// NEXT
+Alpha squadron, join the attack and engage the enemy
+
+// NEXT
+Stop all Y-wings from making torpedo runs on [D-34]
+
+// NEXT
+The base is being attacked! We need to defend the station!
+
+// NEXT
+We have lost our outpost. Our situation is desperate
+
+// NEXT
+The [ISD Hammer] is here to recover station defense forces
+
+// NEXT
+Alpha 1, return to the Hammer's hangar immediately!
+
+// NEXT
+// NAMES: 
+Outpost D-34
+Javin Sector
+T/F Alpha (You)
+T/F Beta
+T/F Gamma
+Smuggler's Shuttles
+Nav Buoy B-18
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Aftermath of Hoth #2: Red Alert
+// NEXT
+Three TIE Fighters from Alpha, Beta and Gamma Squadrons will patrol the area around the station.
+// NEXT
+All TIE Fighters will destroy any incoming enemy ships before they can destroy our station.
+// NEXT
+Assume any trouble will come from the direction of Buoy 18, where we stopped the smuggled Rebel cargo.
+// NEXT
+Your weapon arming crew has added concussion missiles to your TIE Fighter for more firepower.
+// NEXT
+Our forces must survive until the [Imperial Star Destroyer Hammer] arrives to relieve us.
+// NEXT
+This mission was created by David Maxwell$for Peregrine Software. 3-27-94
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What are the mission objectives?
+   After interrogating the Rebel
+prisoners captured aboard the
+Mugaari freighter, we are sure
+that the Rebels plan to launch an
+assault on this outpost.  You must
+hold off the attacking forces until
+help arrives from the Imperial Star
+Destroyer Hammer.
+// NEXT
+What craft will I be flying?
+   You will be flying the [TIE
+Fighter], designated [Alpha 1].  You
+will have two wingmen.  Your TIE
+Fighter will be specially modified to
+carry [2] concussion missile
+launchers holding 2 missiles each.
+// NEXT
+What opposition will there be?
+   We expect the Mugaari and the
+Rebels to be joining forces to
+attack us.  It is likely that they
+only have the more obsolete
+starfighters, like the Z-95
+Headhunter and the Y-wing, to use
+in this assault.  However, they may
+use more advanced fighters like
+the X-wing, as well.
+// NEXT
+// SKIP
+// SKIP
+How may I serve the Emperor?
+   I am a special envoy of the
+Emperor.  In this time of crisis,
+political intrigue, and open rebellion,
+the Emperor requires special means
+of communication with his loyal
+forces.  In the battles ahead, I
+will ensure that his wishes reach
+those like yourself who have
+pledged their fealty to him.  You
+will have many opportunities to
+serve the Emperor and will be
+rewarded for your efforts.
+   In the mission ahead, locate
+the Rebel officers who are fleeing
+from Hoth in a stolen Imperial
+Shuttle.  We have forces standing
+by who will attempt to disable and
+capture this shuttle once you
+have located it.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   You have defeated an attack
+by the Rebels and Mugaari.  You
+have saved our outpost from
+destruction and destroyed many of
+the attacking enemy ships.
+// NEXT
+Any special instructions?
+   Concentrate your defense on
+destroying the attacking Y-wings
+and X-wings.  These ships are
+carrying proton torpedoes which
+can cause the heaviest damage to
+our installation.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+What did I accomplish?
+   The Rebel officers you have
+located will prove useful to our
+cause.  From them we will learn the
+whereabouts of other Rebel
+terrorists.
+// NEXT
+Any special instructions?
+   During the battle watch your
+sensors carefully for the
+appearance of any enemy shuttles.
+Inspect them to see if they have
+Rebel officers on board.  Don't let
+anyone on your side destroy craft
+with these officers.  We want to
+capture them alive.  ÿ
+// LAST

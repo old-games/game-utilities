@@ -1,0 +1,271 @@
+// COMPLETION MESSAGES:
+Good work, all the starfighters have been destroyed
+
+
+
+
+
+// Number of objects: 19, (4 lines for each)
+Alpha 1
+Madmax
+
+
+// NEXT
+Alpha 2
+
+
+
+// NEXT
+Alpha 3
+
+
+
+// NEXT
+Perfect
+
+
+
+// NEXT
+Punisher
+Bly
+
+
+// NEXT
+Zeta
+
+
+
+// NEXT
+Eta
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+T-XL
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Vic
+
+Equipment
+Quarters
+// NEXT
+Limi
+
+Supplies
+Work area
+// NEXT
+Nu
+
+
+
+// NEXT
+Mu
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+// Number of radio messages: 15, (2 lines for each)
+Show us your piloting skills
+
+// NEXT
+Take out the starfighters first
+
+// NEXT
+All the base containers have been destroyed
+
+// NEXT
+All the tugs have been destroyed
+
+// NEXT
+Corvette Perfect is here to recover Alpha 1
+
+// NEXT
+Alpha 1, fly to the Corvette's hangar bay now!
+
+// NEXT
+Destroying the CRV Perfect was not wise Alpha 1
+
+// NEXT
+Alpha 1, you will pay dearly for your treacherous acts!
+
+// NEXT
+A bonus will be given to the one who gets Alpha 1!
+
+// NEXT
+You are taking hits, Alpha 1. Evade when necessary!
+
+// NEXT
+You may be the best fighter pilot in this star system, Alpha 1!
+
+// NEXT
+What are you doing Alpha 1? We are taking hits!
+
+// NEXT
+Assault Gunboats Mu are your reinforcements, Alpha 1
+
+// NEXT
+Assault Gunboats Mu to Alpha 1, we are here to help you
+
+// NEXT
+The containers are not going anywhere, destroy them last
+
+// NEXT
+// NAMES: 
+T/F Alpha 1 (You)
+Rebel Tugs
+Base Containers
+CRV Perfect
+(Your Command Ship)
+Disabled A-wings
+Disabled X-wings
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>TIE Fighter Combat #3: Destroy Depot
+// NEXT
+An Imperial probe reports that containers, tugs and disabled starfighters are located at this site. 
+// NEXT
+After all the Rebel targets have been destroyed an Imperial Corvette will arrive for you to board.
+// NEXT
+You should destroy the containers last since they are not going anywhere and do not shoot back.
+// NEXT
+// SKIP
+// SKIP
+THIS MISSION WAS CREATED BY DAVID MAXWELL$FOR PEREGRINE SOFTWARE!
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   Your objective is to attack and
+destroy a Rebel outpost of
+containers, A-wings, X-wings and
+tugs.  There are many craft to
+destroy so you must work quickly.
+One approach is to attack the
+A-wings first with your missiles,
+since they are the hardest to
+catch once they start moving.
+Then, you can go after the tugs
+before they finish docking with the
+other starfighters.  Leave the
+containers for last.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Fighter]
+designated [Alpha 1].  You will be the
+only Imperial craft on this mission.
+Your craft will be armed with [4]
+concussion missiles.
+// NEXT
+What opposition will there be?
+   No defending enemy forces are
+expected.  The Rebel outpost
+appears to be unguarded.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have shown a superb ability
+to destroy enemy forces quickly.
+Well done.  Raids like this one are
+essential for depleting the Rebels'
+war supplies.
+// NEXT
+Are there any special instructions?
+   Avoid tight turns and high
+speeds in dangerous areas like the
+dense concentration of craft of
+this Rebel outpost.  Lowering your
+speed gives you more time to fire
+at targets and to avoid obstacles.
+ÿ
+// LAST

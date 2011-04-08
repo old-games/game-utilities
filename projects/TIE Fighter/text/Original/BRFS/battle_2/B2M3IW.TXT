@@ -1,0 +1,309 @@
+// COMPLETION MESSAGES:
+Good work, Gamma 2, the refugees are very grateful!
+Prepare to return to the hangar
+
+
+Our efforts here will come to nothing without your help
+Your performance must improve!
+// Number of objects: 25, (4 lines for each)
+Alpha
+WODEN
+
+
+// NEXT
+Delta
+
+
+
+// NEXT
+Beta
+
+
+
+// NEXT
+Beta 4
+
+
+
+// NEXT
+Beta 5
+
+
+
+// NEXT
+Beta 6
+
+
+
+// NEXT
+Gamma
+WOTAN
+
+
+// NEXT
+Theta
+
+
+
+// NEXT
+Protector
+Harkov
+Harkov
+
+// NEXT
+Epsilon 1
+
+Repair Crew
+
+// NEXT
+Rho
+
+
+
+// NEXT
+Lambda
+
+Ripoblus
+
+// NEXT
+Lambda 4
+
+Ripoblus
+
+// NEXT
+Sigma
+
+Dimok
+
+// NEXT
+Sigma 3
+
+Dimok
+
+// NEXT
+Able
+
+Ripoblus
+
+// NEXT
+Able 4
+
+Ripoblus
+
+// NEXT
+Baker
+
+Dimok
+
+// NEXT
+Baker 4
+
+Dimok
+
+// NEXT
+Typhon
+
+Ripoblus
+
+// NEXT
+Nazaar
+
+Techns.
+
+// NEXT
+Glas
+
+Refugees
+
+// NEXT
+B-145
+
+
+
+// NEXT
+P-87
+
+
+
+// NEXT
+Ripoblus 3
+
+
+
+// NEXT
+// Number of radio messages: 13, (2 lines for each)
+3SPC Glas hailing VSD Protector, we formally request asylum
+Request
+// NEXT
+Protector to Glas: Asylum granted, T/I Gamma will rendezvous
+Asylum
+// NEXT
+Attention inbound craft, this is VSD Protector
+Attention
+// NEXT
+Glas and its escort are under our protection, do not attack!
+Don't Attac
+// NEXT
+3Unable to comply, our orders are to stop these ships!
+Unable
+// NEXT
+Final warning! Turn back or be destroyed!
+Turn back
+// NEXT
+T/I Gamma, engage the Y-Ws and protect the shuttles
+Engage
+// NEXT
+T/I Gamma, another raiding party has arrived!
+Escort
+// NEXT
+The refugees are safely aboard the Protector
+Safe
+// NEXT
+Be careful, Gamma 2, another hit and you're history!
+Another hit
+// NEXT
+SPC Glas has been set on autopilot and abandoned
+Autopilot
+// NEXT
+Warning! Four escort shuttles just came out of hyperspace!
+E/Ss
+// NEXT
+TRN Epsilon 1 enroute to repair T/I Gamma 2
+Repair
+// NEXT
+// NAMES: 
+Ripoblus Y-Ws
+Ripoblus Y-Ws
+SPC Glas (Refugees)
+Ripoblus SHUs
+Dimok SHUs
+SHU Nazaar
+VSD Protector
+T/I Gamma (You)
+T/F Alpha
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>The Sepan Civil War, Mission #3: Rescue War Refugees
+// NEXT
+This mission designed for Peregrine Software, Inc. by >David Wessman  1994c
+// NEXT
+Some [Ripoblus] refugees of the civil war have hijacked System Patrol Craft [Glas] and are seeking asylum. 
+// NEXT
+The SPC has no hyperdrive, but is accompanied by a pair of [Lambda]-class shuttles providing escort.
+// NEXT
+Their own government is trying to stop them.  A team of [Y-wings] and [Shuttles] has just arrived!
+// NEXT
+[T/I Gamma] will intercept the Y-wings while [T/F Alpha] attacks the shuttles. Each group contains 3 craft.
+// NEXT
+[SPC Glas] must be kept safe long enough to dock with the [Protector] and transfer everyone aboard.
+// NEXT
+The [Glas] will then be fitted with decoys and abandoned.  Their shuttles will enter our hangar.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To provide safe asylum to some
+[Ripoblus] refugees fleeing from the
+Sepan Civil War.  They are
+principally scientists who are weary
+of the way their knowledge has
+been put to use.  They have
+stolen a System Patrol Craft (SPC)
+and a couple of Lambda-class
+shuttles.  The SPC isn't hyperdrive
+capable so it will have to dock with
+the [Protector] to transfer the
+refugees.  The shuttles can be
+accomodated in our hangar.
+// NEXT
+What craft will I be flying?
+   You will fly a [TIE Interceptor]
+designated [Gamma 2].  Your flight
+group will consist of the three
+craft.  T/F Alpha will join you.  T/B
+Beta will be in reserve.
+// NEXT
+What opposition will there be?
+   The [Ripoblus] government forces
+consist of four [Y-wings] and four
+[Lambda-class Shuttles].  We expect
+that Y-wings will attempt to disable
+the SPC and one of the Shuttles
+will then try to board and capture
+it.  The [Dimoks] will probably try
+something as well, so stay alert.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What did we accomplish?
+   We brought a peaceful end to
+this war for at least some of the
+people.  These refugees we've
+rescued will be forever grateful to
+the Empire and the Imperial Navy!
+// NEXT
+Are there any special instructions?
+   Break up the Y-wing's attack
+runs.  Pick one and fire at it until
+it starts evading, then fire at
+the next one.  Use the "assign
+current target to wingman"
+command to gang up on a single
+ship.
+   When the "nearest unknown"
+turns out to be one of the
+refugee's ships, press "A" to
+target its attacker (if there is
+one).  Gang your flight group up
+on this target.  ÿ
+// LAST

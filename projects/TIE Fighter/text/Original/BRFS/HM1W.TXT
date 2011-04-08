@@ -1,0 +1,481 @@
+// COMPLETION MESSAGES:
+Very good, Mu 1! That was pretty easy, though wasn't it?
+Stick around for a reload and a new challenge...a convoy!
+Bravo, Mu 1! You can see how formidable the Missile Boat is!
+Soon you will have the opportunity to demonstrate it to Zaarin!
+The Missile Boat isn't too complicated for you is it?
+We can always put you back in an ordinary TIE Fighter!
+// Number of objects: 44, (4 lines for each)
+Mu 1
+WODEN
+
+
+// NEXT
+Arjun
+
+
+
+// NEXT
+Arjun Jr.
+
+Warheads
+
+// NEXT
+Organarms
+
+Shuttles
+
+// NEXT
+E 1
+
+
+
+// NEXT
+E 1
+
+
+
+// NEXT
+E 1
+
+
+
+// NEXT
+E 1
+
+
+
+// NEXT
+E 2
+
+
+
+// NEXT
+E 2
+
+
+
+// NEXT
+E 2
+
+
+
+// NEXT
+E 2
+
+
+
+// NEXT
+Graabaas 1
+
+
+
+// NEXT
+Graabaas 2
+
+
+
+// NEXT
+Graabaas 3
+
+
+
+// NEXT
+Graabaas 4
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+CST-blue1
+
+
+
+// NEXT
+CST-blue2
+
+
+
+// NEXT
+CST-blue3
+
+
+
+// NEXT
+CST-blue4
+
+
+
+// NEXT
+CST-red1
+
+
+
+// NEXT
+CST-red2
+
+
+
+// NEXT
+CST-red3
+
+
+
+// NEXT
+CST-red4
+
+
+
+// NEXT
+Xi 1
+
+
+
+// NEXT
+Xi 2
+
+
+
+// NEXT
+Xi 3
+
+
+
+// NEXT
+Xi 4
+
+
+
+// NEXT
+Pi 1
+
+
+
+// NEXT
+Pi 2
+
+
+
+// NEXT
+Pi 3
+
+
+
+// NEXT
+Pi 4
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+Atrivis Day
+
+Raw Mat'ls
+
+// NEXT
+Rimrunner
+
+Coolant
+
+// NEXT
+Altar Moon
+
+Tibanna Gas
+
+// NEXT
+Kempman
+
+Metanol
+
+// NEXT
+Gold
+
+
+
+// NEXT
+Dahome
+
+
+
+// NEXT
+Blue
+
+
+
+// NEXT
+Red
+
+
+
+// NEXT
+// Number of radio messages: 16, (2 lines for each)
+OK, Mu 1, begin charging your laser and shield systems now
+
+// NEXT
+Use the map ('M') to plan your attack
+
+// NEXT
+The shuttles are awaiting shipment, and they're not piloted
+
+// NEXT
+Switch to missiles and select dual fire mode
+
+// NEXT
+Target the facility's warhead launcher and launch two salvos
+
+// NEXT
+Reverse direction and engage the SLAMs ('N')
+
+// NEXT
+Note the rapid drain of stored cannon energy!
+
+// NEXT
+The SLAMs shut off automatically when the cannon is drained
+
+// NEXT
+Transfer shield energy to the cannon to keep the SLAMs active
+
+// NEXT
+When the warhead launcher is destroyed, select rockets
+
+// NEXT
+Destroying the facility will require as many as 14 rockets
+
+// NEXT
+Remember to stay outside the facility's gun range (2 kms)
+
+// NEXT
+Z-95 Headhunters have been launched in response to your attack!
+
+// NEXT
+Enemy reinforcements have arrived, be careful!
+
+// NEXT
+Now take out the shuttles and containers, but watch your back!
+
+// NEXT
+A TUG has carried off one of the SHUs you needed to destroy!
+
+// NEXT
+// NAMES: 
+MIS Mu 1 (You)
+FAC/1 Organarms
+Cargo Containers
+Shuttles
+Supply Convoy
+B-wings
+Frigate
+STRKC Arjun
+CUV Arjun Jr.
+Z-95s
+A-wings
+X-wings
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// MISSION: 
+>Missile Boat Combat #1: Dual Warheads
+// NEXT
+This mission designed for Peregrine Software by$>David Wessman 1994c
+// NEXT
+This mission will teach you basic assault tactics using the dual warhead armament of the new Missile Boat.
+// NEXT
+Your target will be a Rebel deep space manufacturing facility and all the nearby cargo containers.
+// NEXT
+You will use advanced concussion missiles to take out the facility's anti-warhead defense system.
+// NEXT
+Then make a stand off attack using rockets to destroy the installation from a safe distance.
+// NEXT
+Then you are to destroy any cargo containers or other craft using missiles or rockets as appropriate.
+// NEXT
+If you wish, you may remain in the area to engage a supply convoy and then a relief force.
+// NEXT
+The cruiser [Arjun] will arrive to deliver a combat utility vehicle for you to reload your warheads.
+// NEXT
+Remain on constant alert for FAC/1 to launch any starfighters or for the arrival of reinforcements.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// QUESTIONS: 
+What is the objective of this mission?
+   To practice assault tactics on
+a fixed installation using the dual
+warhead capability of Cygnus' new
+Missile Boat.  You will learn how to
+choose the appropriate warhead
+for each target.  Specifically, you
+will learn how to overwhelm the
+target's defensive anti-warhead
+system with a saturation attack.
+Once this is done, you can destroy
+the facility using your heavy
+weapons without fear of having
+your warheads intercepted.
+   In addition, you will learn how to
+use the [S]ub[L]ight [A]cceleration
+[M]otors.  The SLAM is an overdrive
+that boosts engine output to
+[200%] providing a sudden massive
+boost of acceleration.  The cost
+is a rapid drain on stored cannon
+energy.  This technology is a new
+development that is intended to
+enable the Missile Boat to counter
+the TIE Defender.
+// NEXT
+What craft will I be flying?
+   You will fly [Missile Boat Mu 1]
+(MIS Mu 1).  This craft is a
+development of the successful
+[StarWing] Assault Gunboat from
+Cygnus.  It is faster and more
+maneuverable than the Gunboat,
+(see the data regarding the
+SLAMs.) Like all new Imperial
+starfighters, it is equipped with a
+hyperdrive and deflector shields.
+   Armament consists of two
+large-capacity twin warhead
+launchers and a single nose
+mounted laser.  One pair of
+launchers is dedicated for missiles
+and holds a total of [40].  The
+other pair is general purpose to
+allow mission specific warhead loads.
+There is also provision for special
+beam weapons.
+   For this mission your craft is
+armed with [20 heavy rockets] in
+addition to the standard missile
+load.  Also, you will have the new,
+[improved tractor beam].
+   The only weakness is the
+energy recharge rate.  Due to the
+single cannon, it takes just over
+[90 seconds] to reach maximum
+energy levels from the nominal
+mission start levels.
+// NEXT
+What opposition will there be?
+   The deep space manufacturing
+facility you are going to attack
+possesses defensive armament
+consisting of [12 twin turbo lasers]
+and an [advanced anti-warhead
+system].  The nearby storage yards
+and the facility itself may also be
+protected by a number of [Z-95
+Headhunters].
+   You will drop out of hyperspace
+less than [13 kilometers] from the
+facility.  As you close the
+distance, (attack range 6
+kilometers), charge your shield and
+laser systems to maximum.
+   If you wish to continue after
+the facility is destroyed, a combat
+utility vehicle will be deployed for
+you to reload your warheads.  You
+may then proceed to attack a
+convoy and a relief force.
+// NEXT
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+// SKIP
+What have I accomplished?
+   You have demonstrated the
+ability to use the Missile Boat's
+dual warhead capability in combat
+against a variety of targets!
+// NEXT
+Are there any special instructions?
+   Remember that because you
+only have one laser cannon, you
+have a lot less energy to draw on
+for power transfers to the
+shields.  For this reason, you need
+to avoid taking hits as much as
+possible.  You shouldn't have any
+trouble doing this as you have
+ample standoff capability with your
+many warheads.
+   When enemy starfighters are a
+threat, use the SLAMs to put
+some distance between you.  Also,
+try tricking the enemy fighters
+into chasing you far away from
+your real target, then use the
+SLAMs to race back to your
+target.
+   Another trick you should
+remember is to use your tractor
+beam to "hold" an enemy craft for
+your missiles to home in on.  Even
+if you are forced to break your
+hold, you can reacquire it a
+moment later.  If your missile is
+still tracking, it won't have any
+trouble catching the craft you've
+"painted" with your beam.
+   Kill the tugs to prevent them
+from saving any shuttles.  ÿ
+// LAST
