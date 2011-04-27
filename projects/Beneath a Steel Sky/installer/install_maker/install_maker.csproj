@@ -42,6 +42,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
+    <Reference Include="Yahoo.Yui.Compressor.NET20">
+      <HintPath>party3d\Yahoo.Yui.Compressor.NET20.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net">
+      <HintPath>party3d\zlib.net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder.cs" />
@@ -63,6 +69,10 @@
   <ItemGroup>
     <Content Include="..\engine.net\bin\Release\engine.net.exe">
       <Link>engine.net.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\engine_py\engine.py">
+      <Link>engine.py</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="api\api.txt" />

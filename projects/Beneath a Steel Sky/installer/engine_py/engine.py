@@ -10,12 +10,14 @@ try:
 except:
     from StringIO import StringIO
 import struct
+import zlib
 
 xserver=None
 instapi=None
 wbcontrol=None
 logger=None
 locator=None
+data_bin=None
 
 #logger
 class Logger:
@@ -51,8 +53,9 @@ class Logger:
 
 #resourcers
 class Decompressor:
-    def decompress(data):
-        return data
+    @staticmethod
+    def decompress(data,rsz):
+        return zlib.decompress(data)
 
 class NoResourceEx(Exception):
     def __init__(self,resname):
@@ -376,6 +379,7 @@ def main():
     svr.run()
     Logger.getLogger().free()
 
+#data_bin="base64"
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,6 @@
 <install_maker_config>
   <options>
-    <app name="BASS ru Installer" />
+    <app name="BASS ru Installer" icon="D:\Projects\OG\projects\Beneath a Steel Sky\installer\favicon.ico" />
     <browser internal="yes" sizeable="yes" maximized="no" width="800" height="600" />
     <pack type="1" compressed="yes" />
     <flags debug="yes" console="yes" logfile="yes" />

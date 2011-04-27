@@ -61,12 +61,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="ResReader.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="zlib\Adler32.cs" />
+    <Compile Include="zlib\InfBlocks.cs" />
+    <Compile Include="zlib\InfCodes.cs" />
+    <Compile Include="zlib\Inflate.cs" />
+    <Compile Include="zlib\InfTree.cs" />
+    <Compile Include="zlib\SupportClass.cs" />
+    <Compile Include="zlib\Zlib.cs" />
+    <Compile Include="zlib\ZOutputStream.cs" />
+    <Compile Include="zlib\ZStream.cs" />
+    <Compile Include="zlib\ZStreamException.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

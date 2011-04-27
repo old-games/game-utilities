@@ -20,7 +20,9 @@ namespace install_maker
         public const string INST_API_TAG = "INST_API_JS";
         public const string INST_API_FILE = "inst_api.js";
         string NET_INSTALLER = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "engine.net.exe");
+        string PY_INSTALLER = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "engine.py");
         const string OUT_NET_INSTALLER = "install.exe";
+        const string OUT_PY_INSTALLER = "install.py";
         string INST_API_PATH = Path.Combine(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "api"), INST_API_FILE);
         public static Builder obj = null;
         public static Builder getBuilder()
@@ -99,6 +101,7 @@ namespace install_maker
                 Directory.Delete(res,true);
             Directory.CreateDirectory(res);
             File.Copy(NET_INSTALLER, Path.Combine(res, OUT_NET_INSTALLER));
+            File.Copy(PY_INSTALLER, Path.Combine(res, OUT_PY_INSTALLER));
             return res;
         }
 
@@ -157,6 +160,14 @@ namespace install_maker
             }
             else
             {
+                string pyinst=Path.Combine(outpath, OUT_PY_INSTALLER);
+                StreamReader rd = new StreamReader(new FileStream(pyinst, FileMode.Open),Encoding.UTF8);
+                string str=rd.ReadToEnd();
+                rd.Close();
+                str=str.Replace("#data_bin=\"base64\"","data_bin=\""+System.Convert.ToBase64String(alldata)+"\"");
+                StreamWriter wr = new StreamWriter(new FileStream(pyinst, FileMode.Create), Encoding.UTF8);
+                wr.Write(str);
+                wr.Close();
                 IntPtr p = BeginUpdateResource(Path.Combine(outpath,OUT_NET_INSTALLER), false);
                 if (p == null)
                     throw new Exception("Can't file installer resources");
@@ -223,9 +234,12 @@ namespace install_maker
             prepareFiles(dir);
             byte[] data=makeconfig();
             addFile(data, "install.cfg", dir);
+            if (icon != "")
+                addFile(icon, "favicon.ico", dir);
             for (int i = 0; i < aliases.Count; i++)
                 addFile(fnames[i], aliases[i], dir);
             commitFiles(dir);
         }
+
     }
 }

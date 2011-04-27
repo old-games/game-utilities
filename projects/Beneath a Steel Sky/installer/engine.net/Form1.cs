@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using System;
+using System.IO;
 
 namespace engine.net
 {
@@ -9,7 +11,17 @@ namespace engine.net
         public Form1(int w,int h,bool mx,bool sz,string nm)
         {
             InitializeComponent();
-            this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            try
+            {
+                byte[] ic = ResourceLocator.getResources().getResource("favicon.ico");
+                MemoryStream ms=new MemoryStream(ic);
+                this.Icon = new System.Drawing.Icon(ms);
+                ms.Close();
+            }
+            catch (Exception)
+            {
+                this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            }
             Text = nm;
             if (!sz)
             {

@@ -63,7 +63,6 @@ namespace engine.net
     public class OneFileResReader : ResReader
     {
         MemoryStream alldata=null;
-        const int FLAG_COMPRESSED = 1;
         public class FileEntry
         {
             public string name;
