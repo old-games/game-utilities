@@ -1,0 +1,13 @@
+<install_maker_config>
+  <options>
+    <app name="BASS ru Installer" />
+    <browser internal="yes" sizeable="yes" maximized="no" width="800" height="600" />
+    <pack type="1" compressed="yes" />
+    <flags debug="yes" console="yes" logfile="yes" />
+  </options>
+  <files>
+    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\index.html" />
+    <file name="INST_API_JS" alias="inst_api.js" />
+    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\page2.html" />
+  </files>
+</install_maker_config>

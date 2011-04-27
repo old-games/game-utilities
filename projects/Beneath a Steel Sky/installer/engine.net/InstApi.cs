@@ -1,0 +1,176 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace engine.net
+{
+    class ApiPart
+    {
+        public class ErrException:Exception
+        {
+            public int code;
+            public string descr;
+            public ErrException(int code, string descr)
+                : base(String.Format("{{\"r\":{0:d}, \"d\":\"{1:s}\" }}", code, descr))
+            {
+                this.code=code;
+                this.descr=descr;
+            }
+        }
+        public class BadApiException:ErrException
+        {
+            public BadApiException(string path):base(-1,"Bad API call "+path){}
+        }
+        public class NoParamException:ErrException
+        {
+            public NoParamException(string param):base(-2,"expected parameter "+param){}
+        }
+
+        public class Parameters:Dictionary<string,string>{}
+        public class Paths : List<string> { }
+
+        public delegate string doproc(Paths path,Parameters prms);
+
+        Dictionary<string, doproc> wrappers = new Dictionary<string, doproc>();
+
+        public ApiPart()
+        {
+        }
+
+        public void addWrapper(string cmd,doproc p)
+        {
+            wrappers.Add(cmd, p);
+        }
+
+        public virtual string proc(Paths path, Parameters prms)
+        {
+            try{
+                if (path.Count==0)
+                    throw new BadApiException("empty_path");
+                if (wrappers.ContainsKey(path[0]))
+                {
+                    string x=path[0];
+                    path.RemoveAt(0);
+                    return wrappers[x](path, prms);
+                }
+                else
+                    throw new BadApiException(path[0]);
+            }catch(ErrException ex)
+            {
+                Logger.getLogger().dbg("API ERROR:"+ex.code.ToString()+":"+ex.descr);
+                return ex.Message;
+            }catch(Exception ex)
+            {
+                Logger.getLogger().dbg("external ERROR:"+ex.Message);
+                return "{\"r\":-1, \"d\":\"external exception " + ex.Message + "\"}";
+            }
+        }
+
+        public bool hasParam(Parameters prms,string name)
+        {
+            return (prms.ContainsKey(name));
+        }
+        public string getParam(Parameters prms, string name)
+        {
+            if (!hasParam(prms, name))
+                throw new NoParamException(name);
+            return prms[name];
+        }
+        public string retOK()
+        {
+            return "{\"r\":0}";
+        }
+    }
+
+    class InstApi:ApiPart
+    {
+
+        public static InstApi obj = null;
+        public static InstApi getApi()
+        {
+            if (obj == null)
+                obj = new InstApi();
+            return obj;
+        }
+
+        public InstApi()
+        {
+            addWrapper("log", this.log);
+            addWrapper("close", this.close);
+            addWrapper("cantstop", this.cantstop);
+            addWrapper("canstop", this.canstop);
+            addWrapper("other", OtherApi.API.proc);
+        }
+
+        public static string urldecode(string s)
+        {
+            return s;
+        }
+
+        public byte[] process(string loc)
+        {
+            Parameters prms = new Parameters();
+            Paths path = new Paths();
+            Logger.getLogger().dbg("API call "+loc);
+            if (loc.Contains("?"))
+            {
+                string[] prt = loc.Split('?');
+                foreach (string s in prt[0].Split('/'))
+                    path.Add(s);
+                prt = prt[1].Split('&');
+                foreach (string s in prt)
+                {
+                    string[] p = s.Split('=');
+                    prms.Add(urldecode(p[0]), urldecode(p[1]));
+                }
+            }else
+                 foreach (string s in loc.Split('/'))
+                    path.Add(s);
+            return Encoding.Convert(Encoding.Unicode,Encoding.UTF8,Encoding.Unicode.GetBytes(proc(path,prms)));
+        }
+
+        string log(Paths cmd,Parameters prms)
+        {
+            string s=getParam(prms,"s");
+            Logger.getLogger().print(s);
+            return retOK();
+        }
+        string close(Paths cmd, Parameters prms)
+        {
+            if (BrowserController.obj != null)
+                BrowserController.obj.stopBrowser();
+            if (Form1.obj != null)
+                Form1.obj.stopBrowser();
+            return retOK();
+        }
+        string cantstop(Paths cmd, Parameters prms)
+        {
+            Server.getServer().current_page = getParam(prms, "pg");
+            Server.getServer().canstop = false;
+            return retOK();
+        }
+        string canstop(Paths cmd, Parameters prms)
+        {
+            Server.getServer().canstop = true;
+            return retOK();
+        }
+
+    }
+
+    class OtherApi : ApiPart
+    {
+        public static OtherApi obj = null;
+        public static OtherApi API { get { if (obj == null) obj = new OtherApi(); return obj; } }
+        public OtherApi()
+        {
+            addWrapper("some", this.some);
+        }
+
+        public string some(Paths pth, Parameters prms)
+        {
+            string s = getParam(prms, "q");
+            Logger.getLogger().dbg("Someother called with "+s);
+            return retOK();
+        }
+    }
+}
