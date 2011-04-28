@@ -61,6 +61,7 @@ InstApi.prototype = {
 	ival:false,
 	onServerStop:false,
 	onError:false,
+	raiseOnError:false,
 	sync:function() {
 		this.client.isAsync=false;
 		this.client.callback=false;
@@ -77,6 +78,11 @@ InstApi.prototype = {
 		s=s.replace(/\\/g,"\\\\");
 		return s;
 	},
+	unescape:function(s){
+		s=s.replace(/[|]n/g,"\n").replace(/[|]r/g,"\r").replace(/[|]t/g,"\t");
+		s=s.replace(/[|]!/g,"\"").replace(/[|][|]/g,"|");
+		return s;
+	},
 	call:function(query){
 		var s="";
 		try{
@@ -85,7 +91,13 @@ InstApi.prototype = {
 			s="{r:-10 d:'send error '+e}";
 		}
 		s=this.normalize(s);
-		return eval('('+s+')');
+		var res=eval('('+s+')');
+		if (this.raiseOnError && res.r!=0)
+		{
+			res.message="API Error";
+			throw res;
+		}
+		return res;
 	},
 	log:function(s){
 		return this.call("log?s="+s);
@@ -103,5 +115,11 @@ InstApi.prototype = {
 	},
 	hasfile:function(file) {
 		return this.call("system/hasfile?fl="+file);
+	},
+	getfile:function(file) {
+		return this.call("system/getfile?fl="+file);
+	},
+	matchfile:function(file,rx) {
+		return this.call("system/matchfile?fl="+file+"&rx="+rx);
 	}
 }

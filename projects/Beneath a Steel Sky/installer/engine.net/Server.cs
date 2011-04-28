@@ -113,7 +113,7 @@ namespace engine.net
                 {
                     buffer = InstApi.getApi().process(what);
                 }else
-                    buffer = Encoding.UTF8.GetBytes("{\"r\":0}");
+                    buffer = Encoding.UTF8.GetBytes("{r:0}");
                 con.Response.AddHeader("Cache-Control", "no-cache");
                 con.Response.AddHeader("Cache-Control", "no-store");
                 con.Response.AddHeader("Cache-Control", "must-revalidate");

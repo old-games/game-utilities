@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.IO;
 
 namespace engine.net
@@ -99,6 +100,12 @@ namespace engine.net
         public string retOK(int result)
         {
             return retOK(new string[] { "result", result.ToString()});
+        }
+        public string escape(string s)
+        {
+            s=s.Replace("|", "||").Replace("\"", "|!");
+            s=s.Replace("\n", "|n").Replace("\r", "|r").Replace("\t","|t");
+            return s;
         }
     }
 
@@ -201,16 +208,46 @@ namespace engine.net
         {
             addWrapper("userdir", this.userdir);
             addWrapper("hasfile", this.fileexists);
+            addWrapper("matchfile", this.matchfile);
+            addWrapper("getfile", this.getfile);
         }
         public string userdir(Paths pth, Parameters prms)
         {
-            return retOK(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            string p = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            return retOK(p);
         }
         public string fileexists(Paths pth, Parameters prms)
         {
             string fl=getParam(prms, "fl");
-            Logger.getLogger().dbg("Has File "+fl);
             return retOK(File.Exists(fl));
+        }
+        public string matchfile(Paths pth, Parameters prms)
+        {
+            string fl = getParam(prms, "fl");
+            string rx = getParam(prms, "rx");
+            if (!File.Exists(fl))
+                throw new ErrException(1, "file not found "+fl);
+            StreamReader sr = new StreamReader(new FileStream(fl,FileMode.Open),true);
+            string s = sr.ReadToEnd();
+            sr.Close();
+            List<string> r=new List<string>();
+            string res = "[";
+            foreach (Match m in Regex.Matches(s, rx))
+                res+=m.Value+",";
+            if (res[res.Length - 1] == ',')
+                res=res.Remove(res.Length - 1);
+            res += "]";
+            return retOK(res);
+        }
+        public string getfile(Paths pth, Parameters prms)
+        {
+            string fl = getParam(prms, "fl");
+            if (!File.Exists(fl))
+                throw new ErrException(1, "file not found " + fl);
+            StreamReader sr = new StreamReader(new FileStream(fl, FileMode.Open), true);
+            string s = sr.ReadToEnd();
+            sr.Close();
+            return retOK(escape(s));
         }
     }
 

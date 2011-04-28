@@ -11,6 +11,8 @@ except:
     from StringIO import StringIO
 import struct
 import zlib
+import re
+import json
 
 xserver=None
 instapi=None
@@ -187,7 +189,7 @@ class JHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             tp="application/json"
             path=path[5:]
             if (path=="hb"):
-                s='{"r":0}'
+                s='{r:0}'
             else:
                 s=InstApi.getAPI().process(path)
             cache=True
@@ -228,7 +230,7 @@ class JHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 class JServer:
     m_stop=False
     svr=None
-    canstop=False
+    canstop=True
     start_page="http://localhost:34567/"
     current_page=start_page
     lasttime=False
@@ -263,7 +265,7 @@ class ErrException(Exception):
     def __init__(self,c,d):
         self.code=c
         self.descr=d
-        Exception.__init__(self,'{"r":'+str(c)+', "d":"'+d+'"}')
+        Exception.__init__(self,'{r:'+str(c)+', d:"'+d+'"}')
 class BadApiException(ErrException):
     def __init__(self,path):
         ErrException.__init__(self,-1,"BAD API call "+path)
@@ -288,7 +290,7 @@ class ApiPart:
             return str(ex)
         except Exception, ex:
             Logger.getLogger().dbg("external ERROR:"+str(ex))
-            return '{"r":-1; "d":"'+str(ex)+'"}'
+            return '{r:-1; d:"'+str(ex)+'"}'
 
     def hasParam(self,prms,p):
         return (p in prms)
@@ -297,17 +299,33 @@ class ApiPart:
             raise NoParamException(p)
         return prms[p]
     def retOK(self):
-        return '{"r":0}'
+        return '{r:0}'
+    def retOKmany(self,data):
+        data['r']=0;
+        return json.dumps(data)
+    def retOKres(self,res):
+        return self.retOKmany({'result':res})
+    def escape(self,s):
+        s=s.replace('|','||').replace('"','|!')
+        s=s.replace('\n','|n').replace('\r','|r').replace('\t','|t')
+        return s
 
 
-class OtherApi(ApiPart):
+class SystemApi(ApiPart):
     def __init__(self):
-        self.addWrapper("some",self.some)
-    def some(self,pth,prms):
-        s = self.getParam(prms, "q");
-        Logger.getLogger().dbg("Someother called with "+s);
-        return self.retOK();
-
+        self.addWrapper("userdir",self.userdir)
+        self.addWrapper("hasfile",self.hasfile)
+        self.addWrapper("getfile",self.getfile)
+        #self.addWrapper("matchfile",self.matchfile)
+    def userdir(self,pth,prms):
+        return self.retOKres(os.path.expanduser("~"));
+    def hasfile(self,pth,prms):
+        return self.retOKres(os.path.isfile(self.getParam(prms,"fl")))
+    def getfile(self,pth,prms):
+        f=open(self.getParam(prms,"fl"),'r')
+        s=f.read()
+        f.close()
+        return self.retOKres(self.escape(s))
 
 class InstApi(ApiPart):
     @staticmethod
@@ -316,13 +334,19 @@ class InstApi(ApiPart):
         if (instapi==None):
             instapi=InstApi()
         return instapi
-    other_api=OtherApi()
+    system_api=SystemApi()
     def __init__(self):
         self.addWrapper("log",self.log)
         self.addWrapper("close",self.close)
         self.addWrapper("cantstop",self.cantstop)
         self.addWrapper("canstop",self.canstop)
-        self.addWrapper("other",self.other_api.proc)
+        self.addWrapper("system",self.system_api.proc)
+    @staticmethod
+    def htc(m):
+        return chr(int(m.group(1),16))
+    def urldecode(self,url):
+        rex=re.compile('%([0-9a-hA-H][0-9a-hA-H])',re.M)
+        return rex.sub(InstApi.htc,url)
     def process(self,loc):
         prms={}
         pth=[]
@@ -332,7 +356,7 @@ class InstApi(ApiPart):
             pth=l.split('/')
             for x in p.split('&'):
                 pr=x.split('=')
-                prms[pr[0]]=pr[1]
+                prms[self.urldecode(pr[0])]=self.urldecode(pr[1])
         else:
             pth=loc.split('/')
         return self.proc(pth,prms)

@@ -8,3 +8,5 @@ canstop() - можно закрывать
 
 system/userdir() - вернуть каталог юзера
 system/hasfile(fl) - есть ли файл
+system/getfile(fl) - получить текстовый файл
+system/matchfile(fl,rx) - проверить файл регэкспом
