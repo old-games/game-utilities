@@ -12,8 +12,7 @@ function HttpClient() { }
        try {
             this.xmlhttp = new XMLHttpRequest();
        } catch (e) {
-           var XMLHTTP_IDS = new Array('MSXML2.XMLHTTP.5.0','MSXML2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP','Microsoft.XMLHTTP');
-           var success = false;
+           var XMLHTTP_IDS = new Array('MSXML2.XMLHTTP.5.0','MSXML2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP','Microsoft.XMLHTTP'),success = false;
            for (var i=0;i < XMLHTTP_IDS.length && !success; i++) {
                try {
                    this.xmlhttp = new ActiveXObject(XMLHTTP_IDS[i]);
@@ -61,6 +60,7 @@ InstApi.prototype = {
 	client2:false,
 	ival:false,
 	onServerStop:false,
+	onError:false,
 	sync:function() {
 		this.client.isAsync=false;
 		this.client.callback=false;
@@ -73,8 +73,19 @@ InstApi.prototype = {
 		this.client.isAsync=true;
 		this.client.callback=callback;
 	},
+	normalize:function(s){
+		s=s.replace(/\\/g,"\\\\");
+		return s;
+	},
 	call:function(query){
-		return this.client.makeRequest("/api/"+query,null);
+		var s="";
+		try{
+			s=this.client.makeRequest("/api/"+query,null);
+		}catch(e){
+			s="{r:-10 d:'send error '+e}";
+		}
+		s=this.normalize(s);
+		return eval('('+s+')');
 	},
 	log:function(s){
 		return this.call("log?s="+s);
@@ -82,18 +93,15 @@ InstApi.prototype = {
 	close:function(){
 		window.clearInterval(this.ival);
 		this.async(false);
-		res=this.call("close");
+		var res=this.call("close");
 		if (this.onServerStop)
 			this.onServerStop();
 		return res;
 	},
-	someother:function(s){
-		return this.call("other/some?q="+s);
+	userdir:function(){
+		return this.call("system/userdir");
 	},
-	badcall:function() {
-		return this.call("other/bad");
-	},
-	badcall2:function() {
-		return this.call("bad");
+	hasfile:function(file) {
+		return this.call("system/hasfile?fl="+file);
 	}
 }

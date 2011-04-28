@@ -22,6 +22,7 @@ namespace bassru_patcher
         string outfile = "sky.dsk";
         XmlDocument patchXml=null;
         byte[] patchData=null;
+        bool install_pack = false;
         public Patcher(string[] args,int mode)
         {
             Console.WriteLine("configuring");
@@ -29,11 +30,14 @@ namespace bassru_patcher
             {
                 if (args.Length > 0)
                     outfile=dskfile = args[0];
-                if (args.Length > 1)
-                {
-                    if (args[1] == "-o")
-                        outfile = args[2];
-                }
+                for (int i = 1; i < 3; i++)
+                    if (args.Length > i)
+                    {
+                        if (args[i] == "-o")
+                            outfile = args[2];
+                        if (args[i] == "-i")
+                            install_pack = true;
+                    }
                 patchData = getFromResource(114);
                 if (patchData == null)
                     throw new Exception("Cant load binary resource");
@@ -67,6 +71,10 @@ namespace bassru_patcher
                     {
                         outfile = args[aid];
                         aid++;
+                    }
+                    else if (x == "-i")
+                    {
+                        install_pack = true;
                     }
                     else
                         throw new Exception("unknown param " + x);
@@ -111,6 +119,7 @@ namespace bassru_patcher
 
         public void patch()
         {
+            SkyDisk.get().InstallPack = install_pack;
             Console.WriteLine("Patching");
             string pth = Path.GetDirectoryName(dskfile) + "\\";
             if (pth == "\\")

@@ -46,7 +46,7 @@ namespace engine.net
             {
                 svr.BeginGetContext(new AsyncCallback(OnRequests), svr).AsyncWaitHandle.WaitOne(1000);
                 double sec = (DateTime.Now - lastcon).TotalSeconds;
-                if (sec > 5)
+                if (sec > 25)
                 {
                     lastcon = DateTime.Now;
                     if (canstop)
@@ -89,7 +89,16 @@ namespace engine.net
 
         public static void OnRequests(IAsyncResult res)
         {
-            HttpListenerContext con = ((HttpListener)res.AsyncState).EndGetContext(res);
+            HttpListenerContext con = null;
+            try
+            {
+                con = ((HttpListener)res.AsyncState).EndGetContext(res);
+            }
+            catch (Exception ex)
+            {
+                Logger.getLogger().dbg("SVR ERROR:" + ex.Message);
+                return;
+            }
             lastcon = DateTime.Now;
             String what = con.Request.RawUrl;
             if (what == "/")
@@ -130,7 +139,7 @@ namespace engine.net
                     case "html":
                     case "xml":
                     case "css":
-                        tp = "text/" + ext;
+                        tp = "text/" + ext+"; charset=UTF-8";
                         break;
                     case "jpg":
                         tp="image/jpeg";

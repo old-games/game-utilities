@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace engine.net
 {
@@ -11,7 +12,7 @@ namespace engine.net
             public int code;
             public string descr;
             public ErrException(int code, string descr)
-                : base(String.Format("{{\"r\":{0:d}, \"d\":\"{1:s}\" }}", code, descr))
+                : base(String.Format("{{r:{0:d}, d:\"{1:s}\" }}", code, descr))
             {
                 this.code=code;
                 this.descr=descr;
@@ -62,7 +63,7 @@ namespace engine.net
             }catch(Exception ex)
             {
                 Logger.getLogger().dbg("external ERROR:"+ex.Message);
-                return "{\"r\":-1, \"d\":\"external exception " + ex.Message + "\"}";
+                return "{r:-1, d:\"external exception " + ex.Message + "\"}";
             }
         }
 
@@ -78,7 +79,26 @@ namespace engine.net
         }
         public string retOK()
         {
-            return "{\"r\":0}";
+            return "{r:0}";
+        }
+        public string retOK(string[] prms)
+        {
+            string s = "r:0";
+            for (int i = 0; i < prms.Length / 2; i++)
+                s += ", " + prms[i * 2] + ":"+prms[i*2+1]+"";
+            return "{"+s+"}";
+        }
+        public string retOK(string result)
+        {
+            return retOK(new string[] { "result", "\""+result+"\"" });
+        }
+        public string retOK(bool result)
+        {
+            return retOK(new string[] { "result", result?"true":"false" });
+        }
+        public string retOK(int result)
+        {
+            return retOK(new string[] { "result", result.ToString()});
         }
     }
 
@@ -99,12 +119,28 @@ namespace engine.net
             addWrapper("close", this.close);
             addWrapper("cantstop", this.cantstop);
             addWrapper("canstop", this.canstop);
-            addWrapper("other", OtherApi.API.proc);
+            addWrapper("system", SystemApi.API.proc);
         }
 
         public static string urldecode(string s)
         {
-            return s;
+            byte[] data = Encoding.Convert(Encoding.Unicode, Encoding.UTF8, Encoding.Unicode.GetBytes(s));
+            List<byte> res=new List<byte>();
+            int i = 0;
+            while (i < data.Length)
+            {
+                if (data[i] == 0x25)
+                {
+                    char h1 = (char)data[i + 1];
+                    char h2 = (char)data[i + 2];
+                    i += 2;
+                    res.Add(byte.Parse(""+h1+h2,System.Globalization.NumberStyles.AllowHexSpecifier));
+                }
+                else
+                    res.Add(data[i]);
+                i++;
+            }
+            return new String(Encoding.Unicode.GetChars(Encoding.Convert(Encoding.UTF8,Encoding.Unicode,res.ToArray())));
         }
 
         public byte[] process(string loc)
@@ -114,13 +150,13 @@ namespace engine.net
             Logger.getLogger().dbg("API call "+loc);
             if (loc.Contains("?"))
             {
-                string[] prt = loc.Split('?');
+                string[] prt = loc.Split(new char[]{'?'},2);
                 foreach (string s in prt[0].Split('/'))
                     path.Add(s);
                 prt = prt[1].Split('&');
                 foreach (string s in prt)
                 {
-                    string[] p = s.Split('=');
+                    string[] p = s.Split(new char[]{'='},2);
                     prms.Add(urldecode(p[0]), urldecode(p[1]));
                 }
             }else
@@ -157,20 +193,25 @@ namespace engine.net
 
     }
 
-    class OtherApi : ApiPart
+    class SystemApi : ApiPart
     {
-        public static OtherApi obj = null;
-        public static OtherApi API { get { if (obj == null) obj = new OtherApi(); return obj; } }
-        public OtherApi()
+        public static SystemApi obj = null;
+        public static SystemApi API { get { if (obj == null) obj = new SystemApi(); return obj; } }
+        public SystemApi()
         {
-            addWrapper("some", this.some);
+            addWrapper("userdir", this.userdir);
+            addWrapper("hasfile", this.fileexists);
         }
-
-        public string some(Paths pth, Parameters prms)
+        public string userdir(Paths pth, Parameters prms)
         {
-            string s = getParam(prms, "q");
-            Logger.getLogger().dbg("Someother called with "+s);
-            return retOK();
+            return retOK(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+        }
+        public string fileexists(Paths pth, Parameters prms)
+        {
+            string fl=getParam(prms, "fl");
+            Logger.getLogger().dbg("Has File "+fl);
+            return retOK(File.Exists(fl));
         }
     }
+
 }

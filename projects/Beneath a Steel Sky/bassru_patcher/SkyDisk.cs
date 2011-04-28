@@ -122,6 +122,9 @@ namespace bassru_patcher
         {
         }
 
+        bool ipack=false;
+        public bool InstallPack { get { return ipack; } set { ipack = value; } }
+
         public string path {get{return pth;} set{pth=value;} }
         public uint dinnerSize=0;
         public DinnerEntry[] dinners;
@@ -231,6 +234,12 @@ namespace bassru_patcher
             int resize = data.Length - (int)e.size;
             if (resize != 0)
                 resizeDisk(resize,ref e);
+            if (InstallPack)
+            {
+                FileStream f = new FileStream(Path.Combine(path,fnum.ToString()+".bin"), FileMode.Create);
+                f.Write(data, 0, data.Length);
+                f.Close();
+            }
             Array.Copy(data, 0, diskbuf, e.offset, data.Length);
             return true;
         }

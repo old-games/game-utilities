@@ -11,16 +11,19 @@ namespace bassru_patcher
 usage:
 bassru_patcher make patch.xml [-o file] - make patch from external resources
 
-bassru_patcher patch patch.xml [-f dskfile] [-o dskfile] - patch dsk.file with external resources
+bassru_patcher patch patch.xml [-f dskfile] [-o dskfile] [-i] - patch dsk.file with external resources
 
-bassru_patcher [file.dsk] - patch dsk.file
+bassru_patcher [file.dsk] [-i] - patch dsk.file
 
 bassru_patcher -h|help|--help|/?|? - help
+
+i - make install pack
 ");
         }
 
         static void Main(string[] args)
         {
+            Console.WriteLine("bassru_patcher v0.5 by bjfn @2011 4 OG proj");
             string cmd = "";
             string dskfile = "sky.dsk";
             if (args.Length > 0)
@@ -37,6 +40,8 @@ bassru_patcher -h|help|--help|/?|? - help
                     case "?":
                         usage();
                         return;
+                    case "-i":
+                        break;
                     default:
                         dskfile = args[0];
                         break;

@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bassru-patch>
-  <import id="60150" file="D:\Projects\OG\bassru\gameres\main_font_ru.bmp"/>
-  <import id="60600" file="ru.xml"/>
-  <import id="60601" file="ru.xml"/>
-  <import id="60602" file="ru.xml"/>
-  <import id="60603" file="ru.xml"/>
-  <import id="60604" file="ru.xml"/>
-  <import id="60605" file="ru.xml"/>
-  <import id="60606" file="ru.xml"/>
-  <import id="60607" file="ru.xml"/>
-  <import id="2149" file="D:\Projects\OG\bassru\gameres\link.bmp"/>
-  <import id="59500" file="D:\Projects\OG\bassru\gameres\w2.wav"/>
-  <import id="59533" file="D:\Projects\OG\bassru\gameres\seq1.bmp"/>
+  <import id="60150" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\main_font.bmp"/>
+  <import id="60520" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\menu_font.bmp"/>
+  <import id="60521" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\terminal_font.bmp"/>
+  <import id="60600" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus0.xml"/>
+  <import id="60601" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus1.xml"/>
+  <import id="60602" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus2.xml"/>
+  <import id="60603" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus3.xml"/>
+  <import id="60604" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus4.xml"/>
+  <import id="60605" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus5.xml"/>
+  <import id="60606" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus6.xml"/>
+  <import id="60607" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\rus7.xml"/>
+  <import id="2149" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\linc_rus.bmp"/>
+  <import id="2198" file="D:\Projects\OG\projects\Beneath a Steel Sky\gameres\exit_rus.bmp"/>
 </bassru-patch>

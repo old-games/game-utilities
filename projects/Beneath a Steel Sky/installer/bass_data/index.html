@@ -2,14 +2,27 @@
 <HEAD>
 <TITLE>БАССРУ</TITLE>
 <script language="javascript" src="inst_api.js"></script>
+<script language="javascript" src="bass_api.js"></script>
 <script language="javascript">
- var api=new InstApi();
- api.onServerStop=function() {
-	alert("Server Stopped!\nYou can close this page!");
- }
+ var api=new BassApi();
+ api.init();
  function log(s)
  {
 	api.log(s);
+ }
+ function dbg(s)
+ {
+	document.all.outtext.innerHTML=s;
+ }
+ function process()
+ {
+	api.locateDsk();
+	if (api.dsk)
+	{
+		dbg("DSK found at "+api.dsk);
+	}else{
+		dbg("DSK not found");
+	}
  }
 </script>
 </HEAD>
@@ -23,20 +36,12 @@ log:<br>
 </form><br>
 someother:<br>
 <form action="#" method="GET">
-<input type="text" name="logtxt2" value="other text">
-<input type="submit" name="action" value="SOME OTHER" onclick="api.someother(logtxt2.value);return false;">
+<input type="submit" name="action" value="process" onclick="process();return false;">
 </form><br>
-BADCALL:<br>
-<form action="#" method="GET">
-<input type="submit" name="action" value="BAD CALL" onclick="api.badcall();return false;">
-</form><br>
-BADCALL2:<br>
-<form action="#" method="GET">
-<input type="submit" name="action" value="BAD CALL2" onclick="api.badcall2();return false;">
-</form><br>
+<div id="outtext"></div><br>
 CLOSE:<br>
 <form action="#" method="GET">
-<input type="submit" name="action" value="CLOSE" onclick="api.close();return false;">
+<input type="submit" name="action" value="CLOSE" onclick="api.api.close();return false;">
 </form><br>
 </BODY>
 </HTML>

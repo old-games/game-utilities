@@ -34,6 +34,7 @@ install_maker config.xml outpath - make install");
             else
             {
                 AllocConsole();
+                Environment.ExitCode = 0;
                 Console.WriteLine("install maker v1.0 by bjfn @ 2011 4 og");
                 try
                 {
@@ -45,11 +46,15 @@ install_maker config.xml outpath - make install");
                     XmlDocument doc = new XmlDocument();
                     Console.WriteLine("reading config");
                     doc.Load(args[0]);
+                    if (doc.DocumentElement.Name != "install_maker_config")
+                        throw new Exception("Bad config root");
                     buildAll(doc, args[1]);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Environment.ExitCode = 1;
+                    Console.ReadKey();
                 }
                 FreeConsole();
             }
@@ -66,7 +71,7 @@ install_maker config.xml outpath - make install");
         {
             Builder b = Builder.getBuilder();
             b.clear();
-            foreach (XmlNode nd in doc)
+            foreach (XmlNode nd in doc.DocumentElement.ChildNodes)
                 if (nd.NodeType==XmlNodeType.Element)
                     if (nd.Name == "options")
                     {
