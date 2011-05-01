@@ -6,10 +6,10 @@
     <flags debug="yes" console="yes" logfile="yes" />
   </options>
   <files>
-    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\index.html" />
+    <file name="index.html" />
     <file name="INST_API_JS" alias="inst_api.js" />
-    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\page2.html" />
-    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\bass_api.js" />
-    <file name="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\main.mid" />
+    <file name="page2.html" />
+    <file name="bass_api.js" />
+    <file name="main.mid" />
   </files>
 </install_maker_config>

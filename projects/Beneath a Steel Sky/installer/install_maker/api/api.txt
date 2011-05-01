@@ -9,4 +9,37 @@ canstop() - можно закрывать
 system/userdir() - вернуть каталог юзера
 system/hasfile(fl) - есть ли файл
 system/getfile(fl) - получить текстовый файл
-system/matchfile(fl,rx) - проверить файл регэкспом
+system/backup(fl) - бэкап
+system/restore(fl) - восстановить бэкап
+system/copy(fl,new) - скопировать файл
+system/move(fl,new) - переместить файл
+system/remove(fl) - удалить файл
+system/selectdir() - выбрать папку
+
+vars/setvar(vr,vl) - установить переменную
+vars/getvar(vr) - получить переменную
+vars/hasvar(vr) - есть ли переменная
+vars/remvar(vr) - удалить переменную
+
+file/open(fl) - открыть файл
+file/resopen(res) - открыть ресурс на чтение
+file/create(fl) - создать файл
+file/close(fid) - закрыть файл
+file/read(fid,sz[,be]) - считать из файла данные be=0..1
+file/seek(fid,pos[,ofs]) - переместить указатель ofs=0..2
+file/write(fid,val[,be]) - записать данные а файл be=0..1
+file/flush(fid) - сохранить файл на диск
+
+resource/ressize(res) - получить размер ресурса
+resource/hasres(res) - есть ли ресурс
+resource/insertres(fl,res,ofs,osz) - вставить ресурс в файл
+resource/insertval(fl,val,ofs,osz[,be]) - вставить значение в файл
+resource/makemap(fl) - создать карту файла
+resource/mapres(mid,res,ofs,osz) - вставить ресурс
+resource/mapval(mid,val,ofs,osz[,be]) - вставить значение
+resource/mapfile(mid,fl,ofs,osz) - вставить файл
+resource/applymap(mid) - применить карту
+resource/applymaps() - применить карты
+resource/clearmap(mid) - удалить карту
+resource/clearmaps() - удалить карты
+

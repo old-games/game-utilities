@@ -8,7 +8,8 @@ namespace engine.net
     {
         public static Form1 obj = null;
         public delegate void stopBro();
-        public Form1(int w,int h,bool mx,bool sz,string nm)
+        FolderBrowserDialog fd = new FolderBrowserDialog();
+        public Form1(int w, int h, bool mx, bool sz, string nm)
         {
             InitializeComponent();
             try
@@ -49,5 +50,27 @@ namespace engine.net
             else
                 Close();
         }
+
+        delegate string SelDlg();
+        public string getFld()
+        {
+            if (obj.InvokeRequired)
+            {
+                SelDlg d = new SelDlg(getFld);
+                return (string)obj.Invoke(d,null);
+            }
+            else
+            {
+                if (fd.ShowDialog() == DialogResult.OK)
+                    return fd.SelectedPath;
+                return "";
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !Server.getServer().canstop;
+        }
+
     }
 }

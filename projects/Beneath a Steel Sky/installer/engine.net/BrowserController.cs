@@ -3,16 +3,43 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace engine.net
 {
-    class BrowserController
+    class ForegroundWindow : IWin32Window
+    {
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+        static ForegroundWindow obj = null;
+        public static ForegroundWindow CurrentWindow { get { if (obj == null) obj = new ForegroundWindow(); return obj; } }
+        public IntPtr Handle
+        {
+            get { return GetForegroundWindow(); }
+        }
+    }
+
+    class BrowserController : ApplicationContext
     {
         public static BrowserController obj = null;
-        bool m_stop = false;
+        readonly WindowsFormsSynchronizationContext sc;
+        Form c = new Form();
+        FolderBrowserDialog fd;
         public BrowserController()
         {
             obj = this;
+            sc = new WindowsFormsSynchronizationContext();
+            fd = new FolderBrowserDialog();
+            startBrowser(Server.getServer().current_page);
+        }
+
+        void Invoke(SendOrPostCallback d, object state, bool sync)
+        {
+            if (sync)
+                sc.Send(d,state);
+            else
+                sc.Post(d, state);
         }
 
         void startBrowser(string page)
@@ -26,26 +53,36 @@ namespace engine.net
             catch (Exception) { }
         }
 
+        public void rstop(object state)
+        {
+            ExitThread();
+        }
         public void stopBrowser()
         {
-            lock (this)
-            {
-                m_stop = true;
-            }
+            Invoke(new SendOrPostCallback(rstop),null,false);
         }
 
-        public void restartBrowser(string page)
+        public void rstart(object state)
         {
-            startBrowser(page);
+            startBrowser(Server.getServer().current_page);
+        }
+        public void restartBrowser()
+        {
+            Invoke(new SendOrPostCallback(rstart),null,false);
         }
 
-        public void mainLoop()
+        public void rGetFld(object state)
         {
-            startBrowser("http://localhost:34567/");
-            while (!m_stop)
-            {
-                Application.DoEvents();
-            }
+            List<string> s=(List<string>)state;
+            if (fd.ShowDialog(ForegroundWindow.CurrentWindow) == DialogResult.OK)
+                s.Add(fd.SelectedPath);
+            s.Add("");
+        }
+        public string getFld()
+        {
+            List<string> val=new List<string>();
+            Invoke(new SendOrPostCallback(rGetFld),val,true);
+            return val[0];
         }
     }
 }

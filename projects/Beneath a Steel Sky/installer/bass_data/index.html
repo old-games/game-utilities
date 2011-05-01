@@ -3,45 +3,11 @@
 <TITLE>БАССРУ</TITLE>
 <script language="javascript" src="inst_api.js"></script>
 <script language="javascript" src="bass_api.js"></script>
-<script language="javascript">
- var api=new BassApi();
- function log(s)
- {
-	api.log(s);
- }
- function dbg(s)
- {
-	document.all.outtext.innerHTML=s;
- }
- function process()
- {
-	api.locateDsk();
-	if (api.dsk)
-	{
-		dbg("DSK found at "+api.dsk);
-	}else{
-		dbg("DSK not found");
-	}
- }
-</script>
 </HEAD>
 <BODY bgcolor="black" text="yellow">
-<EMBED SRC="main.mid" WIDTH=0 HEIGHT=0 AUTOSTART="true">
-<H1>INDEX</H1>
-<a href="page2.html">second page</a><br>
-log:<br>
-<form action="#" method="GET">
-<input type="text" name="logtxt" value="some text">
-<input type="submit" name="action" value="LOG" onclick="log(logtxt.value);return false;">
-</form><br>
-someother:<br>
-<form action="#" method="GET">
-<input type="submit" name="action" value="process" onclick="process();return false;">
-</form><br>
-<div id="outtext"></div><br>
-CLOSE:<br>
-<form action="#" method="GET">
-<input type="submit" name="action" value="CLOSE" onclick="api.api.close();return false;">
-</form><br>
+<EMBED SRC="main.mid" hidden="true" AUTOSTART="true" loop="true" volume="25">
+<script language="javascript">
+ var api=new BassApi();
+</script>
 </BODY>
 </HTML>

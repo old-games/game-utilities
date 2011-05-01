@@ -54,10 +54,14 @@ namespace engine.net
                 return;
             lock (this)
             {
-                if (console)
-                    Console.WriteLine("LOG:" + data);
-                if (file)
-                    wr.WriteLine("LOG:" + data);
+                try
+                {
+                    if (console)
+                        Console.WriteLine("LOG:" + data);
+                    if (file)
+                        wr.WriteLine("LOG:" + data);
+                }
+                catch (Exception) { }
             }
         }
 

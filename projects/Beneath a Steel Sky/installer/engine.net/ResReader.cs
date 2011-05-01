@@ -28,6 +28,10 @@ namespace engine.net
         {
             return null;
         }
+        public virtual uint resSize(string name)
+        {
+            return 0;
+        }
     }
 
 #if !NO_EXTERNAL
@@ -56,6 +60,13 @@ namespace engine.net
             fs.Read(res,0,res.Length);
             fs.Close();
             return res;
+        }
+        public override uint resSize(string name)
+        {
+            if (!File.Exists(Path.Combine(path, name)))
+                throw new ResourceNotFoundException(name);
+            FileInfo f = new FileInfo(Path.Combine(path, name));
+            return (uint)f.Length;
         }
     }
 #endif
@@ -124,6 +135,17 @@ namespace engine.net
                     if (e.rsize != 0)
                         res = Decompressor.decompress(res, e.rsize);
                     return res;
+                }
+            throw new ResourceNotFoundException(name);
+        }
+        public override uint resSize(string name)
+        {
+            foreach(FileEntry e in entries)
+                if (e.name == name)
+                {
+                    if (e.rsize != 0)
+                        return e.rsize;
+                    return e.csize;
                 }
             throw new ResourceNotFoundException(name);
         }

@@ -12,6 +12,8 @@ namespace engine.net
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             bool window = false;
             int w = 0;
             int h = 0;
@@ -57,12 +59,10 @@ namespace engine.net
             Server.getServer().start();
             if (window)
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1(w, h, mx, sz, nm));
             }
             else
-                new BrowserController().mainLoop();
+                Application.Run(new BrowserController());
             Logger.getLogger().dbg("stopping server");
             Server.getServer().stop();
             Logger.getLogger().free();

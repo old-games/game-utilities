@@ -13,8 +13,13 @@ namespace engine.net
         HttpListener svr;
         public static DateTime lastcon;
         public string current_page = "http://localhost:34567/";
-        bool cs=true;
-        public bool canstop { get { return cs; } set { lock (this) { cs = value; } } }
+        public string home_page = "http://localhost:34567/";
+        bool cs = true;
+        public bool canstop { get { 
+            return cs; } 
+            set { 
+                lock (this) { 
+                    cs = value; } } }
         public static Server obj = null;
         public static Server getServer()
         {
@@ -26,7 +31,7 @@ namespace engine.net
         public Server()
         {
             svr= new HttpListener();
-            svr.Prefixes.Add("http://localhost:34567/");
+            svr.Prefixes.Add(home_page);
         }
 
         ~Server()
@@ -44,9 +49,9 @@ namespace engine.net
             lastcon = DateTime.Now;
             while (!m_stop)
             {
-                svr.BeginGetContext(new AsyncCallback(OnRequests), svr).AsyncWaitHandle.WaitOne(1000);
+                svr.BeginGetContext(new AsyncCallback(OnRequests), svr).AsyncWaitHandle.WaitOne(3000);
                 double sec = (DateTime.Now - lastcon).TotalSeconds;
-                if (sec > 25)
+                if (sec > 5)
                 {
                     lastcon = DateTime.Now;
                     if (canstop)
@@ -59,9 +64,9 @@ namespace engine.net
                         Logger.getLogger().dbg("Webbrowser timeout. Restarting browser");
                         if (BrowserController.obj != null)
                         {
-                            BrowserController.obj.restartBrowser(current_page);
+                            BrowserController.obj.restartBrowser();
                         }
-                        else
+                        else if (Form1.obj==null)
                         {
                             Logger.getLogger().dbg("No browser controller object. Stopping server");
                             InstApi.getApi().process("close");
@@ -114,14 +119,14 @@ namespace engine.net
                     buffer = InstApi.getApi().process(what);
                 }else
                     buffer = Encoding.UTF8.GetBytes("{r:0}");
-                con.Response.AddHeader("Cache-Control", "no-cache");
-                con.Response.AddHeader("Cache-Control", "no-store");
-                con.Response.AddHeader("Cache-Control", "must-revalidate");
-                con.Response.AddHeader("Expires", "0");
+                con.Response.AddHeader("Expires","Mon, 26 Jul 1997 05:00:00 GMT");
+                con.Response.AddHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+                //con.Response.AddHeader("Expires", "-1");
+                con.Response.AddHeader("Pragma", "no-cache");
             }
             else
             {
-                what=what.Remove(0,1);
+                what=what.Split('?')[0].Remove(0,1);
                 Logger.getLogger().dbg("request " + what);
                 try
                 {
@@ -129,8 +134,14 @@ namespace engine.net
                 }
                 catch (Exception)
                 {
-                    con.Response.StatusCode = 404;
-                    con.Response.Close();
+                    try
+                    {
+                        con.Response.StatusCode = 404;
+                        con.Response.Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
                     return;
                 }
                 string ext = Path.GetExtension(what).Remove(0,1);

@@ -1,21 +1,20 @@
 ﻿#!/usr/bin/python
 import BaseHTTPServer
-import time
-import os
-import webbrowser
-import base64
+import time,os,shutil
+import webbrowser,json
+import base64,zlib,struct,re
 from xml.dom.minidom import parseString
 try:
     from cStringIO import StringIO
 except:
     from StringIO import StringIO
-import struct
-import zlib
-import re
-import json
+import Tkinter,tkFileDialog
 
 xserver=None
 instapi=None
+varsapi=None
+fileapi=None
+resapi=None
 wbcontrol=None
 logger=None
 locator=None
@@ -68,6 +67,8 @@ class ResReader:
         return False
     def getResource(self,name):
         raise NoResourceEx(name)
+    def resSize(self,name):
+        return 0
 
 class ExternalResReader(ResReader):
     path="./"
@@ -85,7 +86,11 @@ class ExternalResReader(ResReader):
         r=f.read()
         f.close();
         return r
-
+    def resSize(self,name):
+        if not self.hasResource(name):
+            raise NoResourceEx(name)
+        st=os.stat(os.path.join(self.path,name))
+        return st.st_size
 
 class OneResReader(ResReader):
     data=None
@@ -122,7 +127,13 @@ class OneResReader(ResReader):
                     r=Decompressor.decompress(r,x[3])
                 return r
         raise NoResourceEx(name)
-
+    def resSize(self,name):
+        for x in self.hdr:
+            if (x[0]==name):
+                if (x[3]!=0):
+                    return x[3]
+                return x[2]
+        raise NoResourceEx(name)
 
 class InternalResReader(OneResReader):
     def __init__(self):
@@ -220,12 +231,12 @@ class JHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_header('Content-Type','text/html')
         self.send_header('Content-Length',str(len(s)))
         if (cache):
-            self.send_header('Cache-Control',"no-cache")
-            self.send_header('Cache-Control',"no-store")
-            self.send_header('Cache-Control',"must-revalidate")
-            self.send_header('Expires',"0")
+            self.send_header('Expires',"Mon, 26 Jul 1997 05:00:00 GMT")
+            self.send_header('Cache-Control',"no-cache, no-store, must-revalidate")
+            self.send_header('Pragma',"no-cache")
         self.end_headers()
         self.wfile.write(s)
+        JServer.getServer().lasttime=time.time()
 
 class JServer:
     m_stop=False
@@ -271,10 +282,14 @@ class BadApiException(ErrException):
         ErrException.__init__(self,-1,"BAD API call "+path)
 class NoParamException(ErrException):
     def __init__(self,param):
-        ErrException.__init__(self,-2,"parameter expected "+param)
+        ErrException.__init__(self,2,"parameter expected "+param)
+class BadParamException(ErrException):
+    def __init__(self,param,val):
+        ErrException.__init__(self,3,"Bad parameter "+param+" value:"+val)
 
 class ApiPart:
-    wrps={}
+    def __init__(self):
+        self.wrps={}
     def addWrapper(self,w,p):
         self.wrps[w]=p
     def proc(self,path,prms):
@@ -298,6 +313,19 @@ class ApiPart:
         if (not self.hasParam(prms,p)):
             raise NoParamException(p)
         return prms[p]
+    def getParamFile(self,prms,p):
+        fl=self.getParam(prms,p)
+        if not os.path.isfile(fl):
+            raise ErrException(1,"file not found "+fl)
+        return fl
+    def getParamInt(self,prms,p):
+        x=self.getParam(prms,p)
+        i=0
+        try:
+            i=int(x)
+        except:
+            raise BadParamException(p,x)
+        return i
     def retOK(self):
         return '{r:0}'
     def retOKmany(self,data):
@@ -309,23 +337,363 @@ class ApiPart:
         s=s.replace('|','||').replace('"','|!')
         s=s.replace('\n','|n').replace('\r','|r').replace('\t','|t')
         return s
+    def rotateBytes(self,bts):
+        rb=[]
+        for x in bts:
+            rb=[x]+rb
+        return rb
+    def byte2str(self,bts):
+        s=''
+        for x in bts:
+            s+="%02X"%x
+        return s
+    def str2byte(self,st):
+        bts=[]
+        for i in range(len(st)/2):
+            x=eval('0x'+st[i*2:i*2+2])
+            bts+=[x]
+        return bts
 
 
 class SystemApi(ApiPart):
+    lastpath="/"
     def __init__(self):
+        ApiPart.__init__(self)
         self.addWrapper("userdir",self.userdir)
         self.addWrapper("hasfile",self.hasfile)
         self.addWrapper("getfile",self.getfile)
-        #self.addWrapper("matchfile",self.matchfile)
+        self.addWrapper("matchfile",self.matchfile)
+        self.addWrapper("backup",self.backup)
+        self.addWrapper("restore",self.restore)
+        self.addWrapper("copy",self.copy)
+        self.addWrapper("move",self.move)
+        self.addWrapper("remove",self.remove)
+        self.addWrapper("selectdir",self.selectdir)
     def userdir(self,pth,prms):
         return self.retOKres(os.path.expanduser("~"));
     def hasfile(self,pth,prms):
         return self.retOKres(os.path.isfile(self.getParam(prms,"fl")))
     def getfile(self,pth,prms):
-        f=open(self.getParam(prms,"fl"),'r')
+        f=open(self.getParamFile(prms,"fl"),'r')
         s=f.read()
         f.close()
         return self.retOKres(self.escape(s))
+    def matchfile(self,pth,prms):
+        raise ErrException(-2,"Not implemented")
+    def backup(self,pth,prms):
+        fl=self.getParamFile(prms,"fl")
+        fl2=fl+".bak"
+        Logger.getLogger().dbg("backup "+fl);
+        if not os.path.isfile(fl2):
+            shutil.copy(fl,fl2)
+        return self.retOK()
+    def restore(self,pth,prms):
+        fl=self.getParam(prms,"fl")
+        fl2=fl+".bak"
+        if not os.path.exists(fl2):
+            raise ErrException(1,"backup not found "+fl2)
+        shutil.copy(fl2,fl)
+        return self.retOK()
+    def copy(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        fl2=self.getParam(prms,"new")
+        Logger.getLogger().dbg("copy "+fl+" to "+fl2)
+        shutil.copy(fl,fl2)
+        return self.retOK()
+    def move(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        fl2=self.getParam(prms,"new")
+        if os.path.isfile(fl2):
+            os.remove(fl2)
+        Logger.getLogger().dbg("move "+fl+" to "+fl2)
+        shutil.move(fl,fl2)
+        return self.retOK()
+    def remove(self,p,prms):
+        fl=self.getParam(prms,"fl")
+        Logger.getLogger().dbg("remove "+fl)
+        if os.path.isfile(fl):
+            os.remove(fl)
+        return self.retOK()
+    def selectdir(self,p,prms):
+        root=Tkinter.Tk()
+        root.wm_attributes("-topmost",1)
+        root.withdraw()
+        self.lastpath=tkFileDialog.askdirectory(parent=root,initialdir=self.lastpath)
+        root.quit()
+        root.destroy()
+        return self.retOKres(self.lastpath)
+
+class VarsApi(ApiPart):
+    vrs={}
+    def __init__(self):
+        ApiPart.__init__(self)
+        self.addWrapper("setvar",self.setvar)
+        self.addWrapper("getvar",self.getvar)
+        self.addWrapper("hasvar",self.hasvar)
+        self.addWrapper("remvar",self.remvar)
+    def setvar(self,p,prms):
+        vr=self.getParam(prms,"vr")
+        vl=self.getParam(prms,"vl")
+        Logger.getLogger().dbg("var "+vr+"="+vl)
+        self.vrs[vr]=vl
+        return self.retOKres(vl)
+    def getvar(self,p,prms):
+        vr=self.getParam(prms,"vr")
+        if not self.vrs.has_key(vr):
+            raise ErrException(2,"No variable "+vr)
+        return self.retOKres(self.vrs[vr])
+    def hasvar(self,p,prms):
+        return self.retOKres(self.vrs.has_key(self.getParam(prms,"vr")))
+    def remvar(self,p,prms):
+        vr=self.getParam(prms,"vr")
+        if self.vrs.has_key(vr):
+            del self.vrs[vr]
+        return self.retOK()
+
+class NoFileException(ErrException):
+    def __init__(self,id):
+        ErrException.__init__(self,4,"No file with id "+str(id))
+
+class FileApi(ApiPart):
+    xfiles={}
+    def __init__(self):
+        ApiPart.__init__(self)
+        self.addWrapper("open",self.fopen)
+        self.addWrapper("create",self.fcreate)
+        self.addWrapper("resopen",self.resopen)
+        self.addWrapper("close",self.fclose)
+        self.addWrapper("read",self.fread)
+        self.addWrapper("seek",self.fseek)
+        self.addWrapper("write",self.fwrite)
+        self.addWrapper("flush",self.fflush)
+    def flen(self,f):
+        p=f.tell()
+        f.seek(0,os.SEEK_END)
+        r=f.tell()
+        f.seek(p,os.SEEK_SET)
+        return r
+    def getId(self):
+        i=1
+        while (self.xfiles.has_key(i)):
+            i+=1
+        return i
+    def getFile(self,prms):
+        i=self.getParamInt(prms,"fid")
+        if not self.xfiles.has_key(i):
+            raise NoFileException(i)
+        return i
+    def retIdSize(self,id,sz):
+        return self.retOKmany({"result":id,"size":sz})
+    def fcreate(self,p,prms):
+        fl=self.getParam(prms,"fl")
+        i=self.getId()
+        self.xfiles[i]=(fl,StringIO())
+        return self.retOKres(i)
+    def fopen(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        i=self.getId()
+        f=open(fl,'rb')
+        self.xfiles[i]=(fl,StringIO())
+        self.xfiles[i][1].write(f.read())
+        self.xfiles[i][1].seek(0)
+        f.close()
+        return self.retIdSize(i,self.flen(self.xfiles[i][1]))
+    def resopen(self,p,prms):
+        fl=self.getParam(prms,"res")
+        i=self.getId()
+        self.xfiles[i]=('',StringIO())
+        self.xfiles[i][1].write(ResourceLocator.getReader().getResource(fl))
+        self.xfiles[i][1].seek(0)
+        return self.retIdSize(i,self.flen(self.xfiles[i][1]))
+    def fclose(self,p,prms):
+        fid=self.getFile(prms)
+        self.xfiles[fid][1].close()
+        del self.xfiles[fid]
+        return self.retOK()
+    def fflush(self,p,prms):
+        fid=self.getFile(prms)
+        if (self.xfiles[fid][0]==''):
+            raise ErrException(8,"Cant flush resource")
+        pos=self.xfiles[fid][1].tell()
+        f=open(self.xfiles[fid][0],'wb')
+        f.write(self.xfiles[fid][1].getvalue())
+        f.close()
+        #Logger.getLogger().dbg("FILE "+self.xfiles[fid][0]+" FLUSH STUB");
+        self.xfiles[fid][1].seek(pos,os.SEEK_SET)
+        return self.retOK()
+    def fseek(self,p,prms):
+        fid=self.getFile(prms)
+        pos=self.getParamInt(prms,"pos")
+        ofs=os.SEEK_SET
+        if (self.hasParam(prms,"ofs")):
+            o=self.getParamInt(prms,"ofs")
+            if (o==1):
+                ofs=os.SEEK_CUR
+            if (o==2):
+                ofs=os.SEEK_END
+        self.xfiles[fid][1].seek(pos,ofs)
+        ps=self.xfiles[fid][1].tell()
+        Logger.getLogger().dbg("file "+str(fid)+" seek on "+str(pos)+" to "+str(ps));
+        return self.retOK()
+    def fread(self,p,prms):
+        fid=self.getFile(prms)
+        sz=self.getParamInt(prms,"sz")
+        bts=struct.unpack(str(sz)+'B',self.xfiles[fid][1].read(sz))
+        if (not self.hasParam(prms,"be")) or self.getParam(prms,"be")==0:
+            bts=self.rotateBytes(bts)
+        Logger.getLogger().dbg("file " + str(fid) + " readed " + str(sz)+" bytes");
+        return self.retOKres(self.byte2str(bts))
+    def fwrite(self,p,prms):
+        fid=self.getFile(prms)
+        bts=self.str2byte(self.getParam(prms,"val"))
+        if (not self.hasParam(prms,"be")) or self.getParam(prms,"be")==0:
+            bts=self.rotateBytes(bts)
+        self.xfiles[fid][1].write(struct.pack(str(len(bts))+'B',*bts))
+        Logger.getLogger().dbg("file " + str(fid) + " written " + str(len(bts))+" bytes");
+        return self.retOK()
+
+class NoMapException(ErrException):
+    def __init__(self,mid):
+        ErrException.__init__(self,7, "No map with id " + str(mid))
+class NoResException(ErrException):
+    def __init__(self,rid):
+        ErrException.__init__(self,6, "No resource with id " + rid)
+class ResourceApi(ApiPart):
+    maps={}
+    def __init__(self):
+        ApiPart.__init__(self)
+        self.addWrapper("ressize",self.ressize);
+        self.addWrapper("hasres",self.hasres);
+        self.addWrapper("insertres", self.insertres);
+        self.addWrapper("insertval", self.insertval);
+        self.addWrapper("makemap", self.makemap);
+        self.addWrapper("mapres", self.mapres);
+        self.addWrapper("mapval", self.mapval);
+        self.addWrapper("mapfile", self.mapfile);
+        self.addWrapper("applymap", self.applymap);
+        self.addWrapper("applymaps", self.applymaps);
+        self.addWrapper("clearmap", self.clearmap);
+        self.addWrapper("clearmaps", self.clearmaps);
+    def getResName(self,prms):
+        nm=self.getParam(prms,"res")
+        if not ResourceLocator.getReader().hasResource(nm):
+            raise NoResException(nm)
+        return nm
+    def getval(self,prms):
+        bts=self.str2byte(self.getParam(prms,"val"))
+        if (not self.hasParam(prms,"be"))or(self.getParam(prms,"be")==0):
+            bts=self.rotateBytes(bts)
+        return struct.pack(str(len(bts))+"B",*bts)
+    def getOfsSz(self,prms):
+        return (self.getParamInt(prms,"ofs"),self.getParamInt(prms,"osz"))
+    def getRes(self,prms):
+        return ResourceLocator.getReader().getResource(self.getResName(prms))
+    def retDelta(self,sz,o):
+        return self.retOKmany({"result":sz,"delta":sz-o[1]})
+    def getMap(self,prms):
+        i=self.getParamInt(prms,"mid")
+        if not self.maps.has_key(i):
+            raise NoMapException(i)
+        return i
+    def insertData(f,ofs,osz,val):
+        fin=open(f,"rb")
+        fout=open(f+".tmp","wb")
+        fout.write(fin.read(ofs))
+        fin.seek(osz,os.SEEK_CUR)
+        fout.write(val)
+        fout.write(fin.read())
+        fin.close()
+        fout.close()
+        os.remove(f)
+        shutil.move(f+".tmp",f)
+    def hasres(self,p,prms):
+        return self.retOKres(ResourceLocator.getReader().hasResource(self.getParam("res")))
+    def ressize(self,p,prms):
+        return self.retOKres(ResourceLocator.getReader().resSize(self.getResName(prms)))
+    def insertres(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        o=self.getOfsSz(prms)
+        r=self.getRes(prms)
+        self.insertData(fl,o[0],o[1],r)
+        return self.retDelta(len(r),o)
+    def insertval(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        o=self.getOfsSz(prms)
+        b=self.getval(prms)
+        self.insertData(fl,o[0],o[1],b)
+        return self.retDelta(len(r),o)
+    def makemap(self,p,prms):
+        fl=self.getParamFile(prms,"fl")
+        i=1
+        while (self.maps.has_key(i)):
+            i+=1
+        self.maps[i]=[fl,[]]
+        Logger.getLogger().dbg("made map "+str(i)+" on "+fl)
+        return self.retOKres(i)
+    def mapres(self,p,prms):
+        m=self.getMap(prms)
+        o=self.getOfsSz(prms)
+        rn=self.getResName(prms)
+        self.maps[m][1]+=[('R',rn,o)]
+        sz=ResourceLocator.getReader().resSize(rn)
+        Logger.getLogger().dbg("map "+str(m)+" res "+rn+" ofs=0x"+str(o[0]));
+        return self.retDelta(sz,o)
+    def mapval(self,p,prms):
+        m=self.getMap(prms)
+        o=self.getOfsSz(prms)
+        vl=self.getval(prms)
+        self.maps[m][1]+=[('V',vl,o)]
+        Logger.getLogger().dbg("map "+str(m)+" val "+str(len(vl))+" bytes ofs=0x"+str(o[0]));
+        return self.retDelta(len(vl),o)
+    def mapfile(self,p,prms):
+        m=self.getMap(prms)
+        o=self.getOfsSz(prms)
+        fl=self.getParamFile(prms,"fl")
+        self.maps[m][1]+=[('F',fl,o)]
+        st=os.stat(fl)
+        Logger.getLogger().dbg("map "+str(m)+" file "+fl+" bytes ofs=0x"+str(o[0]));
+        return self.retDelta(st.st_size,o)
+    def applymap(self,p,prms):
+        m=self.getMap(prms)
+        self.domap(m)
+        del self.maps[m]
+        return self.retOK()
+    def applymaps(self,p,prms):
+        for x in self.maps.keys():
+            self.domap(x)
+        self.maps={}
+        return self.retOK()
+    def clearmap(self,p,prms):
+        m=self.getMap(prms)
+        del self.maps[m]
+        return self.retOK();
+    def clearmaps(self,p,prms):
+        self.maps={}
+        return self.retOK();
+    def domap(self,mid):
+        fl=self.maps[mid][0]
+        fin=open(fl,'rb')
+        fout=open(fl+".tmp",'wb')
+        pos=0
+        for c in self.maps[mid][1]:
+            fout.write(fin.read(c[2][0]-fin.tell()))
+            fin.seek(c[2][1],os.SEEK_CUR)
+            if (c[0]=='R'):
+                fout.write(ResourceLocator.getReader().getResource(c[1]))
+            elif (c[0]=='V'):
+                fout.write(c[1])
+            elif (c[0]=='F'):
+                f=open(c[1],'rb')
+                fout.write(f.read())
+                f.close()
+            else:
+                raise ErrException(10,"Bad cmd")
+        fout.write(fin.read())
+        fin.close()
+        fout.close()
+        os.remove(fl)
+        shutil.move(fl+".tmp",fl)
+
 
 class InstApi(ApiPart):
     @staticmethod
@@ -335,12 +703,19 @@ class InstApi(ApiPart):
             instapi=InstApi()
         return instapi
     system_api=SystemApi()
+    vars_api=VarsApi()
+    file_api=FileApi()
+    res_api=ResourceApi()
     def __init__(self):
+        ApiPart.__init__(self)
         self.addWrapper("log",self.log)
         self.addWrapper("close",self.close)
         self.addWrapper("cantstop",self.cantstop)
         self.addWrapper("canstop",self.canstop)
         self.addWrapper("system",self.system_api.proc)
+        self.addWrapper("vars",self.vars_api.proc)
+        self.addWrapper("file",self.file_api.proc)
+        self.addWrapper("resource",self.res_api.proc)
     @staticmethod
     def htc(m):
         return chr(int(m.group(1),16))
@@ -350,7 +725,7 @@ class InstApi(ApiPart):
     def process(self,loc):
         prms={}
         pth=[]
-        Logger.getLogger().dbg("API call "+loc)
+        #Logger.getLogger().dbg("API call "+loc)
         if (loc.find('?')>-1):
             (l,p)=loc.split('?',2)
             pth=l.split('/')
@@ -368,7 +743,7 @@ class InstApi(ApiPart):
         JServer.getServer().stop()
         return self.retOK()
     def cantstop(self,p,prms):
-        JServer.getServer().current_page=self.getParam(prms,"pg")
+        JServer.getServer().current_page=JServer.getServer().start_page+self.getParam(prms,"pg")
         JServer.getServer().canstop=False
         return self.retOK()
     def canstop(self,p,prms):

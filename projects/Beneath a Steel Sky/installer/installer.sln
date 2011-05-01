@@ -2,11 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "install_maker", "install_maker\install_maker.csproj", "{0614DC8E-7F11-4A39-8A50-9E49FE742BA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5699D7D1-6765-4B2E-9231-75DC4EC9F342} = {5699D7D1-6765-4B2E-9231-75DC4EC9F342}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine.net", "engine.net\engine.net.csproj", "{5699D7D1-6765-4B2E-9231-75DC4EC9F342}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0614DC8E-7F11-4A39-8A50-9E49FE742BA1} = {0614DC8E-7F11-4A39-8A50-9E49FE742BA1}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -251,8 +251,18 @@ namespace install_maker
             {
                 if ((li.Tag as string) != INSTALL_CONF_TAG)
                 {
+                    string pth=(string)li.Tag;
+                    if (pth != INST_API_TAG)
+                    {
+                        Uri r1 = new Uri((string)li.Tag);
+                        Uri r2 = new Uri(fname);
+                        r1 = r2.MakeRelativeUri(r1);
+                        string p2 = Uri.UnescapeDataString(r1.ToString());
+                        if (pth.Length > p2.Length)
+                            pth = p2;
+                    }
                     XmlNode f = fls.AppendChild(doc.CreateElement("file"));
-                    f.Attributes.Append(doc.CreateAttribute("name")).Value = (string)li.Tag;
+                    f.Attributes.Append(doc.CreateAttribute("name")).Value = pth;
                     if (li.Text != Path.GetFileName((string)li.Tag))
                         f.Attributes.Append(doc.CreateAttribute("alias")).Value = li.Text;
                 }
@@ -382,6 +392,8 @@ namespace install_maker
                                 if (n.NodeType == XmlNodeType.Element && n.Name == "file")
                                 {
                                     string s = n.Attributes["name"].Value;
+                                    if (s!=INST_API_TAG && !Path.IsPathRooted(s))
+                                        s = Path.GetDirectoryName(fname) +"/"+ s;
                                     string a = (s == INST_API_TAG)?(INST_API_FILE):(Path.GetFileName(s));
                                     if (n.Attributes["alias"] != null)
                                         a = n.Attributes["alias"].Value;
@@ -428,6 +440,7 @@ namespace install_maker
                 if (bp=="")
                 {
                     FolderBrowserDialog fb = new FolderBrowserDialog();
+                    fb.SelectedPath = (docpath != "" ? docpath : Path.GetDirectoryName(Application.ExecutablePath));
                     if (fb.ShowDialog() != DialogResult.OK)
                         return;
                     bp = fb.SelectedPath;
@@ -448,7 +461,7 @@ namespace install_maker
 
         private void listView1_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            if (e.Label != null || e.Label != "")
+            if (e.Label == null || e.Label == "")
             {
                 e.CancelEdit = true;
                 return;
