@@ -90,6 +90,7 @@ namespace engine.net
             }
         };
         public List<FileEntry> entries = new List<FileEntry>();
+        public OneFileResReader(bool none) { }
         public OneFileResReader()
         {
             FileStream fs = new FileStream(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "data.bin"), FileMode.Open);
@@ -162,7 +163,7 @@ namespace engine.net
         [DllImport("kernel32.dll")]
         public static extern IntPtr LockResource(IntPtr hLRes);
 
-        public InternalResReader()
+        public InternalResReader():base(true)
         {
             IntPtr r = FindResource(0, 113, 10);
             if (r == null)

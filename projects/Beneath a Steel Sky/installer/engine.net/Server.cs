@@ -160,7 +160,7 @@ namespace engine.net
                         tp = "image/" + ext;
                         break;
                     case "js":
-                        tp = "application/javascript";
+                        tp = "application/javascript; charset=UTF-8";
                         break;
                     case "mid":
                         tp = "audio/midi";
@@ -170,11 +170,24 @@ namespace engine.net
                         break;
                 }
             }
-            con.Response.ContentType = tp;
-            con.Response.ContentLength64 = buffer.Length;
-            con.Response.OutputStream.Write(buffer, 0, buffer.Length);
-            con.Response.OutputStream.Close();
-            con.Response.Close();
+            try
+            {
+                con.Response.ContentType = tp;
+                con.Response.ContentLength64 = buffer.Length;
+                con.Response.OutputStream.Write(buffer, 0, buffer.Length);
+                con.Response.OutputStream.Close();
+                con.Response.Close();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    con.Response.Close();
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

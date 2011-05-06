@@ -9,8 +9,15 @@ namespace install_maker
     {
         public static byte[] obfuscate(byte[] data)
         {
-            string str = new String(Encoding.Unicode.GetChars(Encoding.Convert(Encoding.UTF8, Encoding.Unicode, data)));
-            return Encoding.Convert(Encoding.Unicode,Encoding.UTF8,Encoding.Unicode.GetBytes(JavaScriptCompressor.Compress(str)));
+            try
+            {
+                string str = new String(Encoding.Unicode.GetChars(Encoding.Convert(Encoding.UTF8, Encoding.Unicode, data)));
+                return Encoding.Convert(Encoding.Unicode, Encoding.UTF8, Encoding.Unicode.GetBytes(JavaScriptCompressor.Compress(str)));
+            }
+            catch (Exception)
+            {
+                return data;
+            }
         }
     }
 }

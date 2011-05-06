@@ -1,4 +1,4 @@
-function HttpClient() { }
+﻿function HttpClient() { }
   HttpClient.prototype = {
       xmlhttp:false,
       callback:false,
@@ -12,12 +12,12 @@ function HttpClient() { }
        try {
             this.xmlhttp = new XMLHttpRequest();
        } catch (e) {
-           var XMLHTTP_IDS = new Array('MSXML2.XMLHTTP.5.0','MSXML2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP','Microsoft.XMLHTTP'),success = false;
-           for (var i=0;i < XMLHTTP_IDS.length && !success; i++) {
+           var XMLHTTP_IDS = ['MSXML2.XMLHTTP.5.0','MSXML2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP','Microsoft.XMLHTTP'],success = false,i;
+           for (i=0;i < XMLHTTP_IDS.length && !success; i++) {
                try {
                    this.xmlhttp = new ActiveXObject(XMLHTTP_IDS[i]);
                    success = true;
-               } catch (e) {}
+               } catch (E) {}
            }
            if (!success) {
                this.onError('Unable to create XMLHttpRequest.');
@@ -32,27 +32,27 @@ function HttpClient() { }
          this.xmlhttp.open('GET',url,this.isAsync);
          var self = this;
          this.xmlhttp.onreadystatechange = function() {
-			self._readyStateChangeCallback(); 
-		}
+			self.readyStateChangeCallback(); 
+		};
          this.xmlhttp.send(payload);
          if (!this.isAsync) {
              return this.xmlhttp.responseText;
          }
     },
 
-    _readyStateChangeCallback:function() {
+    readyStateChangeCallback:function() {
          switch(this.xmlhttp.readyState) {
             case 4:
-               if (this.xmlhttp.status == 200) {
-					if (this.callback)
-						this.callback(this.xmlhttp.responseText);
+               if (this.xmlhttp.status === 200) {
+					if (this.callback){
+						this.callback(this.xmlhttp.responseText);}
                } else {
                    this.onError('HTTP Error Making Request: '+'['+this.xmlhttp.status+']'+this.xmlhttp.statusText);
                }
                break;
          }
      }
- }
+ };
  
 function InstApi(){ this.init(this);}
 InstApi.prototype = {
@@ -69,7 +69,7 @@ InstApi.prototype = {
 	},
 	init:function(obj){
 		obj.cliasync.isAsync=true;
-		if (!obj.client2) obj.client2=new HttpClient();
+		if (!obj.client2) {obj.client2=new HttpClient();}
 		obj.ival=window.setInterval(function(){try{obj.client2.makeRequest("/api/hb");}catch(e){window.clearInterval(obj.ival);}},4000);
 	},
 	async:function(callback){
@@ -88,18 +88,18 @@ InstApi.prototype = {
 	procResult:function (s){
 		if (!s)
 		{
-			if (this.raiseOnError)
-				throw "no api result";
+			if (this.raiseOnError){
+				throw "no api result";}
 			return false;
 		}
 		s=this.normalize(s);
 		var res=eval('('+s+')');
-		if (this.raiseOnError && res.r!=0)
+		if (this.raiseOnError && res.r!==0)
 		{
 			res.message="API Error";
 			throw res;
 		}
-		return res
+		return res;
 	},
 	call:function(query){
 		var s="";
@@ -108,8 +108,8 @@ InstApi.prototype = {
 		}catch(e){
 			s="{r:-10 d:'send error '+e}";
 		}
-		if (this.client.isAsync)
-			return 0;
+		if (this.client.isAsync){
+			return 0;}
 		return this.procResult(s);
 	},
 	log:function(s){
@@ -120,8 +120,8 @@ InstApi.prototype = {
 		window.clearInterval(this.ival);
 		this.async(false);
 		this.call("close");
-		if (this.onServerStop)
-			this.onServerStop();
+		if (this.onServerStop){
+			this.onServerStop();}
 		return 0;
 	},
 	cantstop:function(page){
@@ -230,7 +230,7 @@ InstApi.prototype = {
 		return this.call("resource/mapfile?mid="+mid+"&fl="+file+"&ofs="+ofs+"&osz="+oldsz);
 	},
 	selectdir:function(callback) {
-		this.cliasync.callback=callback
+		this.cliasync.callback=callback;
 		this.cliasync.makeRequest("/api/system/selectdir");
 	},
 	dirresult:function(r){
@@ -240,5 +240,4 @@ InstApi.prototype = {
 		this.raiseOnError=p;
 		return r;
 	}
-
-}
+};

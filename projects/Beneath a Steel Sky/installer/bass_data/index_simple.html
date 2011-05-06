@@ -67,28 +67,7 @@ Bass path:<br>
  function selectfolder() {
 	r=api.api.selectdir(dirselected)
  }
- function checkDsk()
- {
-	vl=api.checkDsk(pathform.dsk.value);
-	if (vl=="")
-	{
-		if (api.dsk)
-			document.pathform.dsk.value=api.dsk;
-		return;
-	}
-	v=vl.replace(/\\/g,'/');
-	fnm=v.split('/');
-	fn=v[v.length-1];
-	pt=v.replace(fn,"");
-	alert("file="+fn+" path="+pt);
-	if (fn=='sky.dsk')
-	if (api.checkDsk(pt))
-	{
-		api.setDsk(vl);
-		return;
-	}
-	document.pathform.dsk.value="";
- }
+ 
  var logs=0;
  function patch()
  {

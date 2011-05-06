@@ -1,15 +1,38 @@
 <install_maker_config>
   <options>
     <app name="BASS ru Installer" icon="D:\Projects\OG\projects\Beneath a Steel Sky\installer\favicon.ico" />
-    <browser internal="yes" sizeable="yes" maximized="no" width="800" height="600" />
-    <pack type="1" compressed="yes" />
-    <flags debug="yes" console="yes" logfile="yes" />
+    <browser internal="yes" sizeable="no" maximized="no" width="640" height="480" />
+    <pack type="0" compressed="yes" />
+    <flags debug="no" console="no" logfile="yes" />
   </options>
   <files>
     <file name="index.html" />
     <file name="INST_API_JS" alias="inst_api.js" />
-    <file name="page2.html" />
     <file name="bass_api.js" />
     <file name="main.mid" />
+    <file name="60602.bin" />
+    <file name="60603.bin" />
+    <file name="60604.bin" />
+    <file name="60605.bin" />
+    <file name="60606.bin" />
+    <file name="60607.bin" />
+    <file name="2149.bin" />
+    <file name="2198.bin" />
+    <file name="60150.bin" />
+    <file name="60520.bin" />
+    <file name="60521.bin" />
+    <file name="60600.bin" />
+    <file name="60601.bin" />
+    <file name="game_api.js" />
+    <file name="exit_btn.png" />
+    <file name="foster.png" />
+    <file name="foster_pull.png" />
+    <file name="foster_push.png" />
+    <file name="lever.png" />
+    <file name="linc.png" />
+    <file name="scr.png" />
+    <file name="scr_mask.png" />
+    <file name="cons1.png" />
+    <file name="cons2.png" />
   </files>
 </install_maker_config>
