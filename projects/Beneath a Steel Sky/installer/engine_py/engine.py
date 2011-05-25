@@ -636,14 +636,14 @@ class ResourceApi(ApiPart):
         rn=self.getResName(prms)
         self.maps[m][1]+=[('R',rn,o)]
         sz=ResourceLocator.getReader().resSize(rn)
-        Logger.getLogger().dbg("map "+str(m)+" res "+rn+" ofs=0x"+str(o[0]));
+        Logger.getLogger().dbg("map "+str(m)+" res "+rn+(" ofs=0x%X" % o[0]));
         return self.retDelta(sz,o)
     def mapval(self,p,prms):
         m=self.getMap(prms)
         o=self.getOfsSz(prms)
         vl=self.getval(prms)
         self.maps[m][1]+=[('V',vl,o)]
-        Logger.getLogger().dbg("map "+str(m)+" val "+str(len(vl))+" bytes ofs=0x"+str(o[0]));
+        Logger.getLogger().dbg("map "+str(m)+" val "+str(len(vl))+(" bytes ofs=0x%X" % o[0]));
         return self.retDelta(len(vl),o)
     def mapfile(self,p,prms):
         m=self.getMap(prms)
@@ -651,7 +651,7 @@ class ResourceApi(ApiPart):
         fl=self.getParamFile(prms,"fl")
         self.maps[m][1]+=[('F',fl,o)]
         st=os.stat(fl)
-        Logger.getLogger().dbg("map "+str(m)+" file "+fl+" bytes ofs=0x"+str(o[0]));
+        Logger.getLogger().dbg("map "+str(m)+" file "+fl+(" bytes ofs=0x%X" % o[0]));
         return self.retDelta(st.st_size,o)
     def applymap(self,p,prms):
         m=self.getMap(prms)

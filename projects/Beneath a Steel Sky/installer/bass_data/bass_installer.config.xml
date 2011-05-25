@@ -1,28 +1,15 @@
 <install_maker_config>
   <options>
-    <app name="BASS ru Installer" icon="D:\Projects\OG\projects\Beneath a Steel Sky\installer\favicon.ico" />
+    <app name="BASS ru Installer" icon="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\favicon.ico" />
     <browser internal="yes" sizeable="no" maximized="no" width="640" height="480" />
-    <pack type="1" compressed="yes" />
-    <flags debug="yes" console="yes" logfile="yes" />
+    <pack type="0" compressed="yes" />
+    <flags debug="no" console="no" logfile="yes" />
   </options>
   <files>
     <file name="index.html" />
     <file name="INST_API_JS" alias="inst_api.js" />
     <file name="bass_api.js" />
     <file name="main.mid" />
-    <file name="60602.bin" />
-    <file name="60603.bin" />
-    <file name="60604.bin" />
-    <file name="60605.bin" />
-    <file name="60606.bin" />
-    <file name="60607.bin" />
-    <file name="2149.bin" />
-    <file name="2198.bin" />
-    <file name="60150.bin" />
-    <file name="60520.bin" />
-    <file name="60521.bin" />
-    <file name="60600.bin" />
-    <file name="60601.bin" />
     <file name="game_api.js" />
     <file name="exit_btn.png" />
     <file name="foster.png" />
@@ -34,5 +21,35 @@
     <file name="scr_mask.png" />
     <file name="cons1.png" />
     <file name="cons2.png" />
+    <file name="60607.bin" />
+    <file name="2149.bin" />
+    <file name="2198.bin" />
+    <file name="4116.bin" />
+    <file name="4127.bin" />
+    <file name="4210.bin" />
+    <file name="12309.bin" />
+    <file name="16405.bin" />
+    <file name="16410.bin" />
+    <file name="16413.bin" />
+    <file name="18502.bin" />
+    <file name="18572.bin" />
+    <file name="18619.bin" />
+    <file name="24590.bin" />
+    <file name="24599.bin" />
+    <file name="26668.bin" />
+    <file name="28703.bin" />
+    <file name="59538.bin" />
+    <file name="59542.bin" />
+    <file name="60096.bin" />
+    <file name="60150.bin" />
+    <file name="60520.bin" />
+    <file name="60521.bin" />
+    <file name="60600.bin" />
+    <file name="60601.bin" />
+    <file name="60602.bin" />
+    <file name="60603.bin" />
+    <file name="60604.bin" />
+    <file name="60605.bin" />
+    <file name="60606.bin" />
   </files>
 </install_maker_config>

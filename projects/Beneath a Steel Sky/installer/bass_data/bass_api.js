@@ -1,7 +1,7 @@
 ﻿var bass=false;
 function BassApi(){this.init(this);}
  BassApi.prototype={
-	ress:[2149,2198,60150,60520,60521,60600,60601,60602,60603,60604,60605,60606,60607],
+	ress:[2149,2198,4116,4127,4210,12309,16405,16410,16413,18502,18572,18619,24590,24599,26668,28703,59538,59542,60096,60150,60520,60521,60600,60601,60602,60603,60604,60605,60606,60607],
 	api:new InstApi(),
 	dsk:false,
 	badver:false,
@@ -235,8 +235,8 @@ function BassApi(){this.init(this);}
 		return s;
 	},
 	procres:function(f){
-	  var c=false,o=f[1],s=f[2],ad=0,v,i,r;
-	  if (this.delta>0)
+	  var c=false,o=parseInt(f[1],10),s=parseInt(f[2],10),ad=0,v,i,r;
+	  if (this.delta!==0)
 	  {
 		c=true;
 		o+=this.delta;
@@ -254,7 +254,7 @@ function BassApi(){this.init(this);}
 	  if (this.ress[i]===f[0])
 	  {
 		r=this.api.mapres(this.dskf,""+f[0]+".bin",f[1],f[2]);
-		this.delta+=r.delta;
+		this.delta+=parseInt(r.delta,10);
 		if (r.delta!==0)
 		{
 			s=parseInt(r.result,10);
