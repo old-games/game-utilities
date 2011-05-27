@@ -106,7 +106,7 @@ InstApi.prototype = {
 		try{
 			s=this.client.makeRequest("/api/"+query,null);
 		}catch(e){
-			s="{r:-10 d:'send error '+e}";
+			s="{r:-10 d:'send error "+e.message+"'}";
 		}
 		if (this.client.isAsync){
 			return 0;}

@@ -1,4 +1,5 @@
-﻿namespace engine.net
+﻿#if !NO_EXPLORER
+namespace engine.net
 {
     partial class Form1
     {
@@ -61,3 +62,4 @@
     }
 }
 
+#endif

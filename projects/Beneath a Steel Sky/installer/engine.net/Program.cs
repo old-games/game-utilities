@@ -57,11 +57,21 @@ namespace engine.net
             Logger.getLogger().dbg("config loaded 4 app "+nm);
             Logger.getLogger().dbg("starting server");
             Server.getServer().start();
+#if !NO_EXPLORER
             if (window)
             {
-                Application.Run(new Form1(w, h, mx, sz, nm));
+                try
+                {
+                    Application.Run(new Form1(w, h, mx, sz, nm));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR  " + ex.Message);
+                    Application.Run(new BrowserController());
+                }
             }
             else
+#endif
                 Application.Run(new BrowserController());
             Logger.getLogger().dbg("stopping server");
             Server.getServer().stop();

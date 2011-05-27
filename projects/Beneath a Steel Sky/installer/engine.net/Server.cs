@@ -66,11 +66,13 @@ namespace engine.net
                         {
                             BrowserController.obj.restartBrowser();
                         }
+#if !NO_EXPLORER
                         else if (Form1.obj==null)
                         {
                             Logger.getLogger().dbg("No browser controller object. Stopping server");
                             InstApi.getApi().process("close");
                         }
+#endif
                     }
                 }
             }

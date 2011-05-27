@@ -53,6 +53,7 @@ function BassApi(){this.init(this);}
 		s=e.message;
 		if (s==="API Error"){s+=":"+e.r+":"+e.d;}
 		this.log("Client exception :"+s);
+		this.api.canstop();
 		return s;
 	},
 	locateDsk:function(){
@@ -269,8 +270,8 @@ function BassApi(){this.init(this);}
 		bass.api.sync();
 		try{
 			r=parseInt(bass.api.procResult(r).result,10);
-			c=500;
-			if (r+500>5098){
+			c=100;
+			if (r+100>5098){
 				c=5098-r;}
 			p=bass.api.fread(bass.wf,8*c,1);
 			st=p.result;

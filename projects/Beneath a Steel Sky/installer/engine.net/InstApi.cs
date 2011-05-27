@@ -250,8 +250,10 @@ namespace engine.net
         {
             if (BrowserController.obj != null)
                 BrowserController.obj.stopBrowser();
+#if !NO_EXPLORER
             if (Form1.obj != null)
                 Form1.obj.stopBrowser();
+#endif
             return retOK();
         }
         string cantstop(Paths cmd, Parameters prms)
@@ -367,9 +369,12 @@ namespace engine.net
         public string selectdir(Paths pth, Parameters prms)
         {
             string res = "";
+#if !NO_EXPLORER
             if (Form1.obj != null)
                 res = Form1.obj.getFld();
-            else if (BrowserController.obj != null)
+            else
+#endif
+            if (BrowserController.obj != null)
                 res = BrowserController.obj.getFld();
             return retOK(res);
         }

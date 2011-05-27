@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿#if !NO_EXPLORER
+using System.Windows.Forms;
 using System;
 using System.IO;
 
@@ -74,3 +75,4 @@ namespace engine.net
 
     }
 }
+#endif
