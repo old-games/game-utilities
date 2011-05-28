@@ -2,8 +2,8 @@
   <options>
     <app name="BASS ru Installer" icon="D:\Projects\OG\projects\Beneath a Steel Sky\installer\bass_data\favicon.ico" />
     <browser internal="yes" sizeable="no" maximized="no" width="640" height="480" />
-    <pack type="2" compressed="yes" />
-    <flags debug="yes" console="yes" logfile="yes" />
+    <pack type="0" compressed="yes" />
+    <flags debug="no" console="no" logfile="yes" />
   </options>
   <files>
     <file name="index.html" />

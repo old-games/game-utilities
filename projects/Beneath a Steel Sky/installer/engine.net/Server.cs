@@ -49,7 +49,7 @@ namespace engine.net
             lastcon = DateTime.Now;
             while (!m_stop)
             {
-                svr.BeginGetContext(new AsyncCallback(OnRequests), svr).AsyncWaitHandle.WaitOne(3000);
+                svr.BeginGetContext(new AsyncCallback(OnRequests), svr).AsyncWaitHandle.WaitOne(3000,true);
                 double sec = (DateTime.Now - lastcon).TotalSeconds;
                 if (sec > 5)
                 {
@@ -114,7 +114,7 @@ namespace engine.net
             string tp="";
             if (what.StartsWith("/api/"))
             {
-                tp="application/json";
+                tp="application/json; encoding=UTF-8";
                 what = what.Remove(0, 5);
                 if (what!="hb")
                 {

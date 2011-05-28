@@ -317,7 +317,7 @@ namespace engine.net
         public string getfile(Paths pth, Parameters prms)
         {
             string fl = getParamFile(prms, "fl");
-            StreamReader sr = new StreamReader(new FileStream(fl, FileMode.Open), true);
+            StreamReader sr = new StreamReader(new FileStream(fl, FileMode.Open), Encoding.GetEncoding(1251));
             string s = sr.ReadToEnd();
             sr.Close();
             return retOK(escape(s));
