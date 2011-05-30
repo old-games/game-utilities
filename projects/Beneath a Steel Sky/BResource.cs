@@ -4,6 +4,7 @@ using System.Xml;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace bassru
 {
@@ -492,6 +493,20 @@ namespace bassru
         public byte[] sequenceData { get { return seqdata; } }
         public override bool export(string filename)
         {
+            bool hasbg = false;
+            foreach (Color c in Config.get().findPalette(pal).getPal())
+            {
+                if (c.ToArgb() == bgColor.ToArgb())
+                {
+                    hasbg = true;
+                    break;
+                }
+            }
+            if (hasbg)
+            {
+                if (MessageBox.Show("Sequence palette contains background color. Continue?", "Warning", MessageBoxButtons.YesNo) == DialogResult.No)
+                    throw new ApplicationException("Sequence palette contains Background color. Change bg color and SAVE CONFIG.");
+            }
             makeBitmap(bgColor, Config.get().findPalette(pal)).Save(filename, ImageFormat.Bmp);
             return true;
         }

@@ -383,7 +383,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Name = "MainForm";
-            this.Text = "Bass Ru v0.8";
+            this.Text = "Bass Ru v0.9";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
