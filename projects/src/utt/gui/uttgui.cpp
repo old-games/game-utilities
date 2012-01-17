@@ -13,7 +13,7 @@
 
 UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 640,480 ), wxDefaultSize );
 	m_mgr.SetManagedWindow(this);
 	
 	
@@ -25,4 +25,12 @@ UttMainFrame::~UttMainFrame()
 {
 	m_mgr.UnInit();
 	
+}
+
+FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
+{
+}
+
+FontEditGui::~FontEditGui()
+{
 }

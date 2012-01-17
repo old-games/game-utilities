@@ -11,16 +11,17 @@
 
 #include "pch.h"
 #include "utt.h"
-#include "gui/uttgui.h"
+#include "gui/mainframeimpl.h"
 
 IMPLEMENT_APP(UTTApp);
 
 bool UTTApp::OnInit()
 {
-	UttMainFrame* frame = new UttMainFrame(0L);
+	MainFrameImpl* frame = new MainFrameImpl();
 #ifdef VISUALC
 	//frame->SetIcon(wxICON(aaaa)); // To Set App Icon
 #endif
 	frame->Show();
     return true;
 }
+ 

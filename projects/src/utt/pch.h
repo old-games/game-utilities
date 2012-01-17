@@ -17,13 +17,13 @@
 // basic wxWidgets headers
 #include <wx/wxprec.h>
 
-    #include <wx/menu.h>
-	#include <wx/wfstream.h>
-	#include <wx/txtstrm.h>
-	#include <wx/listimpl.cpp>
-	#include <wx/snglinst.h>
-	#include <wx/artprov.h>
-	#include <wx/log.h>
+#include <wx/menu.h>
+#include <wx/wfstream.h>
+#include <wx/txtstrm.h>
+#include <wx/listimpl.cpp>
+#include <wx/snglinst.h>
+#include <wx/artprov.h>
+#include <wx/log.h>
 
 // simple dialogs definitions
 #define YESNODIALOGNULL(x, y, z)	wxMessageDialog(NULL, x, y, wxYES_NO | wxCENTRE | z).ShowModal()

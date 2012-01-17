@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswud"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				PreprocessorDefinitions="_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -63,6 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib"
+				OutputFile="..\bin\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(WXWIN)/lib/vc_lib"
 				GenerateDebugInformation="true"
@@ -119,7 +120,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswu"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				PreprocessorDefinitions="NDEBUG;__WXMSW__;_WINDOWS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
@@ -139,6 +140,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib"
+				OutputFile="..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(WXWIN)/lib/vc_lib"
 				GenerateDebugInformation="true"
@@ -179,6 +181,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\gui\fonteditimpl.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\pch.h"
 				>
 			</File>
@@ -210,6 +216,18 @@
 		<Filter
 			Name="gui"
 			>
+			<File
+				RelativePath="..\gui\fonteditimpl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\gui\mainframeimpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\gui\mainframeimpl.h"
+				>
+			</File>
 			<File
 				RelativePath="..\gui\uttgui.cpp"
 				>
