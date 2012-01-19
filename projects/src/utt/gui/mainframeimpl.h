@@ -12,6 +12,7 @@
 
 #include "uttgui.h"
 #include "fonteditimpl.h"
+#include "logwindowimpl.h"
 
 class MainFrameImpl:
 	public UttMainFrame 
@@ -23,6 +24,7 @@ public:
 private:
 
 	FontEditImpl		mFontEditor;
+	LogWindowImpl		mLogWindow;
 };
 
 #endif

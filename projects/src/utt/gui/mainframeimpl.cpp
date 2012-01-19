@@ -12,9 +12,12 @@
 
 MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
-	mFontEditor( this )
+	mFontEditor( this ),
+	mLogWindow( this )
 {
 	m_mgr.AddPane(&mFontEditor, wxLEFT, "Font editor");
+	m_mgr.AddPane(&mLogWindow, wxLEFT, "Log");
+	m_mgr.Update();
 }
 
 MainFrameImpl::~MainFrameImpl(void)

@@ -221,6 +221,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\gui\logwindowimpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\gui\logwindowimpl.h"
+				>
+			</File>
+			<File
 				RelativePath="..\gui\mainframeimpl.cpp"
 				>
 			</File>
