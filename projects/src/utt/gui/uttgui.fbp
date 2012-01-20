@@ -156,7 +156,7 @@
             <property name="maximum_size"></property>
             <property name="min_size"></property>
             <property name="minimize_button">0</property>
-            <property name="minimum_size"></property>
+            <property name="minimum_size">640,480</property>
             <property name="moveable">1</property>
             <property name="name">FontEditGui</property>
             <property name="pane_border">1</property>
@@ -166,7 +166,7 @@
             <property name="pos"></property>
             <property name="resize">Resizable</property>
             <property name="show">1</property>
-            <property name="size">617,434</property>
+            <property name="size">640,480</property>
             <property name="subclass"></property>
             <property name="toolbar_pane">0</property>
             <property name="tooltip"></property>
@@ -276,7 +276,7 @@
                                                 <property name="aui_row"></property>
                                                 <property name="best_size"></property>
                                                 <property name="bg"></property>
-                                                <property name="bitmap"></property>
+                                                <property name="bitmap">Load From Embedded File; D:\tmp\utt\icon\to_left.xpm</property>
                                                 <property name="caption"></property>
                                                 <property name="caption_visible">1</property>
                                                 <property name="center_pane">0</property>
@@ -395,7 +395,7 @@
                                                 <property name="maximum_size"></property>
                                                 <property name="min_size"></property>
                                                 <property name="minimize_button">0</property>
-                                                <property name="minimum_size"></property>
+                                                <property name="minimum_size">-1,-1</property>
                                                 <property name="moveable">1</property>
                                                 <property name="name">mPreviewSymbols1</property>
                                                 <property name="pane_border">1</property>
@@ -460,7 +460,7 @@
                                                 <property name="aui_row"></property>
                                                 <property name="best_size"></property>
                                                 <property name="bg"></property>
-                                                <property name="bitmap"></property>
+                                                <property name="bitmap">Load From Embedded File; D:\tmp\utt\icon\to_right.xpm</property>
                                                 <property name="caption"></property>
                                                 <property name="caption_visible">1</property>
                                                 <property name="center_pane">0</property>

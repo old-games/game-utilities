@@ -9,6 +9,9 @@
 
 #include "uttgui.h"
 
+#include "../icon/to_left.xpm"
+#include "../icon/to_right.xpm"
+
 ///////////////////////////////////////////////////////////////////////////
 
 UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
@@ -29,6 +32,8 @@ UttMainFrame::~UttMainFrame()
 
 FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
+	this->SetMinSize( wxSize( 640,480 ) );
+	
 	wxGridSizer* gSizer1;
 	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
 	
@@ -51,13 +56,13 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	gbSizer21->SetFlexibleDirection( wxBOTH );
 	gbSizer21->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	mScrollSymbolsLeft1 = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	mScrollSymbolsLeft1 = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxBitmap( to_left_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	gbSizer21->Add( mScrollSymbolsLeft1, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxRIGHT|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	mPreviewSymbols1 = new wxStaticBitmap( this, wxID_PREVIEW_SYMBOLS, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
 	gbSizer21->Add( mPreviewSymbols1, wxGBPosition( 0, 1 ), wxGBSpan( 1, 1 ), wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	mScrollSymbolsRight1 = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	mScrollSymbolsRight1 = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	gbSizer21->Add( mScrollSymbolsRight1, wxGBPosition( 0, 2 ), wxGBSpan( 1, 1 ), wxEXPAND|wxLEFT, 5 );
 	
 	sbSizer11->Add( gbSizer21, 1, wxEXPAND, 5 );

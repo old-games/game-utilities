@@ -73,7 +73,7 @@ class FontEditGui : public wxPanel
 	
 	public:
 		
-		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 617,434 ), long style = wxTAB_TRAVERSAL ); 
+		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 640,480 ), long style = wxTAB_TRAVERSAL ); 
 		~FontEditGui();
 	
 };
