@@ -65,9 +65,9 @@ class FontEditGui : public wxPanel
 	private:
 	
 	protected:
-		wxBitmapButton* mScrollSymbolsLeft1;
-		wxStaticBitmap* mPreviewSymbols1;
-		wxBitmapButton* mScrollSymbolsRight1;
+		wxBitmapButton* mScrollSymbolsLeft;
+		wxStaticBitmap* mPreviewSymbols;
+		wxBitmapButton* mScrollSymbolsRight;
 		wxStaticBitmap* m_bitmap4;
 		wxStaticBitmap* m_bitmap5;
 	

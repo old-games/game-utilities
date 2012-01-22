@@ -11,10 +11,15 @@
 #include "fonteditimpl.h"
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
-	FontEditGui( parent )
+	FontEditGui( parent ),
+	mCurrentFont( NULL )
 {
 }
 
 FontEditImpl::~FontEditImpl(void)
+{
+}
+
+void FontEditImpl::SetFont( const FontInfo& newFont )
 {
 }

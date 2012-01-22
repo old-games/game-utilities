@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib"
-				OutputFile="..\bin\$(ProjectName).exe"
+				OutputFile="..\bin\$(ProjectName)_d.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(WXWIN)/lib/vc_lib"
 				GenerateDebugInformation="true"
@@ -181,10 +181,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\gui\fonteditimpl.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\pch.h"
 				>
 			</File>
@@ -216,6 +212,10 @@
 		<Filter
 			Name="gui"
 			>
+			<File
+				RelativePath="..\gui\fonteditimpl.cpp"
+				>
+			</File>
 			<File
 				RelativePath="..\gui\fonteditimpl.h"
 				>
