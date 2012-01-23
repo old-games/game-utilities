@@ -13,7 +13,8 @@
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
 	FontEditGui( parent ),
-	mCurrentFont( NULL )
+	mCurrentFont( NULL ),
+	mHasChanges( false )
 {
 }
 
@@ -25,11 +26,29 @@ void FontEditImpl::SetFont( const FontInfo& newFont )
 {
 }
 
+bool FontEditImpl::CheckChanges()
+{
+	if (!mHasChanges)
+	{
+		return true;
+	}
+	int res = wxMessageDialog(this, "Save changes?", "Font has changes", wxYES_NO | wxCANCEL | wxCENTRE | wxNO_DEFAULT).ShowModal();
+	if (res == wxID_OK)
+	{
+		return SaveFont();
+	}
+	return true;
+}
+
+bool FontEditImpl::SaveFont()
+{
+	return true;
+}
+
 bool FontEditImpl::CreateFont()
 {
-	if (mCurrentFont != NULL)
+	if ( mCurrentFont != NULL && !CheckChanges() )
 	{
-		
 		return false;
 	}
 	mCurrentFont = new FontInfo();

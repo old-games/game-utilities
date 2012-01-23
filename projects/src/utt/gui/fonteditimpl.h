@@ -72,6 +72,8 @@ public:
 	void SetFont( const FontInfo& newFont );
 	bool ShowSettings();
 	bool CreateFont();
+	bool CheckChanges();
+	bool SaveFont();
 
 protected:
 
@@ -82,6 +84,7 @@ protected:
 private:	
 
 	FontInfo*	mCurrentFont;
+	bool		mHasChanges;
 };
 
 #endif
