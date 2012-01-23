@@ -70,7 +70,15 @@ public:
 	~FontEditImpl(void);
 
 	void SetFont( const FontInfo& newFont );
+	bool ShowSettings();
+	bool CreateFont();
 
+protected:
+
+	void Render(wxDC& dc);
+	void OnPaint(wxPaintEvent& event);
+	
+	virtual void OnBtnClick( wxCommandEvent& event );
 private:	
 
 	FontInfo*	mCurrentFont;

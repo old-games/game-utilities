@@ -213,14 +213,6 @@
 			Name="gui"
 			>
 			<File
-				RelativePath="..\gui\fonteditimpl.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\gui\fonteditimpl.h"
-				>
-			</File>
-			<File
 				RelativePath="..\gui\logwindowimpl.cpp"
 				>
 			</File>
@@ -244,6 +236,34 @@
 				RelativePath="..\gui\uttgui.h"
 				>
 			</File>
+			<Filter
+				Name="fonteditor"
+				>
+				<File
+					RelativePath="..\gui\fonteditimpl.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\fonteditimpl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\fontsettingsimpl.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\fontsettingsimpl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\lettercodesimpl.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\lettercodesimpl.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>
