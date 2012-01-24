@@ -208,6 +208,10 @@
 				RelativePath="..\utt.h"
 				>
 			</File>
+			<File
+				RelativePath="..\uttypes.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="gui"

@@ -6,6 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
+ 
 #ifndef LETTERCODESIMPL_H_INCLUDED
 #define LETTERCODESIMPL_H_INCLUDED
 
@@ -15,8 +16,18 @@ class LetterCodesImpl :
 	public LetterCodesGui
 {
 public:
-	LetterCodesImpl( wxWindow* parent );
+	LetterCodesImpl( wxWindow* parent, FontInfo* finfo );
 	~LetterCodesImpl(void);
+	void GenerateCodes();
+	void UpdateTable();
+	
+protected:
+
+	virtual void OnBtnClick( wxCommandEvent& event );
+	
+private:
+		FontInfo*	mFontInfo;
+		
 };
 
 #endif

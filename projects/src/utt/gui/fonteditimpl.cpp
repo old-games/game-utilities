@@ -62,7 +62,8 @@ bool FontEditImpl::ShowSettings()
 	{
 		return CreateFont();
 	}
-	FontSettingsImpl settings( this );
+	
+	FontSettingsImpl settings( this, mCurrentFont );
 	if ( settings.ShowModal() == wxID_CANCEL )
 	{
 		return false;
@@ -86,5 +87,6 @@ void FontEditImpl::OnBtnClick( wxCommandEvent& event )
 			CreateFont();
 		break;
 	}
+	event.Skip();
 }
 

@@ -24,6 +24,7 @@
 #include <wx/snglinst.h>
 #include <wx/artprov.h>
 #include <wx/log.h>
+#include "uttypes.h"
 
 // simple dialogs definitions
 #define YESNODIALOGNULL(x, y, z)	wxMessageDialog(NULL, x, y, wxYES_NO | wxCENTRE | z).ShowModal()

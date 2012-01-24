@@ -11,8 +11,9 @@
 #include "fontsettingsimpl.h"
 #include "lettercodesimpl.h"
 
-FontSettingsImpl::FontSettingsImpl(  wxWindow* parent ):
-	FontSettingsGui( parent )
+FontSettingsImpl::FontSettingsImpl(  wxWindow* parent, FontInfo* finfo ):
+	FontSettingsGui( parent ),
+	mFontInfo( finfo )
 {
 }
 
@@ -22,12 +23,11 @@ FontSettingsImpl::~FontSettingsImpl(void)
 
 bool FontSettingsImpl::ShowLetterCodes()
 {
-	LetterCodesImpl codesDlg( this );
+	LetterCodesImpl codesDlg( this, mFontInfo );
 	if ( codesDlg.ShowModal() == wxID_CANCEL )
 	{
 		return false;
 	}
-	
 	return true;
 }
 
@@ -39,4 +39,21 @@ void FontSettingsImpl::OnBtnClick( wxCommandEvent& event )
 			ShowLetterCodes();
 		break;
 	}
+}
+
+template <typename T>
+void GetSpinValue(T& val, wxSpinCtrl* spin)
+{
+	val = spin->GetValue();
+}
+
+void FontSettingsImpl::OnSpinCtrl( wxSpinEvent& event ) 
+{ 
+	switch (event.GetId())
+	{
+		case wxID_NUM_SPIN_CTRL:
+			GetSpinValue(mFontInfo->mNum, mNumSpinCtrl);
+		break;
+	}
+	event.Skip(); 
 }

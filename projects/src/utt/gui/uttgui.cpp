@@ -238,7 +238,7 @@ FontSettingsGui::~FontSettingsGui()
 
 LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxSize( 400,500 ), wxDefaultSize );
+	this->SetSizeHints( wxSize( 450,500 ), wxDefaultSize );
 	
 	wxGridSizer* gSizer4;
 	gSizer4 = new wxGridSizer( 1, 1, 0, 0 );
@@ -253,25 +253,68 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	wxStaticBoxSizer* sbSizer5;
 	sbSizer5 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
+	wxFlexGridSizer* fgSizer5;
+	fgSizer5 = new wxFlexGridSizer( 1, 4, 0, 0 );
+	fgSizer5->AddGrowableCol( 3 );
+	fgSizer5->AddGrowableRow( 0 );
+	fgSizer5->SetFlexibleDirection( wxBOTH );
+	fgSizer5->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
 	m_staticText11 = new wxStaticText( this, wxID_ANY, wxT("Initial:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText11->Wrap( -1 );
-	sbSizer5->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer5->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	mInitialSpinCtrl = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2048, 32 );
-	sbSizer5->Add( mInitialSpinCtrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer5->Add( mInitialSpinCtrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	mGenerateBtn = new wxButton( this, wxID_GENERATE_CODES_BTN, wxT("Generate..."), wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer5->Add( mGenerateBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer5->Add( mGenerateBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	wxArrayString m_choice1Choices;
+	m_choice1 = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice1Choices, 0 );
+	m_choice1->SetSelection( 0 );
+	fgSizer5->Add( m_choice1, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
+	
+	sbSizer5->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	fgSizer4->Add( sbSizer5, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer6;
 	sbSizer6 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
 	
-	mCodesList = new wxListCtrl( this, wxID_CODES_LIST, wxDefaultPosition, wxDefaultSize, wxLC_LIST );
-	sbSizer6->Add( mCodesList, 1, wxALL|wxEXPAND, 5 );
+	mCodesGrid = new wxGrid( this, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
 	
-	fgSizer4->Add( sbSizer6, 1, wxEXPAND, 5 );
+	// Grid
+	mCodesGrid->CreateGrid( 0, 0 );
+	mCodesGrid->EnableEditing( true );
+	mCodesGrid->EnableGridLines( true );
+	mCodesGrid->EnableDragGridSize( false );
+	mCodesGrid->SetMargins( 0, 0 );
+	
+	// Columns
+	mCodesGrid->SetColSize( 0, 80 );
+	mCodesGrid->SetColSize( 1, 80 );
+	mCodesGrid->SetColSize( 2, 159 );
+	mCodesGrid->EnableDragColMove( false );
+	mCodesGrid->EnableDragColSize( true );
+	mCodesGrid->SetColLabelSize( 30 );
+	mCodesGrid->SetColLabelValue( 0, wxT("Code") );
+	mCodesGrid->SetColLabelValue( 1, wxT("Symbol") );
+	mCodesGrid->SetColLabelValue( 2, wxT("Codepage") );
+	mCodesGrid->SetColLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
+	
+	// Rows
+	mCodesGrid->EnableDragRowSize( true );
+	mCodesGrid->SetRowLabelSize( 80 );
+	mCodesGrid->SetRowLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
+	
+	// Label Appearance
+	
+	// Cell Defaults
+	mCodesGrid->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
+	sbSizer6->Add( mCodesGrid, 0, wxALL, 5 );
+	
+	fgSizer4->Add( sbSizer6, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer7;
 	sbSizer7 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );

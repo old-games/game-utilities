@@ -15,15 +15,18 @@ class FontSettingsImpl :
 	public FontSettingsGui
 {
 public:
-	FontSettingsImpl( wxWindow* parent );
+	FontSettingsImpl( wxWindow* parent, FontInfo* finfo );
 	~FontSettingsImpl(void);
 	
 protected:
 	
 	virtual void OnBtnClick( wxCommandEvent& event );
-	
+	virtual void OnSpinCtrl( wxSpinEvent& event );
+
 private:
 	bool ShowLetterCodes();
+	
+	FontInfo*	mFontInfo;
 
 };
 
