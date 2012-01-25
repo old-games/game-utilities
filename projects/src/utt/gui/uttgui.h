@@ -157,6 +157,7 @@ class LetterCodesGui : public wxDialog
 		wxButton* mGenerateBtn;
 		wxChoice* m_choice1;
 		wxStaticBoxSizer* mGridSizer;
+		wxPanel* m_panel1;
 		wxGrid* mCodesGrid;
 		wxStaticBoxSizer* mPalSizer;
 		wxButton* mOkBtn;

@@ -247,8 +247,8 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	fgSizer4 = new wxFlexGridSizer( 3, 1, 0, 0 );
 	fgSizer4->AddGrowableCol( 0 );
 	fgSizer4->AddGrowableRow( 2 );
-	fgSizer4->SetFlexibleDirection( wxBOTH );
-	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_NONE );
+	fgSizer4->SetFlexibleDirection( wxVERTICAL );
+	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_ALL );
 	
 	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
@@ -280,10 +280,11 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	mGridSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
 	
+	m_panel1 = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxGridSizer* gSizer6;
 	gSizer6 = new wxGridSizer( 1, 1, 0, 0 );
 	
-	mCodesGrid = new wxGrid( this, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
+	mCodesGrid = new wxGrid( m_panel1, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
 	mCodesGrid->CreateGrid( 0, 0 );
@@ -309,7 +310,10 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mCodesGrid->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
 	gSizer6->Add( mCodesGrid, 1, wxALL|wxEXPAND, 5 );
 	
-	mGridSizer->Add( gSizer6, 1, wxEXPAND, 5 );
+	m_panel1->SetSizer( gSizer6 );
+	m_panel1->Layout();
+	gSizer6->Fit( m_panel1 );
+	mGridSizer->Add( m_panel1, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
 	fgSizer4->Add( mGridSizer, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
@@ -328,7 +332,7 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	fgSizer4->Add( mPalSizer, 1, wxEXPAND, 5 );
 	
-	gSizer4->Add( fgSizer4, 0, 0, 5 );
+	gSizer4->Add( fgSizer4, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND|wxFIXED_MINSIZE|wxSHAPED, 5 );
 	
 	this->SetSizer( gSizer4 );
 	this->Layout();
