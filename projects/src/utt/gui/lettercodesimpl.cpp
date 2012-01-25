@@ -30,7 +30,8 @@ namespace ColumnsInfo
 
 LetterCodesImpl::LetterCodesImpl(  wxWindow* parent, FontInfo* finfo ):
 	LetterCodesGui( parent ),
-	mFontInfo( finfo )
+	mFontInfo( finfo ),
+	mSymbolsCopy( mFontInfo->GetSymbols() )
 {
 	UpdateTable();
 }
@@ -46,9 +47,9 @@ void LetterCodesImpl::GenerateCodes()
 		return;
 	}
 	int val = mInitialSpinCtrl->GetValue();
-	for (size_t i = 0; i < mFontInfo->mNum; ++i)
+	for (size_t i = 0; i < mSymbolsCopy.size(); ++i)
 	{
-		mFontInfo->mCodes[i] = val++;		
+		mSymbolsCopy[ i ].mCode = val++;		
 	}
 	UpdateTable();
 }
@@ -59,21 +60,25 @@ void LetterCodesImpl::UpdateTable()
 	{
 		return;
 	}
+	
 	if (mCodesGrid->GetNumberCols() != ColumnsInfo::ciNum)
 	{
-		mCodesGrid->DeleteCols( 0, mCodesGrid->GetNumberCols() );
+		if ( mCodesGrid->GetNumberCols() != 0 )
+		{
+			mCodesGrid->DeleteCols( 0, mCodesGrid->GetNumberCols() );
+		}
 		mCodesGrid->AppendCols( ColumnsInfo::ciNum );
 		for (int i = 0; i < ColumnsInfo::ciNum; ++i)
 		{
 			mCodesGrid->SetColLabelValue( i, ColumnsInfo::Name[i] );
 		}
 	}
-	if (mFontInfo->mNum == 0)
-	{
-		return;
-	}
 	
-	int diff = (int) mFontInfo->mNum - mCodesGrid->GetNumberRows();
+	size_t num = mSymbolsCopy.size();
+	
+	wxASSERT( num != 0 );
+	
+	int diff = (int) num - mCodesGrid->GetNumberRows();
 	if ( diff != 0 )
 	{
 		if ( diff < 0 )
@@ -86,10 +91,11 @@ void LetterCodesImpl::UpdateTable()
 		}	
 	}
 	
-	for (size_t i = 0; i < mFontInfo->mNum; ++i)
+	for (size_t i = 0; i < num; ++i)
 	{
-		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%d", mFontInfo->mCodes[i]) );
-		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, wxString::Format("%c", mFontInfo->mCodes[i]) );
+		SymbolInfo& symbol = mSymbolsCopy[ i ];
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%d", symbol.mCode ) );
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, wxString::Format("%c", symbol.mCode ) );
 	}
 }
 
@@ -100,6 +106,22 @@ void LetterCodesImpl::OnBtnClick( wxCommandEvent& event )
 		case wxID_GENERATE_CODES_BTN:
 			GenerateCodes();
 		break;
+		
+		case wxID_OK:
+			mFontInfo->SetSymbols( mSymbolsCopy );
+		break;
 	}
 	event.Skip(); 
+}
+
+void LetterCodesImpl::OnSize( wxSizeEvent& event ) 
+{ 
+	event.Skip();
+	return;
+	wxSize size = this->GetSize();
+	size.y -= mAutoSizer->GetSize().GetHeight();
+	size.y -= mPalSizer->GetSize().GetHeight();
+	size.y = 100;
+	mCodesGrid->SetSize(size);
+	mCodesGrid->SetMaxSize(size);
 }

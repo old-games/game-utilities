@@ -10,30 +10,45 @@
 #ifndef _UTT_TYPES_H_
 #define _UTT_TYPES_H_
 
-#define MAXIMUM_SYMBOLS_IN_FONT		2048
+//#define MAXIMUM_SYMBOLS_IN_FONT		2048
+#define MINIMUM_SYMBOLS_NUM			1
 #define MAXIMUM_SYMBOL_WIDTH		64
 #define MAXIMUM_SYMBOL_HEIGHT		64
 
 typedef	unsigned char Palette[256][3];
+typedef unsigned int LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
 
 struct SymbolInfo
 {
-	SymbolInfo():
+
+	explicit SymbolInfo():
 		mWidth( -1 ),
-		mHeight( -1 )
+		mHeight( -1 ),
+		mCode( 0 )
 	{
 		memset(mData, 0, sizeof(mData));
 	}
+	
+	SymbolInfo &operator = ( const SymbolInfo &src );
 
 	int mWidth;													// ширина символа
 	int mHeight;												// высота символа
-	int mData[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT];	// данные символа
+	LetterBox mData;											// данные символа
+	unsigned int mCode;											// код символа, для пробела 32 и т.д.
+	
+private:
+	void SetValues(int width, int height, unsigned int code, const LetterBox* data = NULL);
+
 };
 
-struct FontInfo
+typedef wxVector<SymbolInfo> Symbols;
+
+
+class FontInfo
 {
+public:
+
 	FontInfo():
-		mNum( 0 ),
 		mMaxHeight( -1 ),
 		mMinHeight( -1 ),
 		mMaxWidh( -1 ),
@@ -43,12 +58,39 @@ struct FontInfo
 		mLowLine( -1 ),
 		mBPP( -1 )
 	{
-		memset(mCodes, 0, sizeof(mCodes));
+		SetSymbolsNum( MINIMUM_SYMBOLS_NUM );
 		memset(mPalette, 0, sizeof(mPalette));
 	}
+	
+	void SetSymbolsNum(size_t n);
+	
+	size_t GetSymbolsNum()
+	{
+		return mSymbols.size();
+	}
+	
+	SymbolInfo& GetSymbol(size_t n)
+	{
+		if ( n < mSymbols.size() )
+		{
+			return mSymbols[n];
+		}
+		return sBadSymbol;
+	}
+	
+	Symbols& GetSymbols()
+	{
+		return mSymbols;
+	}
+	
+	void SetSymbols(const Symbols& src)
+	{
+		mSymbols = src;
+	}
+	
+	static SymbolInfo	sBadSymbol;
 
-	size_t			mNum;								// количество_символов
-	unsigned int	mCodes[ MAXIMUM_SYMBOLS_IN_FONT ];	// по-умолчанию номер элемента совпадает с кодом
+protected:
 	int				mMaxHeight;							// максимальная высота
 	int				mMinHeight;							// минимальная высота
 	int				mMaxWidh;							// максимальная ширина
@@ -58,7 +100,8 @@ struct FontInfo
 	int				mLowLine;							// линия строчных букв
 	int				mBPP;								// бит на пиксель
 	Palette         mPalette;							// палитра
-	SymbolInfo		mSymbols[ MAXIMUM_SYMBOLS_IN_FONT ];// символы
+	Symbols			mSymbols;							// символы
+
 };
 
 #endif

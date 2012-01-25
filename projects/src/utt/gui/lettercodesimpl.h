@@ -24,10 +24,11 @@ public:
 protected:
 
 	virtual void OnBtnClick( wxCommandEvent& event );
+	virtual void OnSize( wxSizeEvent& event );
 	
 private:
 		FontInfo*	mFontInfo;
-		
+		Symbols		mSymbolsCopy;
 };
 
 #endif

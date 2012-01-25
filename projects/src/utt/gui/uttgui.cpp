@@ -246,12 +246,11 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	wxFlexGridSizer* fgSizer4;
 	fgSizer4 = new wxFlexGridSizer( 3, 1, 0, 0 );
 	fgSizer4->AddGrowableCol( 0 );
-	fgSizer4->AddGrowableRow( 1 );
+	fgSizer4->AddGrowableRow( 2 );
 	fgSizer4->SetFlexibleDirection( wxBOTH );
-	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_NONE );
 	
-	wxStaticBoxSizer* sbSizer5;
-	sbSizer5 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
+	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
 	wxFlexGridSizer* fgSizer5;
 	fgSizer5 = new wxFlexGridSizer( 1, 4, 0, 0 );
@@ -275,12 +274,14 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	m_choice1->SetSelection( 0 );
 	fgSizer5->Add( m_choice1, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
-	sbSizer5->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	mAutoSizer->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	fgSizer4->Add( sbSizer5, 1, wxEXPAND, 5 );
+	fgSizer4->Add( mAutoSizer, 1, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* sbSizer6;
-	sbSizer6 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
+	mGridSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
+	
+	wxGridSizer* gSizer6;
+	gSizer6 = new wxGridSizer( 1, 1, 0, 0 );
 	
 	mCodesGrid = new wxGrid( this, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
 	
@@ -292,15 +293,9 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mCodesGrid->SetMargins( 0, 0 );
 	
 	// Columns
-	mCodesGrid->SetColSize( 0, 80 );
-	mCodesGrid->SetColSize( 1, 80 );
-	mCodesGrid->SetColSize( 2, 159 );
 	mCodesGrid->EnableDragColMove( false );
 	mCodesGrid->EnableDragColSize( true );
 	mCodesGrid->SetColLabelSize( 30 );
-	mCodesGrid->SetColLabelValue( 0, wxT("Code") );
-	mCodesGrid->SetColLabelValue( 1, wxT("Symbol") );
-	mCodesGrid->SetColLabelValue( 2, wxT("Codepage") );
 	mCodesGrid->SetColLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
 	
 	// Rows
@@ -312,12 +307,13 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	// Cell Defaults
 	mCodesGrid->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
-	sbSizer6->Add( mCodesGrid, 0, wxALL, 5 );
+	gSizer6->Add( mCodesGrid, 1, wxALL|wxEXPAND, 5 );
 	
-	fgSizer4->Add( sbSizer6, 0, wxEXPAND, 5 );
+	mGridSizer->Add( gSizer6, 1, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* sbSizer7;
-	sbSizer7 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
+	fgSizer4->Add( mGridSizer, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
+	
+	mPalSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
 	
 	wxGridSizer* gSizer5;
 	gSizer5 = new wxGridSizer( 1, 2, 0, 0 );
@@ -328,11 +324,11 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer5->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	sbSizer7->Add( gSizer5, 1, wxEXPAND, 5 );
+	mPalSizer->Add( gSizer5, 1, wxEXPAND, 5 );
 	
-	fgSizer4->Add( sbSizer7, 1, wxEXPAND, 5 );
+	fgSizer4->Add( mPalSizer, 1, wxEXPAND, 5 );
 	
-	gSizer4->Add( fgSizer4, 1, wxEXPAND, 5 );
+	gSizer4->Add( fgSizer4, 0, 0, 5 );
 	
 	this->SetSizer( gSizer4 );
 	this->Layout();
@@ -340,12 +336,14 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	this->Centre( wxBOTH );
 	
 	// Connect Events
+	this->Connect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 }
 
 LetterCodesGui::~LetterCodesGui()
 {
 	// Disconnect Events
+	this->Disconnect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	
 }

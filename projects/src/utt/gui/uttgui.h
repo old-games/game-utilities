@@ -151,15 +151,19 @@ class LetterCodesGui : public wxDialog
 	private:
 	
 	protected:
+		wxStaticBoxSizer* mAutoSizer;
 		wxStaticText* m_staticText11;
 		wxSpinCtrl* mInitialSpinCtrl;
 		wxButton* mGenerateBtn;
 		wxChoice* m_choice1;
+		wxStaticBoxSizer* mGridSizer;
 		wxGrid* mCodesGrid;
+		wxStaticBoxSizer* mPalSizer;
 		wxButton* mOkBtn;
 		wxButton* mCancelBtn;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void OnSize( wxSizeEvent& event ) { event.Skip(); }
 		virtual void OnBtnClick( wxCommandEvent& event ) { event.Skip(); }
 		
 	

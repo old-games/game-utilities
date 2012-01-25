@@ -209,6 +209,18 @@
 				>
 			</File>
 			<File
+				RelativePath="..\uttypes.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\uttypes.h"
 				>
 			</File>
@@ -268,6 +280,22 @@
 					>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="res"
+			>
+			<File
+				RelativePath="..\icon\to_left.xpm"
+				>
+			</File>
+			<File
+				RelativePath="..\icon\to_right.xpm"
+				>
+			</File>
+			<File
+				RelativePath="..\gui\uttgui.fbp"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

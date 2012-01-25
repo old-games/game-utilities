@@ -41,18 +41,12 @@ void FontSettingsImpl::OnBtnClick( wxCommandEvent& event )
 	}
 }
 
-template <typename T>
-void GetSpinValue(T& val, wxSpinCtrl* spin)
-{
-	val = spin->GetValue();
-}
-
 void FontSettingsImpl::OnSpinCtrl( wxSpinEvent& event ) 
 { 
 	switch (event.GetId())
 	{
 		case wxID_NUM_SPIN_CTRL:
-			GetSpinValue(mFontInfo->mNum, mNumSpinCtrl);
+			mFontInfo->SetSymbolsNum( (size_t) mNumSpinCtrl->GetValue() );
 		break;
 	}
 	event.Skip(); 
