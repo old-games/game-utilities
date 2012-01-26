@@ -247,13 +247,13 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	fgSizer4 = new wxFlexGridSizer( 3, 1, 0, 0 );
 	fgSizer4->AddGrowableCol( 0 );
 	fgSizer4->AddGrowableRow( 2 );
-	fgSizer4->SetFlexibleDirection( wxVERTICAL );
-	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_ALL );
+	fgSizer4->SetFlexibleDirection( wxBOTH );
+	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
 	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
 	wxFlexGridSizer* fgSizer5;
-	fgSizer5 = new wxFlexGridSizer( 1, 4, 0, 0 );
+	fgSizer5 = new wxFlexGridSizer( 1, 5, 0, 0 );
 	fgSizer5->AddGrowableCol( 3 );
 	fgSizer5->AddGrowableRow( 0 );
 	fgSizer5->SetFlexibleDirection( wxBOTH );
@@ -269,22 +269,38 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mGenerateBtn = new wxButton( this, wxID_GENERATE_CODES_BTN, wxT("Generate..."), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer5->Add( mGenerateBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	wxArrayString m_choice1Choices;
-	m_choice1 = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice1Choices, 0 );
-	m_choice1->SetSelection( 0 );
-	fgSizer5->Add( m_choice1, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
+	m_staticText111 = new wxStaticText( this, wxID_ANY, wxT("Codepage:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText111->Wrap( -1 );
+	fgSizer5->Add( m_staticText111, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
+	
+	wxString mPageChoiceChoices[] = { wxT("local"), wxT("cp-1251"), wxT("cp-866"), wxT("koi8-r") };
+	int mPageChoiceNChoices = sizeof( mPageChoiceChoices ) / sizeof( wxString );
+	mPageChoice = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, mPageChoiceNChoices, mPageChoiceChoices, 0 );
+	mPageChoice->SetSelection( 0 );
+	fgSizer5->Add( mPageChoice, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
 	
 	mAutoSizer->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	fgSizer4->Add( mAutoSizer, 1, wxEXPAND, 5 );
 	
+	mBtnsSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
+	
+	wxGridSizer* gSizer5;
+	gSizer5 = new wxGridSizer( 1, 2, 0, 0 );
+	
+	mOkBtn = new wxButton( this, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer5->Add( mOkBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer5->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	mBtnsSizer->Add( gSizer5, 1, wxEXPAND, 5 );
+	
+	fgSizer4->Add( mBtnsSizer, 1, wxEXPAND, 5 );
+	
 	mGridSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
 	
-	m_panel1 = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxGridSizer* gSizer6;
-	gSizer6 = new wxGridSizer( 1, 1, 0, 0 );
-	
-	mCodesGrid = new wxGrid( m_panel1, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
+	mCodesGrid = new wxGrid( this, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
 	mCodesGrid->CreateGrid( 0, 0 );
@@ -308,31 +324,11 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	// Cell Defaults
 	mCodesGrid->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
-	gSizer6->Add( mCodesGrid, 1, wxALL|wxEXPAND, 5 );
-	
-	m_panel1->SetSizer( gSizer6 );
-	m_panel1->Layout();
-	gSizer6->Fit( m_panel1 );
-	mGridSizer->Add( m_panel1, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	mGridSizer->Add( mCodesGrid, 1, wxALL|wxEXPAND, 5 );
 	
 	fgSizer4->Add( mGridSizer, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
-	mPalSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
-	
-	wxGridSizer* gSizer5;
-	gSizer5 = new wxGridSizer( 1, 2, 0, 0 );
-	
-	mOkBtn = new wxButton( this, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
-	gSizer5->Add( mOkBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
-	
-	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
-	gSizer5->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
-	
-	mPalSizer->Add( gSizer5, 1, wxEXPAND, 5 );
-	
-	fgSizer4->Add( mPalSizer, 1, wxEXPAND, 5 );
-	
-	gSizer4->Add( fgSizer4, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND|wxFIXED_MINSIZE|wxSHAPED, 5 );
+	gSizer4->Add( fgSizer4, 1, wxALL|wxEXPAND|wxFIXED_MINSIZE, 5 );
 	
 	this->SetSizer( gSizer4 );
 	this->Layout();
@@ -342,6 +338,8 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	// Connect Events
 	this->Connect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
+	mPageChoice->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( LetterCodesGui::OnCodePageChange ), NULL, this );
+	mOkBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 }
 
 LetterCodesGui::~LetterCodesGui()
@@ -349,6 +347,8 @@ LetterCodesGui::~LetterCodesGui()
 	// Disconnect Events
 	this->Disconnect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
+	mPageChoice->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( LetterCodesGui::OnCodePageChange ), NULL, this );
+	mOkBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	
 }
 

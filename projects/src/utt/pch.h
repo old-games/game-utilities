@@ -24,6 +24,9 @@
 #include <wx/snglinst.h>
 #include <wx/artprov.h>
 #include <wx/log.h>
+#include <wx/encconv.h>
+#include <wx/fontmap.h>
+
 #include "uttypes.h"
 
 // simple dialogs definitions

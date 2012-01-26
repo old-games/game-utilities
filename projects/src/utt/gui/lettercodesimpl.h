@@ -24,7 +24,7 @@ public:
 protected:
 
 	virtual void OnBtnClick( wxCommandEvent& event );
-	virtual void OnSize( wxSizeEvent& event );
+	virtual void OnCodePageChange( wxCommandEvent& event );
 	
 private:
 		FontInfo*	mFontInfo;

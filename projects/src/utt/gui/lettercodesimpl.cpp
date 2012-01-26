@@ -90,12 +90,20 @@ void LetterCodesImpl::UpdateTable()
 			mCodesGrid->AppendRows( diff, false );
 		}	
 	}
-	
+	wxString encoding = mPageChoice->GetString( mPageChoice->GetSelection() );
+	wxEncodingConverter encoder;
+	bool canConvert = encoder.Init( wxFONTENCODING_ISO8859_1, wxFontMapper::Get()->CharsetToEncoding(encoding, false));
 	for (size_t i = 0; i < num; ++i)
 	{
 		SymbolInfo& symbol = mSymbolsCopy[ i ];
 		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%d", symbol.mCode ) );
 		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, wxString::Format("%c", symbol.mCode ) );
+		wxString convert = "N/A";
+		if ( canConvert )
+		{
+			convert = encoder.Convert(wxString::Format("%c", symbol.mCode ) );//wxString( (wchar_t*) &symbol.mCode));
+		}
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciConvertedSymbol, convert );
 	}
 }
 
@@ -114,14 +122,9 @@ void LetterCodesImpl::OnBtnClick( wxCommandEvent& event )
 	event.Skip(); 
 }
 
-void LetterCodesImpl::OnSize( wxSizeEvent& event ) 
-{ 
+void LetterCodesImpl::OnCodePageChange( wxCommandEvent& event )
+{
+	UpdateTable();
 	event.Skip();
-	return;
-	wxSize size = this->GetSize();
-	size.y -= mAutoSizer->GetSize().GetHeight();
-	size.y -= mPalSizer->GetSize().GetHeight();
-	size.y = 100;
-	mCodesGrid->SetSize(size);
-	mCodesGrid->SetMaxSize(size);
 }
+
