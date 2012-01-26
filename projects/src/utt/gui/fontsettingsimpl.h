@@ -25,7 +25,8 @@ protected:
 
 private:
 	bool ShowLetterCodes();
-	
+	void SetValuesToControls();
+
 	FontInfo*	mFontInfo;
 
 };

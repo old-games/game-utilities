@@ -27,8 +27,14 @@ protected:
 	virtual void OnCodePageChange( wxCommandEvent& event );
 	
 private:
+
+		void SetCurrentEncoding();
+
 		FontInfo*	mFontInfo;
 		Symbols		mSymbolsCopy;
+
+		int			mCurrentEncoding;
+		wxString	mEncodingName;
 };
 
 #endif

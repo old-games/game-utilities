@@ -31,9 +31,10 @@ namespace ColumnsInfo
 LetterCodesImpl::LetterCodesImpl(  wxWindow* parent, FontInfo* finfo ):
 	LetterCodesGui( parent ),
 	mFontInfo( finfo ),
-	mSymbolsCopy( mFontInfo->GetSymbols() )
+	mSymbolsCopy( mFontInfo->GetSymbols() ),
+	mCurrentEncoding( 0 )
 {
-	UpdateTable();
+	SetCurrentEncoding();
 }
 
 LetterCodesImpl::~LetterCodesImpl(void)
@@ -90,21 +91,37 @@ void LetterCodesImpl::UpdateTable()
 			mCodesGrid->AppendRows( diff, false );
 		}	
 	}
-	wxString encoding = mPageChoice->GetString( mPageChoice->GetSelection() );
 	wxEncodingConverter encoder;
-	bool canConvert = encoder.Init( wxFONTENCODING_ISO8859_1, wxFontMapper::Get()->CharsetToEncoding(encoding, false));
+	bool canConvert = encoder.Init( (wxFontEncoding) mCurrentEncoding, wxFONTENCODING_UNICODE);
 	for (size_t i = 0; i < num; ++i)
 	{
 		SymbolInfo& symbol = mSymbolsCopy[ i ];
-		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%d", symbol.mCode ) );
-		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, wxString::Format("%c", symbol.mCode ) );
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%X", symbol.mCode ) );
+		wxString toConvert = wxString::Format("%c", symbol.mCode );
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, toConvert );
 		wxString convert = "N/A";
 		if ( canConvert )
 		{
-			convert = encoder.Convert(wxString::Format("%c", symbol.mCode ) );//wxString( (wchar_t*) &symbol.mCode));
+			convert = encoder.Convert( toConvert );
 		}
+		//else
+		//{
+		//	switch (mCurrentEncoding)
+		//	{
+		//		case wxFONTENCODING_UTF8:
+		//			convert = wxString::FromUTF8( (char*) &symbol.mCode, 4 );
+		//		break;
+		//	}
+		//}
 		mCodesGrid->SetCellValue( i, ColumnsInfo::ciConvertedSymbol, convert );
 	}
+}
+
+void LetterCodesImpl::SetCurrentEncoding()
+{
+	mEncodingName = wxFontMapper::Get()->GetEncodingName( (wxFontEncoding) mCurrentEncoding );
+	mCodeTxt->SetValue( mEncodingName );
+	UpdateTable();
 }
 
 void LetterCodesImpl::OnBtnClick( wxCommandEvent& event ) 
@@ -117,6 +134,13 @@ void LetterCodesImpl::OnBtnClick( wxCommandEvent& event )
 		
 		case wxID_OK:
 			mFontInfo->SetSymbols( mSymbolsCopy );
+		break;
+ 
+		case wxID_GET_ENCODING_BTN:
+			wxFontMapper dlg;
+			dlg.SetDialogParent( this );
+			mCurrentEncoding = dlg.CharsetToEncoding("unknown", true);
+			SetCurrentEncoding();
 		break;
 	}
 	event.Skip(); 

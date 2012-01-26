@@ -238,7 +238,7 @@ FontSettingsGui::~FontSettingsGui()
 
 LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxSize( 450,500 ), wxDefaultSize );
+	this->SetSizeHints( wxSize( 500,500 ), wxDefaultSize );
 	
 	wxGridSizer* gSizer4;
 	gSizer4 = new wxGridSizer( 1, 1, 0, 0 );
@@ -253,7 +253,7 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
 	wxFlexGridSizer* fgSizer5;
-	fgSizer5 = new wxFlexGridSizer( 1, 5, 0, 0 );
+	fgSizer5 = new wxFlexGridSizer( 1, 6, 0, 0 );
 	fgSizer5->AddGrowableCol( 3 );
 	fgSizer5->AddGrowableRow( 0 );
 	fgSizer5->SetFlexibleDirection( wxBOTH );
@@ -273,11 +273,11 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	m_staticText111->Wrap( -1 );
 	fgSizer5->Add( m_staticText111, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
-	wxString mPageChoiceChoices[] = { wxT("local"), wxT("cp-1251"), wxT("cp-866"), wxT("koi8-r") };
-	int mPageChoiceNChoices = sizeof( mPageChoiceChoices ) / sizeof( wxString );
-	mPageChoice = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, mPageChoiceNChoices, mPageChoiceChoices, 0 );
-	mPageChoice->SetSelection( 0 );
-	fgSizer5->Add( mPageChoice, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
+	mCodeTxt = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
+	fgSizer5->Add( mCodeTxt, 0, wxALL, 5 );
+	
+	mGetEncodingBtn = new wxButton( this, wxID_GET_ENCODING_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	fgSizer5->Add( mGetEncodingBtn, 0, wxALL, 5 );
 	
 	mAutoSizer->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
 	
@@ -338,7 +338,7 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	// Connect Events
 	this->Connect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
-	mPageChoice->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( LetterCodesGui::OnCodePageChange ), NULL, this );
+	mGetEncodingBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	mOkBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 }
 
@@ -347,7 +347,7 @@ LetterCodesGui::~LetterCodesGui()
 	// Disconnect Events
 	this->Disconnect( wxEVT_SIZE, wxSizeEventHandler( LetterCodesGui::OnSize ) );
 	mGenerateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
-	mPageChoice->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( LetterCodesGui::OnCodePageChange ), NULL, this );
+	mGetEncodingBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	mOkBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	
 }

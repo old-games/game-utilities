@@ -15,6 +15,7 @@ FontSettingsImpl::FontSettingsImpl(  wxWindow* parent, FontInfo* finfo ):
 	FontSettingsGui( parent ),
 	mFontInfo( finfo )
 {
+	SetValuesToControls();
 }
 
 FontSettingsImpl::~FontSettingsImpl(void)
@@ -50,4 +51,10 @@ void FontSettingsImpl::OnSpinCtrl( wxSpinEvent& event )
 		break;
 	}
 	event.Skip(); 
+}
+
+void FontSettingsImpl::SetValuesToControls()
+{
+	mNumSpinCtrl->SetValue( mFontInfo->GetSymbolsNum() );
+	mNumSpinCtrl->SetRange( MINIMUM_SYMBOLS_NUM, MAXIMUM_SYMBOLS_NUM );
 }

@@ -10,10 +10,29 @@
 #ifndef _UTT_TYPES_H_
 #define _UTT_TYPES_H_
 
-//#define MAXIMUM_SYMBOLS_IN_FONT		2048
+#define MAXIMUM_SYMBOLS_NUM			16384
 #define MINIMUM_SYMBOLS_NUM			1
+
 #define MAXIMUM_SYMBOL_WIDTH		64
 #define MAXIMUM_SYMBOL_HEIGHT		64
+
+namespace BPP
+{
+	enum
+	{
+		bppMono,
+		bpp2,
+		bpp4,
+		bpp8,
+		bpp16,
+		bpp24,
+		bpp32,
+		bppNum
+	};
+
+	extern const int Bits[bppNum];
+	extern const wxString Names[bppNum];
+};
 
 typedef	unsigned char Palette[256][3];
 typedef unsigned int LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
@@ -22,23 +41,36 @@ struct SymbolInfo
 {
 
 	explicit SymbolInfo():
-		mWidth( -1 ),
-		mHeight( -1 ),
-		mCode( 0 )
+		mWidth( 0 ),
+		mHeight( 0 ),
+		mCode( 0 ),
+		mData( NULL )
 	{
-		memset(mData, 0, sizeof(mData));
+	}
+
+	virtual ~SymbolInfo()
+	{
+		EraseData();
 	}
 	
+	LetterBox* GetData();
+
 	SymbolInfo &operator = ( const SymbolInfo &src );
 
-	int mWidth;													// ширина символа
+	int	mWidth;													// ширина символа
 	int mHeight;												// высота символа
-	LetterBox mData;											// данные символа
 	unsigned int mCode;											// код символа, для пробела 32 и т.д.
 	
-private:
-	void SetValues(int width, int height, unsigned int code, const LetterBox* data = NULL);
+protected:
 
+	LetterBox* mData;											// данные символа, в protected - для 
+																// контроля за инициализацией
+
+private:
+
+	void SetValues(int width, int height, unsigned int code, const LetterBox* data = NULL);
+	void CreateData();
+	void EraseData();
 };
 
 typedef wxVector<SymbolInfo> Symbols;
@@ -49,13 +81,13 @@ class FontInfo
 public:
 
 	FontInfo():
-		mMaxHeight( -1 ),
-		mMinHeight( -1 ),
-		mMaxWidh( -1 ),
-		mMinWidth( -1 ),
-		mBaseLine( -1 ),
-		mCapLine( -1 ),
-		mLowLine( -1 ),
+		mMaxHeight( 0 ),
+		mMinHeight( 0 ),
+		mMaxWidh( 0 ),
+		mMinWidth( 0 ),
+		mBaseLine( 0 ),
+		mCapLine( 0 ),
+		mLowLine( 0 ),
 		mBPP( -1 )
 	{
 		SetSymbolsNum( MINIMUM_SYMBOLS_NUM );
@@ -91,6 +123,7 @@ public:
 	static SymbolInfo	sBadSymbol;
 
 protected:
+
 	int				mMaxHeight;							// максимальная высота
 	int				mMinHeight;							// минимальная высота
 	int				mMaxWidh;							// максимальная ширина
