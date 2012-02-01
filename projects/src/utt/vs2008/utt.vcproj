@@ -272,6 +272,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\gui\gridhexeditor.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\gui\gridhexeditor.h"
+					>
+				</File>
+				<File
 					RelativePath="..\gui\lettercodesimpl.cpp"
 					>
 				</File>

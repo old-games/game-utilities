@@ -35,6 +35,12 @@ private:
 
 		int			mCurrentEncoding;
 		wxString	mEncodingName;
+		
+		int			mHexAlign;
+		
+		wxGridCellAttr*	mConvertedAttr;
+		wxGridCellAttr*	mValuesAttr;
+		wxGridCellAttr*	mSymbolAttr;
 };
 
 #endif

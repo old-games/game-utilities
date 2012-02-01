@@ -20,6 +20,7 @@ FontEditImpl::FontEditImpl(  wxWindow* parent ):
 
 FontEditImpl::~FontEditImpl(void)
 {
+	delete mCurrentFont;
 }
 
 void FontEditImpl::SetFont( const FontInfo& newFont )

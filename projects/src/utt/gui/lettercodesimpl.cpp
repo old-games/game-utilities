@@ -9,6 +9,7 @@
  
 #include "pch.h"
 #include "lettercodesimpl.h"
+#include "gridhexeditor.h"
 
 namespace ColumnsInfo
 {
@@ -29,11 +30,28 @@ namespace ColumnsInfo
 }
 
 LetterCodesImpl::LetterCodesImpl(  wxWindow* parent, FontInfo* finfo ):
-	LetterCodesGui( parent ),
-	mFontInfo( finfo ),
-	mSymbolsCopy( mFontInfo->GetSymbols() ),
-	mCurrentEncoding( 0 )
+		LetterCodesGui( parent ),
+		mFontInfo( finfo ),
+		mSymbolsCopy( mFontInfo->GetSymbols() ),
+		mCurrentEncoding( 0 ),
+ 		mConvertedAttr( new wxGridCellAttr( NULL ) ),
+ 		mValuesAttr( new wxGridCellAttr( NULL ) ),
+ 		mSymbolAttr( new wxGridCellAttr( NULL ) )
 {
+	GridHexEditor* editor = new GridHexEditor( 0, 0xFFFF );
+	wxGridCellTextEditor* symbolEditor = new wxGridCellTextEditor();
+
+	mHexAlign = editor->GetAlign();
+	mValuesAttr->SetEditor( editor );
+
+	symbolEditor->SetParameters("1");
+	mSymbolAttr->SetEditor( symbolEditor );
+	
+	mConvertedAttr->SetReadOnly();
+
+	mCodesGrid->SetColAttr(ColumnsInfo::ciValue, mValuesAttr);
+	mCodesGrid->SetColAttr(ColumnsInfo::ciSymbol, mSymbolAttr);
+	mCodesGrid->SetColAttr(ColumnsInfo::ciConvertedSymbol, mConvertedAttr);
 	SetCurrentEncoding();
 }
 
@@ -96,7 +114,8 @@ void LetterCodesImpl::UpdateTable()
 	for (size_t i = 0; i < num; ++i)
 	{
 		SymbolInfo& symbol = mSymbolsCopy[ i ];
-		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, wxString::Format("%X", symbol.mCode ) );
+		
+		mCodesGrid->SetCellValue( i, ColumnsInfo::ciValue, GridHexEditor::LongToHex( symbol.mCode, mHexAlign ) );// wxString::Format("%d", symbol.mCode ) );
 		wxString toConvert = wxString::Format("%c", symbol.mCode );
 		mCodesGrid->SetCellValue( i, ColumnsInfo::ciSymbol, toConvert );
 		wxString convert = "N/A";

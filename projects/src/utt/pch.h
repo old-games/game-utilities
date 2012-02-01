@@ -26,6 +26,7 @@
 #include <wx/log.h>
 #include <wx/encconv.h>
 #include <wx/fontmap.h>
+#include <wx/grid.h>
 
 #include "uttypes.h"
 

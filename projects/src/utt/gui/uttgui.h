@@ -98,7 +98,7 @@ class FontEditGui : public wxPanel
 	public:
 		
 		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 640,577 ), long style = wxTAB_TRAVERSAL ); 
-		~FontEditGui();
+		virtual ~FontEditGui();
 	
 };
 
@@ -139,7 +139,7 @@ class FontSettingsGui : public wxDialog
 	public:
 		
 		FontSettingsGui( wxWindow* parent, wxWindowID id = wxID_FONT_SETTINGS_ID, const wxString& title = wxT("Font settings"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 290,363 ), long style = wxCAPTION|wxCLOSE_BOX|wxSTAY_ON_TOP|wxSYSTEM_MENU ); 
-		~FontSettingsGui();
+		virtual ~FontSettingsGui();
 	
 };
 
@@ -172,7 +172,7 @@ class LetterCodesGui : public wxDialog
 	public:
 		
 		LetterCodesGui( wxWindow* parent, wxWindowID id = wxID_LETTER_CODES_ID, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,500 ), long style = wxCAPTION|wxCLOSE_BOX|wxRESIZE_BORDER|wxSTAY_ON_TOP|wxSYSTEM_MENU ); 
-		~LetterCodesGui();
+		virtual ~LetterCodesGui();
 	
 };
 
