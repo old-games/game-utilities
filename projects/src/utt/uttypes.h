@@ -88,7 +88,8 @@ public:
 		mBaseLine( 0 ),
 		mCapLine( 0 ),
 		mLowLine( 0 ),
-		mBPP( -1 )
+		mBPP( -1 ),
+		mFontCodePage( 0 )
 	{
 		SetSymbolsNum( MINIMUM_SYMBOLS_NUM );
 		memset(mPalette, 0, sizeof(mPalette));
@@ -100,7 +101,17 @@ public:
 	{
 		return mSymbols.size();
 	}
+
+	int GetEncoding()
+	{
+		return mFontCodePage;
+	}
 	
+	void SetEncoding(int n)
+	{
+		mFontCodePage = n;
+	}
+
 	SymbolInfo& GetSymbol(size_t n)
 	{
 		if ( n < mSymbols.size() )
@@ -132,6 +143,7 @@ protected:
 	int				mCapLine;							// линия заглавных букв
 	int				mLowLine;							// линия строчных букв
 	int				mBPP;								// бит на пиксель
+	int				mFontCodePage;						// кодировка, относительный параметр, для лучшего представления шрифта
 	Palette         mPalette;							// палитра
 	Symbols			mSymbols;							// символы
 

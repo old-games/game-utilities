@@ -20,15 +20,17 @@ public:
 	~LetterCodesImpl(void);
 	void GenerateCodes();
 	void UpdateTable();
-	
+
 protected:
 
 	virtual void OnBtnClick( wxCommandEvent& event );
 	virtual void OnCodePageChange( wxCommandEvent& event );
-	
+	virtual void OnCellChange( wxGridEvent& event );	
 private:
 
 		void SetCurrentEncoding();
+		void CellValueChanged(int row, int col);
+		void UpdateRow(unsigned int n);
 
 		FontInfo*	mFontInfo;
 		Symbols		mSymbolsCopy;
@@ -37,6 +39,12 @@ private:
 		wxString	mEncodingName;
 		
 		int			mHexAlign;
+
+
+		wxEncodingConverter mFromSystem;
+		wxEncodingConverter mToSystem;
+		bool mCanFromSystem;
+		bool mCanToSystem;
 		
 		wxGridCellAttr*	mConvertedAttr;
 		wxGridCellAttr*	mValuesAttr;
