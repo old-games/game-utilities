@@ -35,7 +35,10 @@ namespace BPP
 };
 
 typedef	unsigned char Palette[256][3];
-typedef unsigned int LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
+typedef unsigned char Pixel[3];
+typedef unsigned char PixelA[4];
+
+typedef Pixel LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
 
 struct SymbolInfo
 {

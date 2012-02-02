@@ -58,6 +58,7 @@ LetterCodesImpl::LetterCodesImpl(  wxWindow* parent, FontInfo* finfo ):
 	SetCurrentEncoding();
 
 	this->Bind( wxEVT_GRID_CELL_CHANGED, &LetterCodesImpl::OnCellChange, this);
+	
 }
 
 LetterCodesImpl::~LetterCodesImpl(void)

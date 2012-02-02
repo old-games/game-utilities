@@ -27,6 +27,7 @@
 #include <wx/encconv.h>
 #include <wx/fontmap.h>
 #include <wx/grid.h>
+#include <wx/scrolwin.h>
 
 #include "uttypes.h"
 
