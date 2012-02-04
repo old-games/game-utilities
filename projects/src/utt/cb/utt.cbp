@@ -8,7 +8,7 @@
 		<Option virtualFolders="Scripts/;" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../bin/utt" prefix_auto="1" extension_auto="1" />
+				<Option output="../bin/utt_d" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../bin" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
