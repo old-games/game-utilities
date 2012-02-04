@@ -37,7 +37,7 @@ public:
     virtual wxString GetValue() const;
 
 	bool HexToLong(long& dest, const wxString& src);
-	
+
 	int GetAlign()
 	{
 		return mAlign;
@@ -45,10 +45,10 @@ public:
 
 	static wxString LongToHex( long value, int align )
 	{
-		return wxString::Format(wxT("%0.*X"), align, value);
+		return wxString::Format("%0.*X", align, (int) value);
 	}
-	
-	
+
+
 protected:
 
     // string representation of our value
@@ -62,7 +62,7 @@ private:
         m_max;
 
     long m_value;
-    
+
     int mAlign;	// for formatting string by max value
 
     wxDECLARE_NO_COPY_CLASS(GridHexEditor);

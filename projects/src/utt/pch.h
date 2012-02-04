@@ -16,7 +16,7 @@
 
 // basic wxWidgets headers
 #include <wx/wxprec.h>
-
+#include <wx/vector.h>
 #include <wx/menu.h>
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>

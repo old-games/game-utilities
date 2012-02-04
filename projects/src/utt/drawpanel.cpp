@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "drawpanel.h"
 
@@ -23,7 +23,7 @@ DrawPanel::~DrawPanel(void)
 void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
 {
 	DestroyBitmap();
-	wxImage image( width, height, buffer, true );
+	wxImage image( width, height, (unsigned char*) buffer, true );
 	mBitmap = new wxBitmap( image );
 }
 
@@ -43,5 +43,5 @@ void DrawPanel::SetBuffer( Pixel* buffer )
 
 void DrawPanel::Render(wxDC& dc)
 {
-	
+
 }

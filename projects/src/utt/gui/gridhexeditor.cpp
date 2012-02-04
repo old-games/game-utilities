@@ -25,7 +25,7 @@ void GridHexEditor::Create(wxWindow* parent,
 	wxGridCellTextEditor::Create(parent, id, evtHandler);
 }
 
-inline bool GridHexEditor::HexToLong(long& dest, const wxString& src)
+bool GridHexEditor::HexToLong(long& dest, const wxString& src)
 {
 	wxString str = "0x" + src;
 	return str.ToLong(&dest, 16);
@@ -36,7 +36,7 @@ void GridHexEditor::BeginEdit(int row, int col, wxGrid* grid)
     // first get the value
     wxGridTableBase *table = grid->GetTable();
     wxString txt = table->GetValue( row, col );
-    
+
     if ( !HexToLong( m_value, txt) )
 	{
         m_value = 0;
@@ -93,7 +93,7 @@ void GridHexEditor::Reset()
 inline bool GridHexEditor::IsKeyCodeValid( int keycode )
 {
 	if ( (keycode < 128) &&
-		(	wxIsdigit(keycode) || keycode == '+' || keycode == '-') || 
+		(	wxIsdigit(keycode) || keycode == '+' || keycode == '-') ||
 			keycode >= 'A' || keycode <= 'F' || keycode >= 'a' || keycode <= 'f' )
 	{
 		return true;
