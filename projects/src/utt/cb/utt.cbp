@@ -3,7 +3,6 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="utt" />
-		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Option virtualFolders="Scripts/;" />
 		<Build>
@@ -24,6 +23,7 @@
 					<Add option="-Wmain" />
 					<Add option="-g" />
 					<Add option="$(#wx.include)" />
+					<Add directory="../." />
 				</Compiler>
 				<Linker>
 					<Add option="$(#wx.aui)" />
@@ -39,6 +39,7 @@
 				<Compiler>
 					<Add option="-O" />
 					<Add option="$(#wx.include)" />
+					<Add directory="../." />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
