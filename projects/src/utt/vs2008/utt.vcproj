@@ -119,7 +119,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswu"
+				AdditionalIncludeDirectories="../.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswu&quot;"
 				PreprocessorDefinitions="NDEBUG;__WXMSW__;_WINDOWS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"

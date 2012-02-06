@@ -12,6 +12,10 @@
 
 DrawPanel::DrawPanel(  wxWindow* parent, int id ):
 	wxScrolledWindow( parent, id ),
+	mKeepAspectRatio( true ),
+	mAlign( utdExpand | utdHCenter | utdVCenter ),
+	mXAspectRatio( 0.0f ),
+	mYAspectRatio( 0.0f ),
 	mBitmap( NULL ),
 	mWidth( 0 ),
 	mHeight( 0 )
@@ -19,12 +23,12 @@ DrawPanel::DrawPanel(  wxWindow* parent, int id ):
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
 	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this, id );
-	//this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this, id );
-	//this->Bind( wxEVT
+	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this, id );
 }
 
 DrawPanel::~DrawPanel(void)
 {
+	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
 }
 
@@ -35,6 +39,7 @@ void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
 	mBitmap = new wxBitmap( image );
 	mWidth = width;
 	mHeight = height;
+	SetAspectRatio();
 }
 
 void DrawPanel::DestroyBitmap()
@@ -61,9 +66,31 @@ void DrawPanel::Render(wxDC& dc)
 	}
 	wxSize clientSize = this->GetClientSize();
 	wxMemoryDC mdc;
-	//mdc.DrawBitmap( *mBitmap, 0, 0 );
 	mdc.SelectObject( *mBitmap );
-	dc.StretchBlit(0, 0, clientSize.GetWidth(), clientSize.GetHeight(), &mdc, 0, 0, mWidth, mHeight);
+	int showWidth = mWidth; 
+	int showHeight = mHeight;
+	int posX = 0;
+	int posY = 0;
+	if (mKeepAspectRatio)
+	{
+		showWidth *= mXAspectRatio;
+		showHeight *= mYAspectRatio;
+	}
+	if ( mAlign != utdNone )
+	{
+		int halfHeight = clientSize.GetHeight() / 2;
+		int halfWidth = clientSize.GetWidth() / 2;
+		if ( mAlign & utdHCenter != 0 )
+		{
+			posX = halfWidth - showWidth / 2;
+		}
+		if ( mAlign & utdVCenter != 0 )
+		{
+			posY = halfHeight - showHeight / 2;
+		}
+	}
+	dc.Clear();
+	dc.StretchBlit(posX, posY, showHeight, showWidth, &mdc, 0, 0, mWidth, mHeight);
 }
 
 void DrawPanel::OnPaint(wxPaintEvent& event)
@@ -78,8 +105,14 @@ void DrawPanel::PaintNow()
 	Render(dc);
 }
 
+inline void DrawPanel::SetAspectRatio()
+{
+}
+
 void DrawPanel::OnSize(wxSizeEvent& event)
 {
-	//wxAutoBufferedPaintDC dc(this);
-	//Render( event.GetDC );
+	event.Skip();
+	wxSize clientSize = this->GetClientSize();
+	mXAspectRatio = (float) clientSize.GetHeight() / (float) clientSize.GetWidth();
+	mYAspectRatio = (float) clientSize.GetWidth() / (float) clientSize.GetHeight();
 }
