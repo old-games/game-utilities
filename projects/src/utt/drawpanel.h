@@ -13,17 +13,24 @@ class DrawPanel :
 	public wxScrolledWindow
 {
 public:
-	DrawPanel( wxWindow* parent );
+	DrawPanel( wxWindow* parent, int id );
 	~DrawPanel(void);
 
 	void CreateBitmap(Pixel* buffer, int width, int height);
 	void SetBuffer( Pixel* buffer );
+
+protected:
+	virtual void OnPaint(wxPaintEvent& event);
+	virtual void OnSize(wxSizeEvent& event);
 	
 private:
 	void Render(wxDC& dc);
+	void PaintNow();
 	void DestroyBitmap();
 	
 	wxBitmap*	mBitmap;
+	wxCoord		mWidth;
+	wxCoord		mHeight;
 };
 
 #endif

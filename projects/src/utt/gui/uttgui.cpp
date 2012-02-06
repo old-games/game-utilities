@@ -83,13 +83,9 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	
 	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* mCentralSizer;
 	mCentralSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Editor:") ), wxVERTICAL );
 	
 	mCentralSizer->SetMinSize( wxSize( 256,128 ) ); 
-	m_bitmap4 = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	mCentralSizer->Add( m_bitmap4, 1, wxALL|wxEXPAND, 5 );
-	
 	fgSizer1->Add( mCentralSizer, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer9;
