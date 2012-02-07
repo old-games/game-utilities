@@ -18,7 +18,8 @@ enum UTTDrawParams
 	utdVCenter  = 0x08,
 	utdRight	= 0x10,
 	utdUp		= 0x20,
-	utdDown		= 0x30
+	utdDown		= 0x30,
+	utdExactFit = 0x40
 };
 
 class DrawPanel :
@@ -39,12 +40,16 @@ private:
 	void Render(wxDC& dc);
 	void PaintNow();
 	void DestroyBitmap();
-	void SetAspectRatio();
+	void SetShowParams();
 
-	bool		mKeepAspectRatio;
 	int			mAlign;
 	float		mXAspectRatio;
 	float		mYAspectRatio;
+	wxCoord		mShowWidth;				// ширина картинки для отображения
+	wxCoord		mShowHeight;			
+	wxCoord		mPosX;					// стартовая позиция для отображения
+	wxCoord		mPosY;
+	
 	wxBitmap*	mBitmap;
 	wxCoord		mWidth;
 	wxCoord		mHeight;
