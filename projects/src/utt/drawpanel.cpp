@@ -12,7 +12,7 @@
 
 DrawPanel::DrawPanel(  wxWindow* parent, int id ):
 	wxScrolledWindow( parent, id ),
-	mAlign( utdExpand | utdHCenter | utdVCenter | utdExactFit),
+	mAlign( utdExactFit | utdHCenter | utdVCenter ),
 	mXAspectRatio( 0.0f ),
 	mYAspectRatio( 0.0f ),
 	mShowWidth( 0 ),
@@ -53,11 +53,13 @@ void DrawPanel::DestroyBitmap()
 
 void DrawPanel::SetBuffer( Pixel* buffer )
 {
-	if ( !mBitmap->IsOk() )
+	if ( !mBitmap || !mBitmap->IsOk() )
 	{
 		return;
 	}
-	CreateBitmap( buffer, mWidth, mHeight );
+	DestroyBitmap();
+	wxImage image( mWidth, mHeight, (unsigned char*) buffer, true );
+	mBitmap = new wxBitmap( image );
 	PaintNow();
 }
 
@@ -70,7 +72,9 @@ void DrawPanel::Render(wxDC& dc)
 	wxMemoryDC mdc;
 	mdc.SelectObject( *mBitmap );
 	dc.Clear();
-	dc.StretchBlit(mPosX, mPosY, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
+	int x = GetScrollPos(wxHORIZONTAL);
+	int y = GetScrollPos(wxVERTICAL);
+	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
 }
 
 void DrawPanel::OnPaint(wxPaintEvent& event)
@@ -85,59 +89,98 @@ void DrawPanel::PaintNow()
 	Render(dc);
 }
 
+inline void DrawPanel::CalculateScrollBars()
+{
+	wxCoord clw = 0;
+	wxCoord clh = 0;
+	this->GetClientSize( &clw, &clh );
+	int x = GetScrollPos(wxHORIZONTAL);
+	int y = GetScrollPos(wxVERTICAL);
+	const int unitSize = 2;
+	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y);
+}
+
 inline void DrawPanel::SetShowParams()
 {
-	wxSize clientSize = this->GetClientSize();
 	mShowWidth = mWidth; 
 	mShowHeight = mHeight;
+	wxCoord clw = 0;
+	wxCoord clh = 0;
+	this->GetClientSize( &clw, &clh );
 	mPosX = 0;
 	mPosY = 0;
 	if ( mAlign != utdNone )
 	{
-		int halfHeight = clientSize.GetHeight() / 2;
-		int halfWidth = clientSize.GetWidth() / 2;
+		int halfHeight = clh / 2;
+		int halfWidth = clw / 2;
 		
-		if ( mAlign & utdExactFit != 0 )
+		mXAspectRatio = (float) clw / (float) mWidth;
+		mYAspectRatio = (float) clh / (float) mHeight;
+
+		if ( (mAlign & utdExactFit) != 0)
 		{
-			mXAspectRatio = (float) clientSize.GetWidth() / (float) mWidth;
-			mYAspectRatio = (float) clientSize.GetHeight() / (float) mHeight;
-			if ( clientSize.GetWidth() < mWidth )
+			float modifier = 1.000f;
+			if ( clw < mWidth && clh < mHeight )
 			{
-				mShowWidth *= mXAspectRatio;
-				mShowHeight *= mXAspectRatio;
-			}		
-			if ( clientSize.GetHeight() < mHeight )
+				modifier = clw > clh ? mYAspectRatio : mXAspectRatio;
+			}
+			else
 			{
-				mShowWidth *= mYAspectRatio;
-				mShowHeight *= mYAspectRatio;
-			}			
+				if ( clw < mWidth )
+				{
+					modifier = mXAspectRatio;
+				}		
+				if ( clh < mHeight )
+				{
+					modifier = mYAspectRatio;
+				}
+			}
+			mShowWidth *= modifier;
+			mShowHeight *= modifier;
 		}
 		
-		if ( mAlign & utdExpand != 0 )
-		{ here we stopped
-			mXAspectRatio = (float) mWidth / (float) clientSize.GetWidth();
-			mYAspectRatio = (float) mHeight / (float) clientSize.GetHeight();
-			if ( clientSize.GetWidth() > mWidth )
+		if ( (mAlign & utdExpand) != 0 )
+		{
+			if (clw > mWidth && clh > mHeight)
 			{
-				mShowWidth = clientSize.GetWidth() * mXAspectRatio;
-				mShowHeight = mXAspectRatio;
-			}		
-			if ( clientSize.GetHeight() > mHeight )
-			{
-				mShowWidth = mYAspectRatio;
-				mShowHeight = mYAspectRatio;
-			}			
+				float modifier = mYAspectRatio > mXAspectRatio ? mXAspectRatio : mYAspectRatio;
+				mShowWidth *= modifier;
+				mShowHeight *= modifier;
+			}
 		}
 		
-		if ( mAlign & utdHCenter != 0 )
+		if ( (mAlign & utdStretch) != 0 )
+		{ 
+			mShowHeight = clh;
+			mShowWidth = clw;
+		}
+		
+		if ( (mAlign & utdHCenter) != 0 )
 		{
 			mPosX = halfWidth - mShowWidth / 2;
 		}
-		if ( mAlign & utdVCenter != 0 )
+		if ( (mAlign & utdVCenter) != 0 )
 		{
 			mPosY = halfHeight - mShowHeight / 2;
 		}
+		if ( (mAlign & utdLeft) != 0 )
+		{
+			mPosX = 0;
+		}
+		if ( (mAlign & utdRight) != 0 )
+		{
+			mPosX = clw - mShowWidth;
+		}
+		if ( (mAlign & utdUp) != 0 )
+		{
+			mPosY = 0;
+		}
+		if ( (mAlign & utdDown) != 0 )
+		{
+			mPosY = clh - mShowHeight;
+		}
 	}
+	CalculateScrollBars();
 }
 
 void DrawPanel::OnSize(wxSizeEvent& event)

@@ -11,15 +11,17 @@
 
 enum UTTDrawParams
 {
-	utdNone		= 0x00,
-	utdExpand	= 0x01,
-	utdLeft		= 0x02,
-	utdHCenter  = 0x04,
-	utdVCenter  = 0x08,
-	utdRight	= 0x10,
-	utdUp		= 0x20,
-	utdDown		= 0x30,
-	utdExactFit = 0x40
+	utdNone		= 0x0000,
+	utdReserve	= 0x0001,
+	utdLeft		= 0x0002,
+	utdHCenter  = 0x0004,
+	utdVCenter  = 0x0008,
+	utdRight	= 0x0010,
+	utdUp		= 0x0020,
+	utdDown		= 0x0040,
+	utdExpand	= 0x0080,
+	utdExactFit = 0x0100,
+	utdStretch	= 0x0200
 };
 
 class DrawPanel :
@@ -41,6 +43,7 @@ private:
 	void PaintNow();
 	void DestroyBitmap();
 	void SetShowParams();
+	void CalculateScrollBars();
 
 	int			mAlign;
 	float		mXAspectRatio;
