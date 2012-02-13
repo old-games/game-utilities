@@ -29,6 +29,11 @@
 #include <wx/grid.h>
 #include <wx/scrolwin.h>
 #include <wx/dcbuffer.h>
+#include <wx/log.h>
+
+// Lua headers
+#include <lua.hpp>
+#include <oolua.h>
 
 #include "uttypes.h"
 

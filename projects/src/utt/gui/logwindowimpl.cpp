@@ -11,15 +11,14 @@
 #include "logwindowimpl.h"
 
 LogWindowImpl::LogWindowImpl(  wxWindow* parent ):
-	LogWindowGui( parent )
-{
+	LogWindowGui( parent ),
+	mRedirector( mLogTxt )
+{	
+	mLogCtrl = new wxLogTextCtrl( mLogTxt );
+	delete wxLog::SetActiveTarget( mLogCtrl );
+
 }
 
 LogWindowImpl::~LogWindowImpl(void)
 {
-}
-
-void LogWindowImpl::WriteLogMessage(const wxString& txt)
-{
-	mLogTxt->AppendText( txt );
 }

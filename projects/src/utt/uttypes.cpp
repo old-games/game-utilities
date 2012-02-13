@@ -70,6 +70,45 @@ inline LetterBox* SymbolInfo::GetData()
 	return mData;
 }
 
+inline int SymbolInfo::BoxOffset(int x, int y)
+{
+	int offset = (x * MAXIMUM_SYMBOL_WIDTH) + y;
+	if ( offset >= sizeof(LetterBox) )
+	{
+		wxLogMessage( wxString::Format("SymbolInfo::BoxOffset: coordinates are out of range (X: %d, Y: %d)", x, y) );
+		return -1;
+	}
+	return offset;
+}
+
+void SymbolInfo::SetPixel( int x, int y, RGBA color )
+{
+	int offset = BoxOffset(x, y);
+	if ( offset < 0 )
+	{
+		return;
+	}
+	Pixel& val = *mData[offset];
+	val[0] = color.R;
+	val[1] = color.G;
+	val[2] = color.B;
+}
+
+RGBA SymbolInfo::GetPixel( int x, int y )
+{
+	RGBA res;
+	int offset = BoxOffset(x, y);
+	if ( offset < 0 )
+	{
+		return res;
+	}
+	Pixel& val = *mData[offset];
+	res.R = val[0];
+	res.G = val[1];
+	res.B = val[2];
+	return res;
+}
+
 void FontInfo::SetSymbolsNum(size_t n)
 {
 	if (n >= MINIMUM_SYMBOLS_NUM)
@@ -77,3 +116,4 @@ void FontInfo::SetSymbolsNum(size_t n)
 		mSymbols.resize(n);
 	}
 }
+

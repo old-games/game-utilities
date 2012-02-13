@@ -9,17 +9,74 @@
 
 #include "pch.h"
 #include "mainframeimpl.h"
+#include "luacontrol.h"
 
 MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
 	mFontEditor( this ),
 	mLogWindow( this )
 {
-	m_mgr.AddPane(&mFontEditor, wxLEFT, "Font editor");
-	m_mgr.AddPane(&mLogWindow, wxLEFT, "Log");
+	m_mgr.AddPane(&mFontEditor, wxDOWN, "Font editor");
+	m_mgr.AddPane(&mLogWindow, wxUP, "Log");
 	m_mgr.Update();
 }
 
 MainFrameImpl::~MainFrameImpl(void)
 {
+}
+
+void MainFrameImpl::Init()
+{
+	wxLogMessage( "Initiating UTT" );
+	if (!Lua::Init())
+	{
+		Lua::ShowLastError();
+	}
+}
+
+void MainFrameImpl::Deinit()
+{
+	Lua::Done();
+	wxLogMessage( "UTT exits" );
+}
+
+void MainFrameImpl::DoFileOpen()
+{
+	if (! Lua::gLuaState.call( "getExtensions" ) )
+	{
+		Lua::ShowLastError();
+		return;
+	}
+	std::string result;
+	OOLUA::pull2cpp(Lua::gLuaState, result);
+	wxString extensions( result );
+	
+	wxFileDialog openFileDialog(this, "Open file", "./", "", extensions, wxFD_OPEN|wxFD_FILE_MUST_EXIST);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)
+	{
+		return;     
+	}
+	if (! Lua::gLuaState.call( "openFile", openFileDialog.GetPath().ToStdString() ) )
+	{
+		Lua::ShowLastError();
+		return;
+	}
+	
+}
+
+void MainFrameImpl::OnClose( wxCloseEvent& event ) 
+{ 
+	this->Deinit();
+	event.Skip(); 
+}
+
+void MainFrameImpl::OnMenuSelect( wxCommandEvent& event ) 
+{
+	switch ( event.GetId() )
+	{
+		case wxID_FILE_OPEN:
+			DoFileOpen();
+		break;
+	}
+	event.Skip(); 
 }

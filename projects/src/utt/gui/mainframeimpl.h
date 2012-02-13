@@ -21,8 +21,16 @@ public:
 	MainFrameImpl();
 	~MainFrameImpl(void);
 	
+	void Init();
+	void Deinit();
+
 private:
 
+	virtual void OnClose( wxCloseEvent& event );
+	virtual void OnMenuSelect( wxCommandEvent& event );
+	
+	void DoFileOpen();
+	
 	FontEditImpl		mFontEditor;
 	LogWindowImpl		mLogWindow;
 };

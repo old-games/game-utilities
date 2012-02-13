@@ -11,18 +11,19 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
-#include <wx/frame.h>
-#include <wx/aui/aui.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/menu.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/frame.h>
+#include <wx/aui/aui.h>
 #include <wx/button.h>
 #include <wx/sizer.h>
 #include <wx/statbox.h>
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
 #include <wx/bmpbuttn.h>
 #include <wx/statbmp.h>
 #include <wx/gbsizer.h>
@@ -36,27 +37,28 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #define wxID_MAIN_FRAME 1000
-#define wxID_FONT_EDITOR 1001
-#define wxID_CREATE_FONT 1002
-#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1003
-#define wxID_PREVIEW_SYMBOLS 1004
-#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1005
-#define wxID_FONT_SETTINGS_ID 1006
-#define wxID_NUM_SPIN_CTRL 1007
-#define wxID_SET_CODES_BTN 1008
-#define wxID_MAX_HEIGHT_SPIN 1009
-#define wxID_MIN_HEIGHT_SPIN 1010
-#define wxID_MAX_WIDTH_SPIN 1011
-#define wxID_MIN_WIDTH_SPIN 1012
-#define wxID_BASE_LINE_SPIN 1013
-#define wxID_CAP_LINE_SPIN 1014
-#define wxID_LOW_LINE_SPIN 1015
-#define wxID_LETTER_CODES_ID 1016
-#define wxID_GENERATE_CODES_BTN 1017
-#define wxID_GET_ENCODING_BTN 1018
-#define wxID_CODES_GRID 1019
-#define wxID_LOG_WINDOW 1020
-#define wxID_LOG_TXT 1021
+#define wxID_FILE_OPEN 1001
+#define wxID_FONT_EDITOR 1002
+#define wxID_CREATE_FONT 1003
+#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1004
+#define wxID_PREVIEW_SYMBOLS 1005
+#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1006
+#define wxID_FONT_SETTINGS_ID 1007
+#define wxID_NUM_SPIN_CTRL 1008
+#define wxID_SET_CODES_BTN 1009
+#define wxID_MAX_HEIGHT_SPIN 1010
+#define wxID_MIN_HEIGHT_SPIN 1011
+#define wxID_MAX_WIDTH_SPIN 1012
+#define wxID_MIN_WIDTH_SPIN 1013
+#define wxID_BASE_LINE_SPIN 1014
+#define wxID_CAP_LINE_SPIN 1015
+#define wxID_LOW_LINE_SPIN 1016
+#define wxID_LETTER_CODES_ID 1017
+#define wxID_GENERATE_CODES_BTN 1018
+#define wxID_GET_ENCODING_BTN 1019
+#define wxID_CODES_GRID 1020
+#define wxID_LOG_WINDOW 1021
+#define wxID_LOG_TXT 1022
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -66,10 +68,17 @@ class UttMainFrame : public wxFrame
 	private:
 	
 	protected:
+		wxMenuBar* mMainMenu;
+		wxMenu* mFileMenu;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void OnMenuSelect( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		
-		UttMainFrame( wxWindow* parent, wxWindowID id = wxID_MAIN_FRAME, const wxString& title = wxT("UTT"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1024,768 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		UttMainFrame( wxWindow* parent, wxWindowID id = wxID_MAIN_FRAME, const wxString& title = wxT("UTT"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1024,600 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		wxAuiManager m_mgr;
 		
 		~UttMainFrame();

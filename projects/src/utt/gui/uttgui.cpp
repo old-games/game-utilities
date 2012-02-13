@@ -19,13 +19,31 @@ UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& tit
 	this->SetSizeHints( wxSize( 640,480 ), wxDefaultSize );
 	m_mgr.SetManagedWindow(this);
 	
+	mMainMenu = new wxMenuBar( 0 );
+	mFileMenu = new wxMenu();
+	wxMenuItem* mFileOpen;
+	mFileOpen = new wxMenuItem( mFileMenu, wxID_FILE_OPEN, wxString( wxT("Open") ) + wxT('\t') + wxT("F3"), wxEmptyString, wxITEM_NORMAL );
+	mFileMenu->Append( mFileOpen );
+	
+	mMainMenu->Append( mFileMenu, wxT("File") ); 
+	
+	this->SetMenuBar( mMainMenu );
+	
 	
 	m_mgr.Update();
 	this->Centre( wxBOTH );
+	
+	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( UttMainFrame::OnClose ) );
+	this->Connect( mFileOpen->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
 }
 
 UttMainFrame::~UttMainFrame()
 {
+	// Disconnect Events
+	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( UttMainFrame::OnClose ) );
+	this->Disconnect( wxID_FILE_OPEN, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
+	
 	m_mgr.UnInit();
 	
 }

@@ -18,7 +18,10 @@ public:
 	LogWindowImpl( wxWindow* parent );
 	~LogWindowImpl(void);
 
-	void WriteLogMessage(const wxString& txt);
+private:
+
+	wxLogTextCtrl*				mLogCtrl;
+	wxStreamToTextRedirector	mRedirector;
 };
 
 #endif

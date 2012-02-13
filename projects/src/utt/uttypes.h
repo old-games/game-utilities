@@ -7,8 +7,8 @@
  * License:
  **************************************************************/
  
-#ifndef _UTT_TYPES_H_
-#define _UTT_TYPES_H_
+#ifndef UTTTYPES_H_INCLUDED
+#define UTTTYPES_H_INCLUDED
 
 #define MAXIMUM_SYMBOLS_NUM			16384
 #define MINIMUM_SYMBOLS_NUM			1
@@ -40,6 +40,15 @@ typedef unsigned char PixelA[4];
 
 typedef Pixel LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
 
+struct RGBA
+{
+	RGBA(): R(0), G(0), B(0), A(0xFF)	{};
+	int R;
+	int G;
+	int B;
+	int A;
+};
+
 struct SymbolInfo
 {
 
@@ -50,6 +59,9 @@ struct SymbolInfo
 		mData( NULL )
 	{
 	}
+
+	RGBA GetPixel( int x, int y );
+	void SetPixel( int x, int y, RGBA color );
 
 	virtual ~SymbolInfo()
 	{
@@ -74,6 +86,7 @@ private:
 	void SetValues(int width, int height, unsigned int code, const LetterBox* data = NULL);
 	void CreateData();
 	void EraseData();
+	int	 BoxOffset(int x, int y);
 };
 
 typedef wxVector<SymbolInfo> Symbols;
@@ -152,4 +165,4 @@ protected:
 
 };
 
-#endif
+#endif	// UTTTYPES_H_INCLUDED
