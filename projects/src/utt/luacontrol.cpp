@@ -14,6 +14,9 @@ OOLUA::Script Lua::gLuaState;
 
 bool Lua::Init()
 {
+#ifdef _LUAJIT_H
+	luaopen_jit(Lua::gLuaState);
+#endif
 	FontRegister();
 	return gLuaState.run_file("scripts/init.lua");
 }

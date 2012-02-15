@@ -1,12 +1,13 @@
 print "Main Lua init"
 require 'scripts/common'
 
-gModuleNames = { 'example', 'privateer2' }
+gModuleNames = { 'example' } --, 'privateer2' }
 gModules = {}
 
 function initModules()
 	for i = 1, #gModuleNames do
 		local modulePath = 'scripts/'..gModuleNames[i]..'/'
+		--local modulePath = gModuleNames[i]..'/'
 		local fileName = modulePath..'initmodule'
 		require( fileName )
 		--[[

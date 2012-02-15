@@ -10,11 +10,31 @@ function fileExist( name )
 	return false
 end
 
-BMPHeader = 
+BMPFileHeader = 
 { 
-	ID = "WORD",
-	SIZE = "LONG"
+	ID 			= "WORD",
+	SIZE 		= "LONG",
+	RESERVED1	= "WORD",
+	RESERVED2	= "WORD",
+	DATA_OFFSET = "DWORD"
 }
+
+--[[
+BMPInfoHeader =
+{
+
+  DWORD  biSize; 
+  LONG   biWidth; 
+  LONG   biHeight; 
+  WORD   biPlanes; 
+  WORD   biBitCount; 
+  DWORD  biCompression; 
+  DWORD  biSizeImage; 
+  LONG   biXPelsPerMeter; 
+  LONG   biYPelsPerMeter; 
+  DWORD  biClrUsed; 
+  DWORD  biClrImportant; 
+}   ]]
 
 function showTable( tab )
 	for k, v in pairs( tab ) do
@@ -47,15 +67,14 @@ function loadBMP( filename )
 	if not fh then
 		return
 	end
-	data = readData( fh, BMPHeader )
+	data = readData( fh, BMPFileHeader )
  
 	if(data.ID ~= 0x4D42) then
 		print("Not a bitmap file (Invalid BMP magic value)");
 		return;
 	end
- 
-	for k, v in pairs( data ) do
-		print( k, v )
-	end
+	showTable( data )
+	data2 = readData(fh, BMPInfoHeader )
+	showTable( data2 )
 	fh:close()
 end
