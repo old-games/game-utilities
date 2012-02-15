@@ -28,6 +28,9 @@
 				<Linker>
 					<Add option="$(#wx.aui)" />
 					<Add option="$(#wx.lib)" />
+					<Add library="/usr/local/lib/liblua.a" />
+					<Add library="liboolua_d.a" />
+					<Add directory="/usr/local/lib/oolua" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -68,6 +71,12 @@
 		<Unit filename="../gui/uttgui.cpp" />
 		<Unit filename="../gui/uttgui.fbp" />
 		<Unit filename="../gui/uttgui.h" />
+		<Unit filename="../luaconsole.cpp" />
+		<Unit filename="../luaconsole.h" />
+		<Unit filename="../luacontrol.cpp" />
+		<Unit filename="../luacontrol.h" />
+		<Unit filename="../luaexports/luafont.cpp" />
+		<Unit filename="../luaexports/luafont.h" />
 		<Unit filename="../pch.h" />
 		<Unit filename="../utt.cpp" />
 		<Unit filename="../utt.h" />

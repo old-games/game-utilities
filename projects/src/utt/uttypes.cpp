@@ -2,7 +2,7 @@
 #include "uttypes.h"
 
 
-const int BPP::Bits[BPP::bppNum] = 
+const int BPP::Bits[BPP::bppNum] =
 {
 	1,
 	2,
@@ -31,10 +31,10 @@ void SymbolInfo::SetValues(int width, int height, unsigned int code, const Lette
 	mWidth = width;
 	mHeight = height;
 	mCode = code;
-	if (data != NULL) 
+	if (data != NULL)
 	{
 		CreateData();
-		memcpy(mData, data, sizeof( LetterBox ));	
+		memcpy(mData, data, sizeof( LetterBox ));
 	}
 	else
 	{
@@ -73,7 +73,7 @@ inline LetterBox* SymbolInfo::GetData()
 inline int SymbolInfo::BoxOffset(int x, int y)
 {
 	int offset = (x * MAXIMUM_SYMBOL_WIDTH) + y;
-	if ( offset >= sizeof(LetterBox) )
+	if ( (size_t) offset >= sizeof(LetterBox) )
 	{
 		wxLogMessage( wxString::Format("SymbolInfo::BoxOffset: coordinates are out of range (X: %d, Y: %d)", x, y) );
 		return -1;

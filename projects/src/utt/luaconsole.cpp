@@ -24,14 +24,14 @@ LuaConsole::LuaConsole( wxWindow* parent ):
 {
 	wxGridSizer* gSizer1;
 	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
-	
+
 	mOutput = new wxTextCtrl( this, LUACONSOLE_ID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_AUTO_URL|wxTE_MULTILINE );
 
 	gSizer1->Add( mOutput, 1, wxEXPAND, 5 );
-	
+
 	this->SetSizer( gSizer1 );
 	this->Layout();
-	
+
 	// в mStdoutBuf будем перехватывать сообщения print из Lua
 	mStdoutBuf = (char*) malloc( STDOUT_SIZE );
 	memset( mStdoutBuf, 0, STDOUT_SIZE );
@@ -40,7 +40,7 @@ LuaConsole::LuaConsole( wxWindow* parent ):
 	this->Bind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
 	mOutput->Bind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	SetPrompt();
-	
+
 	this->Bind( wxEVT_TIMER, &LuaConsole::OnTimer, this );
 	mCheckStdout.Start( 500 );
 }
@@ -51,7 +51,7 @@ LuaConsole::~LuaConsole()
 	mCheckStdout.Stop();
 	free( mStdoutBuf );
 	mStdoutBuf = NULL;
-	
+
 	this->Unbind( wxEVT_TIMER, &LuaConsole::OnTimer, this );
 	mOutput->Unbind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	this->Unbind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
@@ -93,12 +93,12 @@ void LuaConsole::OnKeyDown( wxKeyEvent& event )
 				Do( txt );
 			}
 		break;
-		
+
 		case WXK_UP:
 		case WXK_DOWN:
 			HistorySearch( WXK_DOWN == event.GetKeyCode() );
 		break;
-		
+
 		case WXK_BACK:
 		case WXK_LEFT:
 			if ( CanContinueEvent() )
@@ -106,7 +106,7 @@ void LuaConsole::OnKeyDown( wxKeyEvent& event )
 				event.Skip();
 			}
 		break;
-		
+
 		default:
 			if ( !event.ControlDown() )
 			{
