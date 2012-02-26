@@ -21,7 +21,7 @@ public:
 private:
 
 	wxLogTextCtrl*				mLogCtrl;
-	wxStreamToTextRedirector	mRedirector;
+	wxStreamToTextRedirector*	mRedirector;
 };
 
 #endif

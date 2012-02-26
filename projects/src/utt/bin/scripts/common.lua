@@ -19,22 +19,20 @@ BMPFileHeader =
 	DATA_OFFSET = "DWORD"
 }
 
---[[
 BMPInfoHeader =
 {
-
-  DWORD  biSize; 
-  LONG   biWidth; 
-  LONG   biHeight; 
-  WORD   biPlanes; 
-  WORD   biBitCount; 
-  DWORD  biCompression; 
-  DWORD  biSizeImage; 
-  LONG   biXPelsPerMeter; 
-  LONG   biYPelsPerMeter; 
-  DWORD  biClrUsed; 
-  DWORD  biClrImportant; 
-}   ]]
+	SIZE			= "DWORD",
+	WIDTH			= "LONG",
+	HEIGHT			= "LONG",
+	PLANES			= "WORD",
+	BITCOUNT		= "WORD",
+	COMPRESSION 	= "DWORD",
+	SIZEIMAGE		= "DWORD",
+	XPELSPERMETER	= "LONG",
+	YPELSPERMETER	= "LONG",
+	CLRUSED			= "DWORD",
+	CLRIMPORTANT	= "DWORD"
+}
 
 function showTable( tab )
 	for k, v in pairs( tab ) do
@@ -42,9 +40,13 @@ function showTable( tab )
 	end
 end
 
+showTable( BMPFileHeader )
+showTable( BMPInfoHeader )
+
 function ReadFunctions.WORD( file )
 	local block = 2
 	local bytes = file:read( 2 )
+	print (bytes)
 	return bytes:byte(2) * 256 + bytes:byte(1)
 end
 
@@ -54,9 +56,15 @@ function ReadFunctions.LONG( file )
 	return bytes:byte(4) * 16777216 + bytes:byte(3) * 65536 + bytes:byte(2) * 256 + bytes:byte(1)
 end
 
+function ReadFunctions.DWORD( file )
+	return ReadFunctions.LONG(file)
+end
+
 function readData( file, dataTable )
 	result = {}
+	print "HERE"
 	for key, value in pairs( dataTable ) do
+		print (key, value)
 		result[key] = ReadFunctions[value]( file )
 	end
 	return result
@@ -68,9 +76,10 @@ function loadBMP( filename )
 		return
 	end
 	data = readData( fh, BMPFileHeader )
- 
+	showTable( data )
+
 	if(data.ID ~= 0x4D42) then
-		print("Not a bitmap file (Invalid BMP magic value)");
+		print("Not a bitmap file (Invalid BMP magic value) ", data.ID);
 		return;
 	end
 	showTable( data )

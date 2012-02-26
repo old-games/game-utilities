@@ -42,13 +42,13 @@ void MainFrameImpl::Deinit()
 
 void MainFrameImpl::DoFileOpen()
 {
-	if (! Lua::gLuaState.call( "getExtensions" ) )
+	if (! Lua::gLuaState->call( "getExtensions" ) )
 	{
 		Lua::ShowLastError();
 		return;
 	}
 	std::string result;
-	OOLUA::pull2cpp(Lua::gLuaState, result);
+	OOLUA::pull2cpp(*Lua::gLuaState, result);
 	wxString extensions( result );
 	
 	wxFileDialog openFileDialog(this, "Open file", "./", "", extensions, wxFD_OPEN|wxFD_FILE_MUST_EXIST);
@@ -56,7 +56,7 @@ void MainFrameImpl::DoFileOpen()
 	{
 		return;     
 	}
-	if (! Lua::gLuaState.call( "openFile", openFileDialog.GetPath().ToStdString() ) )
+	if (! Lua::gLuaState->call( "openFile", openFileDialog.GetPath().ToStdString() ) )
 	{
 		Lua::ShowLastError();
 		return;

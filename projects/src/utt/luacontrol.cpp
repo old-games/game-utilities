@@ -10,25 +10,27 @@
 #include "pch.h"
 #include "luacontrol.h"
 
-OOLUA::Script Lua::gLuaState;
+OOLUA::Script* Lua::gLuaState = NULL;
 
 bool Lua::Init()
 {
+	gLuaState = new OOLUA::Script();
 #ifdef _LUAJIT_H
 	luaopen_jit(Lua::gLuaState);
 #endif
 	FontRegister();
-	return gLuaState.run_file("scripts/init.lua");
+	return gLuaState->run_file("scripts/init.lua");
 }
 
 void Lua::Done()
 {
     wxLogMessage( "Closing Lua...\n" );
+    delete gLuaState;
 }
 
 void Lua::ShowLastError( )
 {
-	wxLogMessage( wxString( OOLUA::get_last_error(Lua::gLuaState).c_str() ) );
+	wxLogMessage( wxString( OOLUA::get_last_error(*Lua::gLuaState).c_str() ) );
 	//std::cout << OOLUA::get_last_error(Lua::gLuaState).c_str();
 }
 

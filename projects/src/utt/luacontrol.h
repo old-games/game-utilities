@@ -15,7 +15,7 @@
 
 namespace Lua
 {
-	extern OOLUA::Script	gLuaState;
+	extern OOLUA::Script*	gLuaState;
 
     bool Init();
     void Done();

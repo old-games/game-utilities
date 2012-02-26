@@ -139,7 +139,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib lua52.lib oolua.lib"
+				AdditionalDependencies="lua52.lib Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib oolua.lib"
 				OutputFile="..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;&quot;$(LUA_DEV)&quot;;&quot;$(OOLUA)/lib&quot;"

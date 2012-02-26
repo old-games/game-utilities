@@ -12,7 +12,8 @@
 #include "luacontrol.h"
 
 #define LUACONSOLE_ID	999
-#define STDOUT_SIZE		64000
+#define STDOUT_SIZE		640
+#define STREAM_FILE		"lua.log"
 
 const wxString sPrompt = "Lua >";
 
@@ -31,7 +32,13 @@ LuaConsole::LuaConsole( wxWindow* parent ):
 
 	this->SetSizer( gSizer1 );
 	this->Layout();
-
+	//freopen (STREAM_FILE,"w",stdout);
+	//
+	//std::filebuf fb;
+	//fb.open (STREAM_FILE, std::ios::out);
+	//std::ostream os(&fb);
+	
+	
 	// в mStdoutBuf будем перехватывать сообщения print из Lua
 	mStdoutBuf = (char*) malloc( STDOUT_SIZE );
 	memset( mStdoutBuf, 0, STDOUT_SIZE );
@@ -42,7 +49,7 @@ LuaConsole::LuaConsole( wxWindow* parent ):
 	SetPrompt();
 
 	this->Bind( wxEVT_TIMER, &LuaConsole::OnTimer, this );
-	mCheckStdout.Start( 500 );
+	mCheckStdout.Start( 1 );
 }
 
 LuaConsole::~LuaConsole()
@@ -70,10 +77,11 @@ void LuaConsole::CheckStdout()
 		return;
 	}
 	wxString txt( mStdoutBuf );
+	mStdoutBuf[0] = 0;
 	InsertText( txt );
 	wxLogMessage( "SCRIPT: " + txt );
-	setvbuf ( stdout, mStdoutBuf, _IOFBF, STDOUT_SIZE );
-	memset( mStdoutBuf, 0, txt.length() );
+	//setvbuf ( stdout, mStdoutBuf, _IOFBF, STDOUT_SIZE );
+//	memset( mStdoutBuf, 0, txt.length() );
 }
 
 void LuaConsole::OnCloseWindow( wxCloseEvent& WXUNUSED(event) )
@@ -140,7 +148,7 @@ void LuaConsole::Do(const wxString& command)
 	mOutput->AppendText("> " );
 	mOutput->AppendText( toExecute );
 	mOutput->AppendText("\n" );
-	if ( !Lua::gLuaState.run_chunk( toExecute.ToStdString() ) )
+	if ( !Lua::gLuaState->run_chunk( toExecute.ToStdString() ) )
 	{
 		Lua::ShowLastError();
 	}

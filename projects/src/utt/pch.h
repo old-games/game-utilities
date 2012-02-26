@@ -31,9 +31,11 @@
 #include <wx/dcbuffer.h>
 #include <wx/log.h>
 
+#include <iostream>
+#include <fstream>
 // Lua headers
 #include <lua.hpp>
-#include <oolua/oolua.h>
+#include <oolua.h>
 
 #include "uttypes.h"
 
