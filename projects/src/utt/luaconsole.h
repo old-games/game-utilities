@@ -20,7 +20,6 @@ public:
 protected:
 	void OnCloseWindow( wxCloseEvent& event );
 	void OnKeyDown( wxKeyEvent& event );
-	void OnTimer( wxTimerEvent& event );
 
 	wxTextCtrl*		mOutput;
 	
@@ -30,13 +29,9 @@ private:
 	void InsertText(const wxString& txt);
 	void ClearLastLine();
 	void HistorySearch( bool down );
-	void CheckStdout();
 	bool CorrectCaret();
 	bool CanContinueEvent();
 	
-
-	char*			mStdoutBuf;
-	wxTimer			mCheckStdout;
 	wxArrayString	mCommands;
 	int				mHistoryCounter;
 };

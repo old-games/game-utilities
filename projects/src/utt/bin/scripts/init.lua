@@ -1,5 +1,7 @@
-print "Main Lua init"
 require 'scripts/common'
+
+logwrite ("Main Lua init")
+
 
 gModuleNames = { 'example' } --, 'privateer2' }
 gModules = {}
@@ -29,7 +31,6 @@ end
 function getExtensions()
 	return gCurrentModule.getExtensions()
 end
-
 
 function openFile( fileName )
 	return gCurrentModule.openFile( fileName )

@@ -1,4 +1,4 @@
-/***************************************************************
+п»ї/***************************************************************
  * Name:      luaconsole.cpp
  * Purpose:   luaconsole implementaion
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
@@ -19,8 +19,6 @@ const wxString sPrompt = "Lua >";
 
 LuaConsole::LuaConsole( wxWindow* parent ):
 	wxFrame( parent, LUACONSOLE_ID, "Lua console" ),
-	mStdoutBuf( NULL ),
-	mCheckStdout( this ),
 	mHistoryCounter( 0 )
 {
 	wxGridSizer* gSizer1;
@@ -32,56 +30,17 @@ LuaConsole::LuaConsole( wxWindow* parent ):
 
 	this->SetSizer( gSizer1 );
 	this->Layout();
-	//freopen (STREAM_FILE,"w",stdout);
-	//
-	//std::filebuf fb;
-	//fb.open (STREAM_FILE, std::ios::out);
-	//std::ostream os(&fb);
 	
-	
-	// в mStdoutBuf будем перехватывать сообщения print из Lua
-	mStdoutBuf = (char*) malloc( STDOUT_SIZE );
-	memset( mStdoutBuf, 0, STDOUT_SIZE );
-	setvbuf ( stdout, mStdoutBuf, _IOFBF, STDOUT_SIZE );
-
 	this->Bind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
 	mOutput->Bind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	SetPrompt();
-
-	this->Bind( wxEVT_TIMER, &LuaConsole::OnTimer, this );
-	mCheckStdout.Start( 1 );
 }
 
 LuaConsole::~LuaConsole()
 {
 
-	mCheckStdout.Stop();
-	free( mStdoutBuf );
-	mStdoutBuf = NULL;
-
-	this->Unbind( wxEVT_TIMER, &LuaConsole::OnTimer, this );
 	mOutput->Unbind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	this->Unbind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
-}
-
-
-void LuaConsole::OnTimer( wxTimerEvent& WXUNUSED( event ) )
-{
-	CheckStdout();
-}
-
-void LuaConsole::CheckStdout()
-{
-	if ( mStdoutBuf[0] == 0 )
-	{
-		return;
-	}
-	wxString txt( mStdoutBuf );
-	mStdoutBuf[0] = 0;
-	InsertText( txt );
-	wxLogMessage( "SCRIPT: " + txt );
-	//setvbuf ( stdout, mStdoutBuf, _IOFBF, STDOUT_SIZE );
-//	memset( mStdoutBuf, 0, txt.length() );
 }
 
 void LuaConsole::OnCloseWindow( wxCloseEvent& WXUNUSED(event) )
@@ -144,7 +103,6 @@ void LuaConsole::Do(const wxString& command)
 	{
 		toExecute = command.substr(sPrompt.length());
 	}
-	mCheckStdout.Stop();
 	mOutput->AppendText("> " );
 	mOutput->AppendText( toExecute );
 	mOutput->AppendText("\n" );
@@ -152,11 +110,9 @@ void LuaConsole::Do(const wxString& command)
 	{
 		Lua::ShowLastError();
 	}
-	CheckStdout();
 	mCommands.Add( toExecute );
 	mHistoryCounter = mCommands.size();
 	SetPrompt();
-	mCheckStdout.Start();
 }
 
 void LuaConsole::ClearLastLine()

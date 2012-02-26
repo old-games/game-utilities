@@ -16,12 +16,12 @@ class LogWindowImpl :
 {
 public:
 	LogWindowImpl( wxWindow* parent );
-	~LogWindowImpl(void);
+	~LogWindowImpl(void); 
 
 private:
 
 	wxLogTextCtrl*				mLogCtrl;
-	wxStreamToTextRedirector*	mRedirector;
+	wxStreamToTextRedirector	mRedirector;
 };
 
 #endif

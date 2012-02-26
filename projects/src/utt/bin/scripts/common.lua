@@ -1,6 +1,20 @@
 
 ReadFunctions = { }
 
+
+function logwrite(...)
+	local arg = {...}
+	if #arg == 0 then 
+		io.write( '\n' )
+		return 
+	end
+	local printResult = ''
+	for i,v in ipairs(arg) do
+		printResult = printResult..tostring(v).."\t"
+	end
+	error('SCRIPT: '..printResult .. '\n', 0)
+end
+
 function fileExist( name )
 	local f = io.open(name,"r")
 	if f~=nil then 
@@ -36,7 +50,7 @@ BMPInfoHeader =
 
 function showTable( tab )
 	for k, v in pairs( tab ) do
-		print (k, v)
+		logwrite(k, v)
 	end
 end
 
@@ -46,7 +60,6 @@ showTable( BMPInfoHeader )
 function ReadFunctions.WORD( file )
 	local block = 2
 	local bytes = file:read( 2 )
-	print (bytes)
 	return bytes:byte(2) * 256 + bytes:byte(1)
 end
 
@@ -62,9 +75,7 @@ end
 
 function readData( file, dataTable )
 	result = {}
-	print "HERE"
 	for key, value in pairs( dataTable ) do
-		print (key, value)
 		result[key] = ReadFunctions[value]( file )
 	end
 	return result
@@ -79,7 +90,7 @@ function loadBMP( filename )
 	showTable( data )
 
 	if(data.ID ~= 0x4D42) then
-		print("Not a bitmap file (Invalid BMP magic value) ", data.ID);
+		logwrite("Not a bitmap file (Invalid BMP magic value) ", data.ID);
 		return;
 	end
 	showTable( data )

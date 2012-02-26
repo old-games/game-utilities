@@ -11,18 +11,11 @@
 #include "logwindowimpl.h"
 
 LogWindowImpl::LogWindowImpl(  wxWindow* parent ):
-	LogWindowGui( parent )
-//	mRedirector( mLogTxt )
-{	
-	freopen ("log","w",stdout);
-	std::filebuf* fb = new std::filebuf();
-	fb->open ("log", std::ios::ate);
-	std::ostream* os = new std::ostream(fb);
-	os->rdbuf( mLogTxt );
-	mRedirector = new wxStreamToTextRedirector( mLogTxt, os);
+	LogWindowGui( parent ),
+	mRedirector( mLogTxt )
+{
 	mLogCtrl = new wxLogTextCtrl( mLogTxt );
 	delete wxLog::SetActiveTarget( mLogCtrl );
-
 }
 
 LogWindowImpl::~LogWindowImpl(void)
