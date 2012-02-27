@@ -33,6 +33,7 @@ end
 function ReadFunctions.WORD( file )
 	local block = 2
 	local bytes = file:read( 2 )
+	logWrite ('reading word ', bytes)
 	return bytes:byte(2) * 256 + bytes:byte(1)
 end
 
@@ -47,27 +48,10 @@ function ReadFunctions.DWORD( file )
 end
 
 function readData( file, dataTable )
-	result = {}
+	local result = {}
 	for key, value in pairs( dataTable ) do
 		result[key] = ReadFunctions[value]( file )
 	end
 	return result
 end
 
-function loadBMP( filename )
-	local fh = assert(io.open(filename, "rb"))
-	if not fh then
-		return
-	end
-	data = readData( fh, BMPFileHeader )
-	showTable( data )
-
-	if(data.ID ~= 0x4D42) then
-		logWrite("Not a bitmap file (Invalid BMP magic value) ", data.ID);
-		return;
-	end
-	showTable( data )
-	data2 = readData(fh, BMPInfoHeader )
-	showTable( data2 )
-	fh:close()
-end

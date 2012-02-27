@@ -28,7 +28,7 @@ bool Lua::Init()
 void Lua::Done()
 {
     wxLogMessage( "Closing Lua...\n" );
-    delete gLuaState;
+    //delete gLuaState;	// TODO: сделать в стеке, когда баг будет решён
 }
 
 void Lua::ShowLastError( )
