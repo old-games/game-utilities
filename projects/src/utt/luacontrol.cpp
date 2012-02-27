@@ -10,11 +10,14 @@
 #include "pch.h"
 #include "luacontrol.h"
 
-OOLUA::Script* Lua::gLuaState = NULL;
+OOLUA::Script* Lua::gLuaState = NULL;		// пока что сделал указателем, пока OOLUA не доделан
 
 bool Lua::Init()
 {
 	gLuaState = new OOLUA::Script();
+	lua_register(*gLuaState, "writeToStdCout", writeToStdCout);
+	lua_register(*gLuaState, "writeToLog", writeToLog);
+	
 #ifdef _LUAJIT_H
 	luaopen_jit(Lua::gLuaState);
 #endif
@@ -31,7 +34,26 @@ void Lua::Done()
 void Lua::ShowLastError( )
 {
 	wxLogMessage( wxString( OOLUA::get_last_error(*Lua::gLuaState).c_str() ) );
-	//std::cout << OOLUA::get_last_error(Lua::gLuaState).c_str();
+}
+
+static int Lua::writeToStdCout(lua_State *L)
+{
+	int n = lua_gettop(L);
+	for (int i = 1; i <= n; ++i)
+	{
+		std::cout << lua_tostring(L, i);
+	}
+	return 0;
+}
+
+static int Lua::writeToLog(lua_State *L)
+{
+	int n = lua_gettop(L);
+	for (int i = 1; i <= n; ++i)
+	{
+		wxLogMessage( lua_tostring(L, i) );
+	}
+	return 0;
 }
 
 ///

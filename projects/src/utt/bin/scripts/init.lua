@@ -1,6 +1,6 @@
 require 'scripts/common'
 
-logwrite ("Main Lua init")
+logWrite "Main Lua init"
 
 
 gModuleNames = { 'example' } --, 'privateer2' }

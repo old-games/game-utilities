@@ -2,17 +2,17 @@
 ReadFunctions = { }
 
 
-function logwrite(...)
+function logWrite(...)
 	local arg = {...}
 	if #arg == 0 then 
-		io.write( '\n' )
+		writeToLog( '\n' )
 		return 
 	end
 	local printResult = ''
 	for i,v in ipairs(arg) do
 		printResult = printResult..tostring(v).."\t"
 	end
-	error('SCRIPT: '..printResult .. '\n', 0)
+	writeToLog('SCRIPT: '..printResult)
 end
 
 function fileExist( name )
@@ -24,38 +24,11 @@ function fileExist( name )
 	return false
 end
 
-BMPFileHeader = 
-{ 
-	ID 			= "WORD",
-	SIZE 		= "LONG",
-	RESERVED1	= "WORD",
-	RESERVED2	= "WORD",
-	DATA_OFFSET = "DWORD"
-}
-
-BMPInfoHeader =
-{
-	SIZE			= "DWORD",
-	WIDTH			= "LONG",
-	HEIGHT			= "LONG",
-	PLANES			= "WORD",
-	BITCOUNT		= "WORD",
-	COMPRESSION 	= "DWORD",
-	SIZEIMAGE		= "DWORD",
-	XPELSPERMETER	= "LONG",
-	YPELSPERMETER	= "LONG",
-	CLRUSED			= "DWORD",
-	CLRIMPORTANT	= "DWORD"
-}
-
 function showTable( tab )
 	for k, v in pairs( tab ) do
-		logwrite(k, v)
+		logWrite(k, v)
 	end
 end
-
-showTable( BMPFileHeader )
-showTable( BMPInfoHeader )
 
 function ReadFunctions.WORD( file )
 	local block = 2
@@ -90,7 +63,7 @@ function loadBMP( filename )
 	showTable( data )
 
 	if(data.ID ~= 0x4D42) then
-		logwrite("Not a bitmap file (Invalid BMP magic value) ", data.ID);
+		logWrite("Not a bitmap file (Invalid BMP magic value) ", data.ID);
 		return;
 	end
 	showTable( data )

@@ -21,6 +21,8 @@ namespace Lua
     void Done();
 
 	void ShowLastError();
+	static int writeToStdCout(lua_State *L);
+	static int writeToLog(lua_State *L);
 }
 
 //
