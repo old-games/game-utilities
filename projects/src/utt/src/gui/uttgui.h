@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Dec  2 2011)
+// C++ code generated with wxFormBuilder (version Feb  9 2012)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
@@ -33,32 +33,35 @@
 #include <wx/dialog.h>
 #include <wx/textctrl.h>
 #include <wx/grid.h>
+#include <wx/combobox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
 #define wxID_MAIN_FRAME 1000
-#define wxID_FILE_OPEN 1001
-#define wxID_FONT_EDITOR 1002
-#define wxID_CREATE_FONT 1003
-#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1004
-#define wxID_PREVIEW_SYMBOLS 1005
-#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1006
-#define wxID_FONT_SETTINGS_ID 1007
-#define wxID_NUM_SPIN_CTRL 1008
-#define wxID_SET_CODES_BTN 1009
-#define wxID_MAX_HEIGHT_SPIN 1010
-#define wxID_MIN_HEIGHT_SPIN 1011
-#define wxID_MAX_WIDTH_SPIN 1012
-#define wxID_MIN_WIDTH_SPIN 1013
-#define wxID_BASE_LINE_SPIN 1014
-#define wxID_CAP_LINE_SPIN 1015
-#define wxID_LOW_LINE_SPIN 1016
-#define wxID_LETTER_CODES_ID 1017
-#define wxID_GENERATE_CODES_BTN 1018
-#define wxID_GET_ENCODING_BTN 1019
-#define wxID_CODES_GRID 1020
-#define wxID_LOG_WINDOW 1021
-#define wxID_LOG_TXT 1022
+#define wxID_FILE_SELECT 1001
+#define wxID_FILE_OPEN 1002
+#define wxID_FONT_EDITOR 1003
+#define wxID_CREATE_FONT 1004
+#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1005
+#define wxID_PREVIEW_SYMBOLS 1006
+#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1007
+#define wxID_FONT_SETTINGS_ID 1008
+#define wxID_NUM_SPIN_CTRL 1009
+#define wxID_SET_CODES_BTN 1010
+#define wxID_MAX_HEIGHT_SPIN 1011
+#define wxID_MIN_HEIGHT_SPIN 1012
+#define wxID_MAX_WIDTH_SPIN 1013
+#define wxID_MIN_WIDTH_SPIN 1014
+#define wxID_BASE_LINE_SPIN 1015
+#define wxID_CAP_LINE_SPIN 1016
+#define wxID_LOW_LINE_SPIN 1017
+#define wxID_LETTER_CODES_ID 1018
+#define wxID_GENERATE_CODES_BTN 1019
+#define wxID_GET_ENCODING_BTN 1020
+#define wxID_CODES_GRID 1021
+#define wxID_LOG_WINDOW 1022
+#define wxID_LOG_TXT 1023
+#define wxID_SELECT_MODULE_ID 1024
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -199,6 +202,29 @@ class LogWindowGui : public wxPanel
 		
 		LogWindowGui( wxWindow* parent, wxWindowID id = wxID_LOG_WINDOW, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
 		~LogWindowGui();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class SelectModuleGui
+///////////////////////////////////////////////////////////////////////////////
+class SelectModuleGui : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxComboBox* mModulesChoice;
+		wxButton* mOkBtn;
+		wxButton* mCancelBtn;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnBtnClick( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		SelectModuleGui( wxWindow* parent, wxWindowID id = wxID_SELECT_MODULE_ID, const wxString& title = wxT("Select Lua module:"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 307,106 ), long style = wxCAPTION|wxCLOSE_BOX|wxSYSTEM_MENU ); 
+		~SelectModuleGui();
 	
 };
 

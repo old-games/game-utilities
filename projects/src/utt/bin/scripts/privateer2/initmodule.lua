@@ -8,4 +8,4 @@ function gPrivateer2.getExtensions()
 	return { 'IFF', 'IFF' }
 end
 
-print 'Privateer 2 module loaded'
+logWrite 'Privateer 2 module loaded'

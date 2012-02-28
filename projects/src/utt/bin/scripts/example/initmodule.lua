@@ -20,7 +20,7 @@ function loadBMP( filename )
 	data = readData( fh, BMPFileHeader )
 	showTable( data )
 	if(data.ID ~= 0x4D42) then
-		logWrite("Not a bitmap file (Invalid BMP magic value) ", data.ID);
+		logWrite("Not a bitmap file (Invalid BMP id) ", data.ID);
 		return;
 	end
 	data2 = readData(fh, BMPInfoHeader )
@@ -54,4 +54,4 @@ BMPInfoHeader =
 }
 
 
-print 'Example module loaded'
+logWrite 'Example module loaded'

@@ -15,12 +15,10 @@ OOLUA::Script* Lua::gLuaState = NULL;		// пока что сделал указ�
 bool Lua::Init()
 {
 	gLuaState = new OOLUA::Script();
-	lua_register(*gLuaState, "writeToStdCout", writeToStdCout);
-	lua_register(*gLuaState, "writeToLog", writeToLog);
-	
 #ifdef _LUAJIT_H
 	luaopen_jit(Lua::gLuaState);
 #endif
+	CommonRegister();	
 	FontRegister();
 	return gLuaState->run_file("scripts/init.lua");
 }
@@ -36,25 +34,7 @@ void Lua::ShowLastError( )
 	wxLogMessage( wxString( OOLUA::get_last_error(*Lua::gLuaState).c_str() ) );
 }
 
-static int Lua::writeToStdCout(lua_State *L)
-{
-	int n = lua_gettop(L);
-	for (int i = 1; i <= n; ++i)
-	{
-		std::cout << lua_tostring(L, i);
-	}
-	return 0;
-}
 
-static int Lua::writeToLog(lua_State *L)
-{
-	int n = lua_gettop(L);
-	for (int i = 1; i <= n; ++i)
-	{
-		wxLogMessage( lua_tostring(L, i) );
-	}
-	return 0;
-}
 
 ///
 /// Экспорт класса FILE в Lua

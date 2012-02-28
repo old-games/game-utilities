@@ -30,6 +30,7 @@ private:
 	virtual void OnMenuSelect( wxCommandEvent& event );
 	
 	void DoFileOpen();
+	void DoSelectModule();
 	
 	FontEditImpl		mFontEditor;
 	LogWindowImpl		mLogWindow;

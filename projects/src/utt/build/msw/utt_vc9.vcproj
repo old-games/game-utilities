@@ -361,6 +361,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\gui\selmoduleimpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\selmoduleimpl.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\gui\uttgui.cpp"
 				>
 			</File>
@@ -436,6 +444,14 @@
 		<Filter
 			Name="luaexports"
 			>
+			<File
+				RelativePath="..\..\src\luaexports\common.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\luaexports\common.h"
+				>
+			</File>
 			<File
 				RelativePath="..\..\src\luaexports\luafont.cpp"
 				>

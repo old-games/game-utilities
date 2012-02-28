@@ -11,6 +11,7 @@
 #define LUACONTROL_H_INCLUDED
 
 #include "uttypes.h"
+#include "luaexports/common.h"
 #include "luaexports/luafont.h"
 
 namespace Lua
@@ -21,8 +22,6 @@ namespace Lua
     void Done();
 
 	void ShowLastError();
-	static int writeToStdCout(lua_State *L);
-	static int writeToLog(lua_State *L);
 }
 
 //

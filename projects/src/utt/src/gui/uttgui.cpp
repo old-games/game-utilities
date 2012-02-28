@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Dec  2 2011)
+// C++ code generated with wxFormBuilder (version Feb  9 2012)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
@@ -21,6 +21,12 @@ UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& tit
 	
 	mMainMenu = new wxMenuBar( 0 );
 	mFileMenu = new wxMenu();
+	wxMenuItem* mFileSelect;
+	mFileSelect = new wxMenuItem( mFileMenu, wxID_FILE_SELECT, wxString( wxT("Select module") ) + wxT('\t') + wxT("ALT-M"), wxEmptyString, wxITEM_NORMAL );
+	mFileMenu->Append( mFileSelect );
+	
+	mFileMenu->AppendSeparator();
+	
 	wxMenuItem* mFileOpen;
 	mFileOpen = new wxMenuItem( mFileMenu, wxID_FILE_OPEN, wxString( wxT("Open") ) + wxT('\t') + wxT("F3"), wxEmptyString, wxITEM_NORMAL );
 	mFileMenu->Append( mFileOpen );
@@ -35,6 +41,7 @@ UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& tit
 	
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( UttMainFrame::OnClose ) );
+	this->Connect( mFileSelect->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
 	this->Connect( mFileOpen->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
 }
 
@@ -42,6 +49,7 @@ UttMainFrame::~UttMainFrame()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( UttMainFrame::OnClose ) );
+	this->Disconnect( wxID_FILE_SELECT, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
 	this->Disconnect( wxID_FILE_OPEN, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UttMainFrame::OnMenuSelect ) );
 	
 	m_mgr.UnInit();
@@ -66,14 +74,16 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxVERTICAL );
 	
 	wxFlexGridSizer* fgSizer2;
-	fgSizer2 = new wxFlexGridSizer( 0, 2, 0, 0 );
+	fgSizer2 = new wxFlexGridSizer( 1, 2, 0, 0 );
 	fgSizer2->SetFlexibleDirection( wxBOTH );
 	fgSizer2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
 	mCreateBtn = new wxButton( this, wxID_CREATE_FONT, wxT("Create new..."), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer2->Add( mCreateBtn, 0, wxALL, 5 );
 	
+	
 	sbSizer4->Add( fgSizer2, 1, wxEXPAND, 5 );
+	
 	
 	fgSizer1->Add( sbSizer4, 1, wxEXPAND, 5 );
 	
@@ -83,8 +93,6 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	sbSizer11->SetMinSize( wxSize( 256,128 ) ); 
 	wxGridBagSizer* gbSizer21;
 	gbSizer21 = new wxGridBagSizer( 0, 0 );
-	gbSizer21->AddGrowableRow( 0 );
-	gbSizer21->AddGrowableRow( 2 );
 	gbSizer21->SetFlexibleDirection( wxBOTH );
 	gbSizer21->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_ALL );
 	
@@ -97,13 +105,19 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	mScrollSymbolsRight = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	gbSizer21->Add( mScrollSymbolsRight, wxGBPosition( 0, 2 ), wxGBSpan( 1, 1 ), wxEXPAND|wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5 );
 	
+	
+	gbSizer21->AddGrowableCol( 1 );
+	gbSizer21->AddGrowableRow( 0 );
+	
 	sbSizer11->Add( gbSizer21, 1, wxEXPAND, 5 );
+	
 	
 	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
 	
 	mCentralSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Editor:") ), wxVERTICAL );
 	
 	mCentralSizer->SetMinSize( wxSize( 256,128 ) ); 
+	
 	fgSizer1->Add( mCentralSizer, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer9;
@@ -113,9 +127,12 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	m_bitmap5 = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
 	sbSizer9->Add( m_bitmap5, 1, wxALL|wxEXPAND, 5 );
 	
+	
 	fgSizer1->Add( sbSizer9, 1, wxEXPAND, 5 );
 	
+	
 	gSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
+	
 	
 	this->SetSizer( gSizer1 );
 	this->Layout();
@@ -216,7 +233,9 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer3->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
+	
 	gSizer3->Add( fgSizer3, 1, wxEXPAND, 5 );
+	
 	
 	this->SetSizer( gSizer3 );
 	this->Layout();
@@ -293,7 +312,9 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mGetEncodingBtn = new wxButton( this, wxID_GET_ENCODING_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	fgSizer5->Add( mGetEncodingBtn, 0, wxALL, 5 );
 	
+	
 	mAutoSizer->Add( fgSizer5, 1, wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
 	
 	fgSizer4->Add( mAutoSizer, 1, wxEXPAND, 5 );
 	
@@ -308,7 +329,9 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer5->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
+	
 	mBtnsSizer->Add( gSizer5, 1, wxEXPAND, 5 );
+	
 	
 	fgSizer4->Add( mBtnsSizer, 1, wxEXPAND, 5 );
 	
@@ -340,9 +363,12 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	mCodesGrid->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
 	mGridSizer->Add( mCodesGrid, 1, wxALL|wxEXPAND, 5 );
 	
+	
 	fgSizer4->Add( mGridSizer, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
+	
 	gSizer4->Add( fgSizer4, 1, wxALL|wxEXPAND|wxFIXED_MINSIZE, 5 );
+	
 	
 	this->SetSizer( gSizer4 );
 	this->Layout();
@@ -374,10 +400,50 @@ LogWindowGui::LogWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	mLogTxt = new wxTextCtrl( this, wxID_LOG_TXT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_AUTO_URL|wxTE_MULTILINE|wxTE_READONLY );
 	gSizer2->Add( mLogTxt, 1, wxEXPAND, 5 );
 	
+	
 	this->SetSizer( gSizer2 );
 	this->Layout();
 }
 
 LogWindowGui::~LogWindowGui()
 {
+}
+
+SelectModuleGui::SelectModuleGui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxStaticBoxSizer* sbSizer8;
+	sbSizer8 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Available modules:") ), wxVERTICAL );
+	
+	mModulesChoice = new wxComboBox( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_DROPDOWN|wxCB_READONLY ); 
+	sbSizer8->Add( mModulesChoice, 0, wxALL|wxEXPAND, 5 );
+	
+	wxGridSizer* gSizer6;
+	gSizer6 = new wxGridSizer( 1, 2, 0, 0 );
+	
+	mOkBtn = new wxButton( this, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer6->Add( mOkBtn, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer6->Add( mCancelBtn, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	sbSizer8->Add( gSizer6, 0, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( sbSizer8 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	mOkBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( SelectModuleGui::OnBtnClick ), NULL, this );
+}
+
+SelectModuleGui::~SelectModuleGui()
+{
+	// Disconnect Events
+	mOkBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( SelectModuleGui::OnBtnClick ), NULL, this );
+	
 }

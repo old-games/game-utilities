@@ -64,10 +64,20 @@ void MainFrameImpl::DoFileOpen()
 	
 }
 
+void MainFrameImpl::DoSelectModule()
+{
+	if (! Lua::gLuaState->call( "selectModule" ) )
+	{
+		Lua::ShowLastError();
+		return;
+	}
+}
+
+
 void MainFrameImpl::OnClose( wxCloseEvent& event ) 
 { 
 	this->Deinit();
-	event.Skip(); 
+	event.Skip();
 }
 
 void MainFrameImpl::OnMenuSelect( wxCommandEvent& event ) 
@@ -77,6 +87,13 @@ void MainFrameImpl::OnMenuSelect( wxCommandEvent& event )
 		case wxID_FILE_OPEN:
 			DoFileOpen();
 		break;
+		
+		case wxID_FILE_SELECT:
+			DoSelectModule();
+		break;
+
+		default:
+			wxLogMessage( wxString::Format("Unknown command from main menu: %d", event.GetId()) );
+		break;	
 	}
-	event.Skip(); 
 }
