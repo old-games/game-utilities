@@ -15,6 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <ProjectName>utt</ProjectName>
     <ProjectGuid>{748A1965-6A10-4860-A3EA-50FEF6087C5A}</ProjectGuid>
     <RootNamespace>utt</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -61,7 +62,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswud;$(LUA_DEV)/include;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../src/.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswud;$(LUA_DEV)/include;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -84,7 +85,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswu;$(LUA_DEV)/include;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../src/.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswu;$(LUA_DEV)/include;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;__WXMSW__;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -94,7 +95,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Rpcrt4.lib;comctl32.lib;wxbase29u.lib;wxbase29u_net.lib;wxbase29u_xml.lib;wxexpat.lib;wxjpeg.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxmsw29u_core.lib;wxmsw29u_gl.lib;wxmsw29u_html.lib;wxmsw29u_media.lib;wxmsw29u_propgrid.lib;wxmsw29u_qa.lib;wxmsw29u_ribbon.lib;wxmsw29u_richtext.lib;wxmsw29u_stc.lib;wxmsw29u_webview.lib;wxmsw29u_xrc.lib;wxpng.lib;wxregexu.lib;wxscintilla.lib;wxtiff.lib;wxzlib.lib;lua52.lib;oolua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua52.lib;Rpcrt4.lib;comctl32.lib;wxbase29u.lib;wxbase29u_net.lib;wxbase29u_xml.lib;wxexpat.lib;wxjpeg.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxmsw29u_core.lib;wxmsw29u_gl.lib;wxmsw29u_html.lib;wxmsw29u_media.lib;wxmsw29u_propgrid.lib;wxmsw29u_qa.lib;wxmsw29u_ribbon.lib;wxmsw29u_richtext.lib;wxmsw29u_stc.lib;wxmsw29u_webview.lib;wxmsw29u_xrc.lib;wxpng.lib;wxregexu.lib;wxscintilla.lib;wxtiff.lib;wxzlib.lib;oolua.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\bin\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(WXWIN)/lib/vc_lib;$(LUA_DEV);$(OOLUA)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -107,7 +108,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugLuaJIT|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswud;C:\LuaJIT\src;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../src/.;$(WXWIN)/include;$(WXWIN)/lib/vc_lib/mswud;C:\LuaJIT\src;$(OOLUA)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;LUA_JIT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -141,11 +142,13 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\logwindowimpl.cpp" />
     <ClCompile Include="..\..\src\gui\mainframeimpl.cpp" />
+    <ClCompile Include="..\..\src\gui\selmoduleimpl.cpp" />
     <ClCompile Include="..\..\src\gui\uttgui.cpp" />
     <ClCompile Include="..\..\src\gui\fonteditimpl.cpp" />
     <ClCompile Include="..\..\src\gui\fontsettingsimpl.cpp" />
     <ClCompile Include="..\..\src\gui\gridhexeditor.cpp" />
     <ClCompile Include="..\..\src\gui\lettercodesimpl.cpp" />
+    <ClCompile Include="..\..\src\luaexports\common.cpp" />
     <ClCompile Include="..\..\src\luaexports\luafont.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,11 +160,13 @@
     <ClInclude Include="..\..\src\uttypes.h" />
     <ClInclude Include="..\..\src\gui\logwindowimpl.h" />
     <ClInclude Include="..\..\src\gui\mainframeimpl.h" />
+    <ClInclude Include="..\..\src\gui\selmoduleimpl.h" />
     <ClInclude Include="..\..\src\gui\uttgui.h" />
     <ClInclude Include="..\..\src\gui\fonteditimpl.h" />
     <ClInclude Include="..\..\src\gui\fontsettingsimpl.h" />
     <ClInclude Include="..\..\src\gui\gridhexeditor.h" />
     <ClInclude Include="..\..\src\gui\lettercodesimpl.h" />
+    <ClInclude Include="..\..\src\luaexports\common.h" />
     <ClInclude Include="..\..\src\luaexports\luafont.h" />
   </ItemGroup>
   <ItemGroup>

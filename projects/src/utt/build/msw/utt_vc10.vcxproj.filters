@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{b7e91865-a116-457c-b66d-78fa85fb7780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\fonteditor">
+      <UniqueIdentifier>{009be2a9-83ed-4b00-80b6-549378a4d895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{0b304994-fd9a-4a00-b995-51b10294b3d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{48a87e5c-9bb3-44b0-a902-96f054d7eb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="luaexports">
+      <UniqueIdentifier>{97750fab-fdec-41b4-800f-e99c462eb40a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\drawpanel.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\luaconsole.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\luacontrol.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utt.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\uttypes.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\logwindowimpl.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\mainframeimpl.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\selmoduleimpl.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\uttgui.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\fonteditimpl.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\fontsettingsimpl.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\gridhexeditor.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\lettercodesimpl.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\luaexports\common.cpp">
+      <Filter>luaexports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\luaexports\luafont.cpp">
+      <Filter>luaexports</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\drawpanel.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\luaconsole.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\luacontrol.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pch.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utt.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\uttypes.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\logwindowimpl.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\mainframeimpl.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\selmoduleimpl.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\uttgui.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\fonteditimpl.h">
+      <Filter>gui\fonteditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\fontsettingsimpl.h">
+      <Filter>gui\fonteditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\gridhexeditor.h">
+      <Filter>gui\fonteditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\lettercodesimpl.h">
+      <Filter>gui\fonteditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\luaexports\common.h">
+      <Filter>luaexports</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\luaexports\luafont.h">
+      <Filter>luaexports</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\icon\to_left.xpm">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\..\src\icon\to_right.xpm">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\..\src\gui\uttgui.fbp">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\..\bin\scripts\common.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\..\bin\scripts\init.lua">
+      <Filter>scripts</Filter>
+    </None>
+  </ItemGroup>
+</Project>
