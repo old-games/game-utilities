@@ -1,15 +1,21 @@
 
 local gName = 'example'
 local gExample = {}
+local gAssociations = 
+{ 
+	bmp = "loadBMP",
+	txt = "loadTXT"
+}
 
 gModules[gName] = gExample
 
 function gExample.getExtensions()
-	return 'BMP files (*.bmp)|*.bmp'
+	return 'BMP files (*.bmp)|*.bmp|TXT files (*.txt)|*.txt'
 end
 
 function gExample.openFile( fileName )
-	loadBMP( fileName )
+	parseFileName( fileName )
+	--loadBMP( fileName )
 end
 
 function loadBMP( filename )
@@ -28,30 +34,28 @@ function loadBMP( filename )
 	fh:close()
 end
 
+BMPFileHeader = {}
+BMPFileHeader[1] = { ID 			= "WORD" 	}
+BMPFileHeader[2] = { FILESIZE 		= "LONG" 	}
+BMPFileHeader[3] = { RESERVED1 		= "WORD" 	}
+BMPFileHeader[4] = { RESERVED2 		= "WORD" 	}
+BMPFileHeader[5] = { DATA_OFFSET 	= "DWORD" 	}
 
-BMPFileHeader = 
-{ 
-	ID 			= "WORD",
-	SIZE 		= "LONG",
-	RESERVED1	= "WORD",
-	RESERVED2	= "WORD",
-	DATA_OFFSET = "DWORD"
-}
 
-BMPInfoHeader =
-{
-	SIZE			= "DWORD",
-	WIDTH			= "LONG",
-	HEIGHT			= "LONG",
-	PLANES			= "WORD",
-	BITCOUNT		= "WORD",
-	COMPRESSION 	= "DWORD",
-	SIZEIMAGE		= "DWORD",
-	XPELSPERMETER	= "LONG",
-	YPELSPERMETER	= "LONG",
-	CLRUSED			= "DWORD",
-	CLRIMPORTANT	= "DWORD"
-}
+BMPInfoHeader = {}
+
+BMPInfoHeader[1] 	= { DATASIZE		= "DWORD" 	}
+BMPInfoHeader[2] 	= { WIDTH			= "LONG" 	}
+BMPInfoHeader[3] 	= { HEIGHT			= "LONG" 	}
+BMPInfoHeader[4] 	= { PLANES			= "WORD" 	}
+BMPInfoHeader[5] 	= { BITCOUNT		= "WORD" 	}
+BMPInfoHeader[6] 	= { COMPRESSION 	= "DWORD" 	}
+BMPInfoHeader[7] 	= { SIZEIMAGE		= "DWORD" 	}
+BMPInfoHeader[8] 	= { XPELSPERMETER	= "LONG" 	}
+BMPInfoHeader[9] 	= { YPELSPERMETER	= "LONG" 	}
+BMPInfoHeader[10] 	= { CLRUSED			= "DWORD" 	}
+BMPInfoHeader[11] 	= { CLRIMPORTANT	= "DWORD" 	}
+
 
 
 logWrite 'Example module loaded'

@@ -33,7 +33,6 @@ end
 function ReadFunctions.WORD( file )
 	local block = 2
 	local bytes = file:read( 2 )
-	logWrite ('reading word ', bytes)
 	return bytes:byte(2) * 256 + bytes:byte(1)
 end
 
@@ -49,9 +48,17 @@ end
 
 function readData( file, dataTable )
 	local result = {}
-	for key, value in pairs( dataTable ) do
-		result[key] = ReadFunctions[value]( file )
+	for i, what in ipairs( dataTable ) do
+		for key, value in pairs( what ) do
+			result[key] = ReadFunctions[value]( file )
+		end
 	end
 	return result
+end
+
+function parseFileName( fileName )
+	logWrite(fileName)
+	res, res2 = fileName:find('%.', -fileName:len())
+	logWrite(res, res2)
 end
 
