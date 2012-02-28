@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
+				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
 				PreprocessorDefinitions="_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib lua52.lib oolua_d.lib"
-				OutputFile="..\bin\$(ProjectName)_d.exe"
+				OutputFile="..\..\bin\$(ProjectName)_d.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;&quot;$(LUA_DEV)&quot;;&quot;$(OOLUA)/lib&quot;"
 				GenerateDebugInformation="true"
@@ -119,7 +119,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswu&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
+				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswu&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
 				PreprocessorDefinitions="NDEBUG;__WXMSW__;_WINDOWS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -140,7 +140,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="lua52.lib Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib oolua.lib"
-				OutputFile="..\bin\$(ProjectName).exe"
+				OutputFile="..\..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;&quot;$(LUA_DEV)&quot;;&quot;$(OOLUA)/lib&quot;"
 				GenerateDebugInformation="true"
@@ -196,7 +196,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;C:\LuaJIT\src;&quot;$(OOLUA)/include&quot;"
+				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;C:\LuaJIT\src;&quot;$(OOLUA)/include&quot;"
 				PreprocessorDefinitions="_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;LUA_JIT"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -218,7 +218,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib lua51.lib oolua_d.lib"
-				OutputFile="..\bin\$(ProjectName)_d.exe"
+				OutputFile="..\..\bin\$(ProjectName)_d.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;C:\LuaJIT\src;&quot;$(OOLUA)/lib&quot;"
 				GenerateDebugInformation="true"
@@ -257,35 +257,35 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\drawpanel.cpp"
+				RelativePath="..\..\src\drawpanel.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\drawpanel.h"
+				RelativePath="..\..\src\drawpanel.h"
 				>
 			</File>
 			<File
-				RelativePath="..\luaconsole.cpp"
+				RelativePath="..\..\src\luaconsole.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\luaconsole.h"
+				RelativePath="..\..\src\luaconsole.h"
 				>
 			</File>
 			<File
-				RelativePath="..\luacontrol.cpp"
+				RelativePath="..\..\src\luacontrol.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\luacontrol.h"
+				RelativePath="..\..\src\luacontrol.h"
 				>
 			</File>
 			<File
-				RelativePath="..\pch.h"
+				RelativePath="..\..\src\pch.h"
 				>
 			</File>
 			<File
-				RelativePath="..\utt.cpp"
+				RelativePath="..\..\src\utt.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -313,11 +313,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\utt.h"
+				RelativePath="..\..\src\utt.h"
 				>
 			</File>
 			<File
-				RelativePath="..\uttypes.cpp"
+				RelativePath="..\..\src\uttypes.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -337,7 +337,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\uttypes.h"
+				RelativePath="..\..\src\uttypes.h"
 				>
 			</File>
 		</Filter>
@@ -345,62 +345,62 @@
 			Name="gui"
 			>
 			<File
-				RelativePath="..\gui\logwindowimpl.cpp"
+				RelativePath="..\..\src\gui\logwindowimpl.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\logwindowimpl.h"
+				RelativePath="..\..\src\gui\logwindowimpl.h"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\mainframeimpl.cpp"
+				RelativePath="..\..\src\gui\mainframeimpl.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\mainframeimpl.h"
+				RelativePath="..\..\src\gui\mainframeimpl.h"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\uttgui.cpp"
+				RelativePath="..\..\src\gui\uttgui.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\uttgui.h"
+				RelativePath="..\..\src\gui\uttgui.h"
 				>
 			</File>
 			<Filter
 				Name="fonteditor"
 				>
 				<File
-					RelativePath="..\gui\fonteditimpl.cpp"
+					RelativePath="..\..\src\gui\fonteditimpl.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\fonteditimpl.h"
+					RelativePath="..\..\src\gui\fonteditimpl.h"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\fontsettingsimpl.cpp"
+					RelativePath="..\..\src\gui\fontsettingsimpl.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\fontsettingsimpl.h"
+					RelativePath="..\..\src\gui\fontsettingsimpl.h"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\gridhexeditor.cpp"
+					RelativePath="..\..\src\gui\gridhexeditor.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\gridhexeditor.h"
+					RelativePath="..\..\src\gui\gridhexeditor.h"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\lettercodesimpl.cpp"
+					RelativePath="..\..\src\gui\lettercodesimpl.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\gui\lettercodesimpl.h"
+					RelativePath="..\..\src\gui\lettercodesimpl.h"
 					>
 				</File>
 			</Filter>
@@ -409,15 +409,15 @@
 			Name="res"
 			>
 			<File
-				RelativePath="..\icon\to_left.xpm"
+				RelativePath="..\..\src\icon\to_left.xpm"
 				>
 			</File>
 			<File
-				RelativePath="..\icon\to_right.xpm"
+				RelativePath="..\..\src\icon\to_right.xpm"
 				>
 			</File>
 			<File
-				RelativePath="..\gui\uttgui.fbp"
+				RelativePath="..\..\src\gui\uttgui.fbp"
 				>
 			</File>
 		</Filter>
@@ -425,11 +425,11 @@
 			Name="scripts"
 			>
 			<File
-				RelativePath="..\bin\scripts\common.lua"
+				RelativePath="..\..\bin\scripts\common.lua"
 				>
 			</File>
 			<File
-				RelativePath="..\bin\scripts\init.lua"
+				RelativePath="..\..\bin\scripts\init.lua"
 				>
 			</File>
 		</Filter>
@@ -437,11 +437,11 @@
 			Name="luaexports"
 			>
 			<File
-				RelativePath="..\luaexports\luafont.cpp"
+				RelativePath="..\..\src\luaexports\luafont.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\luaexports\luafont.h"
+				RelativePath="..\..\src\luaexports\luafont.h"
 				>
 			</File>
 		</Filter>
