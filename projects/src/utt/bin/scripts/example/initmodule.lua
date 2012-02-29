@@ -1,11 +1,14 @@
 
 local gName = 'example'
 local gExample = {}
-local gAssociations = 
+
+local gFuncsForExt = 
 { 
 	bmp = "loadBMP",
 	txt = "loadTXT"
 }
+
+local gOnDo = {}
 
 gModules[gName] = gExample
 
@@ -14,11 +17,16 @@ function gExample.getExtensions()
 end
 
 function gExample.openFile( fileName )
-	parseFileName( fileName )
-	--loadBMP( fileName )
+	vol, path, name, ext = parseFileName( fileName )
+	key = gFuncsForExt[ ext ]
+	if key == nil then
+		logWrite( "Can't find function for '"..ext.."' extension" )
+		return
+	end
+	gOnDo[ key ]( fileName )
 end
 
-function loadBMP( filename )
+function gOnDo.loadBMP( filename )
 	local fh = assert(io.open(filename, "rb"))
 	if not fh then
 		return
@@ -34,6 +42,16 @@ function loadBMP( filename )
 	fh:close()
 end
 
+function gOnDo.loadTXT( filename )
+	local fh = assert(io.open(filename, "r"))
+	if not fh then
+		return
+	end
+	for line in fh:lines() do logWrite(line) end
+	fh:close()
+end
+
+
 BMPFileHeader = {}
 BMPFileHeader[1] = { ID 			= "WORD" 	}
 BMPFileHeader[2] = { FILESIZE 		= "LONG" 	}
@@ -43,7 +61,6 @@ BMPFileHeader[5] = { DATA_OFFSET 	= "DWORD" 	}
 
 
 BMPInfoHeader = {}
-
 BMPInfoHeader[1] 	= { DATASIZE		= "DWORD" 	}
 BMPInfoHeader[2] 	= { WIDTH			= "LONG" 	}
 BMPInfoHeader[3] 	= { HEIGHT			= "LONG" 	}

@@ -1,7 +1,6 @@
 require 'scripts/common'
 
-logWrite "Main Lua init"
-
+logWrite "Starting Lua initiate..."
 
 gModuleNames = { 'example', 'privateer2' }
 gModules = {}
@@ -17,16 +16,20 @@ end
 initModules()
 gCurrentModule = gModules['example']
 
-function getCurrentTable()
-	return gCurrentTable
+function getCurrentModule()
+	return gCurrentModule
 end
 
 function getExtensions()
-	return gCurrentModule.getExtensions()
+	if gCurrentModule ~= nil then
+		return gCurrentModule.getExtensions()
+	end
 end
 
 function openFile( fileName )
-	return gCurrentModule.openFile( fileName )
+	if gCurrentModule ~= nil then
+		return gCurrentModule.openFile( fileName )
+	end
 end
 
 function selectModule()
@@ -41,3 +44,5 @@ end
 if gCurrentModule == nil then
 	selectModule()
 end
+
+logWrite "Scripts initiated. Press '~' to show Lua console. Call reboot() to restart scripts."

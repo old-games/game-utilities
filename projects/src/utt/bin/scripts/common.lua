@@ -56,9 +56,4 @@ function readData( file, dataTable )
 	return result
 end
 
-function parseFileName( fileName )
-	logWrite(fileName)
-	res, res2 = fileName:find('%.', -fileName:len())
-	logWrite(res, res2)
-end
 
