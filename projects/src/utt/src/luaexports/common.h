@@ -7,8 +7,8 @@
  * License:
  **************************************************************/
 
-#ifndef COMMON_H_INCLUDED
-#define COMMON_H_INCLUDED
+#ifndef LUACOMMON_H_INCLUDED
+#define LUACOMMON_H_INCLUDED
 
 namespace Lua
 {

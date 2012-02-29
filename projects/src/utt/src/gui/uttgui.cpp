@@ -447,3 +447,38 @@ SelectModuleGui::~SelectModuleGui()
 	mOkBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( SelectModuleGui::OnBtnClick ), NULL, this );
 	
 }
+
+EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
+{
+	wxGridSizer* gSizer7;
+	gSizer7 = new wxGridSizer( 1, 1, 0, 0 );
+	
+	wxFlexGridSizer* fgSizer6;
+	fgSizer6 = new wxFlexGridSizer( 2, 1, 0, 0 );
+	fgSizer6->AddGrowableCol( 0 );
+	fgSizer6->AddGrowableRow( 0 );
+	fgSizer6->SetFlexibleDirection( wxBOTH );
+	fgSizer6->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	mDrawHolder = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Image:") ), wxVERTICAL );
+	
+	
+	fgSizer6->Add( mDrawHolder, 1, wxEXPAND, 5 );
+	
+	wxStaticBoxSizer* sbSizer10;
+	sbSizer10 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Actions:") ), wxVERTICAL );
+	
+	
+	fgSizer6->Add( sbSizer10, 1, wxEXPAND, 5 );
+	
+	
+	gSizer7->Add( fgSizer6, 1, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( gSizer7 );
+	this->Layout();
+}
+
+EditPanelGui::~EditPanelGui()
+{
+}

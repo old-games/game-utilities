@@ -1,5 +1,5 @@
 /***************************************************************
- * Name:      logwindowi,pl.cpp
+ * Name:      logwindowimpl.cpp
  * Purpose:   Code for LogWindowImpl Class
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
  * Created:   2012-01-19

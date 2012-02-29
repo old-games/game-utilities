@@ -28,7 +28,7 @@ class DrawPanel :
 	public wxScrolledWindow
 {
 public:
-	DrawPanel( wxWindow* parent, int id );
+	DrawPanel( wxWindow* parent, int id = wxID_ANY );
 	~DrawPanel(void);
 
 	void CreateBitmap(Pixel* buffer, int width, int height);

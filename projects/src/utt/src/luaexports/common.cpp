@@ -12,7 +12,7 @@
 #include "gui/selmoduleimpl.h"
 
 
-static int reboot(lua_State *L)
+static int reboot( lua_State* )
 {
 	Lua::Done();
 	Lua::Init();
@@ -97,9 +97,9 @@ static int selectModuleDialog(lua_State *L)
 
 void Lua::CommonRegister()
 {
-	lua_register(*gLuaState, "reboot", reboot);
-	lua_register(*gLuaState, "writeToStdCout", writeToStdCout);
-	lua_register(*gLuaState, "writeToLog", writeToLog);
-	lua_register(*gLuaState, "parseFileName", parseFileName);
-	lua_register(*gLuaState, "selectModuleDialog", selectModuleDialog);
+	lua_register(Lua::Get(), "reboot", reboot);
+	lua_register(Lua::Get(), "writeToStdCout", writeToStdCout);
+	lua_register(Lua::Get(), "writeToLog", writeToLog);
+	lua_register(Lua::Get(), "parseFileName", parseFileName);
+	lua_register(Lua::Get(), "selectModuleDialog", selectModuleDialog);
 }

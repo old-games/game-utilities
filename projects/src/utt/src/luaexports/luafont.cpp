@@ -12,8 +12,8 @@
 
 void Lua::FontRegister()
 {
-	gLuaState->register_class<RGBA>();
-	gLuaState->register_class<SymbolInfo>();
+	Lua::Get().register_class<RGBA>();
+	Lua::Get().register_class<SymbolInfo>();
 }
 
 EXPORT_OOLUA_NO_FUNCTIONS(RGBA)

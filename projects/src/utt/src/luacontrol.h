@@ -16,10 +16,9 @@
 
 namespace Lua
 {
-	extern OOLUA::Script*	gLuaState;
-
     bool Init();
     void Done();
+    OOLUA::Script&	Get();
 
 	void ShowLastError();
 }

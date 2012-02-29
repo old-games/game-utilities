@@ -13,6 +13,7 @@
 #include "uttgui.h"
 #include "fonteditimpl.h"
 #include "logwindowimpl.h"
+#include "editpanelimpl.h"
 
 class MainFrameImpl:
 	public UttMainFrame 
@@ -34,6 +35,7 @@ private:
 	
 	FontEditImpl		mFontEditor;
 	LogWindowImpl		mLogWindow;
+	EditPanelImpl		mEditWindow;
 };
 
 #endif

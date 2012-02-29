@@ -33,15 +33,12 @@ protected:
 	void OnPaint(wxPaintEvent& event);
 	
 	virtual void OnBtnClick( wxCommandEvent& event );
-	virtual void OnTimer( wxTimerEvent& event );
 private:	
 
 	FontInfo*	mCurrentFont;
 	bool		mHasChanges;
 	DrawPanel	mDrawPanel;
 	
-	wxTimer		mTimer;
-	Pixel* tmp;
 };
 
 #endif

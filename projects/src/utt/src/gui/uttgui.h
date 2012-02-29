@@ -62,6 +62,7 @@
 #define wxID_LOG_WINDOW 1022
 #define wxID_LOG_TXT 1023
 #define wxID_SELECT_MODULE_ID 1024
+#define wxID_EDIT_PANEL_ID 1025
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -225,6 +226,23 @@ class SelectModuleGui : public wxDialog
 		
 		SelectModuleGui( wxWindow* parent, wxWindowID id = wxID_SELECT_MODULE_ID, const wxString& title = wxT("Select Lua module:"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 307,106 ), long style = wxCAPTION|wxCLOSE_BOX|wxSYSTEM_MENU ); 
 		~SelectModuleGui();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class EditPanelGui
+///////////////////////////////////////////////////////////////////////////////
+class EditPanelGui : public wxPanel 
+{
+	private:
+	
+	protected:
+		wxStaticBoxSizer* mDrawHolder;
+	
+	public:
+		
+		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
+		~EditPanelGui();
 	
 };
 

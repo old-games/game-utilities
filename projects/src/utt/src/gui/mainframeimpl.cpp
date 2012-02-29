@@ -14,10 +14,12 @@
 MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
 	mFontEditor( this ),
-	mLogWindow( this )
+	mLogWindow( this ),
+	mEditWindow( this )
 {
 	m_mgr.AddPane(&mFontEditor, wxDOWN, "Font editor");
 	m_mgr.AddPane(&mLogWindow, wxUP, "Log");
+	m_mgr.AddPane(&mEditWindow, wxALL, "Image editor");
 	m_mgr.Update();
 }
 
@@ -42,13 +44,13 @@ void MainFrameImpl::Deinit()
 
 void MainFrameImpl::DoFileOpen()
 {
-	if (! Lua::gLuaState->call( "getExtensions" ) )
+	if (! Lua::Get().call( "getExtensions" ) )
 	{
 		Lua::ShowLastError();
 		return;
 	}
 	std::string result;
-	OOLUA::pull2cpp(*Lua::gLuaState, result);
+	OOLUA::pull2cpp(Lua::Get(), result);
 	wxString extensions( result );
 	
 	wxFileDialog openFileDialog(this, "Open file", "./", "", extensions, wxFD_OPEN|wxFD_FILE_MUST_EXIST);
@@ -56,7 +58,7 @@ void MainFrameImpl::DoFileOpen()
 	{
 		return;     
 	}
-	if (! Lua::gLuaState->call( "openFile", openFileDialog.GetPath().ToStdString() ) )
+	if ( !Lua::Get().call( "openFile", openFileDialog.GetPath().ToStdString() ) )
 	{
 		Lua::ShowLastError();
 		return;
@@ -66,7 +68,7 @@ void MainFrameImpl::DoFileOpen()
 
 void MainFrameImpl::DoSelectModule()
 {
-	if (! Lua::gLuaState->call( "selectModule" ) )
+	if ( !Lua::Get().call( "selectModule" ) )
 	{
 		Lua::ShowLastError();
 		return;

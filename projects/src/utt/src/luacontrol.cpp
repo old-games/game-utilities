@@ -10,10 +10,20 @@
 #include "pch.h"
 #include "luacontrol.h"
 
-OOLUA::Script* Lua::gLuaState = NULL;		// пока что сделал указателем, пока OOLUA не доделан
+static OOLUA::Script* gLuaState = NULL;		
+
+OOLUA::Script& Lua::Get()
+{
+	return *gLuaState;
+}
 
 bool Lua::Init()
 {
+	if ( gLuaState != NULL )
+	{
+		wxLogMessage("Lua::Done() was not called before Lua::Init()");
+		Lua::Done();
+	}
 	gLuaState = new OOLUA::Script();
 #ifdef _LUAJIT_H
 	luaopen_jit(Lua::gLuaState);
@@ -26,12 +36,13 @@ bool Lua::Init()
 void Lua::Done()
 {
     wxLogMessage( "Closing Lua...\n" );
-    //delete gLuaState;	// TODO: сделать в стеке, когда баг будет решён
+    delete gLuaState;	
+    gLuaState = NULL;
 }
 
 void Lua::ShowLastError( )
 {
-	wxLogMessage( wxString( OOLUA::get_last_error(*Lua::gLuaState).c_str() ) );
+	wxLogMessage( wxString( OOLUA::get_last_error(Lua::Get()).c_str() ) );
 }
 
 

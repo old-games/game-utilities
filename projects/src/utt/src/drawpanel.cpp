@@ -12,7 +12,7 @@
 
 DrawPanel::DrawPanel(  wxWindow* parent, int id ):
 	wxScrolledWindow( parent, id ),
-	mAlign( utdExactFit | utdHCenter | utdVCenter ),
+	mAlign( utdNone ),
 	mXAspectRatio( 0.0f ),
 	mYAspectRatio( 0.0f ),
 	mShowWidth( 0 ),

@@ -106,7 +106,7 @@ void LuaConsole::Do(const wxString& command)
 	mOutput->AppendText("> " );
 	mOutput->AppendText( toExecute );
 	mOutput->AppendText("\n" );
-	if ( !Lua::gLuaState->run_chunk( toExecute.ToStdString() ) )
+	if ( !Lua::Get().run_chunk( toExecute.ToStdString() ) )
 	{
 		Lua::ShowLastError();
 	}
