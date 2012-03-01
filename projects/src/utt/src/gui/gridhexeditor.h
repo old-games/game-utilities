@@ -12,17 +12,17 @@ class GridHexEditor : public wxGridCellTextEditor
 public:
     // allows to specify the range - if min == max == -1, no range checking is
     // done
-    explicit GridHexEditor( int min, int max );
+    explicit GridHexEditor( wxInt32 min, wxInt32 max );
 
     virtual void Create(wxWindow* parent,
                         wxWindowID id,
                         wxEvtHandler* evtHandler);
 
     virtual bool IsAcceptedKey(wxKeyEvent& event);
-    virtual void BeginEdit(int row, int col, wxGrid* grid);
-    virtual bool EndEdit(int row, int col, const wxGrid* grid,
+    virtual void BeginEdit(wxInt32 row, wxInt32 col, wxGrid* grid);
+    virtual bool EndEdit(wxInt32 row, wxInt32 col, const wxGrid* grid,
                          const wxString& oldval, wxString *newval);
-    virtual void ApplyEdit(int row, int col, wxGrid* grid);
+    virtual void ApplyEdit(wxInt32 row, wxInt32 col, wxGrid* grid);
 
     virtual void Reset();
     virtual void StartingKey(wxKeyEvent& event);
@@ -38,14 +38,14 @@ public:
 
 	bool HexToLong(long& dest, const wxString& src);
 
-	int GetAlign()
+	wxInt32 GetAlign()
 	{
 		return mAlign;
 	}
 
-	static wxString LongToHex( long value, int align )
+	static wxString LongToHex( long value, wxInt32 align )
 	{
-		return wxString::Format("%0.*X", align, (int) value);
+		return wxString::Format("%0.*X", align, (wxInt32) value);
 	}
 
 
@@ -57,13 +57,13 @@ protected:
 
 private:
 
-	bool IsKeyCodeValid( int keycode );
-    int m_min,
+	bool IsKeyCodeValid( wxInt32 keycode );
+    wxInt32 m_min,
         m_max;
 
     long m_value;
 
-    int mAlign;	// for formatting string by max value
+    wxInt32 mAlign;	// for formatting string by max value
 
     wxDECLARE_NO_COPY_CLASS(GridHexEditor);
 };

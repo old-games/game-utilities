@@ -16,7 +16,20 @@ void Lua::FontRegister()
 	Lua::Get().register_class<SymbolInfo>();
 }
 
-EXPORT_OOLUA_NO_FUNCTIONS(RGBA)
+// 
+//	Ёкспорт класса RGBA
+//
+EXPORT_OOLUA_FUNCTIONS_4_NON_CONST(RGBA,
+								   set_R,
+								   set_G,
+								   set_B,
+								   set_A)
+
+EXPORT_OOLUA_FUNCTIONS_4_CONST(RGBA,
+							   get_R,
+							   get_G,
+							   get_B,
+							   get_A)
 
 ///
 /// Ёкспорт класса SymbolInfo

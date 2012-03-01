@@ -31,7 +31,7 @@ bool UTTApp::OnInit()
 }
 
 
-int UTTApp::OnExit()
+wxInt32 UTTApp::OnExit()
 {
 	this->Unbind( wxEVT_KEY_DOWN, &UTTApp::OnKeyDown, this );
 	return wxApp::OnExit();

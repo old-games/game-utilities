@@ -28,10 +28,10 @@ class DrawPanel :
 	public wxScrolledWindow
 {
 public:
-	DrawPanel( wxWindow* parent, int id = wxID_ANY );
+	DrawPanel( wxWindow* parent, wxInt32 id = wxID_ANY );
 	~DrawPanel(void);
 
-	void CreateBitmap(Pixel* buffer, int width, int height);
+	void CreateBitmap(Pixel* buffer, wxInt32 width, wxInt32 height);
 	void SetBuffer( Pixel* buffer );
 
 protected:

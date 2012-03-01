@@ -2,7 +2,7 @@
 #include "uttypes.h"
 
 
-const int BPP::Bits[BPP::bppNum] =
+const wxInt32 BPP::Bits[BPP::bppNum] =
 {
 	1,
 	2,
@@ -26,7 +26,7 @@ const wxString BPP::Names[BPP::bppNum] =
 
 SymbolInfo FontInfo::sBadSymbol;
 
-void SymbolInfo::SetValues(int width, int height, unsigned int code, const LetterBox* data /* NULL */)
+void SymbolInfo::SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const LetterBox* data /* NULL */)
 {
 	mWidth = width;
 	mHeight = height;
@@ -70,9 +70,9 @@ inline LetterBox* SymbolInfo::GetData()
 	return mData;
 }
 
-inline int SymbolInfo::BoxOffset(int x, int y)
+inline wxInt32 SymbolInfo::BoxOffset(wxInt32 x, wxInt32 y)
 {
-	int offset = (x * MAXIMUM_SYMBOL_WIDTH) + y;
+	wxInt32 offset = (x * MAXIMUM_SYMBOL_WIDTH) + y;
 	if ( (size_t) offset >= sizeof(LetterBox) )
 	{
 		wxLogMessage( wxString::Format("SymbolInfo::BoxOffset: coordinates are out of range (X: %d, Y: %d)", x, y) );
@@ -81,9 +81,9 @@ inline int SymbolInfo::BoxOffset(int x, int y)
 	return offset;
 }
 
-void SymbolInfo::SetPixel( int x, int y, RGBA color )
+void SymbolInfo::SetPixel( wxInt32 x, wxInt32 y, RGBA color )
 {
-	int offset = BoxOffset(x, y);
+	wxInt32 offset = BoxOffset(x, y);
 	if ( offset < 0 )
 	{
 		return;
@@ -94,10 +94,10 @@ void SymbolInfo::SetPixel( int x, int y, RGBA color )
 	val[2] = color.B;
 }
 
-RGBA SymbolInfo::GetPixel( int x, int y )
+RGBA SymbolInfo::GetPixel( wxInt32 x, wxInt32 y )
 {
 	RGBA res;
-	int offset = BoxOffset(x, y);
+	wxInt32 offset = BoxOffset(x, y);
 	if ( offset < 0 )
 	{
 		return res;

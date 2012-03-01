@@ -50,7 +50,7 @@ void LuaConsole::OnCloseWindow( wxCloseEvent& WXUNUSED(event) )
 
 void LuaConsole::OnKeyDown( wxKeyEvent& event )
 {
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxString txt = mOutput->GetLineText( n );
 	switch ( event.GetKeyCode() )
 	{
@@ -85,7 +85,7 @@ void LuaConsole::OnKeyDown( wxKeyEvent& event )
 
 void LuaConsole::InsertText(const wxString& txt)
 {
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos oldPos = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length();
@@ -117,7 +117,7 @@ void LuaConsole::Do(const wxString& command)
 
 void LuaConsole::ClearLastLine()
 {
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length();
 	mOutput->Remove( l, r );
@@ -125,7 +125,7 @@ void LuaConsole::ClearLastLine()
 
 bool LuaConsole::CanContinueEvent()
 {
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos current = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length() + sPrompt.length();
@@ -135,7 +135,7 @@ bool LuaConsole::CanContinueEvent()
 bool LuaConsole::CorrectCaret()
 {
 	bool forbid = false;
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos current = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length() + sPrompt.length();
@@ -150,7 +150,7 @@ bool LuaConsole::CorrectCaret()
 
 void LuaConsole::SetPrompt( const wxString& place /* "" */ )
 {
-	int n = mOutput->GetNumberOfLines() - 1;
+	wxInt32 n = mOutput->GetNumberOfLines() - 1;
 	wxString txt = mOutput->GetLineText( n );
 	if ( txt.length() != 0 )
 	{
@@ -162,7 +162,7 @@ void LuaConsole::SetPrompt( const wxString& place /* "" */ )
 
 void LuaConsole::HistorySearch( bool down )
 {
-	int inc = down ? 1 : -1;
+	wxInt32 inc = down ? 1 : -1;
 	size_t n = mHistoryCounter + inc;
 	if ( n >= mCommands.size() )
 	{

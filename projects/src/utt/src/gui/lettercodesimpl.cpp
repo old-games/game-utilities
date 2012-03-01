@@ -34,6 +34,7 @@ LetterCodesImpl::LetterCodesImpl(  wxWindow* parent, FontInfo* finfo ):
 		mFontInfo( finfo ),
 		mSymbolsCopy( mFontInfo->GetSymbols() ),
 		mCurrentEncoding( mFontInfo->GetEncoding() ),
+		mEncodingName( "unknown" ),
 		mCanFromSystem( false ),
 		mCanToSystem( false ),
 		mConvertedAttr( new wxGridCellAttr( NULL ) ),
@@ -72,7 +73,7 @@ void LetterCodesImpl::GenerateCodes()
 	{
 		return;
 	}
-	int val = mInitialSpinCtrl->GetValue();
+	wxInt32 val = mInitialSpinCtrl->GetValue();
 	for (size_t i = 0; i < mSymbolsCopy.size(); ++i)
 	{
 		mSymbolsCopy[ i ].mCode = val++;		
@@ -94,7 +95,7 @@ void LetterCodesImpl::UpdateTable()
 			mCodesGrid->DeleteCols( 0, mCodesGrid->GetNumberCols() );
 		}
 		mCodesGrid->AppendCols( ColumnsInfo::ciNum );
-		for (int i = 0; i < ColumnsInfo::ciNum; ++i)
+		for (wxInt32 i = 0; i < ColumnsInfo::ciNum; ++i)
 		{
 			mCodesGrid->SetColLabelValue( i, ColumnsInfo::Name[i] );
 		}
@@ -105,7 +106,7 @@ void LetterCodesImpl::UpdateTable()
 	
 	wxASSERT( num != 0 );
 	
-	int diff = (int) num - mCodesGrid->GetNumberRows();
+	wxInt32 diff = (wxInt32) num - mCodesGrid->GetNumberRows();
 	if ( diff != 0 )
 	{
 		if ( diff < 0 )
@@ -133,7 +134,7 @@ void LetterCodesImpl::SetCurrentEncoding()
 	UpdateTable();
 }
 
-inline void LetterCodesImpl::UpdateRow(unsigned int n)
+inline void LetterCodesImpl::UpdateRow(wxUint32 n)
 {
 	SymbolInfo& symbol = mSymbolsCopy[ n ];
 
@@ -157,7 +158,7 @@ inline void LetterCodesImpl::UpdateRow(unsigned int n)
 	mCodesGrid->SetCellValue( n, ColumnsInfo::ciConvertedSymbol, convert );
 }
 
-void LetterCodesImpl::CellValueChanged(int row, int col)
+void LetterCodesImpl::CellValueChanged(wxInt32 row, wxInt32 col)
 {
 	bool update = true;
 	wxString val = mCodesGrid->GetCellValue( row, col );
@@ -207,8 +208,12 @@ void LetterCodesImpl::OnBtnClick( wxCommandEvent& event )
 		case wxID_GET_ENCODING_BTN:
 			wxFontMapper dlg;
 			dlg.SetDialogParent( this );
-			mCurrentEncoding = dlg.CharsetToEncoding("unknown", true);
-			SetCurrentEncoding();
+			wxInt32 res = dlg.CharsetToEncoding("unknown", true);
+			if (res != -1)
+			{
+				mCurrentEncoding = res;
+				SetCurrentEncoding();
+			}
 		break;
 	}
 	event.Skip(); 

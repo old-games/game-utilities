@@ -30,23 +30,23 @@ namespace BPP
 		bppNum
 	};
 
-	extern const int Bits[bppNum];
+	extern const wxInt32 Bits[bppNum];
 	extern const wxString Names[bppNum];
 };
 
-typedef	unsigned char Palette[256][3];
-typedef unsigned char Pixel[3];
-typedef unsigned char PixelA[4];
+typedef	wxByte Palette[256][3];
+typedef wxByte Pixel[3];
+typedef wxByte PixelA[4];
 
 typedef Pixel LetterBox[ MAXIMUM_SYMBOL_WIDTH * MAXIMUM_SYMBOL_HEIGHT ];
 
 struct RGBA
 {
 	RGBA(): R(0), G(0), B(0), A(0xFF)	{};
-	int R;
-	int G;
-	int B;
-	int A;
+	wxByte R;
+	wxByte G;
+	wxByte B;
+	wxByte A;
 };
 
 struct SymbolInfo
@@ -60,8 +60,8 @@ struct SymbolInfo
 	{
 	}
 
-	RGBA GetPixel( int x, int y );
-	void SetPixel( int x, int y, RGBA color );
+	RGBA GetPixel( wxInt32 x, wxInt32 y );
+	void SetPixel( wxInt32 x, wxInt32 y, RGBA color );
 
 	virtual ~SymbolInfo()
 	{
@@ -72,21 +72,21 @@ struct SymbolInfo
 
 	SymbolInfo &operator = ( const SymbolInfo &src );
 
-	int	mWidth;													// ширина символа
-	int mHeight;												// высота символа
-	unsigned int mCode;											// код символа, для пробела 32 и т.д.
+	wxInt32	mWidth;											// ширина символа
+	wxInt32 mHeight;										// высота символа
+	wxUint32 mCode;											// код символа, для пробела 32 и т.д.
 	
 protected:
 
-	LetterBox* mData;											// данные символа, в protected - для 
-																// контроля за инициализацией
+	LetterBox* mData;										// данные символа, в protected - для 
+															// контроля за инициализацией
 
 private:
 
-	void SetValues(int width, int height, unsigned int code, const LetterBox* data = NULL);
+	void SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const LetterBox* data = NULL);
 	void CreateData();
 	void EraseData();
-	int	 BoxOffset(int x, int y);
+	wxInt32 BoxOffset(wxInt32 x, wxInt32 y);
 };
 
 typedef wxVector<SymbolInfo> Symbols;
@@ -118,12 +118,12 @@ public:
 		return mSymbols.size();
 	}
 
-	int GetEncoding()
+	wxInt32 GetEncoding()
 	{
 		return mFontCodePage;
 	}
 	
-	void SetEncoding(int n)
+	void SetEncoding(wxInt32 n)
 	{
 		mFontCodePage = n;
 	}
@@ -151,15 +151,15 @@ public:
 
 protected:
 
-	int				mMaxHeight;							// максимальная высота
-	int				mMinHeight;							// минимальная высота
-	int				mMaxWidh;							// максимальная ширина
-	int				mMinWidth;							// минимальная ширина
-	int				mBaseLine;							// базовая линия символа
-	int				mCapLine;							// линия заглавных букв
-	int				mLowLine;							// линия строчных букв
-	int				mBPP;								// бит на пиксель
-	int				mFontCodePage;						// кодировка, относительный параметр, для лучшего представления шрифта
+	wxInt32			mMaxHeight;							// максимальная высота
+	wxInt32			mMinHeight;							// минимальная высота
+	wxInt32			mMaxWidh;							// максимальная ширина
+	wxInt32			mMinWidth;							// минимальная ширина
+	wxInt32			mBaseLine;							// базовая линия символа
+	wxInt32			mCapLine;							// линия заглавных букв
+	wxInt32			mLowLine;							// линия строчных букв
+	wxInt32			mBPP;								// бит на пиксель
+	wxInt32			mFontCodePage;						// кодировка, относительный параметр, для лучшего представления шрифта
 	Palette         mPalette;							// палитра
 	Symbols			mSymbols;							// символы
 

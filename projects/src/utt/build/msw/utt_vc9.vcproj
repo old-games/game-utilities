@@ -265,6 +265,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\editpanel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\editpanel.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\luaconsole.cpp"
 				>
 			</File>
@@ -344,6 +352,14 @@
 		<Filter
 			Name="gui"
 			>
+			<File
+				RelativePath="..\..\src\gui\editpanelimpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\editpanelimpl.h"
+				>
+			</File>
 			<File
 				RelativePath="..\..\src\gui\logwindowimpl.cpp"
 				>

@@ -10,7 +10,7 @@
 #include "pch.h"
 #include "gridhexeditor.h"
 
-GridHexEditor::GridHexEditor(int min, int max)
+GridHexEditor::GridHexEditor(wxInt32 min, wxInt32 max)
 {
     m_min = min;
     m_max = max;
@@ -31,7 +31,7 @@ bool GridHexEditor::HexToLong(long& dest, const wxString& src)
 	return str.ToLong(&dest, 16);
 }
 
-void GridHexEditor::BeginEdit(int row, int col, wxGrid* grid)
+void GridHexEditor::BeginEdit(wxInt32 row, wxInt32 col, wxGrid* grid)
 {
     // first get the value
     wxGridTableBase *table = grid->GetTable();
@@ -49,8 +49,8 @@ void GridHexEditor::BeginEdit(int row, int col, wxGrid* grid)
     DoBeginEdit(GetString());
 }
 
-bool GridHexEditor::EndEdit(int WXUNUSED(row),
-                                     int WXUNUSED(col),
+bool GridHexEditor::EndEdit(wxInt32 WXUNUSED(row),
+                                     wxInt32 WXUNUSED(col),
                                      const wxGrid* WXUNUSED(grid),
                                      const wxString& oldval, wxString *newval)
 {
@@ -79,7 +79,7 @@ bool GridHexEditor::EndEdit(int WXUNUSED(row),
     return true;
 }
 
-void GridHexEditor::ApplyEdit(int row, int col, wxGrid* grid)
+void GridHexEditor::ApplyEdit(wxInt32 row, wxInt32 col, wxGrid* grid)
 {
     wxGridTableBase * const table = grid->GetTable();
 	table->SetValue(row, col, GetString() );
@@ -90,7 +90,7 @@ void GridHexEditor::Reset()
 	DoReset(GetString());
 }
 
-inline bool GridHexEditor::IsKeyCodeValid( int keycode )
+inline bool GridHexEditor::IsKeyCodeValid( wxInt32 keycode )
 {
 	if ( (keycode < 128) &&
 		(	wxIsdigit(keycode) || keycode == '+' || keycode == '-') ||
@@ -133,11 +133,11 @@ void GridHexEditor::SetParameters(const wxString& params)
         long tmp;
         if ( params.BeforeFirst(wxT(',')).ToLong(&tmp) )
         {
-            m_min = (int)tmp;
+            m_min = (wxInt32)tmp;
 
             if ( params.AfterFirst(wxT(',')).ToLong(&tmp) )
             {
-                m_max = (int)tmp;
+                m_max = (wxInt32)tmp;
 
                 // skip the error message below
                 return;

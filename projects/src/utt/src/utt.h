@@ -13,6 +13,7 @@
 #include <wx/app.h>
 
 class LuaConsole;
+
 class UTTApp : public wxApp
 {
 	
@@ -29,7 +30,7 @@ public:
 
 protected:
 	virtual bool OnInit();
-	virtual int OnExit();
+	virtual wxInt32 OnExit();
 	
 private:
 

@@ -29,8 +29,8 @@ protected:
 private:
 
 		void SetCurrentEncoding();
-		void CellValueChanged(int row, int col);
-		void UpdateRow(unsigned int n);
+		void CellValueChanged(wxInt32 row, wxInt32 col);
+		void UpdateRow(wxUint32 n);
 
 		FontInfo*	mFontInfo;
 		Symbols		mSymbolsCopy;

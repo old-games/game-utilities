@@ -10,7 +10,7 @@
 #include "pch.h"
 #include "drawpanel.h"
 
-DrawPanel::DrawPanel(  wxWindow* parent, int id ):
+DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 	wxScrolledWindow( parent, id ),
 	mAlign( utdNone ),
 	mXAspectRatio( 0.0f ),
@@ -35,10 +35,10 @@ DrawPanel::~DrawPanel(void)
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
 }
 
-void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
+void DrawPanel::CreateBitmap( Pixel* buffer, wxInt32 width, wxInt32 height )
 {
 	DestroyBitmap();
-	wxImage image( width, height, (unsigned char*) buffer, true );
+	wxImage image( width, height, (wxByte*) buffer, true );
 	mBitmap = new wxBitmap( image );
 	mWidth = width;
 	mHeight = height;
@@ -58,7 +58,7 @@ void DrawPanel::SetBuffer( Pixel* buffer )
 		return;
 	}
 	DestroyBitmap();
-	wxImage image( mWidth, mHeight, (unsigned char*) buffer, true );
+	wxImage image( mWidth, mHeight, (wxByte*) buffer, true );
 	mBitmap = new wxBitmap( image );
 	PaintNow();
 }
@@ -72,8 +72,8 @@ void DrawPanel::Render(wxDC& dc)
 	wxMemoryDC mdc;
 	mdc.SelectObject( *mBitmap );
 	dc.Clear();
-	int x = GetScrollPos(wxHORIZONTAL);
-	int y = GetScrollPos(wxVERTICAL);
+	wxInt32 x = GetScrollPos(wxHORIZONTAL);
+	wxInt32 y = GetScrollPos(wxVERTICAL);
 	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
 }
 
@@ -94,9 +94,9 @@ inline void DrawPanel::CalculateScrollBars()
 	wxCoord clw = 0;
 	wxCoord clh = 0;
 	this->GetClientSize( &clw, &clh );
-	int x = GetScrollPos(wxHORIZONTAL);
-	int y = GetScrollPos(wxVERTICAL);
-	const int unitSize = 2;
+	wxInt32 x = GetScrollPos(wxHORIZONTAL);
+	wxInt32 y = GetScrollPos(wxVERTICAL);
+	const wxInt32 unitSize = 2;
 	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y);
 }
 
@@ -111,8 +111,8 @@ inline void DrawPanel::SetShowParams()
 	mPosY = 0;
 	if ( mAlign != utdNone )
 	{
-		int halfHeight = clh / 2;
-		int halfWidth = clw / 2;
+		wxInt32 halfHeight = clh / 2;
+		wxInt32 halfWidth = clw / 2;
 		
 		mXAspectRatio = (float) clw / (float) mWidth;
 		mYAspectRatio = (float) clh / (float) mHeight;
