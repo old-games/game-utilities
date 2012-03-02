@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\drawpanel.cpp" />
+    <ClCompile Include="..\..\src\editpanel.cpp" />
+    <ClCompile Include="..\..\src\gui\editpanelimpl.cpp" />
     <ClCompile Include="..\..\src\luaconsole.cpp" />
     <ClCompile Include="..\..\src\luacontrol.cpp" />
     <ClCompile Include="..\..\src\utt.cpp">
@@ -153,6 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\drawpanel.h" />
+    <ClInclude Include="..\..\src\editpanel.h" />
+    <ClInclude Include="..\..\src\gui\editpanelimpl.h" />
     <ClInclude Include="..\..\src\luaconsole.h" />
     <ClInclude Include="..\..\src\luacontrol.h" />
     <ClInclude Include="..\..\src\pch.h" />

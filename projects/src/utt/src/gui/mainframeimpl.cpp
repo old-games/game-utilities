@@ -23,9 +23,9 @@ MainFrameImpl::MainFrameImpl(void):
 	m_mgr.Update();
 	wxImage::AddHandler(new wxPNGHandler);
 	// test
-	wxBitmap* bmp = new wxBitmap();
+	/*wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/microsoft.png", wxBITMAP_TYPE_PNG);
-	mEditWindow.SetBitmap( bmp );
+	mEditWindow.SetBitmap( bmp );*/
 }
 
 MainFrameImpl::~MainFrameImpl(void)
@@ -49,7 +49,7 @@ void MainFrameImpl::Deinit()
 
 void MainFrameImpl::DoFileOpen()
 {
-	if (! Lua::Get().call( "getExtensions" ) )
+	if (!Lua::Get().call( "getExtensions" ) )
 	{
 		Lua::ShowLastError();
 		return;

@@ -67,6 +67,12 @@
     <ClCompile Include="..\..\src\luaexports\luafont.cpp">
       <Filter>luaexports</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\editpanel.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\editpanelimpl.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\drawpanel.h">
@@ -116,6 +122,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\luaexports\luafont.h">
       <Filter>luaexports</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editpanel.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\editpanelimpl.h">
+      <Filter>gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
