@@ -19,6 +19,9 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 	mShowHeight( 0 ),
 	mPosX( 0 ),
 	mPosY( 0 ),
+	mScale( 3.0f ),
+	mScaledWidth( 0 ),
+	mScaledHeight( 0 ),
 	mBitmap( NULL ),
 	mWidth( 0 ),
 	mHeight( 0 )
@@ -33,6 +36,7 @@ DrawPanel::~DrawPanel(void)
 {
 	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
+	DestroyBitmap();
 }
 
 void DrawPanel::CreateBitmap( Pixel* buffer, wxInt32 width, wxInt32 height )
@@ -40,8 +44,31 @@ void DrawPanel::CreateBitmap( Pixel* buffer, wxInt32 width, wxInt32 height )
 	DestroyBitmap();
 	wxImage image( width, height, (wxByte*) buffer, true );
 	mBitmap = new wxBitmap( image );
-	mWidth = width;
-	mHeight = height;
+	ApplyBitmap();
+}
+
+void DrawPanel::SetBitmap( wxBitmap* bitmap )
+{
+	if ( !bitmap->IsOk() )
+	{
+		wxLogError("DrawPanel.SetBitmap: bad bitmap!");
+		return;
+	}
+	DestroyBitmap();
+	mBitmap = bitmap;
+	ApplyBitmap();
+}
+
+void DrawPanel::ApplyBitmap()
+{
+	if ( !mBitmap || !mBitmap->IsOk() )
+	{
+		wxLogError("DrawPanel.ApplyBitmap: bad bitmap!");
+		return;
+	}
+	mWidth = mBitmap->GetWidth();
+	mHeight = mBitmap->GetHeight();
+	SetScale( mScale );
 	SetShowParams();
 }
 
@@ -63,6 +90,13 @@ void DrawPanel::SetBuffer( Pixel* buffer )
 	PaintNow();
 }
 
+void DrawPanel::SetScale( wxFloat32 scale )
+{
+	mScale = scale;
+	mScaledWidth = (wxFloat32) mWidth * mScale;	
+	mScaledHeight = (wxFloat32) mHeight * mScale;
+}
+
 void DrawPanel::Render(wxDC& dc)
 {
 	if (mBitmap == NULL)
@@ -77,7 +111,7 @@ void DrawPanel::Render(wxDC& dc)
 	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
 }
 
-void DrawPanel::OnPaint(wxPaintEvent& event)
+void DrawPanel::OnPaint( wxPaintEvent& WXUNUSED(event) )
 {
 	wxAutoBufferedPaintDC dc(this);
 	Render( dc );
@@ -102,8 +136,9 @@ inline void DrawPanel::CalculateScrollBars()
 
 inline void DrawPanel::SetShowParams()
 {
-	mShowWidth = mWidth; 
-	mShowHeight = mHeight;
+	mShowWidth = mScaledWidth; 
+	mShowHeight = mScaledHeight;
+
 	wxCoord clw = 0;
 	wxCoord clh = 0;
 	this->GetClientSize( &clw, &clh );
@@ -114,23 +149,23 @@ inline void DrawPanel::SetShowParams()
 		wxInt32 halfHeight = clh / 2;
 		wxInt32 halfWidth = clw / 2;
 		
-		mXAspectRatio = (float) clw / (float) mWidth;
-		mYAspectRatio = (float) clh / (float) mHeight;
+		mXAspectRatio = (float) clw / (float) mScaledWidth;
+		mYAspectRatio = (float) clh / (float) mScaledHeight;
 
 		if ( (mAlign & utdExactFit) != 0)
 		{
 			float modifier = 1.000f;
-			if ( clw < mWidth && clh < mHeight )
+			if ( clw < mWidth && clh < mScaledHeight )
 			{
 				modifier = clw > clh ? mYAspectRatio : mXAspectRatio;
 			}
 			else
 			{
-				if ( clw < mWidth )
+				if ( clw < mScaledWidth )
 				{
 					modifier = mXAspectRatio;
 				}		
-				if ( clh < mHeight )
+				if ( clh < mScaledHeight )
 				{
 					modifier = mYAspectRatio;
 				}
@@ -141,7 +176,7 @@ inline void DrawPanel::SetShowParams()
 		
 		if ( (mAlign & utdExpand) != 0 )
 		{
-			if (clw > mWidth && clh > mHeight)
+			if (clw > mScaledWidth && clh > mScaledHeight)
 			{
 				float modifier = mYAspectRatio > mXAspectRatio ? mXAspectRatio : mYAspectRatio;
 				mShowWidth *= modifier;
@@ -186,5 +221,9 @@ inline void DrawPanel::SetShowParams()
 void DrawPanel::OnSize(wxSizeEvent& event)
 {
 	event.Skip();
+	if (mBitmap == NULL)
+	{
+		return;
+	}
 	SetShowParams();
 }

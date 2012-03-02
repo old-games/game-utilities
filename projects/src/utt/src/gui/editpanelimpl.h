@@ -19,6 +19,7 @@ public:
 	EditPanelImpl( wxWindow* parent );
 	~EditPanelImpl(void); 
 
+	void SetBitmap( wxBitmap* bitmap );
 private:
 
 	EditPanel	mEditPanel;

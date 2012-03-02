@@ -20,3 +20,8 @@ EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 EditPanelImpl::~EditPanelImpl(void)
 {
 }
+
+void EditPanelImpl::SetBitmap( wxBitmap* bitmap )
+{
+	mEditPanel.SetBitmap( bitmap );
+}

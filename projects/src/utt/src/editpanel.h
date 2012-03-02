@@ -15,10 +15,22 @@ class EditPanel :
 	public DrawPanel
 {
 public:
-	EditPanel( wxWindow* parent );
-	~EditPanel(void); 
 
+	EditPanel( wxWindow* parent );
+	virtual ~EditPanel(void); 
+
+protected:
+
+	virtual void Render(wxDC& dc);
+	void DrawGrid( wxDC& dc );
+	virtual void SetShowParams();
+	
 private:
+
+	bool		mDrawGrid;
+	wxColour	mGridColour;
+	wxPoint*	mGridPoints;
+	wxInt32		mPointsNumber;
 
 };
 

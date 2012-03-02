@@ -21,6 +21,11 @@ MainFrameImpl::MainFrameImpl(void):
 	m_mgr.AddPane(&mLogWindow, wxUP, "Log");
 	m_mgr.AddPane(&mEditWindow, wxALL, "Image editor");
 	m_mgr.Update();
+	wxImage::AddHandler(new wxPNGHandler);
+	// test
+	wxBitmap* bmp = new wxBitmap();
+	bmp->LoadFile("D:/microsoft.png", wxBITMAP_TYPE_PNG);
+	mEditWindow.SetBitmap( bmp );
 }
 
 MainFrameImpl::~MainFrameImpl(void)

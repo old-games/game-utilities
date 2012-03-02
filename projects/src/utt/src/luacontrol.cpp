@@ -29,20 +29,32 @@ bool Lua::Init()
 	luaopen_jit(Lua::gLuaState);
 #endif
 	CommonRegister();	
-	FontRegister();
+	//FontRegister();
 	return gLuaState->run_file("scripts/init.lua");
 }
 
 void Lua::Done()
 {
     wxLogMessage( "Closing Lua...\n" );
-    delete gLuaState;	
+	delete gLuaState;	
     gLuaState = NULL;
+}
+
+bool Lua::IsOk()
+{
+	return gLuaState != NULL;
 }
 
 void Lua::ShowLastError( )
 {
-	wxLogMessage( wxString( OOLUA::get_last_error(Lua::Get()).c_str() ) );
+	if ( IsOk() )
+	{
+		wxLogMessage( wxString( OOLUA::get_last_error(Lua::Get()).c_str() ) );
+	}
+	else
+	{
+		wxLogError( "Lua was not initialised." );
+	}
 }
 
 

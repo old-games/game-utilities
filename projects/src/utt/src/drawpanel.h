@@ -28,30 +28,37 @@ class DrawPanel :
 	public wxScrolledWindow
 {
 public:
-	DrawPanel( wxWindow* parent, wxInt32 id = wxID_ANY );
-	~DrawPanel(void);
 
+	DrawPanel( wxWindow* parent, wxInt32 id = wxID_ANY );
+	virtual ~DrawPanel(void);
+
+	void SetBitmap( wxBitmap* bitmap );
 	void CreateBitmap(Pixel* buffer, wxInt32 width, wxInt32 height);
 	void SetBuffer( Pixel* buffer );
+	void SetScale( wxFloat32 scale );
 
 protected:
+
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
+	virtual void Render(wxDC& dc);
 	
-private:
-	void Render(wxDC& dc);
 	void PaintNow();
 	void DestroyBitmap();
-	void SetShowParams();
+	void ApplyBitmap();
+	virtual void SetShowParams();
 	void CalculateScrollBars();
 
-	int			mAlign;
-	float		mXAspectRatio;
-	float		mYAspectRatio;
+	wxInt32		mAlign;
+	wxFloat32	mXAspectRatio;
+	wxFloat32	mYAspectRatio;
 	wxCoord		mShowWidth;				// ширина картинки для отображения
 	wxCoord		mShowHeight;			
 	wxCoord		mPosX;					// стартовая позиция для отображения
 	wxCoord		mPosY;
+	wxFloat32	mScale;
+	wxCoord		mScaledWidth;
+	wxCoord		mScaledHeight;
 	
 	wxBitmap*	mBitmap;
 	wxCoord		mWidth;

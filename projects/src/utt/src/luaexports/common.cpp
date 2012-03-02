@@ -12,14 +12,14 @@
 #include "gui/selmoduleimpl.h"
 
 
-static wxInt32 reboot( lua_State* )
+static int reboot( lua_State* )
 {
 	Lua::Done();
 	Lua::Init();
 	return 0;
 }
 
-static wxInt32 writeToStdCout(lua_State *L)
+static int writeToStdCout(lua_State *L)
 {
 	wxInt32 n = lua_gettop(L);
 	for (wxInt32 i = 1; i <= n; ++i)
@@ -29,7 +29,7 @@ static wxInt32 writeToStdCout(lua_State *L)
 	return 0;
 }
 
-static wxInt32 writeToLog(lua_State *L)
+static int writeToLog(lua_State *L)
 {
 	wxInt32 n = lua_gettop(L);
 	for (wxInt32 i = 1; i <= n; ++i)
@@ -39,9 +39,9 @@ static wxInt32 writeToLog(lua_State *L)
 	return 0;
 }
 
-static wxInt32 parseFileName(lua_State *L)
+static int parseFileName(lua_State *L)
 {
-	wxInt32 n = lua_gettop(L);
+	int n = lua_gettop(L);
 	if (n != 1)
 	{
 		wxLogMessage("parseFileName: function need a string as argument");
@@ -57,9 +57,9 @@ static wxInt32 parseFileName(lua_State *L)
 	return 4;
 }
 
-static wxInt32 selectModuleDialog(lua_State *L)
+static int selectModuleDialog(lua_State *L)
 {
-	wxInt32 n = lua_gettop(L);
+	int n = lua_gettop(L);
 	if (n != 1)
 	{
 		wxLogMessage("selectModuleDialog: function need a table with module names as argument");
@@ -69,7 +69,7 @@ static wxInt32 selectModuleDialog(lua_State *L)
 	OOLUA::pull2cpp(L, modules);
 	wxArrayString strings;
 	{
-		wxInt32 count = 1;
+		int count = 1;
 		std::string value;
 		while (modules.safe_at( count++, value ))
 		{

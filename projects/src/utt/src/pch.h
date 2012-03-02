@@ -14,7 +14,7 @@
     #define WX_PRECOMP
 #endif
 
-// basic wxWidgets headers
+// wxWidgets headers
 #include <wx/wxprec.h>
 #include <wx/vector.h>
 #include <wx/menu.h>
@@ -31,8 +31,10 @@
 #include <wx/dcbuffer.h>
 #include <wx/log.h>
 
+// standard heades
 #include <iostream>
 #include <fstream>
+
 // Lua headers
 #include <lua.hpp>
 #include <oolua.h>
@@ -40,8 +42,12 @@
 #include "uttypes.h"
 
 // simple dialogs definitions
+
+// Caption: x; Text: y; Additional property: x
 #define YESNODIALOGNULL(x, y, z)	wxMessageDialog(NULL, x, y, wxYES_NO | wxCENTRE | z).ShowModal()
+// Caption: x; Text: y
 #define YESNODIALOG(x, y)			wxMessageDialog(this, x, y, wxYES_NO | wxCENTRE | wxNO_DEFAULT).ShowModal()
+// Caption: Are you sure? Text: x
 #define AREYOUSURE(x)				YESNODIALOG("Are you sure?", x)
 
 // stream checking definitions

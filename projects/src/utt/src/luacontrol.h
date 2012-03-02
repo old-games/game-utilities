@@ -19,6 +19,7 @@ namespace Lua
     bool Init();
     void Done();
     OOLUA::Script&	Get();
+    bool IsOk();
 
 	void ShowLastError();
 }
