@@ -10,6 +10,8 @@
 #include "pch.h"
 #include "editpanel.h"
 
+#define GRID_EDGE	10.0f		// the value after the grid will be shown
+
 EditPanel::EditPanel(  wxWindow* parent ):
 	DrawPanel( parent ),
 	mDrawGrid( true ),
@@ -40,38 +42,50 @@ void EditPanel::Render(wxDC& dc)
 void EditPanel::SetShowParams()
 {
 	DrawPanel::SetShowParams();
-	delete[] mGridPoints;
-	mPointsNumber = 0;
-	if (mScale < 2.0f)
+	wxLogMessage( "recalcgrid");
+	if ( mPointsNumber != 0 )
 	{
+		delete[] mGridPoints;
+		mPointsNumber = 0;
+	}
+	if (mScale < GRID_EDGE)
+	{
+		// РЅРёС‡РµРіРѕ С…РѕСЂРѕС€РµРіРѕ РЅРµ РЅР°СЂРёСЃСѓРµС‚СЃСЏ, РѕРґРёРЅ С…СЂРµРЅ
 		return;
 	}
-	mPointsNumber = (mWidth * mHeight) * 2;
-	mGridPoints = new wxPoint[mPointsNumber + mWidth + mHeight];
-	wxFloat32 xstep = (wxFloat32) mShowWidth / (wxFloat32) mWidth;
-	wxFloat32 ystep = (wxFloat32) mShowHeight / (wxFloat32) mHeight;
+	wxSize bounds = this->GetClientSize();
+	wxCoord width = (wxFloat32) bounds.GetWidth() / mScale;
+	wxCoord height = (wxFloat32) bounds.GetHeight() / mScale;
+	mPointsNumber = ( (width + 1) * (height + 1) ) * 2;
+	mGridPoints = new wxPoint[mPointsNumber];
+	wxFloat32 xstep = 0;
+	wxFloat32 ystep = 0;
 	wxInt32 count = 0;
-	for (wxFloat32 y = 0; y < mShowHeight; y += ystep)
+	wxInt32 lx = 0, ly = 0;
+	for (wxCoord y = 0; y < height; ++y)
 	{
-		for (wxFloat32 x = 0; x < mShowWidth; x += xstep)
+		lx = 0;
+		for (wxCoord x = 0; x < width; ++x)
 		{
-			mGridPoints[count++] = wxPoint((wxCoord) x, 0);
-			mGridPoints[count++] = wxPoint((wxCoord) x, mShowHeight);
+			mGridPoints[count++] = wxPoint(lx, 0);
+			mGridPoints[count++] = wxPoint(lx, mShowHeight);
+			lx += (wxInt32) mScale;
 		}
-		mGridPoints[count++] = wxPoint(0, (wxCoord) y);
-		mGridPoints[count++] = wxPoint(mShowWidth, (wxCoord) y);
+		mGridPoints[count++] = wxPoint(0, ly);
+		mGridPoints[count++] = wxPoint(mShowWidth, ly);
+		ly += (wxInt32) mScale;
 	}
 }
 
 void EditPanel::DrawGrid( wxDC& dc )
 {
-	if (mScale < 2.0f)
+	if (mPointsNumber == 0)
 	{
-		// ничего хорошего не нарисуется, один хрен
 		return;
 	}
-	wxLogMessage( "drawgrid");
+	wxLogMessage( wxString::Format("drawgrid: points %d", mPointsNumber ) );
 	//dc.DrawLines( mPointsNumber, mGridPoints, mPosX, mPosY );
+	dc.SetPen( *wxWHITE_PEN );
 	for (wxInt32 i = 0; i < mPointsNumber; )
 	{
 		dc.DrawLine( mGridPoints[i++], mGridPoints[i++] );

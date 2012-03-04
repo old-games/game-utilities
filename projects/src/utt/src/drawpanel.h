@@ -39,6 +39,7 @@ public:
 
 protected:
 
+	virtual void OnMouseEvent( wxMouseEvent &event );
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
 	virtual void Render(wxDC& dc);

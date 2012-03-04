@@ -10,6 +10,8 @@
 #include "pch.h"
 #include "drawpanel.h"
 
+#define SCALE_STEP	0.25f
+
 DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 	wxScrolledWindow( parent, id ),
 	mAlign( utdNone ),
@@ -19,7 +21,7 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 	mShowHeight( 0 ),
 	mPosX( 0 ),
 	mPosY( 0 ),
-	mScale( 3.0f ),
+	mScale( 1.0f ),
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
 	mBitmap( NULL ),
@@ -28,6 +30,7 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 {
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
+	this->Bind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseEvent, this, id );
 	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this, id );
 	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this, id );
 }
@@ -36,6 +39,7 @@ DrawPanel::~DrawPanel(void)
 {
 	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
+	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseEvent, this, this->GetId() );
 	DestroyBitmap();
 }
 
@@ -130,7 +134,7 @@ inline void DrawPanel::CalculateScrollBars()
 	this->GetClientSize( &clw, &clh );
 	wxInt32 x = GetScrollPos(wxHORIZONTAL);
 	wxInt32 y = GetScrollPos(wxVERTICAL);
-	const wxInt32 unitSize = 2;
+	const wxInt32 unitSize = 1;
 	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y);
 }
 
@@ -226,4 +230,27 @@ void DrawPanel::OnSize(wxSizeEvent& event)
 		return;
 	}
 	SetShowParams();
+}
+
+void DrawPanel::OnMouseEvent( wxMouseEvent &event )
+{
+	if ( !event.ControlDown() )
+	{
+		event.Skip();
+		return;
+	}
+	int delta = event.GetWheelRotation();
+	wxLogMessage( wxString::Format( "%d", delta ) );
+	if ( delta == 0 )
+	{
+		return;
+	}
+	wxFloat32 inc = delta < 0 ? -SCALE_STEP : SCALE_STEP;
+	if (mScale + inc < SCALE_STEP)
+	{
+		return;
+	}
+	SetScale( mScale + inc );
+	SetShowParams();
+	PaintNow();
 }

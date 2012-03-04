@@ -24,9 +24,9 @@ MainFrameImpl::MainFrameImpl(void):
 	wxImage::AddHandler(new wxPNGHandler);
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
 	// test
-	/*wxBitmap* bmp = new wxBitmap();
-	bmp->LoadFile("D:/microsoft.png", wxBITMAP_TYPE_PNG);
-	mEditWindow.SetBitmap( bmp );*/
+	wxBitmap* bmp = new wxBitmap();
+	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
+	mEditWindow.SetBitmap( bmp );
 }
 
 MainFrameImpl::~MainFrameImpl(void)
