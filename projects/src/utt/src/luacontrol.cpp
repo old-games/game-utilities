@@ -11,6 +11,7 @@
 #include "luacontrol.h"
 
 static OOLUA::Script* gLuaState = NULL;		
+static bool gRebootRequest = false;
 
 OOLUA::Script& Lua::Get()
 {
@@ -19,6 +20,11 @@ OOLUA::Script& Lua::Get()
 
 bool Lua::Init()
 {
+	if (gRebootRequest)
+	{
+		wxLogMessage("Reboot called but Lua::Done() was not called yet.");
+		return false;
+	}
 	if ( gLuaState != NULL )
 	{
 		wxLogMessage("Lua::Done() was not called before Lua::Init()");
@@ -38,6 +44,17 @@ void Lua::Done()
     wxLogMessage( "Closing Lua...\n" );
 	delete gLuaState;	
     gLuaState = NULL;
+	gRebootRequest = false;
+}
+
+void Lua::SetRebootFlag()
+{
+	gRebootRequest = true;
+}
+
+bool Lua::GetRebootFlag()
+{
+	return gRebootRequest;
 }
 
 bool Lua::IsOk()
@@ -57,22 +74,4 @@ void Lua::ShowLastError( )
 	}
 }
 
-
-
-///
-/// Экспорт класса FILE в Lua
-///
-//EXPORT_OOLUA_NO_FUNCTIONS(FILE)
-
-///
-/// Экспорт класса Objects::BaseObject в Lua
-///
-//EXPORT_OOLUA_FUNCTIONS_3_NON_CONST(Objects::BaseObject, Update, SaveState, LoadState)
-//EXPORT_OOLUA_FUNCTIONS_0_CONST(Objects::BaseObject)
-
-///
-/// Экспорт интерфейса Objects::IDrawable в Lua
-///
-//EXPORT_OOLUA_FUNCTIONS_1_NON_CONST(Objects::IDrawable, Draw)
-//EXPORT_OOLUA_FUNCTIONS_0_CONST(Objects::IDrawable)
 

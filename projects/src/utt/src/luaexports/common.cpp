@@ -14,8 +14,7 @@
 
 static int reboot( lua_State* )
 {
-	Lua::Done();
-	Lua::Init();
+	Lua::SetRebootFlag();
 	return 0;
 }
 

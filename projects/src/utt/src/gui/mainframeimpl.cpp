@@ -22,6 +22,7 @@ MainFrameImpl::MainFrameImpl(void):
 	m_mgr.AddPane(&mEditWindow, wxALL, "Image editor");
 	m_mgr.Update();
 	wxImage::AddHandler(new wxPNGHandler);
+	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
 	// test
 	/*wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/microsoft.png", wxBITMAP_TYPE_PNG);
@@ -30,6 +31,16 @@ MainFrameImpl::MainFrameImpl(void):
 
 MainFrameImpl::~MainFrameImpl(void)
 {
+	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
+}
+
+void MainFrameImpl::OnIdle( wxIdleEvent& )
+{
+	if (Lua::GetRebootFlag())
+	{
+		Lua::Done();
+		Lua::Init();
+	}
 }
 
 void MainFrameImpl::Init()

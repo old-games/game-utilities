@@ -29,7 +29,8 @@ private:
 
 	virtual void OnClose( wxCloseEvent& event );
 	virtual void OnMenuSelect( wxCommandEvent& event );
-	
+	void OnIdle( wxIdleEvent& );
+		
 	void DoFileOpen();
 	void DoSelectModule();
 	

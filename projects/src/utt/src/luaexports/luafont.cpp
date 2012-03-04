@@ -17,7 +17,7 @@ void Lua::FontRegister()
 }
 
 // 
-//	Экспорт класса RGBA
+//	Р­РєСЃРїРѕСЂС‚ РєР»Р°СЃСЃР° RGBA
 //
 EXPORT_OOLUA_FUNCTIONS_4_NON_CONST(RGBA,
 								   set_R,
@@ -32,7 +32,7 @@ EXPORT_OOLUA_FUNCTIONS_4_CONST(RGBA,
 							   get_A)
 
 ///
-/// Экспорт класса SymbolInfo
+/// Р­РєСЃРїРѕСЂС‚ РєР»Р°СЃСЃР° SymbolInfo
 ///
 EXPORT_OOLUA_FUNCTIONS_2_NON_CONST( SymbolInfo, GetPixel, SetPixel )
 EXPORT_OOLUA_FUNCTIONS_0_CONST( SymbolInfo )
