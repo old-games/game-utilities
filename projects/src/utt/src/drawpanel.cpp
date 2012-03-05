@@ -21,7 +21,7 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 	mShowHeight( 0 ),
 	mPosX( 0 ),
 	mPosY( 0 ),
-	mScale( 1.0f ),
+	mScale( 25.0f ),
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
 	mBitmap( NULL ),
@@ -41,6 +41,11 @@ DrawPanel::~DrawPanel(void)
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
 	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseEvent, this, this->GetId() );
 	DestroyBitmap();
+}
+
+void DrawPanel::SetAlign( wxInt32 align )
+{
+	mAlign = align;
 }
 
 void DrawPanel::CreateBitmap( Pixel* buffer, wxInt32 width, wxInt32 height )
@@ -240,7 +245,6 @@ void DrawPanel::OnMouseEvent( wxMouseEvent &event )
 		return;
 	}
 	int delta = event.GetWheelRotation();
-	wxLogMessage( wxString::Format( "%d", delta ) );
 	if ( delta == 0 )
 	{
 		return;

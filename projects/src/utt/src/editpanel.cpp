@@ -10,23 +10,46 @@
 #include "pch.h"
 #include "editpanel.h"
 
-#define GRID_EDGE	10.0f		// the value after the grid will be shown
+#define GRID_EDGE	6.0f		// the value after the grid will be shown
 
 EditPanel::EditPanel(  wxWindow* parent ):
 	DrawPanel( parent ),
 	mDrawGrid( true ),
-	mGridColour( *wxWHITE ),
+	mGridColour( *wxGREEN ),
 	mGridPoints( NULL ),
-	mPointsNumber( 0 )
+	mPointsNumber( 0 ),
+	mGridPen( mGridColour ),
+	mGridLogic( wxXOR )
 {
+
 }
 
 EditPanel::~EditPanel(void)
 {
-	delete mGridPoints;
+	ClearGridPoints();
 }
 
-void EditPanel::Render(wxDC& dc)
+inline void EditPanel::ClearGridPoints()
+{
+	if ( mPointsNumber != 0 )
+	{
+		delete[] mGridPoints;
+		mPointsNumber = 0;
+	}
+}
+
+void EditPanel::SetGridColour(const wxColour& color)
+{
+	mGridColour = color;
+	mGridPen.SetColour( mGridColour );
+}
+
+void EditPanel::SetGridLogic(wxInt32 logic)
+{
+	mGridLogic = logic;
+}
+
+/* virtual */ void EditPanel::Render(wxDC& dc)
 {
 	if (mBitmap == NULL)
 	{
@@ -39,41 +62,65 @@ void EditPanel::Render(wxDC& dc)
 	}
 }
 
-void EditPanel::SetShowParams()
+/* virtual */ void EditPanel::SetShowParams()
 {
 	DrawPanel::SetShowParams();
-	wxLogMessage( "recalcgrid");
-	if ( mPointsNumber != 0 )
-	{
-		delete[] mGridPoints;
-		mPointsNumber = 0;
-	}
+	ClearGridPoints();
 	if (mScale < GRID_EDGE)
 	{
 		// ничего хорошего не нарисуется, один хрен
 		return;
 	}
 	wxSize bounds = this->GetClientSize();
-	wxCoord width = (wxFloat32) bounds.GetWidth() / mScale;
-	wxCoord height = (wxFloat32) bounds.GetHeight() / mScale;
-	mPointsNumber = ( (width + 1) * (height + 1) ) * 2;
+	bool correctX = false;
+	bool correctY = false;
+	if (bounds.GetWidth() > mShowWidth)
+	{
+		bounds.SetWidth( mShowWidth );
+		correctX = true;
+	}
+	if (bounds.GetHeight() > mShowHeight)
+	{
+		bounds.SetHeight( mShowHeight );
+		correctY = true;
+	}
+	wxFloat32 fscale = floor(mScale);
+	wxFloat32 cscale = ceil(mScale);
+	wxCoord gridWidth = bounds.GetWidth();
+	wxCoord gridHeight = bounds.GetHeight();
+	wxCoord width = 1 + ceil( (wxFloat32) gridWidth / mScale );
+	wxCoord height = 1 + ceil( (wxFloat32) gridHeight / mScale );
+	if (width < 2 || height < 2)
+	{
+		return;
+	}
+	mPointsNumber = (width + height) * 2;
 	mGridPoints = new wxPoint[mPointsNumber];
-	wxFloat32 xstep = 0;
-	wxFloat32 ystep = 0;
 	wxInt32 count = 0;
-	wxInt32 lx = 0, ly = 0;
+	wxFloat32 lx = 0, ly = 0;
+	wxInt32 startX = 0, startY = 0;
+	bounds = this->GetClientSize();
+	if (correctX)
+	{
+		startX = mPosX + mScale; // ( bounds.GetWidth() / 2 - mShowWidth / 2 ) + mScale;
+		lx += startX;
+	}
+	if (correctY)
+	{
+		startY = mPosY + mScale; // ( bounds.GetHeight() / 2 - mShowHeight / 2 ) + mScale;
+		ly += startY;
+	}
 	for (wxCoord y = 0; y < height; ++y)
 	{
-		lx = 0;
-		for (wxCoord x = 0; x < width; ++x)
-		{
-			mGridPoints[count++] = wxPoint(lx, 0);
-			mGridPoints[count++] = wxPoint(lx, mShowHeight);
-			lx += (wxInt32) mScale;
-		}
-		mGridPoints[count++] = wxPoint(0, ly);
-		mGridPoints[count++] = wxPoint(mShowWidth, ly);
-		ly += (wxInt32) mScale;
+		mGridPoints[count++] = wxPoint(startX, ly);
+		mGridPoints[count++] = wxPoint(startX + gridWidth, ly);
+		ly += mScale;
+	}
+	for (wxCoord x = 0; x < width; ++x)
+	{
+		mGridPoints[count++] = wxPoint(lx, startY);
+		mGridPoints[count++] = wxPoint(lx, startY + gridHeight);
+		lx += mScale;
 	}
 }
 
@@ -83,11 +130,19 @@ void EditPanel::DrawGrid( wxDC& dc )
 	{
 		return;
 	}
-	wxLogMessage( wxString::Format("drawgrid: points %d", mPointsNumber ) );
-	//dc.DrawLines( mPointsNumber, mGridPoints, mPosX, mPosY );
-	dc.SetPen( *wxWHITE_PEN );
+	dc.SetPen( mGridPen );
+	dc.SetLogicalFunction( (wxRasterOperationMode) mGridLogic );
+	wxInt32 horPos = this->GetScrollPos( wxHORIZONTAL );
+	wxInt32 vertPos = this->GetScrollPos( wxVERTICAL );
+	wxFloat32 horFloat = (wxFloat32) horPos / mScale;
+	wxFloat32 vertFloat = (wxFloat32) vertPos / mScale;
+	wxInt32 horizCorr = ( (wxFloat32) horPos - ( ceil(horFloat) * mScale ) + mScale);
+	wxInt32 vertCorr = ( (wxFloat32) vertPos - ( ceil(vertFloat) * mScale ) + mScale); 
+	wxPoint corrPoint( horizCorr, vertCorr );
 	for (wxInt32 i = 0; i < mPointsNumber; )
 	{
-		dc.DrawLine( mGridPoints[i++], mGridPoints[i++] );
+		wxPoint& first = mGridPoints[i++];
+		wxPoint& second = mGridPoints[i++];
+		dc.DrawLine( first - corrPoint, second - corrPoint );
 	}
 }

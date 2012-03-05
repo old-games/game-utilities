@@ -36,6 +36,7 @@ public:
 	void CreateBitmap(Pixel* buffer, wxInt32 width, wxInt32 height);
 	void SetBuffer( Pixel* buffer );
 	void SetScale( wxFloat32 scale );
+	void SetAlign( wxInt32 align );
 
 protected:
 

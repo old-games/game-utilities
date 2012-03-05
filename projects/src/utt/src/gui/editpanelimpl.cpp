@@ -15,6 +15,7 @@ EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 	mEditPanel( this )
 {
 	mDrawHolder->Add( &mEditPanel, 1, wxEXPAND, 5 );
+	mEditPanel.SetAlign( utdHCenter | utdVCenter );
 }
 
 EditPanelImpl::~EditPanelImpl(void)

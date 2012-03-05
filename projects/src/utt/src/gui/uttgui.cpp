@@ -466,7 +466,35 @@ EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	fgSizer6->Add( mDrawHolder, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer10;
-	sbSizer10 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Actions:") ), wxVERTICAL );
+	sbSizer10 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxEmptyString ), wxVERTICAL );
+	
+	wxGridSizer* gSizer8;
+	gSizer8 = new wxGridSizer( 1, 1, 0, 0 );
+	
+	wxGridSizer* gSizer9;
+	gSizer9 = new wxGridSizer( 1, 4, 0, 0 );
+	
+	mGridCheck = new wxCheckBox( this, wxID_GRID_CHECK, wxT("Enable grid"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer9->Add( mGridCheck, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	m_staticText12 = new wxStaticText( this, wxID_ANY, wxT("Gridmode:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText12->Wrap( -1 );
+	gSizer9->Add( m_staticText12, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
+	
+	wxString mGridModeChoiceChoices[] = { wxT("Copy"), wxT("Xor") };
+	int mGridModeChoiceNChoices = sizeof( mGridModeChoiceChoices ) / sizeof( wxString );
+	mGridModeChoice = new wxChoice( this, wxID_GRID_MODE, wxDefaultPosition, wxDefaultSize, mGridModeChoiceNChoices, mGridModeChoiceChoices, 0 );
+	mGridModeChoice->SetSelection( 0 );
+	gSizer9->Add( mGridModeChoice, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	mGetGridColour = new wxButton( this, wxID_GRIDCOL_BTN, wxT("Grid colour..."), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer9->Add( mGetGridColour, 0, wxALL, 5 );
+	
+	
+	gSizer8->Add( gSizer9, 1, wxEXPAND, 5 );
+	
+	
+	sbSizer10->Add( gSizer8, 1, wxEXPAND, 5 );
 	
 	
 	fgSizer6->Add( sbSizer10, 1, wxEXPAND, 5 );
@@ -477,8 +505,18 @@ EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	
 	this->SetSizer( gSizer7 );
 	this->Layout();
+	
+	// Connect Events
+	mGridCheck->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( EditPanelGui::OnCheck ), NULL, this );
+	mGridModeChoice->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EditPanelGui::OnChoice ), NULL, this );
+	mGetGridColour->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( EditPanelGui::OnButtonClick ), NULL, this );
 }
 
 EditPanelGui::~EditPanelGui()
 {
+	// Disconnect Events
+	mGridCheck->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( EditPanelGui::OnCheck ), NULL, this );
+	mGridModeChoice->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EditPanelGui::OnChoice ), NULL, this );
+	mGetGridColour->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( EditPanelGui::OnButtonClick ), NULL, this );
+	
 }

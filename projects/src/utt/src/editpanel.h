@@ -18,6 +18,8 @@ public:
 
 	EditPanel( wxWindow* parent );
 	virtual ~EditPanel(void); 
+	void SetGridColour(const wxColour& color);
+	void SetGridLogic(wxInt32 logic);
 
 protected:
 
@@ -26,11 +28,15 @@ protected:
 	virtual void SetShowParams();
 	
 private:
-
+	
+	void ClearGridPoints();
+	
 	bool		mDrawGrid;
 	wxColour	mGridColour;
 	wxPoint*	mGridPoints;
 	wxInt32		mPointsNumber;
+	wxPen		mGridPen;
+	wxInt32		mGridLogic;
 
 };
 

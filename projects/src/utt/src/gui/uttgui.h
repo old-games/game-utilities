@@ -34,6 +34,8 @@
 #include <wx/textctrl.h>
 #include <wx/grid.h>
 #include <wx/combobox.h>
+#include <wx/checkbox.h>
+#include <wx/choice.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -63,6 +65,9 @@
 #define wxID_LOG_TXT 1023
 #define wxID_SELECT_MODULE_ID 1024
 #define wxID_EDIT_PANEL_ID 1025
+#define wxID_GRID_CHECK 1026
+#define wxID_GRID_MODE 1027
+#define wxID_GRIDCOL_BTN 1028
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -238,10 +243,20 @@ class EditPanelGui : public wxPanel
 	
 	protected:
 		wxStaticBoxSizer* mDrawHolder;
+		wxCheckBox* mGridCheck;
+		wxStaticText* m_staticText12;
+		wxChoice* mGridModeChoice;
+		wxButton* mGetGridColour;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnCheck( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnChoice( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		
-		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
+		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,396 ), long style = wxTAB_TRAVERSAL ); 
 		~EditPanelGui();
 	
 };
