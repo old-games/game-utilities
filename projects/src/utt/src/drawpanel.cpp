@@ -199,11 +199,11 @@ inline void DrawPanel::SetShowParams()
 			mShowWidth = clw;
 		}
 		
-		if ( (mAlign & utdHCenter) != 0 )
+		if ( (mAlign & utdHCenter) != 0 && clw > mShowWidth )
 		{
 			mPosX = halfWidth - mShowWidth / 2;
 		}
-		if ( (mAlign & utdVCenter) != 0 )
+		if ( (mAlign & utdVCenter) != 0 && clh > mShowHeight )
 		{
 			mPosY = halfHeight - mShowHeight / 2;
 		}

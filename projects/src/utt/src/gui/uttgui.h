@@ -249,9 +249,7 @@ class EditPanelGui : public wxPanel
 		wxButton* mGetGridColour;
 		
 		// Virtual event handlers, overide them in your derived class
-		virtual void OnCheck( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnChoice( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnCommandEvent( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:

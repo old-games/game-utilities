@@ -20,7 +20,16 @@ public:
 	~EditPanelImpl(void); 
 
 	void SetBitmap( wxBitmap* bitmap );
+
+protected:
+
+	virtual void OnCommandEvent( wxCommandEvent& event );
+
 private:
+
+	void SetGridEnabled();
+	void SetGridMode();
+	void SetGridColour();
 
 	EditPanel	mEditPanel;
 };

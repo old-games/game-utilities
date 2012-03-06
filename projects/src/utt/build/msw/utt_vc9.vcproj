@@ -293,6 +293,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\selectrect.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\selectrect.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\utt.cpp"
 				>
 				<FileConfiguration

@@ -30,6 +30,8 @@
 #include <wx/scrolwin.h>
 #include <wx/dcbuffer.h>
 #include <wx/log.h>
+#include <wx/colordlg.h>
+#include <wx/rawbmp.h>
 
 // standard heades
 #include <iostream>
