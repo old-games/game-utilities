@@ -73,6 +73,9 @@
     <ClCompile Include="..\..\src\gui\editpanelimpl.cpp">
       <Filter>gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\selectrect.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\drawpanel.h">
@@ -128,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\editpanelimpl.h">
       <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\selectrect.h">
+      <Filter>main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

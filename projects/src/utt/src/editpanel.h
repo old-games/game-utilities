@@ -20,7 +20,7 @@ friend class EditPanelImpl;
 
 public:
 
-	EditPanel( wxWindow* parent );
+	EditPanel( wxWindow* parent, wxInt32 id = wxID_ANY  );
 	virtual ~EditPanel(void); 
 	
 	void SetGridColour(const wxColour& color);

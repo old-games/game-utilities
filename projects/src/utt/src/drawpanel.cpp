@@ -239,6 +239,8 @@ void DrawPanel::OnSize(wxSizeEvent& event)
 
 void DrawPanel::OnMouseEvent( wxMouseEvent &event )
 {
+
+	wxLogMessage( wxString::Format( " %d ", event.ControlDown() ) );
 	if ( !event.ControlDown() )
 	{
 		event.Skip();

@@ -133,6 +133,7 @@
     <ClCompile Include="..\..\src\gui\editpanelimpl.cpp" />
     <ClCompile Include="..\..\src\luaconsole.cpp" />
     <ClCompile Include="..\..\src\luacontrol.cpp" />
+    <ClCompile Include="..\..\src\selectrect.cpp" />
     <ClCompile Include="..\..\src\utt.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugLuaJIT|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -160,6 +161,7 @@
     <ClInclude Include="..\..\src\luaconsole.h" />
     <ClInclude Include="..\..\src\luacontrol.h" />
     <ClInclude Include="..\..\src\pch.h" />
+    <ClInclude Include="..\..\src\selectrect.h" />
     <ClInclude Include="..\..\src\utt.h" />
     <ClInclude Include="..\..\src\uttypes.h" />
     <ClInclude Include="..\..\src\gui\logwindowimpl.h" />

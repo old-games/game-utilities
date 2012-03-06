@@ -12,8 +12,8 @@
 
 #define GRID_EDGE	6.0f		// the value after the grid will be shown
 
-EditPanel::EditPanel(  wxWindow* parent ):
-	DrawPanel( parent ),
+EditPanel::EditPanel(  wxWindow* parent, wxInt32 id ):
+	DrawPanel( parent, id ),
 	mDrawGrid( true ),
 	mGridColour( *wxGREEN ),
 	mGridPoints( NULL ),
