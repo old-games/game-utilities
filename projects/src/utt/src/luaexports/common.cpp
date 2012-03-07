@@ -20,8 +20,8 @@ static int reboot( lua_State* )
 
 static int writeToStdCout(lua_State *L)
 {
-	wxInt32 n = lua_gettop(L);
-	for (wxInt32 i = 1; i <= n; ++i)
+	int n = lua_gettop(L);
+	for (int i = 1; i <= n; ++i)
 	{
 		std::cout << lua_tostring(L, i);
 	}
@@ -30,8 +30,8 @@ static int writeToStdCout(lua_State *L)
 
 static int writeToLog(lua_State *L)
 {
-	wxInt32 n = lua_gettop(L);
-	for (wxInt32 i = 1; i <= n; ++i)
+	int n = lua_gettop(L);
+	for (int i = 1; i <= n; ++i)
 	{
 		wxLogMessage( lua_tostring(L, i) );
 	}

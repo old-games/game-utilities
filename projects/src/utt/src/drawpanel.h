@@ -29,7 +29,7 @@ class DrawPanel :
 {
 public:
 
-	DrawPanel( wxWindow* parent, wxInt32 id = wxID_ANY );
+	DrawPanel( wxWindow* parent,  wxWindowID id = wxID_ANY );
 	virtual ~DrawPanel(void);
 
 	void SetBitmap( wxBitmap* bitmap );
@@ -40,7 +40,12 @@ public:
 
 protected:
 
-	virtual void OnMouseEvent( wxMouseEvent &event );
+	virtual void OnMouseWheel( wxMouseEvent &event );
+	virtual void OnBtnDown( wxMouseEvent& event );
+	virtual void OnMotion( wxMouseEvent& event );
+	virtual void OnBtnUp( wxMouseEvent& event );
+	
+	virtual void OnFocus(wxFocusEvent& event);
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
 	virtual void Render(wxDC& dc);

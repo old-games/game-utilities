@@ -12,43 +12,43 @@
 
 #define GRID_EDGE	6.0f		// the value after the grid will be shown
 
-EditPanel::EditPanel(  wxWindow* parent, wxInt32 id ):
+EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	DrawPanel( parent, id ),
+	SelectionRectangle( this ),
 	mDrawGrid( true ),
 	mGridColour( *wxGREEN ),
 	mGridPoints( NULL ),
 	mPointsNumber( 0 ),
 	mGridPen( mGridColour ),
 	mGridLogic( wxXOR ),
-	mSelection( this ),
 	mDrawing( false ),
 	mCurrentColour( *wxBLACK ),
 	mPreviousPoint( -1, -1)
 {
-	this->Bind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
-	this->Bind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
-	this->Bind( wxEVT_MOTION, &EditPanel::OnMotion, this );
-	this->Bind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
-	this->Bind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
-	this->Bind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
-	this->Bind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
+	//this->Bind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
+	//this->Bind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
+	//this->Bind( wxEVT_MOTION, &EditPanel::OnMotion, this );
+	//this->Bind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
+	//this->Bind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
+	//this->Bind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
+	//this->Bind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
 }
 
 EditPanel::~EditPanel(void)
 {
-	this->Unbind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
-	this->Unbind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
-	this->Unbind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
-	this->Unbind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
-	this->Unbind( wxEVT_MOTION, &EditPanel::OnMotion, this );
-	this->Unbind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
-	this->Unbind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
+	//this->Unbind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
+	//this->Unbind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
+	//this->Unbind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
+	//this->Unbind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
+	//this->Unbind( wxEVT_MOTION, &EditPanel::OnMotion, this );
+	//this->Unbind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
+	//this->Unbind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
 	ClearGridPoints();
 }
 
-void EditPanel::OnFocus( wxFocusEvent& )
+/* virtual */ void EditPanel::OnFocus( wxFocusEvent& )
 {
-	PaintNow();
+	this->PaintNow();
 }
 
 inline void EditPanel::ClearGridPoints()
@@ -94,13 +94,13 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		dc.SetPen( *wxGREY_PEN );
 	}
 	dc.DrawRectangle( mPosX - x, mPosY - y, mShowWidth, mShowWidth );
-	mSelection.Render( dc );
+	RenderSelection( dc );
 }
 
 /* virtual */ void EditPanel::SetShowParams()
 {
 	DrawPanel::SetShowParams();
-	mSelection.SetWorkZone( wxRect(mPosX, mPosY, mShowWidth, mShowHeight), mScale );
+	SetWorkZone( wxRect(mPosX, mPosY, mShowWidth, mShowHeight), mScale );
 	ClearGridPoints();
 	
 	if (mScale < GRID_EDGE)
@@ -135,9 +135,9 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 	
 	mPointsNumber = (width + height) * 2;
 	mGridPoints = new wxPoint[mPointsNumber];
-	wxInt32 count = 0;
+	int count = 0;
 	wxFloat32 lx = 0, ly = 0;
-	wxInt32 startX = 0, startY = 0;
+	wxCoord startX = 0, startY = 0;
 	bounds = this->GetClientSize();
 	
 	if (correctX)
@@ -160,7 +160,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		gridHeight += ceil(mScale);
 	}
 	
-	wxInt32 endX = startX + gridWidth, endY = startY + gridHeight;
+	wxCoord endX = startX + gridWidth, endY = startY + gridHeight;
 	
 	for (wxCoord y = 0; y < height; ++y)
 	{
@@ -209,35 +209,42 @@ void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )
 	PaintNow();
 }
 
-void EditPanel::OnBtnDown( wxMouseEvent& event )
+/* virtual */ void EditPanel::OnBtnDown( wxMouseEvent& event )
 {
+	if (event.LeftDown())
+	{
+		OnSelectionLeftDown( event );
+	}
+
 	if ( event.ControlDown() || event.ShiftDown() || event.AltDown() )
 	{
 		event.Skip();
 		return;
 	}
 	
-	wxPoint pos = mSelection.MousePosition2PointCoords( event.GetPosition() );
-	if (pos.x == -1 || pos.y == -1 || mSelection.PointInZone( pos ))
+	wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
+	if (pos.x == -1 || pos.y == -1 || PointInZone( pos ) || !this->HasFocus() )
 	{
 		event.Skip();
 		return;
 	}
-	mSelection.ResetZone();
+	ResetZone();
 	mCurrentColour = event.LeftIsDown() ? *wxWHITE : *wxBLACK;
 	mPreviousPoint = pos;
 	mDrawing = true;
 	PlacePixel( pos, mCurrentColour );
+	event.Skip();
 }
 
-void EditPanel::OnMotion( wxMouseEvent& event )
+/* virtual */ void EditPanel::OnMotion( wxMouseEvent& event )
 {
+	OnSelectionMotion( event );
 	if (!mDrawing)
 	{
 		event.Skip();
 		return;
 	}
-	wxPoint pos = mSelection.MousePosition2PointCoords( event.GetPosition() );
+	wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
 	if (pos == mPreviousPoint || pos.x == -1 || pos.y == -1)
 	{
 		event.Skip();
@@ -245,10 +252,15 @@ void EditPanel::OnMotion( wxMouseEvent& event )
 	}
 	mPreviousPoint = pos;
 	PlacePixel( pos, mCurrentColour );
+	event.Skip();
 }
 
-void EditPanel::OnBtnUp( wxMouseEvent& event )
+/* virtual */ void EditPanel::OnBtnUp( wxMouseEvent& event )
 {
+	if (event.LeftUp())
+	{
+		OnSelectionLeftUp( event );
+	}
 	mDrawing = false;
 	mPreviousPoint.x = -1;
 	mPreviousPoint.y = -1;

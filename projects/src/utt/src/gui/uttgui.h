@@ -68,6 +68,7 @@
 #define wxID_GRID_CHECK 1026
 #define wxID_GRID_MODE 1027
 #define wxID_GRIDCOL_BTN 1028
+#define wxID_PAL_WINDOW_ID 1029
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -256,6 +257,22 @@ class EditPanelGui : public wxPanel
 		
 		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,396 ), long style = wxTAB_TRAVERSAL ); 
 		~EditPanelGui();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class PaletteWindowGui
+///////////////////////////////////////////////////////////////////////////////
+class PaletteWindowGui : public wxPanel 
+{
+	private:
+	
+	protected:
+	
+	public:
+		
+		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
+		~PaletteWindowGui();
 	
 };
 

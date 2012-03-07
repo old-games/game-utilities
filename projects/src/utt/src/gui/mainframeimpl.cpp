@@ -25,8 +25,8 @@ MainFrameImpl::MainFrameImpl(void):
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
 	// test
 	wxBitmap* bmp = new wxBitmap();
-	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
-	//bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
+	//bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
+	bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
 	mEditWindow.SetBitmap( bmp );
 }
 

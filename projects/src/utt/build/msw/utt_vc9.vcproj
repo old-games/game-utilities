@@ -289,6 +289,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\palettepanel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\palettepanel.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\pch.h"
 				>
 			</File>
@@ -382,6 +390,14 @@
 			</File>
 			<File
 				RelativePath="..\..\src\gui\mainframeimpl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\palwindowimpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\palwindowimpl.h"
 				>
 			</File>
 			<File

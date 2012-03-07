@@ -13,14 +13,14 @@
 #include "selectrect.h"
 
 class EditPanel :
-	public DrawPanel
+	public DrawPanel, public SelectionRectangle
 {
 
 friend class EditPanelImpl;
 
 public:
 
-	EditPanel( wxWindow* parent, wxInt32 id = wxID_ANY  );
+	EditPanel( wxWindow* parent,  wxWindowID id = wxID_ANY  );
 	virtual ~EditPanel(void); 
 	
 	void SetGridColour(const wxColour& color);
@@ -41,6 +41,7 @@ protected:
 	virtual void OnBtnDown( wxMouseEvent& event );
 	virtual void OnMotion( wxMouseEvent& event );
 	virtual void OnBtnUp( wxMouseEvent& event );
+	virtual void OnFocus(wxFocusEvent& );
 
 	// inherited functions	
 	virtual void Render(wxDC& dc);
@@ -51,7 +52,6 @@ protected:
 private:
 	
 	void ClearGridPoints();
-	void OnFocus(wxFocusEvent& );
 	void PlacePixel( const wxPoint& pos, const wxColour& color );
 	
 	bool		mDrawGrid;
@@ -64,7 +64,6 @@ private:
 	wxColour	mCurrentColour;
 	wxPoint		mPreviousPoint;
 
-	SelectionRectangle	mSelection;
 };
 
 #endif

@@ -520,3 +520,11 @@ EditPanelGui::~EditPanelGui()
 	mGetGridColour->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( EditPanelGui::OnCommandEvent ), NULL, this );
 	
 }
+
+PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
+{
+}
+
+PaletteWindowGui::~PaletteWindowGui()
+{
+}

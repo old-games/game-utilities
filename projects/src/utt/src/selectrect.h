@@ -27,8 +27,8 @@ public:
 	// custom position of mouse to pixels coordinates
 	wxPoint MousePosition2PointCoords( const wxPoint& pos );
 	
-	void Render(wxDC& dc);
-	void PaintNow();
+	void RenderSelection(wxDC& dc);
+	void DrawSelection();
 	
 	bool IsZone()
 	{
@@ -47,9 +47,9 @@ public:
 	
 protected:
 	
-	virtual void OnLeftDown( wxMouseEvent& event );
-	virtual void OnMotion( wxMouseEvent& event );
-	virtual void OnLeftUp( wxMouseEvent& event );
+	virtual void OnSelectionLeftDown( wxMouseEvent& event );
+	virtual void OnSelectionMotion( wxMouseEvent& event );
+	virtual void OnSelectionLeftUp( wxMouseEvent& event );
 
 private:
 

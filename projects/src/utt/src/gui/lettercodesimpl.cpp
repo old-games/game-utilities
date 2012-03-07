@@ -95,7 +95,7 @@ void LetterCodesImpl::UpdateTable()
 			mCodesGrid->DeleteCols( 0, mCodesGrid->GetNumberCols() );
 		}
 		mCodesGrid->AppendCols( ColumnsInfo::ciNum );
-		for (wxInt32 i = 0; i < ColumnsInfo::ciNum; ++i)
+		for (int i = 0; i < ColumnsInfo::ciNum; ++i)
 		{
 			mCodesGrid->SetColLabelValue( i, ColumnsInfo::Name[i] );
 		}

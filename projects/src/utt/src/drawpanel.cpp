@@ -12,7 +12,7 @@
 
 #define SCALE_STEP	0.25f
 
-DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
+DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
 	wxScrolledWindow( parent, id ),
 	mAlign( utdNone ),
 	mXAspectRatio( 0.0f ),
@@ -30,16 +30,32 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxInt32 id ):
 {
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
-	this->Bind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseEvent, this, id );
+	this->Bind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this, id );
+	this->Bind( wxEVT_MOTION, &DrawPanel::OnMotion, this, id );
+	this->Bind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this, id );
+	this->Bind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this, id );
+	this->Bind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this, id );
+	this->Bind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this, id );
+	
 	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this, id );
 	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this, id );
+	this->Bind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this, id );
+	this->Bind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this, id );
 }
 
 DrawPanel::~DrawPanel(void)
 {
-	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
+	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this, this->GetId() );
+	this->Unbind( wxEVT_MOTION, &DrawPanel::OnMotion, this, this->GetId() );
+	this->Unbind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this, this->GetId() );
+	this->Unbind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this, this->GetId() );
+	this->Unbind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this, this->GetId() );
+	this->Unbind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this, this->GetId() );
+
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
-	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseEvent, this, this->GetId() );
+	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
+	this->Unbind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this, this->GetId() );
+	this->Unbind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this, this->GetId() );
 	DestroyBitmap();
 }
 
@@ -237,9 +253,8 @@ void DrawPanel::OnSize(wxSizeEvent& event)
 	SetShowParams();
 }
 
-void DrawPanel::OnMouseEvent( wxMouseEvent &event )
+void DrawPanel::OnMouseWheel( wxMouseEvent &event )
 {
-
 	wxLogMessage( wxString::Format( " %d ", event.ControlDown() ) );
 	if ( !event.ControlDown() )
 	{
@@ -259,4 +274,24 @@ void DrawPanel::OnMouseEvent( wxMouseEvent &event )
 	SetScale( mScale + inc );
 	SetShowParams();
 	PaintNow();
+}
+
+/* virtual */ void DrawPanel::OnBtnDown( wxMouseEvent& event )
+{
+	event.Skip();
+}
+
+/* virtual */ void DrawPanel::OnMotion( wxMouseEvent& event )
+{
+	event.Skip();
+}
+
+/* virtual */ void DrawPanel::OnBtnUp( wxMouseEvent& event )
+{
+	event.Skip();
+}
+
+/* virtual */ void DrawPanel::OnFocus(wxFocusEvent& event)
+{
+	event.Skip();
 }

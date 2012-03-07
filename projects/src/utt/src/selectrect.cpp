@@ -20,16 +20,16 @@ SelectionRectangle::SelectionRectangle(  wxScrolledWindow* parent ):
 	mEndPoint( -1, -1 ),
 	mCoordRect( 0, 0, 0, 0 )
 {
-	mParent->Bind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
-	mParent->Bind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
-	mParent->Bind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
+	//mParent->Bind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
+	//mParent->Bind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
+	//mParent->Bind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
 }
 
 SelectionRectangle::~SelectionRectangle(void)
 {
-	mParent->Unbind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
-	mParent->Unbind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
-	mParent->Unbind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
+	//mParent->Unbind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
+	//mParent->Unbind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
+	//mParent->Unbind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
 }
 
 void SelectionRectangle::SetWorkZone( const wxRect& rect, wxFloat32 pointSize )
@@ -86,7 +86,7 @@ inline void SelectionRectangle::Position2Coords( wxPoint& point )
 }
 
 
-/* virtual */ void SelectionRectangle::OnLeftDown( wxMouseEvent& event )
+/* virtual */ void SelectionRectangle::OnSelectionLeftDown( wxMouseEvent& event )
 {
 	wxPoint pos = this->MousePosition2PointCoords( event.GetPosition() );
 	bool coorValid = pos.x != -1 && pos.y != -1;
@@ -111,27 +111,27 @@ inline void SelectionRectangle::Position2Coords( wxPoint& point )
 	event.Skip();
 }
 
-/* virtual */ void SelectionRectangle::OnMotion( wxMouseEvent& event )
+/* virtual */ void SelectionRectangle::OnSelectionMotion( wxMouseEvent& event )
 {
 	if (mMouseDrag)
 	{
 		wxPoint point = MousePosition2PointCoords( event.GetPosition() );
 		if (point.x != -1 && point.y != -1)
 		{
-			PaintNow();
+			DrawSelection();
 			mEndPoint = event.GetPosition();
 			UpdateCoords();
-			PaintNow();
+			DrawSelection();
 		}
 	}
 	event.Skip();
 }
 
-/* virtual */ void SelectionRectangle::OnLeftUp( wxMouseEvent& event )
+/* virtual */ void SelectionRectangle::OnSelectionLeftUp( wxMouseEvent& event )
 {
 	if (mMouseDrag)
 	{
-		PaintNow();
+		DrawSelection();
 		mEndPoint = event.GetPosition();
 		UpdateCoords();
 		mMouseDrag = false;
@@ -140,13 +140,13 @@ inline void SelectionRectangle::Position2Coords( wxPoint& point )
 	event.Skip();
 }
 
-void SelectionRectangle::PaintNow()
+void SelectionRectangle::DrawSelection()
 {
 	wxClientDC dc(mParent);
-	Render(dc);
+	RenderSelection(dc);
 }
 
-void SelectionRectangle::Render(wxDC& dc)
+void SelectionRectangle::RenderSelection(wxDC& dc)
 {
 	int x, y;
 	mParent->GetViewStart( &x, &y );
