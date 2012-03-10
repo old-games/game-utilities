@@ -15,18 +15,20 @@ MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
 	mFontEditor( this ),
 	mLogWindow( this ),
-	mEditWindow( this )
+	mEditWindow( this ),
+	mPalWindow( this )
 {
 	m_mgr.AddPane(&mFontEditor, wxDOWN, "Font editor");
 	m_mgr.AddPane(&mLogWindow, wxUP, "Log");
-	m_mgr.AddPane(&mEditWindow, wxALL, "Image editor");
+	m_mgr.AddPane(&mEditWindow, wxLEFT, "Image editor");
+	m_mgr.AddPane(&mPalWindow, wxRIGHT, "Palette window");
 	m_mgr.Update();
 	wxImage::AddHandler(new wxPNGHandler);
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
 	// test
 	wxBitmap* bmp = new wxBitmap();
-	//bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
-	bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
+	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
+	//bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
 	mEditWindow.SetBitmap( bmp );
 }
 

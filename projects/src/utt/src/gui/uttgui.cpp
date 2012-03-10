@@ -523,6 +523,40 @@ EditPanelGui::~EditPanelGui()
 
 PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
+	wxGridSizer* gSizer10;
+	gSizer10 = new wxGridSizer( 1, 1, 0, 0 );
+	
+	wxFlexGridSizer* fgSizer7;
+	fgSizer7 = new wxFlexGridSizer( 2, 1, 0, 0 );
+	fgSizer7->AddGrowableCol( 0 );
+	fgSizer7->AddGrowableRow( 0 );
+	fgSizer7->SetFlexibleDirection( wxBOTH );
+	fgSizer7->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	mPalHolder = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Available colours:") ), wxVERTICAL );
+	
+	
+	fgSizer7->Add( mPalHolder, 1, wxEXPAND, 5 );
+	
+	wxStaticBoxSizer* sbSizer12;
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Info:") ), wxHORIZONTAL );
+	
+	m_staticText13 = new wxStaticText( this, wxID_ANY, wxT("Palette type:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText13->Wrap( -1 );
+	sbSizer12->Add( m_staticText13, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	mPalType = new wxComboBox( this, wxID_PAL_CHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY ); 
+	sbSizer12->Add( mPalType, 0, wxALL, 5 );
+	
+	
+	fgSizer7->Add( sbSizer12, 1, wxEXPAND, 5 );
+	
+	
+	gSizer10->Add( fgSizer7, 1, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( gSizer10 );
+	this->Layout();
 }
 
 PaletteWindowGui::~PaletteWindowGui()

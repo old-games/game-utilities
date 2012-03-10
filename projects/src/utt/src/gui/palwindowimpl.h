@@ -10,6 +10,7 @@
 #define PALWDINWOIMPL_H_INCLUDED
 
 #include "uttgui.h"
+#include "palettepanel.h"
 
 class PaletteWindowImpl :
 	public PaletteWindowGui
@@ -20,6 +21,7 @@ public:
 
 private:
 
+	PalettePanel*	mPalPanel;
 };
 
 #endif

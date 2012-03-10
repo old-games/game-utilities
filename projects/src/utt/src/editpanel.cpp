@@ -16,6 +16,7 @@ EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	DrawPanel( parent, id ),
 	SelectionRectangle( this ),
 	mDrawGrid( true ),
+	mDrawFocus( true ),
 	mGridColour( *wxGREEN ),
 	mGridPoints( NULL ),
 	mPointsNumber( 0 ),
@@ -25,24 +26,10 @@ EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	mCurrentColour( *wxBLACK ),
 	mPreviousPoint( -1, -1)
 {
-	//this->Bind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
-	//this->Bind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
-	//this->Bind( wxEVT_MOTION, &EditPanel::OnMotion, this );
-	//this->Bind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
-	//this->Bind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
-	//this->Bind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
-	//this->Bind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
 }
 
 EditPanel::~EditPanel(void)
 {
-	//this->Unbind( wxEVT_RIGHT_UP, &EditPanel::OnBtnUp, this );
-	//this->Unbind( wxEVT_RIGHT_DOWN, &EditPanel::OnBtnDown, this );
-	//this->Unbind( wxEVT_LEFT_UP, &EditPanel::OnBtnUp, this );
-	//this->Unbind( wxEVT_LEFT_DOWN, &EditPanel::OnBtnDown, this );
-	//this->Unbind( wxEVT_MOTION, &EditPanel::OnMotion, this );
-	//this->Unbind( wxEVT_KILL_FOCUS, &EditPanel::OnFocus, this );
-	//this->Unbind( wxEVT_SET_FOCUS, &EditPanel::OnFocus, this );
 	ClearGridPoints();
 }
 
@@ -73,7 +60,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 
 /* virtual */ void EditPanel::Render(wxDC& dc)
 {
-	if (mBitmap == NULL)
+	if (!mBitmap || !mBitmap->IsOk())
 	{
 		return;
 	}
@@ -82,18 +69,23 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 	{
 		DrawGrid( dc );
 	}
-	int x, y;
-	this->GetViewStart( &x, &y );
-	dc.SetBrush( *wxTRANSPARENT_BRUSH );
-	if ( this->HasFocus() )
+	if (mDrawFocus)
 	{
-		dc.SetPen( *wxRED_PEN );
+		wxRect rect = this->GetClientRect();
+		if (rect.GetWidth() > mShowWidth)
+		{
+			rect.SetWidth( mShowWidth );
+		}
+		if (rect.GetHeight() > mShowHeight)
+		{
+			rect.SetHeight( mShowHeight );
+		}
+		dc.SetLogicalFunction(wxCOPY);
+		dc.SetBrush( *wxTRANSPARENT_BRUSH );
+		wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxDOT_DASH );
+		dc.SetPen( borderPen );
+		dc.DrawRectangle( mPosX, mPosY, rect.GetWidth(), rect.GetHeight() );
 	}
-	else
-	{
-		dc.SetPen( *wxGREY_PEN );
-	}
-	dc.DrawRectangle( mPosX - x, mPosY - y, mShowWidth, mShowWidth );
 	RenderSelection( dc );
 }
 
@@ -202,6 +194,13 @@ void EditPanel::DrawGrid( wxDC& dc )
 
 void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )
 {
+	if (mScale < 1.0f)
+	{
+		wxLogMessage( "Unable to edit image with such scale.");
+		mDrawing = false;
+		return;
+	}
+
 	wxMemoryDC temp_dc;
 	temp_dc.SelectObject(*mBitmap);
 	temp_dc.SetPen( wxPen(color) );

@@ -13,11 +13,11 @@
 static wxInt32 wxEditPanelId = wxID_HIGHEST + 1;
 
 EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
-	EditPanelGui( parent ),
-	mEditPanel( this, wxEditPanelId++ )
+	EditPanelGui( parent )
 {
-	mDrawHolder->Add( &mEditPanel, 1, wxEXPAND, 5 );
-	mEditPanel.SetAlign( utdHCenter | utdVCenter );
+	mEditPanel = new EditPanel( this, wxEditPanelId++ );
+	mDrawHolder->Add( mEditPanel, 1, wxEXPAND, 5 );
+	mEditPanel->SetAlign( utdHCenter | utdVCenter );
 	SetGridEnabled();
 	SetGridMode();
 }
@@ -28,7 +28,7 @@ EditPanelImpl::~EditPanelImpl(void)
 
 void EditPanelImpl::SetBitmap( wxBitmap* bitmap )
 {
-	mEditPanel.SetBitmap( bitmap );
+	mEditPanel->SetBitmap( bitmap );
 }
 
 /* virtual */ void EditPanelImpl::OnCommandEvent( wxCommandEvent& event ) 
@@ -51,12 +51,12 @@ void EditPanelImpl::SetBitmap( wxBitmap* bitmap )
 			wxLogError( wxString::Format("EditPanel: unknown event %d", event.GetId()) );
 			return;
 	}
-	mEditPanel.PaintNow();
+	mEditPanel->PaintNow();
 }
 
 void EditPanelImpl::SetGridEnabled()
 {
-	mEditPanel.SetGridEnabled( mGridCheck->IsChecked() );
+	mEditPanel->SetGridEnabled( mGridCheck->IsChecked() );
 }
 
 void EditPanelImpl::SetGridMode()
@@ -64,11 +64,11 @@ void EditPanelImpl::SetGridMode()
 	switch ( mGridModeChoice->GetSelection() )
 	{
 		case 0:
-			mEditPanel.SetGridLogic( wxCOPY );
+			mEditPanel->SetGridLogic( wxCOPY );
 		break;
 
 		case 1:
-			mEditPanel.SetGridLogic( wxXOR );
+			mEditPanel->SetGridLogic( wxXOR );
 		break;
 		
 		default:
@@ -80,7 +80,7 @@ void EditPanelImpl::SetGridColour()
 {
 	wxColourData data;
 	data.SetChooseFull(true);
-	data.SetColour( mEditPanel.GetGridColour() );
+	data.SetColour( mEditPanel->GetGridColour() );
 	for (int i = 0; i < 16; i++)
 	{
 		wxColour colour(i*16, i*16, i*16);
@@ -91,7 +91,7 @@ void EditPanelImpl::SetGridColour()
 	if (dialog.ShowModal() == wxID_OK)
 	{
 		wxColourData retData = dialog.GetColourData();
-		mEditPanel.SetGridColour( retData.GetColour() );
+		mEditPanel->SetGridColour( retData.GetColour() );
 	}
 }
 

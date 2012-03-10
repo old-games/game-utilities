@@ -31,7 +31,7 @@ private:
 	void SetGridMode();
 	void SetGridColour();
 
-	EditPanel	mEditPanel;
+	EditPanel*	mEditPanel;
 };
 
 #endif

@@ -36,6 +36,11 @@ public:
 		mDrawGrid = b;
 	}
 
+	void SetDrawFocus( bool b )
+	{
+		mDrawFocus = b;
+	}
+
 protected:
 
 	virtual void OnBtnDown( wxMouseEvent& event );
@@ -43,11 +48,10 @@ protected:
 	virtual void OnBtnUp( wxMouseEvent& event );
 	virtual void OnFocus(wxFocusEvent& );
 
-	// inherited functions	
 	virtual void Render(wxDC& dc);
-	void DrawGrid( wxDC& dc );
 	virtual void SetShowParams();
 
+	void DrawGrid( wxDC& dc );
 	
 private:
 	
@@ -55,6 +59,7 @@ private:
 	void PlacePixel( const wxPoint& pos, const wxColour& color );
 	
 	bool		mDrawGrid;
+	bool		mDrawFocus;
 	wxColour	mGridColour;
 	wxPoint*	mGridPoints;
 	wxInt32		mPointsNumber;

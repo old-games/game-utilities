@@ -69,6 +69,7 @@
 #define wxID_GRID_MODE 1027
 #define wxID_GRIDCOL_BTN 1028
 #define wxID_PAL_WINDOW_ID 1029
+#define wxID_PAL_CHOICE 1030
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -268,6 +269,9 @@ class PaletteWindowGui : public wxPanel
 	private:
 	
 	protected:
+		wxStaticBoxSizer* mPalHolder;
+		wxStaticText* m_staticText13;
+		wxComboBox* mPalType;
 	
 	public:
 		

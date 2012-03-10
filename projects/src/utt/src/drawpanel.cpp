@@ -124,7 +124,7 @@ void DrawPanel::SetScale( wxFloat32 scale )
 
 void DrawPanel::Render(wxDC& dc)
 {
-	if (mBitmap == NULL)
+	if (!mBitmap || !mBitmap->IsOk())
 	{
 		return;
 	}
@@ -136,14 +136,25 @@ void DrawPanel::Render(wxDC& dc)
 	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
 }
 
-void DrawPanel::OnPaint( wxPaintEvent& WXUNUSED(event) )
+void DrawPanel::OnPaint( wxPaintEvent& event )
 {
+	if (!mBitmap || !mBitmap->IsOk())
+	{
+		event.Skip();
+		return;
+	}
 	wxAutoBufferedPaintDC dc(this);
 	Render( dc );
+	event.Skip();
+	
 }
 
 void DrawPanel::PaintNow()
 {
+	if (!mBitmap || !mBitmap->IsOk())
+	{
+		return;
+	}
 	wxClientDC dc(this);
 	Render(dc);
 }
@@ -246,7 +257,7 @@ inline void DrawPanel::SetShowParams()
 void DrawPanel::OnSize(wxSizeEvent& event)
 {
 	event.Skip();
-	if (mBitmap == NULL)
+	if (!mBitmap || !mBitmap->IsOk())
 	{
 		return;
 	}
@@ -255,7 +266,6 @@ void DrawPanel::OnSize(wxSizeEvent& event)
 
 void DrawPanel::OnMouseWheel( wxMouseEvent &event )
 {
-	wxLogMessage( wxString::Format( " %d ", event.ControlDown() ) );
 	if ( !event.ControlDown() )
 	{
 		event.Skip();

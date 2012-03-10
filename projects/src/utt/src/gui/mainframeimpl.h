@@ -14,6 +14,7 @@
 #include "fonteditimpl.h"
 #include "logwindowimpl.h"
 #include "editpanelimpl.h"
+#include "palwindowimpl.h"
 
 class MainFrameImpl:
 	public UttMainFrame 
@@ -37,6 +38,7 @@ private:
 	FontEditImpl		mFontEditor;
 	LogWindowImpl		mLogWindow;
 	EditPanelImpl		mEditWindow;
+	PaletteWindowImpl	mPalWindow;
 };
 
 #endif

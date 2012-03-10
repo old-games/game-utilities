@@ -131,8 +131,10 @@
     <ClCompile Include="..\..\src\drawpanel.cpp" />
     <ClCompile Include="..\..\src\editpanel.cpp" />
     <ClCompile Include="..\..\src\gui\editpanelimpl.cpp" />
+    <ClCompile Include="..\..\src\gui\palwindowimpl.cpp" />
     <ClCompile Include="..\..\src\luaconsole.cpp" />
     <ClCompile Include="..\..\src\luacontrol.cpp" />
+    <ClCompile Include="..\..\src\palettepanel.cpp" />
     <ClCompile Include="..\..\src\selectrect.cpp" />
     <ClCompile Include="..\..\src\utt.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugLuaJIT|Win32'">Create</PrecompiledHeader>
@@ -158,8 +160,10 @@
     <ClInclude Include="..\..\src\drawpanel.h" />
     <ClInclude Include="..\..\src\editpanel.h" />
     <ClInclude Include="..\..\src\gui\editpanelimpl.h" />
+    <ClInclude Include="..\..\src\gui\palwindowimpl.h" />
     <ClInclude Include="..\..\src\luaconsole.h" />
     <ClInclude Include="..\..\src\luacontrol.h" />
+    <ClInclude Include="..\..\src\palettepanel.h" />
     <ClInclude Include="..\..\src\pch.h" />
     <ClInclude Include="..\..\src\selectrect.h" />
     <ClInclude Include="..\..\src\utt.h" />
