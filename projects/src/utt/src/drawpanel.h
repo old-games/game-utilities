@@ -33,10 +33,11 @@ public:
 	virtual ~DrawPanel(void);
 
 	void SetBitmap( wxBitmap* bitmap );
-	void CreateBitmap(Pixel* buffer, wxInt32 width, wxInt32 height);
+	void CreateBitmap(Pixel* buffer, int width, int height);
 	void SetBuffer( Pixel* buffer );
 	void SetScale( wxFloat32 scale );
-	void SetAlign( wxInt32 align );
+	void SetAlign( int align );
+	void SetAllowScaling( bool b = true );
 
 protected:
 
@@ -56,7 +57,6 @@ protected:
 	virtual void SetShowParams();
 	void CalculateScrollBars();
 
-	wxInt32		mAlign;
 	wxFloat32	mXAspectRatio;
 	wxFloat32	mYAspectRatio;
 	wxCoord		mShowWidth;				// ширина картинки для отображения
@@ -70,6 +70,10 @@ protected:
 	wxBitmap*	mBitmap;
 	wxCoord		mWidth;
 	wxCoord		mHeight;
+	
+private:
+	int			mAlign;
+	bool		mAllowScaling;			// allows scaling by mouse wheel
 };
 
 #endif

@@ -70,6 +70,8 @@
 #define wxID_GRIDCOL_BTN 1028
 #define wxID_PAL_WINDOW_ID 1029
 #define wxID_PAL_CHOICE 1030
+#define wxID_CGA_CHOICE 1031
+#define wxID_INTENSITY_CHECK 1032
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -109,7 +111,6 @@ class FontEditGui : public wxPanel
 		wxStaticBitmap* mPreviewSymbols;
 		wxBitmapButton* mScrollSymbolsRight;
 		wxStaticBoxSizer* mCentralSizer;
-		wxStaticBitmap* m_bitmap5;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnBtnClick( wxCommandEvent& event ) { event.Skip(); }
@@ -117,7 +118,7 @@ class FontEditGui : public wxPanel
 	
 	public:
 		
-		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 640,577 ), long style = wxTAB_TRAVERSAL ); 
+		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,400 ), long style = wxTAB_TRAVERSAL ); 
 		~FontEditGui();
 	
 };
@@ -208,7 +209,7 @@ class LogWindowGui : public wxPanel
 	
 	public:
 		
-		LogWindowGui( wxWindow* parent, wxWindowID id = wxID_LOG_WINDOW, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
+		LogWindowGui( wxWindow* parent, wxWindowID id = wxID_LOG_WINDOW, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,100 ), long style = wxTAB_TRAVERSAL ); 
 		~LogWindowGui();
 	
 };
@@ -256,7 +257,7 @@ class EditPanelGui : public wxPanel
 	
 	public:
 		
-		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,396 ), long style = wxTAB_TRAVERSAL ); 
+		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400,200 ), long style = wxTAB_TRAVERSAL ); 
 		~EditPanelGui();
 	
 };
@@ -272,10 +273,17 @@ class PaletteWindowGui : public wxPanel
 		wxStaticBoxSizer* mPalHolder;
 		wxStaticText* m_staticText13;
 		wxComboBox* mPalType;
+		wxStaticText* m_staticText14;
+		wxComboBox* mCGAType;
+		wxCheckBox* mCGAIntensity;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnCommandEvent( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		
-		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxTAB_TRAVERSAL ); 
+		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,200 ), long style = wxTAB_TRAVERSAL ); 
 		~PaletteWindowGui();
 	
 };

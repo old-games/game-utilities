@@ -42,6 +42,7 @@
 #include <oolua.h>
 
 #include "uttypes.h"
+#include "defaultpals.h"
 
 // simple dialogs definitions
 

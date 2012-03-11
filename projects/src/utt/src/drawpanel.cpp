@@ -14,19 +14,20 @@
 
 DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
 	wxScrolledWindow( parent, id ),
-	mAlign( utdNone ),
 	mXAspectRatio( 0.0f ),
 	mYAspectRatio( 0.0f ),
 	mShowWidth( 0 ),
 	mShowHeight( 0 ),
 	mPosX( 0 ),
 	mPosY( 0 ),
-	mScale( 25.0f ),
+	mScale( 1.0f ),
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
 	mBitmap( NULL ),
 	mWidth( 0 ),
-	mHeight( 0 )
+	mHeight( 0 ),
+	mAlign( utdNone ),
+	mAllowScaling( true )
 {
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
@@ -59,12 +60,18 @@ DrawPanel::~DrawPanel(void)
 	DestroyBitmap();
 }
 
-void DrawPanel::SetAlign( wxInt32 align )
+void DrawPanel::SetAlign( int align )
 {
 	mAlign = align;
 }
 
-void DrawPanel::CreateBitmap( Pixel* buffer, wxInt32 width, wxInt32 height )
+void DrawPanel::SetAllowScaling( bool b /* true */)
+{
+	mAllowScaling = b;
+}
+
+
+void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
 {
 	DestroyBitmap();
 	wxImage image( width, height, (wxByte*) buffer, true );
@@ -266,7 +273,7 @@ void DrawPanel::OnSize(wxSizeEvent& event)
 
 void DrawPanel::OnMouseWheel( wxMouseEvent &event )
 {
-	if ( !event.ControlDown() )
+	if ( !mAllowScaling || !event.ControlDown() )
 	{
 		event.Skip();
 		return;

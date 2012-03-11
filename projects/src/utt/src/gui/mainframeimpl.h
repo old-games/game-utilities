@@ -31,7 +31,9 @@ private:
 	virtual void OnClose( wxCloseEvent& event );
 	virtual void OnMenuSelect( wxCommandEvent& event );
 	void OnIdle( wxIdleEvent& );
+	void OnShow( wxShowEvent& event );
 		
+	void AddPane( wxWindow* wnd, const wxString& name );
 	void DoFileOpen();
 	void DoSelectModule();
 	

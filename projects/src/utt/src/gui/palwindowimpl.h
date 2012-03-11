@@ -19,8 +19,13 @@ public:
 	PaletteWindowImpl( wxWindow* parent );
 	~PaletteWindowImpl(void); 
 
+protected:
+	virtual void OnCommandEvent( wxCommandEvent& event );
+	
 private:
-
+	
+	void PalTypeChanged();
+	
 	PalettePanel*	mPalPanel;
 };
 

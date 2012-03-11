@@ -30,7 +30,8 @@ namespace BPP
 		bppNum
 	};
 
-	extern const wxInt32 Bits[bppNum];
+	extern const int ColourNumber[bppNum];
+	extern const int Bits[bppNum];
 	extern const wxString Names[bppNum];
 };
 

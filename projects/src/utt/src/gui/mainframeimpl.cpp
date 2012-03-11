@@ -18,13 +18,22 @@ MainFrameImpl::MainFrameImpl(void):
 	mEditWindow( this ),
 	mPalWindow( this )
 {
-	m_mgr.AddPane(&mFontEditor, wxDOWN, "Font editor");
-	m_mgr.AddPane(&mLogWindow, wxUP, "Log");
-	m_mgr.AddPane(&mEditWindow, wxLEFT, "Image editor");
-	m_mgr.AddPane(&mPalWindow, wxRIGHT, "Palette window");
-	m_mgr.Update();
+	m_mgr.SetFlags( wxAUI_MGR_ALLOW_FLOATING		|
+					wxAUI_MGR_ALLOW_ACTIVE_PANE		|
+					wxAUI_MGR_TRANSPARENT_DRAG		|
+					wxAUI_MGR_TRANSPARENT_HINT		|
+					wxAUI_MGR_HINT_FADE				|
+					wxAUI_MGR_LIVE_RESIZE              );
+					
+	this->AddPane(&mFontEditor, "Font editor");
+	this->AddPane(&mLogWindow, "Log window");
+	this->AddPane(&mEditWindow, "Image editor");
+	this->AddPane(&mPalWindow, "Palette window");
+
 	wxImage::AddHandler(new wxPNGHandler);
-	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
+	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
+	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
+	
 	// test
 	wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
@@ -34,7 +43,37 @@ MainFrameImpl::MainFrameImpl(void):
 
 MainFrameImpl::~MainFrameImpl(void)
 {
-	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
+	this->Unbind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
+	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
+}
+
+void MainFrameImpl::AddPane( wxWindow* wnd, const wxString& name )
+{
+	wxAuiPaneInfo paneInfo;
+	wxString _name = name;
+	_name.Replace(" ", "");
+	_name.MakeLower();
+	paneInfo.Name( _name );
+	paneInfo.Caption( name );
+	paneInfo.Gripper( false );
+	paneInfo.Dockable( true );
+	paneInfo.Floatable( true );
+	paneInfo.MinimizeButton( true );
+	paneInfo.MaximizeButton( true );
+	paneInfo.PinButton( true );
+	paneInfo.CloseButton( true );
+	wnd->InvalidateBestSize();
+	paneInfo.MinSize( wnd->GetMinSize() );
+	paneInfo.MaxSize( wnd->GetMaxSize() );
+	paneInfo.BestSize( wnd->GetBestSize() );
+	static bool where = false;
+	if (where)
+		paneInfo.Bottom();
+	else
+		paneInfo.Left();
+	where = !where;
+	paneInfo.Layer(1);
+	m_mgr.InsertPane( wnd, paneInfo, wxAUI_INSERT_DOCK);
 }
 
 void MainFrameImpl::OnIdle( wxIdleEvent& )
@@ -44,6 +83,12 @@ void MainFrameImpl::OnIdle( wxIdleEvent& )
 		Lua::Done();
 		Lua::Init();
 	}
+}
+
+void MainFrameImpl::OnShow( wxShowEvent& event )
+{
+	event.Skip();
+	m_mgr.Update();
 }
 
 void MainFrameImpl::Init()

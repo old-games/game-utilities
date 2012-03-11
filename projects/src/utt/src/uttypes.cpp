@@ -2,7 +2,18 @@
 #include "uttypes.h"
 
 
-const wxInt32 BPP::Bits[BPP::bppNum] =
+const int BPP::ColourNumber[BPP::bppNum] =
+{
+	2,
+	4,
+	16,
+	256,
+	65536,
+	16777216,
+	16777216
+};
+
+const int BPP::Bits[BPP::bppNum] =
 {
 	1,
 	2,

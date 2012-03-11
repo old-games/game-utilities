@@ -58,13 +58,13 @@ UttMainFrame::~UttMainFrame()
 
 FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
-	this->SetMinSize( wxSize( 640,480 ) );
+	this->SetMinSize( wxSize( 300,400 ) );
 	
 	wxGridSizer* gSizer1;
 	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
 	
 	wxFlexGridSizer* fgSizer1;
-	fgSizer1 = new wxFlexGridSizer( 4, 1, 0, 0 );
+	fgSizer1 = new wxFlexGridSizer( 3, 1, 0, 0 );
 	fgSizer1->AddGrowableCol( 0 );
 	fgSizer1->AddGrowableRow( 2 );
 	fgSizer1->SetFlexibleDirection( wxBOTH );
@@ -119,16 +119,6 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	mCentralSizer->SetMinSize( wxSize( 256,128 ) ); 
 	
 	fgSizer1->Add( mCentralSizer, 1, wxEXPAND, 5 );
-	
-	wxStaticBoxSizer* sbSizer9;
-	sbSizer9 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Palette:") ), wxVERTICAL );
-	
-	sbSizer9->SetMinSize( wxSize( 256,64 ) ); 
-	m_bitmap5 = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer9->Add( m_bitmap5, 1, wxALL|wxEXPAND, 5 );
-	
-	
-	fgSizer1->Add( sbSizer9, 1, wxEXPAND, 5 );
 	
 	
 	gSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
@@ -394,6 +384,8 @@ LetterCodesGui::~LetterCodesGui()
 
 LogWindowGui::LogWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
+	this->SetMinSize( wxSize( 500,100 ) );
+	
 	wxGridSizer* gSizer2;
 	gSizer2 = new wxGridSizer( 1, 1, 0, 0 );
 	
@@ -450,6 +442,8 @@ SelectModuleGui::~SelectModuleGui()
 
 EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
+	this->SetMinSize( wxSize( 400,200 ) );
+	
 	wxGridSizer* gSizer7;
 	gSizer7 = new wxGridSizer( 1, 1, 0, 0 );
 	
@@ -523,6 +517,8 @@ EditPanelGui::~EditPanelGui()
 
 PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
+	this->SetMinSize( wxSize( 600,200 ) );
+	
 	wxGridSizer* gSizer10;
 	gSizer10 = new wxGridSizer( 1, 1, 0, 0 );
 	
@@ -539,7 +535,7 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	fgSizer7->Add( mPalHolder, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer12;
-	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Info:") ), wxHORIZONTAL );
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Palette:") ), wxHORIZONTAL );
 	
 	m_staticText13 = new wxStaticText( this, wxID_ANY, wxT("Palette type:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText13->Wrap( -1 );
@@ -547,6 +543,16 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	
 	mPalType = new wxComboBox( this, wxID_PAL_CHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY ); 
 	sbSizer12->Add( mPalType, 0, wxALL, 5 );
+	
+	m_staticText14 = new wxStaticText( this, wxID_ANY, wxT("Set of CGA colours:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText14->Wrap( -1 );
+	sbSizer12->Add( m_staticText14, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	mCGAType = new wxComboBox( this, wxID_CGA_CHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY ); 
+	sbSizer12->Add( mCGAType, 0, wxALL, 5 );
+	
+	mCGAIntensity = new wxCheckBox( this, wxID_INTENSITY_CHECK, wxT("CGA intensity"), wxDefaultPosition, wxDefaultSize, 0 );
+	sbSizer12->Add( mCGAIntensity, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	
 	fgSizer7->Add( sbSizer12, 1, wxEXPAND, 5 );
@@ -557,8 +563,18 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	
 	this->SetSizer( gSizer10 );
 	this->Layout();
+	
+	// Connect Events
+	mPalType->Connect( wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
+	mCGAType->Connect( wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
+	mCGAIntensity->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
 }
 
 PaletteWindowGui::~PaletteWindowGui()
 {
+	// Disconnect Events
+	mPalType->Disconnect( wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
+	mCGAType->Disconnect( wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
+	mCGAIntensity->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( PaletteWindowGui::OnCommandEvent ), NULL, this );
+	
 }
