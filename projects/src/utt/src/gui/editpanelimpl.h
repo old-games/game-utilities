@@ -20,6 +20,11 @@ public:
 	~EditPanelImpl(void); 
 
 	void SetBitmap( wxBitmap* bitmap );
+	
+	EditPanel* GetEditPanel()
+	{
+		return mEditPanel;
+	}
 
 protected:
 

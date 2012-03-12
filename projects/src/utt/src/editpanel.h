@@ -40,23 +40,27 @@ public:
 	{
 		mDrawFocus = b;
 	}
+	
+	static wxColour		gGlobalLeftColour;
+	static wxColour		gGlobalRightColour;
 
 protected:
 
 	virtual void OnBtnDown( wxMouseEvent& event );
 	virtual void OnMotion( wxMouseEvent& event );
 	virtual void OnBtnUp( wxMouseEvent& event );
-	virtual void OnFocus(wxFocusEvent& );
+	virtual void OnFocus( wxFocusEvent& );
 
 	virtual void Render(wxDC& dc);
 	virtual void SetShowParams();
 
 	void DrawGrid( wxDC& dc );
+	void PlacePixel( const wxPoint& pos, const wxColour& color );
+	bool GetPixel( const wxPoint& pos, wxColour& color );
 	
 private:
 	
 	void ClearGridPoints();
-	void PlacePixel( const wxPoint& pos, const wxColour& color );
 	
 	bool		mDrawGrid;
 	bool		mDrawFocus;

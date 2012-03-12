@@ -33,6 +33,9 @@
 #include <wx/colordlg.h>
 #include <wx/rawbmp.h>
 
+// own written but wx compatible
+#include "customevents.h"
+
 // standard heades
 #include <iostream>
 #include <fstream>

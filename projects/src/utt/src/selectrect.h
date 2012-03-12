@@ -53,8 +53,8 @@ protected:
 
 private:
 
-	void Position2Coords( wxPoint& point );
 	void UpdateCoords();
+	void Position2Coords( wxPoint& point );
 	
 	wxScrolledWindow*	mParent;
 	wxRect				mWorkZone;

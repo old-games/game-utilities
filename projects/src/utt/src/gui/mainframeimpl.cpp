@@ -33,7 +33,7 @@ MainFrameImpl::MainFrameImpl(void):
 	wxImage::AddHandler(new wxPNGHandler);
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
 	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
-	
+	mEditWindow.GetEditPanel()->Bind(wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 	// test
 	wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
@@ -45,6 +45,15 @@ MainFrameImpl::~MainFrameImpl(void)
 {
 	this->Unbind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
 	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
+}
+
+void MainFrameImpl::OnColourPickEvent( ColourPickEvent& event )
+{
+	if ( event.GetButton() == wxMOUSE_BTN_LEFT || event.GetButton() == wxMOUSE_BTN_RIGHT )
+	{
+		mPalWindow.SetColour(event.GetButton() == wxMOUSE_BTN_RIGHT, event.GetColour() );
+	}
+	event.Skip();
 }
 
 void MainFrameImpl::AddPane( wxWindow* wnd, const wxString& name )

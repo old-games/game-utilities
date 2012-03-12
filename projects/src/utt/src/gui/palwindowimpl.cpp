@@ -13,7 +13,7 @@
 PaletteWindowImpl::PaletteWindowImpl(  wxWindow* parent ):
 	PaletteWindowGui( parent )
 {
-	mPalPanel = new PalettePanel( this, wxID_PAL_WINDOW_ID );
+	mPalPanel = new PalettePanel( this, true, wxID_PAL_WINDOW_ID );
 	mPalHolder->Add( mPalPanel, 1, wxEXPAND, 5 );
 	for (int i = 0; i < BPP::bppNum; ++i)
 	{
@@ -26,11 +26,18 @@ PaletteWindowImpl::PaletteWindowImpl(  wxWindow* parent ):
 	}
 	mCGAType->SetSelection(0);
 	PalTypeChanged();
+	this->Bind( wxEVT_PAINT, &PaletteWindowImpl::OnPaint, this, wxID_PAL_WINDOW_ID );
 }
 
 PaletteWindowImpl::~PaletteWindowImpl(void)
 {
-	
+	this->Unbind( wxEVT_PAINT, &PaletteWindowImpl::OnPaint, this, wxID_PAL_WINDOW_ID );
+}
+
+void PaletteWindowImpl::OnPaint( wxPaintEvent& event )
+{
+	event.Skip();
+	UpdateSpins();
 }
 
 void PaletteWindowImpl::PalTypeChanged()
@@ -43,9 +50,52 @@ void PaletteWindowImpl::PalTypeChanged()
 	mCGAIntensity->Enable( cgaControls );
 	mPalPanel->GeneratePalBitmap();
 	mPalPanel->Refresh();
+	UpdateSpins();
 }
 
-void PaletteWindowImpl::OnCommandEvent( wxCommandEvent& event ) 
+wxColour PaletteWindowImpl::GetColour(bool right)
+{
+	wxSpinCtrl* r = right ? mRRSpin : mLRSpin;
+	wxSpinCtrl* g = right ? mRGSpin : mLGSpin;
+	wxSpinCtrl* b = right ? mRBSpin : mLBSpin;
+	return wxColour( r->GetValue(), g->GetValue(), b->GetValue() );
+}
+
+void PaletteWindowImpl::SetColour(bool right, const wxColour& colour)
+{
+	wxSpinCtrl* r = right ? mRRSpin : mLRSpin;
+	wxSpinCtrl* g = right ? mRGSpin : mLGSpin;
+	wxSpinCtrl* b = right ? mRBSpin : mLBSpin;
+	r->SetValue( colour.Red() );
+	g->SetValue( colour.Green() );
+	b->SetValue( colour.Blue() );
+	UpdateColour( right );
+}
+
+void PaletteWindowImpl::UpdateColours()
+{
+	UpdateColour( false );
+	UpdateColour( true );
+}
+
+void PaletteWindowImpl::UpdateSpins()
+{
+	UpdateSpin( false );
+	UpdateSpin( true );
+}
+
+void PaletteWindowImpl::UpdateColour(bool right)
+{
+	wxColour colour = GetColour(right);
+	mPalPanel->SetColour( right, colour );
+}
+
+void PaletteWindowImpl::UpdateSpin(bool right)
+{
+	SetColour( right, mPalPanel->GetColour(right) );
+}
+
+/* virtual */ void PaletteWindowImpl::OnCommandEvent( wxCommandEvent& event ) 
 { 
 	switch( event.GetId() )
 	{
@@ -61,3 +111,24 @@ void PaletteWindowImpl::OnCommandEvent( wxCommandEvent& event )
 	event.Skip();
 }
 
+/* virtual */ void PaletteWindowImpl::OnSpinCtrl( wxSpinEvent& event )
+{
+	event.Skip();
+	switch( event.GetId() )
+	{
+		case wxID_RR_SPIN:
+		case wxID_RG_SPIN:
+		case wxID_RB_SPIN:
+			UpdateColour( true );
+		break;
+
+		case wxID_LR_SPIN:
+		case wxID_LG_SPIN:
+		case wxID_LB_SPIN:
+			UpdateColour( false );
+		break;
+
+		default:
+			wxLogError( wxString::Format( "PaletteWindow: unknown spin id %d", event.GetId() ) );
+	}
+}

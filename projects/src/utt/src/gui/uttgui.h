@@ -69,9 +69,15 @@
 #define wxID_GRID_MODE 1027
 #define wxID_GRIDCOL_BTN 1028
 #define wxID_PAL_WINDOW_ID 1029
-#define wxID_PAL_CHOICE 1030
-#define wxID_CGA_CHOICE 1031
-#define wxID_INTENSITY_CHECK 1032
+#define wxID_LR_SPIN 1030
+#define wxID_LG_SPIN 1031
+#define wxID_LB_SPIN 1032
+#define wxID_RR_SPIN 1033
+#define wxID_RG_SPIN 1034
+#define wxID_RB_SPIN 1035
+#define wxID_PAL_CHOICE 1036
+#define wxID_CGA_CHOICE 1037
+#define wxID_INTENSITY_CHECK 1038
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -271,6 +277,18 @@ class PaletteWindowGui : public wxPanel
 	
 	protected:
 		wxStaticBoxSizer* mPalHolder;
+		wxStaticText* m_staticText15;
+		wxSpinCtrl* mLRSpin;
+		wxStaticText* m_staticText16;
+		wxSpinCtrl* mLGSpin;
+		wxStaticText* m_staticText17;
+		wxSpinCtrl* mLBSpin;
+		wxStaticText* m_staticText18;
+		wxSpinCtrl* mRRSpin;
+		wxStaticText* m_staticText19;
+		wxSpinCtrl* mRGSpin;
+		wxStaticText* m_staticText20;
+		wxSpinCtrl* mRBSpin;
 		wxStaticText* m_staticText13;
 		wxComboBox* mPalType;
 		wxStaticText* m_staticText14;
@@ -278,12 +296,13 @@ class PaletteWindowGui : public wxPanel
 		wxCheckBox* mCGAIntensity;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void OnSpinCtrl( wxSpinEvent& event ) { event.Skip(); }
 		virtual void OnCommandEvent( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
 		
-		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,200 ), long style = wxTAB_TRAVERSAL ); 
+		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 625,200 ), long style = wxTAB_TRAVERSAL ); 
 		~PaletteWindowGui();
 	
 };

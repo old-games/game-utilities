@@ -12,6 +12,9 @@
 
 #define GRID_EDGE	6.0f		// the value after the grid will be shown
 
+wxColour	EditPanel::gGlobalLeftColour = *wxBLACK;
+wxColour	EditPanel::gGlobalRightColour = *wxWHITE;
+
 EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	DrawPanel( parent, id ),
 	SelectionRectangle( this ),
@@ -208,8 +211,28 @@ void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )
 	PaintNow();
 }
 
+bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
+{
+	wxMemoryDC temp_dc;
+	temp_dc.SelectObject(*mBitmap);
+	return temp_dc.GetPixel( pos , &color );
+}
+
 /* virtual */ void EditPanel::OnBtnDown( wxMouseEvent& event )
 {
+	if ( event.AltDown() && ( event.LeftDown() || event.RightDown() ) )
+	{
+		wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
+		wxColour colour;
+		if ( pos.x != -1 && pos.y != -1 && GetPixel(pos, colour) )
+		{
+			ColourPickEvent ev( colour, event.GetButton() );
+			if ( wxEvtHandler::ProcessEvent( ev ) )		
+			{
+				return;
+			}
+		}
+	}
 	if (event.LeftDown())
 	{
 		OnSelectionLeftDown( event );
@@ -228,7 +251,7 @@ void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )
 		return;
 	}
 	ResetZone();
-	mCurrentColour = event.LeftIsDown() ? *wxWHITE : *wxBLACK;
+	mCurrentColour = event.LeftIsDown() ? gGlobalLeftColour : gGlobalRightColour;
 	mPreviousPoint = pos;
 	mDrawing = true;
 	PlacePixel( pos, mCurrentColour );
