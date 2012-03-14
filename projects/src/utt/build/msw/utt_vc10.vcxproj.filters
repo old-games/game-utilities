@@ -82,6 +82,18 @@
     <ClCompile Include="..\..\src\palettepanel.cpp">
       <Filter>main</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\customevents.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\helpers.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\symbolpanel.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\symboeditgui.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\drawpanel.h">
@@ -146,6 +158,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\palettepanel.h">
       <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\customevents.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\defaultpals.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\helpers.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\symbolpanel.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\symboeditgui.h">
+      <Filter>gui\fonteditor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
