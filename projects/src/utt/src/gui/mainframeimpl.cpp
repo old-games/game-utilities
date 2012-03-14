@@ -33,7 +33,9 @@ MainFrameImpl::MainFrameImpl(void):
 	wxImage::AddHandler(new wxPNGHandler);
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
 	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
-	mEditWindow.GetEditPanel()->Bind(wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
+	mEditWindow.GetEditPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
+	mFontEditor.GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
+	
 	// test
 	wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);

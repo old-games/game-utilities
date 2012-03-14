@@ -26,7 +26,6 @@
 #include <wx/statbox.h>
 #include <wx/bmpbuttn.h>
 #include <wx/statbmp.h>
-#include <wx/gbsizer.h>
 #include <wx/panel.h>
 #include <wx/stattext.h>
 #include <wx/spinctrl.h>
@@ -44,40 +43,41 @@
 #define wxID_FILE_OPEN 1002
 #define wxID_FONT_EDITOR 1003
 #define wxID_CREATE_FONT 1004
-#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1005
-#define wxID_PREVIEW_SYMBOLS 1006
-#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1007
-#define wxID_FONT_SETTINGS_ID 1008
-#define wxID_NUM_SPIN_CTRL 1009
-#define wxID_SET_CODES_BTN 1010
-#define wxID_MAX_HEIGHT_SPIN 1011
-#define wxID_MIN_HEIGHT_SPIN 1012
-#define wxID_MAX_WIDTH_SPIN 1013
+#define wxID_FONT_SETTINGS 1005
+#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1006
+#define wxID_PREVIEW_SYMBOLS 1007
+#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1008
+#define wxID_FONT_SETTINGS_ID 1009
+#define wxID_NUM_SPIN_CTRL 1010
+#define wxID_SET_CODES_BTN 1011
+#define wxID_MAX_WIDTH_SPIN 1012
+#define wxID_MAX_HEIGHT_SPIN 1013
 #define wxID_MIN_WIDTH_SPIN 1014
-#define wxID_BASE_LINE_SPIN 1015
-#define wxID_CAP_LINE_SPIN 1016
-#define wxID_LOW_LINE_SPIN 1017
-#define wxID_LETTER_CODES_ID 1018
-#define wxID_GENERATE_CODES_BTN 1019
-#define wxID_GET_ENCODING_BTN 1020
-#define wxID_CODES_GRID 1021
-#define wxID_LOG_WINDOW 1022
-#define wxID_LOG_TXT 1023
-#define wxID_SELECT_MODULE_ID 1024
-#define wxID_EDIT_PANEL_ID 1025
-#define wxID_GRID_CHECK 1026
-#define wxID_GRID_MODE 1027
-#define wxID_GRIDCOL_BTN 1028
-#define wxID_PAL_WINDOW_ID 1029
-#define wxID_LR_SPIN 1030
-#define wxID_LG_SPIN 1031
-#define wxID_LB_SPIN 1032
-#define wxID_RR_SPIN 1033
-#define wxID_RG_SPIN 1034
-#define wxID_RB_SPIN 1035
-#define wxID_PAL_CHOICE 1036
-#define wxID_CGA_CHOICE 1037
-#define wxID_INTENSITY_CHECK 1038
+#define wxID_MIN_HEIGHT_SPIN 1015
+#define wxID_BASE_LINE_SPIN 1016
+#define wxID_CAP_LINE_SPIN 1017
+#define wxID_LOW_LINE_SPIN 1018
+#define wxID_LETTER_CODES_ID 1019
+#define wxID_GENERATE_CODES_BTN 1020
+#define wxID_GET_ENCODING_BTN 1021
+#define wxID_CODES_GRID 1022
+#define wxID_LOG_WINDOW 1023
+#define wxID_LOG_TXT 1024
+#define wxID_SELECT_MODULE_ID 1025
+#define wxID_EDIT_PANEL_ID 1026
+#define wxID_GRID_CHECK 1027
+#define wxID_GRID_MODE 1028
+#define wxID_GRIDCOL_BTN 1029
+#define wxID_PAL_WINDOW_ID 1030
+#define wxID_LR_SPIN 1031
+#define wxID_LG_SPIN 1032
+#define wxID_LB_SPIN 1033
+#define wxID_RR_SPIN 1034
+#define wxID_RG_SPIN 1035
+#define wxID_RB_SPIN 1036
+#define wxID_PAL_CHOICE 1037
+#define wxID_CGA_CHOICE 1038
+#define wxID_INTENSITY_CHECK 1039
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -113,6 +113,8 @@ class FontEditGui : public wxPanel
 	
 	protected:
 		wxButton* mCreateBtn;
+		wxButton* mSettingsBtn;
+		wxFlexGridSizer* mPreviewHolder;
 		wxBitmapButton* mScrollSymbolsLeft;
 		wxStaticBitmap* mPreviewSymbols;
 		wxBitmapButton* mScrollSymbolsRight;
@@ -141,14 +143,14 @@ class FontSettingsGui : public wxDialog
 		wxSpinCtrl* mNumSpinCtrl;
 		wxStaticText* m_staticText2;
 		wxButton* mSetCodesBtn;
-		wxStaticText* m_staticText3;
-		wxSpinCtrl* mMaxHeightSpinCtrl;
-		wxStaticText* m_staticText4;
-		wxSpinCtrl* mMinHeightSpinCtrl;
 		wxStaticText* m_staticText5;
 		wxSpinCtrl* mMaxWidthSpinCtrl;
+		wxStaticText* m_staticText3;
+		wxSpinCtrl* mMaxHeightSpinCtrl;
 		wxStaticText* m_staticText6;
 		wxSpinCtrl* mMinWidthSpinCtrl;
+		wxStaticText* m_staticText4;
+		wxSpinCtrl* mMinHeightSpinCtrl;
 		wxStaticText* m_staticText8;
 		wxSpinCtrl* mBaseLineSpinCtrl;
 		wxStaticText* m_staticText9;

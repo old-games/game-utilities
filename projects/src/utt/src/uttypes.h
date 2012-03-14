@@ -92,15 +92,15 @@ private:
 
 typedef wxVector<SymbolInfo> Symbols;
 
-
 class FontInfo
 {
+
 public:
 
 	FontInfo():
 		mMaxHeight( 0 ),
 		mMinHeight( 0 ),
-		mMaxWidh( 0 ),
+		mMaxWidth( 0 ),
 		mMinWidth( 0 ),
 		mBaseLine( 0 ),
 		mCapLine( 0 ),
@@ -112,12 +112,12 @@ public:
 		memset(mPalette, 0, sizeof(mPalette));
 	}
 	
-	void SetSymbolsNum(size_t n);
-	
 	size_t GetSymbolsNum()
 	{
 		return mSymbols.size();
 	}
+
+	void SetSymbolsNum(size_t n);
 
 	wxInt32 GetEncoding()
 	{
@@ -148,13 +148,83 @@ public:
 		mSymbols = src;
 	}
 	
+	wxInt32 GetMaxWidth()
+	{
+		return mMaxWidth;
+	}
+	
+	void SetMaxWidth( wxInt32 width )
+	{
+		mMaxWidth = width;
+	}
+	
+	wxInt32 GetMaxHeight()
+	{
+		return mMaxHeight;
+	}
+
+	void SetMaxHeight( wxInt32 height )
+	{
+		mMaxHeight = height;
+	}
+
+	wxInt32 GetMinWidth()
+	{
+		return mMinWidth;
+	}
+
+	void SetMinWidth( wxInt32 width )
+	{
+		mMinWidth = width;
+	}
+
+	wxInt32 GetMinHeight()
+	{
+		return mMinHeight;
+	}
+
+	void SetMinHeight( wxInt32 height )
+	{
+		mMinHeight = height;
+	}
+	
+	wxInt32	GetBaseLine()
+	{
+		return mBaseLine;							
+	}
+	
+	void SetBaseLine(wxInt32 baseLine)
+	{
+		mBaseLine = baseLine;							
+	}
+
+	wxInt32	GetCapLine()
+	{
+		return mCapLine;							
+	}
+
+	void SetCapLine(wxInt32 capLine)
+	{
+		mCapLine = capLine;							
+	}
+	
+	wxInt32	GetLowLine()
+	{
+		return mLowLine;							
+	}
+
+	void SetLowLine(wxInt32 lowLine)
+	{
+		mLowLine = lowLine;							
+	}
+	
 	static SymbolInfo	sBadSymbol;
 
 protected:
 
 	wxInt32			mMaxHeight;							// максимальная высота
 	wxInt32			mMinHeight;							// минимальная высота
-	wxInt32			mMaxWidh;							// максимальная ширина
+	wxInt32			mMaxWidth;							// максимальная ширина
 	wxInt32			mMinWidth;							// минимальная ширина
 	wxInt32			mBaseLine;							// базовая линия символа
 	wxInt32			mCapLine;							// линия заглавных букв

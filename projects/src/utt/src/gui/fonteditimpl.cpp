@@ -13,11 +13,12 @@
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
 	FontEditGui( parent ),
+	mSymbolPanel( new SymbolPanel( this, wxID_FONT_EDITOR ) ),
 	mCurrentFont( NULL ),
-	mHasChanges( false ),
-	mDrawPanel( this, wxID_FONT_EDITOR )
+	mCurrentSymbol( 0 ),
+	mHasChanges( false )
 {
-	mCentralSizer->Add( &mDrawPanel, 1, wxEXPAND, 5 );
+	mCentralSizer->Add( mSymbolPanel, 1, wxEXPAND, 5 );
 	this->Layout();
 }
 
@@ -36,7 +37,7 @@ bool FontEditImpl::CheckChanges()
 	{
 		return true;
 	}
-	wxInt32 res = wxMessageDialog(this, "Save changes?", "Font has changes", wxYES_NO | wxCANCEL | wxCENTRE | wxNO_DEFAULT).ShowModal();
+	wxInt32 res = wxMessageDialog(this, "Save changes?", "Font has changes", wxYES_NO | wxCANCEL | wxCENTRE | wxCANCEL_DEFAULT).ShowModal();
 	if (res == wxID_OK)
 	{
 		return SaveFont();
@@ -56,8 +57,13 @@ bool FontEditImpl::CreateFont()
 		return false;
 	}
 	mCurrentFont = new FontInfo();
-	ShowSettings();
-	return true;
+	if ( ShowSettings() )
+	{	
+		mCurrentSymbol = 0;
+		mSymbolPanel->SetFontInfo( mCurrentFont, mCurrentSymbol );
+		return true;
+	}
+	return false;
 }
 
 bool FontEditImpl::ShowSettings()
@@ -81,6 +87,7 @@ void FontEditImpl::Render(wxDC& dc)
 
 void FontEditImpl::OnPaint(wxPaintEvent& event)
 {
+	event.Skip();
 }
 
 void FontEditImpl::OnBtnClick( wxCommandEvent& event )

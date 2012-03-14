@@ -12,7 +12,7 @@
 #include "uttgui.h"
 
 // TODO: replace when drawpanel will be finished
-#include "drawpanel.h"
+#include "symbolpanel.h"
 
 class FontEditImpl :
 	public FontEditGui
@@ -26,6 +26,11 @@ public:
 	bool CreateFont();
 	bool CheckChanges();
 	bool SaveFont();
+	
+	SymbolPanel* GetSymbolPanel()
+	{
+		return mSymbolPanel;
+	}
 
 protected:
 
@@ -35,9 +40,11 @@ protected:
 	virtual void OnBtnClick( wxCommandEvent& event );
 private:	
 
-	FontInfo*	mCurrentFont;
-	bool		mHasChanges;
-	DrawPanel	mDrawPanel;
+	SymbolPanel*	mSymbolPanel;
+	FontInfo*		mCurrentFont;
+	int				mCurrentSymbol;
+	bool			mHasChanges;
+	
 	
 };
 

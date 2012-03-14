@@ -36,7 +36,7 @@
 // own written but wx compatible
 #include "customevents.h"
 
-// standard heades
+// standard headers
 #include <iostream>
 #include <fstream>
 
@@ -44,8 +44,10 @@
 #include <lua.hpp>
 #include <oolua.h>
 
+// project headers
 #include "uttypes.h"
 #include "defaultpals.h"
+#include "helpers.h"
 
 // simple dialogs definitions
 

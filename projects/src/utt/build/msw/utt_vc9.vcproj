@@ -285,6 +285,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\helpers.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\helpers.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\luaconsole.cpp"
 				>
 			</File>
@@ -318,6 +326,14 @@
 			</File>
 			<File
 				RelativePath="..\..\src\selectrect.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\symbolpanel.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\symbolpanel.h"
 				>
 			</File>
 			<File

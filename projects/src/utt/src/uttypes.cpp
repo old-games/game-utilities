@@ -75,7 +75,7 @@ inline void SymbolInfo::EraseData()
 	mData = NULL;
 }
 
-inline LetterBox* SymbolInfo::GetData()
+LetterBox* SymbolInfo::GetData()
 {
 	CreateData();
 	return mData;

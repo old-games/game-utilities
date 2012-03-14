@@ -24,8 +24,10 @@ protected:
 	virtual void OnSpinCtrl( wxSpinEvent& event );
 
 private:
+
 	bool ShowLetterCodes();
 	void SetValuesToControls();
+	void UpdateSpinRanges();
 
 	FontInfo*	mFontInfo;
 

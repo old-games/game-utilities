@@ -75,11 +75,16 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	
 	wxFlexGridSizer* fgSizer2;
 	fgSizer2 = new wxFlexGridSizer( 1, 2, 0, 0 );
+	fgSizer2->AddGrowableCol( 0 );
+	fgSizer2->AddGrowableRow( 0 );
 	fgSizer2->SetFlexibleDirection( wxBOTH );
 	fgSizer2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
 	mCreateBtn = new wxButton( this, wxID_CREATE_FONT, wxT("Create new..."), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer2->Add( mCreateBtn, 0, wxALL, 5 );
+	
+	mSettingsBtn = new wxButton( this, wxID_FONT_SETTINGS, wxT("Font settings..."), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer2->Add( mSettingsBtn, 0, wxALL, 5 );
 	
 	
 	sbSizer4->Add( fgSizer2, 1, wxEXPAND, 5 );
@@ -91,25 +96,23 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Symbols:") ), wxVERTICAL );
 	
 	sbSizer11->SetMinSize( wxSize( 256,128 ) ); 
-	wxGridBagSizer* gbSizer21;
-	gbSizer21 = new wxGridBagSizer( 0, 0 );
-	gbSizer21->SetFlexibleDirection( wxBOTH );
-	gbSizer21->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_ALL );
+	mPreviewHolder = new wxFlexGridSizer( 1, 3, 0, 0 );
+	mPreviewHolder->AddGrowableCol( 1 );
+	mPreviewHolder->AddGrowableRow( 0 );
+	mPreviewHolder->SetFlexibleDirection( wxBOTH );
+	mPreviewHolder->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
 	mScrollSymbolsLeft = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxBitmap( to_left_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	gbSizer21->Add( mScrollSymbolsLeft, wxGBPosition( 0, 0 ), wxGBSpan( 1, 1 ), wxRIGHT|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5 );
+	mPreviewHolder->Add( mScrollSymbolsLeft, 1, wxALL|wxEXPAND, 5 );
 	
 	mPreviewSymbols = new wxStaticBitmap( this, wxID_PREVIEW_SYMBOLS, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	gbSizer21->Add( mPreviewSymbols, wxGBPosition( 0, 1 ), wxGBSpan( 1, 1 ), wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	mPreviewHolder->Add( mPreviewSymbols, 1, wxALL|wxEXPAND, 5 );
 	
 	mScrollSymbolsRight = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	gbSizer21->Add( mScrollSymbolsRight, wxGBPosition( 0, 2 ), wxGBSpan( 1, 1 ), wxEXPAND|wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5 );
+	mPreviewHolder->Add( mScrollSymbolsRight, 1, wxALL|wxEXPAND, 5 );
 	
 	
-	gbSizer21->AddGrowableCol( 1 );
-	gbSizer21->AddGrowableRow( 0 );
-	
-	sbSizer11->Add( gbSizer21, 1, wxEXPAND, 5 );
+	sbSizer11->Add( mPreviewHolder, 1, wxEXPAND, 5 );
 	
 	
 	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
@@ -129,6 +132,7 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	
 	// Connect Events
 	mCreateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mSettingsBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	mScrollSymbolsLeft->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 }
 
@@ -136,6 +140,7 @@ FontEditGui::~FontEditGui()
 {
 	// Disconnect Events
 	mCreateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mSettingsBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	mScrollSymbolsLeft->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	
 }
@@ -158,7 +163,7 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	m_staticText1->Wrap( -1 );
 	fgSizer3->Add( m_staticText1, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	mNumSpinCtrl = new wxSpinCtrl( this, wxID_NUM_SPIN_CTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 2048, 128 );
+	mNumSpinCtrl = new wxSpinCtrl( this, wxID_NUM_SPIN_CTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 2048, 130 );
 	fgSizer3->Add( mNumSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
 	m_staticText2 = new wxStaticText( this, wxID_ANY, wxT("Codes:"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -168,20 +173,6 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	mSetCodesBtn = new wxButton( this, wxID_SET_CODES_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	fgSizer3->Add( mSetCodesBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	m_staticText3 = new wxStaticText( this, wxID_ANY, wxT("Max height:"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText3->Wrap( -1 );
-	fgSizer3->Add( m_staticText3, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	mMaxHeightSpinCtrl = new wxSpinCtrl( this, wxID_MAX_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
-	fgSizer3->Add( mMaxHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
-	
-	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Min height:"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText4->Wrap( -1 );
-	fgSizer3->Add( m_staticText4, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	mMinHeightSpinCtrl = new wxSpinCtrl( this, wxID_MIN_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
-	fgSizer3->Add( mMinHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
-	
 	m_staticText5 = new wxStaticText( this, wxID_ANY, wxT("Max width:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText5->Wrap( -1 );
 	fgSizer3->Add( m_staticText5, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -189,12 +180,26 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	mMaxWidthSpinCtrl = new wxSpinCtrl( this, wxID_MAX_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMaxWidthSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
+	m_staticText3 = new wxStaticText( this, wxID_ANY, wxT("Max height:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3->Wrap( -1 );
+	fgSizer3->Add( m_staticText3, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	mMaxHeightSpinCtrl = new wxSpinCtrl( this, wxID_MAX_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	fgSizer3->Add( mMaxHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
+	
 	m_staticText6 = new wxStaticText( this, wxID_ANY, wxT("Min width:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText6->Wrap( -1 );
 	fgSizer3->Add( m_staticText6, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	mMinWidthSpinCtrl = new wxSpinCtrl( this, wxID_MIN_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMinWidthSpinCtrl, 0, wxALL|wxEXPAND, 5 );
+	
+	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Min height:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4->Wrap( -1 );
+	fgSizer3->Add( m_staticText4, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	mMinHeightSpinCtrl = new wxSpinCtrl( this, wxID_MIN_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	fgSizer3->Add( mMinHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
 	m_staticText8 = new wxStaticText( this, wxID_ANY, wxT("Base line:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText8->Wrap( -1 );
@@ -235,10 +240,10 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	// Connect Events
 	mNumSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mSetCodesBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontSettingsGui::OnBtnClick ), NULL, this );
-	mMaxHeightSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
-	mMinHeightSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mMaxWidthSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
+	mMaxHeightSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mMinWidthSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
+	mMinHeightSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mBaseLineSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mCapLineSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mLowLineSpinCtrl->Connect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
@@ -249,10 +254,10 @@ FontSettingsGui::~FontSettingsGui()
 	// Disconnect Events
 	mNumSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mSetCodesBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontSettingsGui::OnBtnClick ), NULL, this );
-	mMaxHeightSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
-	mMinHeightSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mMaxWidthSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
+	mMaxHeightSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mMinWidthSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
+	mMinHeightSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mBaseLineSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mCapLineSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
 	mLowLineSpinCtrl->Disconnect( wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( FontSettingsGui::OnSpinCtrl ), NULL, this );
