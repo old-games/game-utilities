@@ -26,6 +26,8 @@ public:
 		return mEditPanel;
 	}
 
+	void SetEditPanel( EditPanel* editPanel );
+
 protected:
 
 	virtual void OnCommandEvent( wxCommandEvent& event );

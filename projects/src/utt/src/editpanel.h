@@ -57,6 +57,8 @@ protected:
 	void DrawGrid( wxDC& dc );
 	void PlacePixel( const wxPoint& pos, const wxColour& color );
 	bool GetPixel( const wxPoint& pos, wxColour& color );
+
+	bool		mDrawing;
 	
 private:
 	
@@ -69,7 +71,7 @@ private:
 	wxInt32		mPointsNumber;
 	wxPen		mGridPen;
 	wxInt32		mGridLogic;
-	bool		mDrawing;
+
 	wxColour	mCurrentColour;
 	wxPoint		mPreviousPoint;
 

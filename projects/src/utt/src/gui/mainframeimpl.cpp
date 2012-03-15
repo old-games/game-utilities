@@ -51,9 +51,24 @@ MainFrameImpl::~MainFrameImpl(void)
 
 void MainFrameImpl::OnColourPickEvent( ColourPickEvent& event )
 {
-	if ( event.GetButton() == wxMOUSE_BTN_LEFT || event.GetButton() == wxMOUSE_BTN_RIGHT )
+	if ( event.GetButton() != wxMOUSE_BTN_LEFT && event.GetButton() != wxMOUSE_BTN_RIGHT )
 	{
-		mPalWindow.SetColour(event.GetButton() == wxMOUSE_BTN_RIGHT, event.GetColour() );
+		return;
+	}
+	bool right = event.GetButton() == wxMOUSE_BTN_RIGHT;
+	switch ( event.GetAction() )
+	{
+		case ColourPickEvent::cpeSetThisColour:
+			mPalWindow.SetColour(right, event.GetColour() );
+		break;
+
+		case ColourPickEvent::cpeFindThisColour:
+			mPalWindow.FindColour(right, event.GetColour(), true );
+		break;
+
+		default:
+			wxLogError( wxString::Format( "MainFrameImpl::OnColourPickEvent: unknown action %d", event.GetAction() ) );
+			return;
 	}
 	event.Skip();
 }

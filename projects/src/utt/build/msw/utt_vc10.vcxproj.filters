@@ -91,7 +91,10 @@
     <ClCompile Include="..\..\src\symbolpanel.cpp">
       <Filter>main</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\symboeditgui.cpp">
+    <ClCompile Include="..\..\src\gui\symboleditgui.cpp">
+      <Filter>gui\fonteditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\controlline.cpp">
       <Filter>gui\fonteditor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -171,7 +174,10 @@
     <ClInclude Include="..\..\src\symbolpanel.h">
       <Filter>main</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\symboeditgui.h">
+    <ClInclude Include="..\..\src\gui\symboleditgui.h">
+      <Filter>gui\fonteditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\controlline.h">
       <Filter>gui\fonteditor</Filter>
     </ClInclude>
   </ItemGroup>

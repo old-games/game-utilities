@@ -16,10 +16,7 @@ EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 	EditPanelGui( parent )
 {
 	mEditPanel = new EditPanel( this, wxEditPanelId++ );
-	mDrawHolder->Add( mEditPanel, 1, wxEXPAND, 5 );
-	mEditPanel->SetAlign( utdHCenter | utdVCenter );
-	SetGridEnabled();
-	SetGridMode();
+	SetEditPanel( mEditPanel );
 }
 
 EditPanelImpl::~EditPanelImpl(void)
@@ -48,7 +45,7 @@ void EditPanelImpl::SetBitmap( wxBitmap* bitmap )
 		break;
 		
 		default:
-			wxLogError( wxString::Format("EditPanel: unknown event %d", event.GetId()) );
+			wxLogError( wxString::Format("EditPanel::OnCommandEvent: unknown command %d", event.GetId()) );
 			return;
 	}
 	mEditPanel->PaintNow();
@@ -72,7 +69,7 @@ void EditPanelImpl::SetGridMode()
 		break;
 		
 		default:
-			wxLogError( wxString::Format("EditPanel: unknown grid draw logic %d", mGridModeChoice->GetSelection()) );
+			wxLogError( wxString::Format("EditPanel::SetGridMode: unknown grid draw logic %d", mGridModeChoice->GetSelection()) );
 	}
 }
 
@@ -95,3 +92,21 @@ void EditPanelImpl::SetGridColour()
 	}
 }
 
+void EditPanelImpl::SetEditPanel( EditPanel* editPanel )
+{
+	if ( !editPanel )
+	{
+		wxLogError( wxString::Format("EditPanelImpl::SetEditPanel: bad pointer to EditPanel in args") );
+		return;
+	}
+
+	if ( mEditPanel && mDrawHolder->Detach( mEditPanel ) )
+	{
+		delete mEditPanel;
+	}
+	mEditPanel = editPanel;
+	mDrawHolder->Add( mEditPanel, 1, wxEXPAND, 5 );
+	mEditPanel->SetAlign( utdHCenter | utdVCenter );
+	SetGridEnabled();
+	SetGridMode();
+}

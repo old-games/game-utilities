@@ -21,6 +21,17 @@ static const wxSize	sBitmapSize[BPP::bppNum] =
 	wxSize(256, 256)	// Truecolor with alpha
 };
 
+static const wxFloat32	sSquares[BPP::bppNum] =
+{
+	50.0f,
+	40.0f,
+	25.0f,
+	20.0f,
+	3.0f,
+	3.0f,
+	3.0f
+};
+
 PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true */,  wxWindowID id /* wxID_ANY */ ):
 	EditPanel( parent, id ),
 	mPalType( BPP::bppMono),
@@ -62,6 +73,7 @@ void PalettePanel::GeneratePalBitmap()
 	if ( mPalType <= BPP::bpp8 )
 	{
 		memcpy( colorMap, srcPal, BPP::ColourNumber[ mPalType ] * sizeof(Pixel) );
+		SetGridEnabled( );
 	}
 	else
 	{
@@ -80,11 +92,13 @@ void PalettePanel::GeneratePalBitmap()
 				dst[2] = newCol.Blue();
 			}
 		}
+		SetGridEnabled( false );
 	}
 	CreateBitmap( colorMap, size.x, size.y );
 	delete[] colorMap;
 	CorrectColourPosition( false );
 	CorrectColourPosition( true );
+	SetScale( sSquares[ mPalType ] );
 }
 
 void PalettePanel::CorrectColourPosition( bool right )
@@ -147,6 +161,41 @@ void PalettePanel::SetColour( bool right, const wxColour& colour)
 	SetBitmapColour( right );
 }
 
+int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /* false */ )
+{
+	int res = -1;
+	wxMemoryDC temp_dc;
+	temp_dc.SelectObject(*mBitmap);
+	wxColour compare;
+	wxPoint pos( -1, -1 );
+	for ( int y = 0; y < mHeight && res == -1; ++y )
+	{
+		for ( int x = 0; x < mWidth; ++x )
+		{	
+			if ( temp_dc.GetPixel( x, y, &compare ) && compare == colour )
+			{
+				res = (y * mWidth) + x;
+				pos.x = x;
+				pos.y = y;
+				break;
+			}
+		}
+	}
+	if (res != -1 && andSet)
+	{
+		if ( right )
+		{
+			mRightPos = pos;
+		}
+		else
+		{
+			mLeftPos = pos;
+		}
+		GetBitmapColour( right );
+	}
+	return res;
+}
+
 /* virtual */ void PalettePanel::OnBtnDown( wxMouseEvent& event )
 {
 	if ( !event.LeftIsDown() && !event.RightIsDown() )
@@ -176,7 +225,7 @@ void PalettePanel::SetColour( bool right, const wxColour& colour)
 	EditPanel::Render( dc );
 	int x, y;
 	this->GetViewStart( &x, &y );
-	wxPoint view(x + mPosX, y + mPosY);
+	wxPoint view(mPosX - x, mPosY - y);
 	wxSize size( mScale + 2, mScale + 2);
 	dc.SetBrush( *wxTRANSPARENT_BRUSH );
 	dc.SetLogicalFunction( wxCOPY );

@@ -25,7 +25,7 @@ public:
 	// current position of mouse to pixels coordinates
 	wxPoint MousePosition2PointCoords();
 	// custom position of mouse to pixels coordinates
-	wxPoint MousePosition2PointCoords( const wxPoint& pos );
+	wxPoint MousePosition2PointCoords( const wxPoint& pos, bool zeroBased = true );
 	
 	void RenderSelection(wxDC& dc);
 	void DrawSelection();

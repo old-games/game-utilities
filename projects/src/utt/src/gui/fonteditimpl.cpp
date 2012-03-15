@@ -13,12 +13,12 @@
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
 	FontEditGui( parent ),
-	mSymbolPanel( new SymbolPanel( this, wxID_FONT_EDITOR ) ),
+	mSymbolEditor( new SymbolEditGui( this, wxID_FONT_EDITOR ) ),
 	mCurrentFont( NULL ),
 	mCurrentSymbol( 0 ),
 	mHasChanges( false )
 {
-	mCentralSizer->Add( mSymbolPanel, 1, wxEXPAND, 5 );
+	mCentralSizer->Add( mSymbolEditor, 1, wxEXPAND, 5 );
 	this->Layout();
 }
 
@@ -60,7 +60,7 @@ bool FontEditImpl::CreateFont()
 	if ( ShowSettings() )
 	{	
 		mCurrentSymbol = 0;
-		mSymbolPanel->SetFontInfo( mCurrentFont, mCurrentSymbol );
+		mSymbolEditor->GetSymbolPanel()->SetFontInfo( mCurrentFont, mCurrentSymbol );
 		return true;
 	}
 	return false;
@@ -74,11 +74,7 @@ bool FontEditImpl::ShowSettings()
 	}
 	
 	FontSettingsImpl settings( this, mCurrentFont );
-	if ( settings.ShowModal() == wxID_CANCEL )
-	{
-		return false;
-	}
-	return true;
+	return settings.ShowModal() != wxID_CANCEL;
 }
 
 void FontEditImpl::Render(wxDC& dc)

@@ -10,6 +10,16 @@
 #define SYMBOLPANEL_H_INCLUDED
 
 #include "editpanel.h"
+#include "controlline.h"
+
+enum ControlLines
+{
+	clSymbolWidth,
+	clBaseLine,
+	clCapLine,
+	clLowLine,
+	clNum
+};
 
 class SymbolPanel :
 	public EditPanel
@@ -22,14 +32,27 @@ public:
 
 protected:
 		
-	
+	virtual void Render( wxDC& dc );
+	virtual void SetShowParams();
+	virtual void OnMotion( wxMouseEvent& event );
+	virtual void OnBtnDown( wxMouseEvent& event );
+	virtual void OnBtnUp( wxMouseEvent& event );
+
 private:
 
 	void UpdateBitmap();
+	void UpdateControlLines();
+	void DrawAdditionalLine( wxDC& dc, int x );
 
-	FontInfo*	mFontInfo;
-	bool		mAllowEdit;
-	int			mSymbolNumber;
+	FontInfo*		mFontInfo;
+	bool			mAllowEdit;
+	int				mSymbolNumber;
+	int				mActiveLine;
+	bool			mDragLine;
+	wxPoint			mDragPoint;
+	ControlLine*	mLines[ clNum ];
+
+
 };
 
 #endif

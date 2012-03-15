@@ -73,14 +73,14 @@ struct SymbolInfo
 
 	SymbolInfo &operator = ( const SymbolInfo &src );
 
-	wxInt32	mWidth;											// ширина символа
-	wxInt32 mHeight;										// высота символа
-	wxUint32 mCode;											// код символа, для пробела 32 и т.д.
+	wxInt32	mWidth;											// С€РёСЂРёРЅР° СЃРёРјРІРѕР»Р°
+	wxInt32 mHeight;										// РІС‹СЃРѕС‚Р° СЃРёРјРІРѕР»Р°
+	wxUint32 mCode;											// РєРѕРґ СЃРёРјРІРѕР»Р°, РґР»СЏ РїСЂРѕР±РµР»Р° 32 Рё С‚.Рґ.
 	
 protected:
 
-	LetterBox* mData;										// данные символа, в protected - для 
-															// контроля за инициализацией
+	LetterBox* mData;										// РґР°РЅРЅС‹Рµ СЃРёРјРІРѕР»Р°, РІ protected - РґР»СЏ 
+															// РєРѕРЅС‚СЂРѕР»СЏ Р·Р° РёРЅРёС†РёР°Р»РёР·Р°С†РёРµР№
 
 private:
 
@@ -222,17 +222,17 @@ public:
 
 protected:
 
-	wxInt32			mMaxHeight;							// максимальная высота
-	wxInt32			mMinHeight;							// минимальная высота
-	wxInt32			mMaxWidth;							// максимальная ширина
-	wxInt32			mMinWidth;							// минимальная ширина
-	wxInt32			mBaseLine;							// базовая линия символа
-	wxInt32			mCapLine;							// линия заглавных букв
-	wxInt32			mLowLine;							// линия строчных букв
-	wxInt32			mBPP;								// бит на пиксель
-	wxInt32			mFontCodePage;						// кодировка, относительный параметр, для лучшего представления шрифта
-	Palette         mPalette;							// палитра
-	Symbols			mSymbols;							// символы
+	wxInt32			mMaxHeight;							// РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р°
+	wxInt32			mMinHeight;							// РјРёРЅРёРјР°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р°
+	wxInt32			mMaxWidth;							// РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР°
+	wxInt32			mMinWidth;							// РјРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР°
+	wxInt32			mBaseLine;							// Р±Р°Р·РѕРІР°СЏ Р»РёРЅРёСЏ СЃРёРјРІРѕР»Р°
+	wxInt32			mCapLine;							// Р»РёРЅРёСЏ Р·Р°РіР»Р°РІРЅС‹С… Р±СѓРєРІ
+	wxInt32			mLowLine;							// Р»РёРЅРёСЏ СЃС‚СЂРѕС‡РЅС‹С… Р±СѓРєРІ
+	wxInt32			mBPP;								// Р±РёС‚ РЅР° РїРёРєСЃРµР»СЊ
+	wxInt32			mFontCodePage;						// РєРѕРґРёСЂРѕРІРєР°, РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ, РґР»СЏ Р»СѓС‡С€РµРіРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С€СЂРёС„С‚Р°
+	Palette         mPalette;							// РїР°Р»РёС‚СЂР°
+	Symbols			mSymbols;							// СЃРёРјРІРѕР»С‹
 
 };
 

@@ -72,6 +72,16 @@ void PaletteWindowImpl::SetColour(bool right, const wxColour& colour)
 	UpdateColour( right );
 }
 
+int	PaletteWindowImpl::FindColour( bool right, const wxColour& colour, bool andSet /* false */)
+{
+	int res = mPalPanel->FindColour( right, colour, andSet );
+	if (res == -1)
+	{
+		wxLogMessage( wxString::Format("Colour %s not found in global palette", colour.GetAsString() ) );
+	}
+	return res;
+}
+
 void PaletteWindowImpl::UpdateColours()
 {
 	UpdateColour( false );

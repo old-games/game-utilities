@@ -18,6 +18,7 @@ wxColour	EditPanel::gGlobalRightColour = *wxWHITE;
 EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	DrawPanel( parent, id ),
 	SelectionRectangle( this ),
+	mDrawing( false ),
 	mDrawGrid( true ),
 	mDrawFocus( true ),
 	mGridColour( *wxGREEN ),
@@ -25,7 +26,6 @@ EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	mPointsNumber( 0 ),
 	mGridPen( mGridColour ),
 	mGridLogic( wxXOR ),
-	mDrawing( false ),
 	mCurrentColour( *wxBLACK ),
 	mPreviousPoint( -1, -1)
 {
@@ -220,17 +220,15 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 
 /* virtual */ void EditPanel::OnBtnDown( wxMouseEvent& event )
 {
-	if ( event.AltDown() && ( event.LeftDown() || event.RightDown() ) )
+	if ( (event.ShiftDown() || event.AltDown()) && ( event.LeftDown() || event.RightDown() ) )
 	{
 		wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
 		wxColour colour;
 		if ( pos.x != -1 && pos.y != -1 && GetPixel(pos, colour) )
 		{
-			ColourPickEvent ev( colour, event.GetButton() );
-			if ( wxEvtHandler::ProcessEvent( ev ) )		
-			{
-				return;
-			}
+			ColourPickEvent* colourEvent = new ColourPickEvent( colour, event.GetButton(),
+				event.ShiftDown() ? ColourPickEvent::cpeFindThisColour : ColourPickEvent::cpeSetThisColour );
+			wxEvtHandler::QueueEvent( colourEvent );
 		}
 	}
 	if (event.LeftDown())

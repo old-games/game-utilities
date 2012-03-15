@@ -12,14 +12,24 @@
 
 #include "editpanelimpl.h"
 
+// TODO: replace when drawpanel will be finished
+#include "symbolpanel.h"
+
 class SymbolEditGui :
 	public EditPanelImpl
 {
 public:
-	SymbolEditGui( wxWindow* parent );
+	SymbolEditGui( wxWindow* parent, wxWindowID	 id = wxID_ANY );
 	~SymbolEditGui(void); 
 
+	SymbolPanel* GetSymbolPanel()
+	{
+		return mSymbolPanel;
+	}
+
 private:
+
+	SymbolPanel*	mSymbolPanel;
 
 };
 

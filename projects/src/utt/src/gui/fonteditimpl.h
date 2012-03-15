@@ -13,6 +13,7 @@
 
 // TODO: replace when drawpanel will be finished
 #include "symbolpanel.h"
+#include "symboleditgui.h"
 
 class FontEditImpl :
 	public FontEditGui
@@ -29,7 +30,7 @@ public:
 	
 	SymbolPanel* GetSymbolPanel()
 	{
-		return mSymbolPanel;
+		return mSymbolEditor->GetSymbolPanel();
 	}
 
 protected:
@@ -40,7 +41,7 @@ protected:
 	virtual void OnBtnClick( wxCommandEvent& event );
 private:	
 
-	SymbolPanel*	mSymbolPanel;
+	SymbolEditGui*	mSymbolEditor;
 	FontInfo*		mCurrentFont;
 	int				mCurrentSymbol;
 	bool			mHasChanges;

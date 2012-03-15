@@ -20,16 +20,10 @@ SelectionRectangle::SelectionRectangle(  wxScrolledWindow* parent ):
 	mEndPoint( -1, -1 ),
 	mCoordRect( 0, 0, 0, 0 )
 {
-	//mParent->Bind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
-	//mParent->Bind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
-	//mParent->Bind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
 }
 
 SelectionRectangle::~SelectionRectangle(void)
 {
-	//mParent->Unbind( wxEVT_LEFT_UP, &SelectionRectangle::OnLeftUp, this, mParent->GetId() );
-	//mParent->Unbind( wxEVT_MOTION, &SelectionRectangle::OnMotion, this, mParent->GetId() );
-	//mParent->Unbind( wxEVT_LEFT_DOWN, &SelectionRectangle::OnLeftDown, this, mParent->GetId() );
 }
 
 void SelectionRectangle::SetWorkZone( const wxRect& rect, wxFloat32 pointSize )
@@ -62,10 +56,15 @@ wxPoint	SelectionRectangle::GetMousePosition( const wxPoint& pos )
 	return result;
 }
 
-wxPoint SelectionRectangle::MousePosition2PointCoords( const wxPoint& pos )
+wxPoint SelectionRectangle::MousePosition2PointCoords( const wxPoint& pos, bool zeroBased /* true */ )
 {
 	wxPoint result = GetMousePosition( pos );
 	Position2Coords( result );
+	if (!zeroBased && result.x != -1 && result.y != -1)
+	{
+		++result.x;
+		++result.y;
+	}
 	return result;
 }
 

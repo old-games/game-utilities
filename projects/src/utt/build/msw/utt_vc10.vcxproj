@@ -128,12 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\controlline.cpp" />
     <ClCompile Include="..\..\src\customevents.cpp" />
     <ClCompile Include="..\..\src\drawpanel.cpp" />
     <ClCompile Include="..\..\src\editpanel.cpp" />
     <ClCompile Include="..\..\src\gui\editpanelimpl.cpp" />
     <ClCompile Include="..\..\src\gui\palwindowimpl.cpp" />
-    <ClCompile Include="..\..\src\gui\symboeditgui.cpp" />
+    <ClCompile Include="..\..\src\gui\symboleditgui.cpp" />
     <ClCompile Include="..\..\src\helpers.cpp" />
     <ClCompile Include="..\..\src\luaconsole.cpp" />
     <ClCompile Include="..\..\src\luacontrol.cpp" />
@@ -161,13 +162,14 @@
     <ClCompile Include="..\..\src\luaexports\luafont.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\controlline.h" />
     <ClInclude Include="..\..\src\customevents.h" />
     <ClInclude Include="..\..\src\defaultpals.h" />
     <ClInclude Include="..\..\src\drawpanel.h" />
     <ClInclude Include="..\..\src\editpanel.h" />
     <ClInclude Include="..\..\src\gui\editpanelimpl.h" />
     <ClInclude Include="..\..\src\gui\palwindowimpl.h" />
-    <ClInclude Include="..\..\src\gui\symboeditgui.h" />
+    <ClInclude Include="..\..\src\gui\symboleditgui.h" />
     <ClInclude Include="..\..\src\helpers.h" />
     <ClInclude Include="..\..\src\luaconsole.h" />
     <ClInclude Include="..\..\src\luacontrol.h" />

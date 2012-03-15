@@ -21,6 +21,8 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
 	mPosX( 0 ),
 	mPosY( 0 ),
 	mScale( 1.0f ),
+	mScaleMin( SCALE_STEP ),
+	mScaleMax( 50.0f ), 
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
 	mBitmap( NULL ),
@@ -127,6 +129,21 @@ void DrawPanel::SetScale( wxFloat32 scale )
 	mScale = scale;
 	mScaledWidth = (wxFloat32) mWidth * mScale;	
 	mScaledHeight = (wxFloat32) mHeight * mScale;
+	SetShowParams();
+}
+
+void DrawPanel::SetScaleRange( wxFloat32 min, wxFloat32 max )
+{
+	mScaleMin = min;
+	mScaleMax = max;
+	if ( mScale < mScaleMin )
+	{
+		SetScale( mScaleMin );
+	}
+	if ( mScale > mScaleMax )
+	{
+		SetScale( mScaleMax );
+	}
 }
 
 void DrawPanel::Render(wxDC& dc)
@@ -145,12 +162,13 @@ void DrawPanel::Render(wxDC& dc)
 
 void DrawPanel::OnPaint( wxPaintEvent& event )
 {
+	wxAutoBufferedPaintDC dc(this);
 	if (!mBitmap || !mBitmap->IsOk())
 	{
+		dc.Clear();
 		event.Skip();
 		return;
 	}
-	wxAutoBufferedPaintDC dc(this);
 	Render( dc );
 	event.Skip();
 	
@@ -264,11 +282,12 @@ inline void DrawPanel::SetShowParams()
 void DrawPanel::OnSize(wxSizeEvent& event)
 {
 	event.Skip();
-	if (!mBitmap || !mBitmap->IsOk())
-	{
-		return;
-	}
 	SetShowParams();
+	//if (!mBitmap || !mBitmap->IsOk())
+	//{
+	//	return;
+	//}
+	//SetShowParams();
 }
 
 void DrawPanel::OnMouseWheel( wxMouseEvent &event )
@@ -284,7 +303,7 @@ void DrawPanel::OnMouseWheel( wxMouseEvent &event )
 		return;
 	}
 	wxFloat32 inc = delta < 0 ? -SCALE_STEP : SCALE_STEP;
-	if (mScale + inc < SCALE_STEP)
+	if (mScale + inc < mScaleMin || mScale + inc > mScaleMax)
 	{
 		return;
 	}

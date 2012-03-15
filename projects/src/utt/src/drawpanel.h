@@ -36,6 +36,7 @@ public:
 	void CreateBitmap(Pixel* buffer, int width, int height);
 	void SetBuffer( Pixel* buffer );
 	void SetScale( wxFloat32 scale );
+	void SetScaleRange( wxFloat32 min, wxFloat32 max );
 	void SetAlign( int align );
 	void SetAllowScaling( bool b = true );
 
@@ -59,11 +60,13 @@ protected:
 
 	wxFloat32	mXAspectRatio;
 	wxFloat32	mYAspectRatio;
-	wxCoord		mShowWidth;				// ширина картинки для отображения
+	wxCoord		mShowWidth;				// С€РёСЂРёРЅР° РєР°СЂС‚РёРЅРєРё РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
 	wxCoord		mShowHeight;			
-	wxCoord		mPosX;					// стартовая позиция для отображения
+	wxCoord		mPosX;					// СЃС‚Р°СЂС‚РѕРІР°СЏ РїРѕР·РёС†РёСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
 	wxCoord		mPosY;
 	wxFloat32	mScale;
+	wxFloat32	mScaleMin;
+	wxFloat32	mScaleMax;
 	wxCoord		mScaledWidth;
 	wxCoord		mScaledHeight;
 	

@@ -24,7 +24,9 @@ public:
 	~PalettePanel(); 
 
 	const wxColour& GetColour( bool right );
+
 	void SetColour( bool right, const wxColour& colour );
+	int	FindColour( bool right, const wxColour& colour, bool andSet = false );
 	
 protected:
 
