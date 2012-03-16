@@ -63,4 +63,8 @@
 #define READERROR(x)	(x->GetLastError() == wxSTREAM_READ_ERROR)			// x - wxInputStream
 #define WRITEERROR(x)	(x->GetLastError() == wxSTREAM_WRITE_ERROR)			// x - wxOutputStream
 
+#define WXK_CONSOLE	0x60
+#define WXK_NUM_ONE 0x31
+#define WXK_NUM_TWO 0x32
+
 #endif // UTT_PCH_H_INCLUDED

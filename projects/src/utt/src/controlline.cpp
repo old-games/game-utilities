@@ -23,6 +23,7 @@ ControlLine::ControlLine( wxScrolledWindow* parent ):
 	mZoneWidth( 0 ),
 	mZoneHeight( 0 ),
 	mScale( 0.0f ),
+	mCursor( wxNullCursor ),
 	mToolTip( "line" )
 {
 }
@@ -39,6 +40,7 @@ void ControlLine::SetParameters( int orientation, const wxColour& colour,  int w
 	mWidth = width;
 	mStyle = style;
 	mToolTip = txt;
+	mCursor = wxCursor( mOrientation == wxVERTICAL ? wxCURSOR_SIZEWE : wxCURSOR_SIZENS );
 	mInitiated = true;
 }
 

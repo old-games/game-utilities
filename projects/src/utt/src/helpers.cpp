@@ -10,16 +10,10 @@
 #include "pch.h"
 #include "helpers.h"
 
+wxWindowID Helpers::wxCustomPanelId = wxID_HIGHEST + 1024;
+
 void Helpers::CropBuffer(Pixel* dst, int dstWidth, int dstHeight, Pixel* src, int srcWidth, int srcHeight)
 {
-	//if (dstHeight < srcHeight)
-	//{
-	//	srcHeight = dstHeight;
-	//}
-	//if (dstWidth < srcWidth)
-	//{
-	//	srcWidth = dstWidth;
-	//}
 	memset( dst, 0, dstWidth * dstHeight * sizeof( Pixel) );
 	size_t copyLength = sizeof( Pixel ) * dstWidth;
 	size_t correction = sizeof( Pixel ) * srcWidth - copyLength;

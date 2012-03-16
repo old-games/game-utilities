@@ -9,6 +9,8 @@
 #ifndef DRAWPANEL_H_INCLUDED
 #define DRAWPANEL_H_INCLUDED
 
+#include "selectrect.h"
+
 enum UTTDrawParams
 {
 	utdNone		= 0x0000,
@@ -25,11 +27,11 @@ enum UTTDrawParams
 };
 
 class DrawPanel :
-	public wxScrolledWindow
+	public wxScrolledWindow, public SelectionRectangle
 {
 public:
 
-	DrawPanel( wxWindow* parent,  wxWindowID id = wxID_ANY );
+	DrawPanel( wxWindow* parent );
 	virtual ~DrawPanel(void);
 
 	void SetBitmap( wxBitmap* bitmap );
@@ -46,12 +48,24 @@ protected:
 	virtual void OnBtnDown( wxMouseEvent& event );
 	virtual void OnMotion( wxMouseEvent& event );
 	virtual void OnBtnUp( wxMouseEvent& event );
+	virtual void OnKeyDown( wxKeyEvent& event );
+	virtual void OnKeyUp( wxKeyEvent& event );
 	
 	virtual void OnFocus(wxFocusEvent& event);
+	virtual void OnChildFocus(wxChildFocusEvent& event);
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
 	virtual void Render(wxDC& dc);
 	
+	virtual bool MouseButton( int btn, bool up );
+	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
+	virtual bool MouseMoving( int modifier, int btn );
+	virtual bool MouseWheel( int modifier, int delta );
+	
+	virtual bool KeyDown( int modifier, int keyCode );	
+	virtual bool KeyUp( int modifier, int keyCode );	
+	virtual bool PlusMinusPressed( bool plus );
+
 	void PaintNow();
 	void DestroyBitmap();
 	void ApplyBitmap();
@@ -69,7 +83,9 @@ protected:
 	wxFloat32	mScaleMax;
 	wxCoord		mScaledWidth;
 	wxCoord		mScaledHeight;
-	
+	wxRect		mBitmapRect;
+	wxPoint		mMousePoint;			// pixel coordinats where mouse cursor points
+		
 	wxBitmap*	mBitmap;
 	wxCoord		mWidth;
 	wxCoord		mHeight;

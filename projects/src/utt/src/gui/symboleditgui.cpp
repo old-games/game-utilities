@@ -10,9 +10,9 @@
 #include "pch.h"
 #include "symboleditgui.h"
 
-SymbolEditGui::SymbolEditGui(  wxWindow* parent, wxWindowID	 id /* wxID_ANY */ ):
+SymbolEditGui::SymbolEditGui(  wxWindow* parent ):
 	EditPanelImpl( parent ),
-	mSymbolPanel( new SymbolPanel( this, id ) )
+	mSymbolPanel( new SymbolPanel( this ) )
 {
 	EditPanelImpl::SetEditPanel( mSymbolPanel );
 	mSymbolPanel->SetScaleRange( 5.0f, 50.0f );

@@ -20,7 +20,7 @@ class PalettePanel :
 friend class PaletteWindowImpl;
 
 public:
-	PalettePanel( wxWindow* parent, bool changeGlobalColours = true, wxWindowID id = wxID_ANY );
+	PalettePanel( wxWindow* parent, bool changeGlobalColours = true );
 	~PalettePanel(); 
 
 	const wxColour& GetColour( bool right );
@@ -30,8 +30,10 @@ public:
 	
 protected:
 
-	virtual void OnBtnDown( wxMouseEvent& event );
 	virtual void Render(wxDC& dc);
+	
+	virtual bool MouseButton( int btn, bool up );
+	virtual bool KeyDown( int modifier, int keyCode );	
 
 private:
 

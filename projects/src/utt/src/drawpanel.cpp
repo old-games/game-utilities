@@ -12,8 +12,9 @@
 
 #define SCALE_STEP	0.25f
 
-DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
-	wxScrolledWindow( parent, id ),
+DrawPanel::DrawPanel(  wxWindow* parent ):
+	wxScrolledWindow( parent, Helpers::wxCustomPanelId++ ),
+	SelectionRectangle( this ),
 	mXAspectRatio( 0.0f ),
 	mYAspectRatio( 0.0f ),
 	mShowWidth( 0 ),
@@ -25,6 +26,8 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
 	mScaleMax( 50.0f ), 
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
+	mBitmapRect(),
+	mMousePoint( -1, -1 ),
 	mBitmap( NULL ),
 	mWidth( 0 ),
 	mHeight( 0 ),
@@ -33,32 +36,41 @@ DrawPanel::DrawPanel(  wxWindow* parent, wxWindowID id ):
 {
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
-	this->Bind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this, id );
-	this->Bind( wxEVT_MOTION, &DrawPanel::OnMotion, this, id );
-	this->Bind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this, id );
-	this->Bind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this, id );
-	this->Bind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this, id );
-	this->Bind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this, id );
+
+	this->Bind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this );
+	this->Bind( wxEVT_MOTION, &DrawPanel::OnMotion, this );
+	this->Bind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this );
+	this->Bind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this );
+	this->Bind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this );
+	this->Bind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this );
+	this->Bind( wxEVT_KEY_DOWN, &DrawPanel::OnKeyDown, this );
+	this->Bind( wxEVT_KEY_UP, &DrawPanel::OnKeyUp, this );
 	
-	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this, id );
-	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this, id );
-	this->Bind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this, id );
-	this->Bind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this, id );
+	
+	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this );
+	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this);
+	this->Bind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this );
+	this->Bind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this );
+	this->Bind( wxEVT_CHILD_FOCUS, &DrawPanel::OnChildFocus, this );
+	this->SetCanFocus( true );
 }
 
 DrawPanel::~DrawPanel(void)
 {
-	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this, this->GetId() );
-	this->Unbind( wxEVT_MOTION, &DrawPanel::OnMotion, this, this->GetId() );
-	this->Unbind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this, this->GetId() );
-	this->Unbind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this, this->GetId() );
-	this->Unbind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this, this->GetId() );
-	this->Unbind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this, this->GetId() );
 
-	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this, this->GetId() );
-	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this, this->GetId() );
-	this->Unbind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this, this->GetId() );
-	this->Unbind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this, this->GetId() );
+	this->Unbind( wxEVT_MOUSEWHEEL, &DrawPanel::OnMouseWheel, this );
+	this->Unbind( wxEVT_MOTION, &DrawPanel::OnMotion, this );
+	this->Unbind( wxEVT_LEFT_DOWN, &DrawPanel::OnBtnDown, this );
+	this->Unbind( wxEVT_LEFT_UP, &DrawPanel::OnBtnUp, this );
+	this->Unbind( wxEVT_RIGHT_DOWN, &DrawPanel::OnBtnDown, this );
+	this->Unbind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this );
+	this->Unbind( wxEVT_KEY_DOWN, &DrawPanel::OnKeyDown, this );
+	this->Unbind( wxEVT_KEY_UP, &DrawPanel::OnKeyUp, this );
+
+	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this );
+	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this );
+	this->Unbind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this );
+	this->Unbind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this );
 	DestroyBitmap();
 }
 
@@ -71,7 +83,6 @@ void DrawPanel::SetAllowScaling( bool b /* true */)
 {
 	mAllowScaling = b;
 }
-
 
 void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
 {
@@ -102,6 +113,7 @@ void DrawPanel::ApplyBitmap()
 	}
 	mWidth = mBitmap->GetWidth();
 	mHeight = mBitmap->GetHeight();
+	mBitmapRect = wxRect( 0, 0, mWidth, mHeight );
 	SetScale( mScale );
 	SetShowParams();
 }
@@ -146,7 +158,7 @@ void DrawPanel::SetScaleRange( wxFloat32 min, wxFloat32 max )
 	}
 }
 
-void DrawPanel::Render(wxDC& dc)
+/* virtual */ void DrawPanel::Render(wxDC& dc)
 {
 	if (!mBitmap || !mBitmap->IsOk())
 	{
@@ -158,9 +170,10 @@ void DrawPanel::Render(wxDC& dc)
 	wxInt32 x = GetScrollPos(wxHORIZONTAL);
 	wxInt32 y = GetScrollPos(wxVERTICAL);
 	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
+	RenderSelection( dc );
 }
 
-void DrawPanel::OnPaint( wxPaintEvent& event )
+/* virtual */ void DrawPanel::OnPaint( wxPaintEvent& event )
 {
 	wxAutoBufferedPaintDC dc(this);
 	if (!mBitmap || !mBitmap->IsOk())
@@ -195,7 +208,7 @@ inline void DrawPanel::CalculateScrollBars()
 	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y);
 }
 
-inline void DrawPanel::SetShowParams()
+/* virtual */ inline void DrawPanel::SetShowParams()
 {
 	mShowWidth = mScaledWidth; 
 	mShowHeight = mScaledHeight;
@@ -279,55 +292,172 @@ inline void DrawPanel::SetShowParams()
 	CalculateScrollBars();
 }
 
-void DrawPanel::OnSize(wxSizeEvent& event)
+/* virtual */ void DrawPanel::OnSize(wxSizeEvent& event)
 {
-	event.Skip();
 	SetShowParams();
-	//if (!mBitmap || !mBitmap->IsOk())
-	//{
-	//	return;
-	//}
-	//SetShowParams();
+	event.Skip();
 }
 
-void DrawPanel::OnMouseWheel( wxMouseEvent &event )
+/* virtual */ void DrawPanel::OnMouseWheel( wxMouseEvent &event )
 {
-	if ( !mAllowScaling || !event.ControlDown() )
+	if (!MouseWheel( event.GetModifiers(), event.GetWheelRotation() ))
 	{
 		event.Skip();
-		return;
 	}
-	int delta = event.GetWheelRotation();
-	if ( delta == 0 )
+}
+
+/* virtual */ void DrawPanel::OnKeyDown( wxKeyEvent& event )
+{
+	if ( !KeyDown( event.GetModifiers(), event.GetKeyCode() ) )
 	{
-		return;
+		event.Skip();
 	}
-	wxFloat32 inc = delta < 0 ? -SCALE_STEP : SCALE_STEP;
+}
+
+/* virtual */ void DrawPanel::OnKeyUp( wxKeyEvent& event )
+{
+	if ( !KeyUp( event.GetModifiers(), event.GetKeyCode() ) )
+	{
+		event.Skip();
+	}
+}
+
+/* virtual */ bool DrawPanel::KeyDown( int WXUNUSED( modifier ), int keyCode )
+{
+	bool res = false;
+	switch ( keyCode )
+	{
+		case WXK_NUMPAD_ADD:
+		case WXK_NUMPAD_SUBTRACT:
+			res = this->PlusMinusPressed( keyCode == WXK_NUMPAD_ADD );
+		break;
+	}
+	return res;
+}
+
+/* virtual */ bool DrawPanel::KeyUp( int WXUNUSED( modifier ), int WXUNUSED( keyCode ) )
+{
+	return false;
+}
+
+
+/* virtual */ bool DrawPanel::PlusMinusPressed( bool plus )
+{
+	if ( !mAllowScaling )
+	{
+		return false;
+	}
+	wxFloat32 inc = plus ? SCALE_STEP : -SCALE_STEP;
 	if (mScale + inc < mScaleMin || mScale + inc > mScaleMax)
 	{
-		return;
+		return false;
 	}
 	SetScale( mScale + inc );
 	SetShowParams();
 	PaintNow();
+	return true;
 }
+
 
 /* virtual */ void DrawPanel::OnBtnDown( wxMouseEvent& event )
 {
+	if ( event.GetButton() != wxMOUSE_BTN_NONE )
+	{
+		if ( event.HasModifiers() )
+		{
+			MouseModifiersButton( event.GetModifiers(), event.GetButton(), false );
+		}
+		else
+		{
+			MouseButton( event.GetButton(), false );
+		}
+	}
 	event.Skip();
 }
 
 /* virtual */ void DrawPanel::OnMotion( wxMouseEvent& event )
 {
+	mMousePoint = MousePosition2PointCoords( event.GetPosition() );
+	MouseMoving( event.GetModifiers(), 0 );
 	event.Skip();
 }
 
 /* virtual */ void DrawPanel::OnBtnUp( wxMouseEvent& event )
 {
+	if ( event.GetButton() != wxMOUSE_BTN_NONE )
+	{
+		if ( event.HasModifiers() )
+		{
+			MouseModifiersButton( event.GetModifiers(), event.GetButton(), true );
+		}
+		else
+		{
+			MouseButton( event.GetButton(), true );
+		}
+	}
 	event.Skip();
 }
 
 /* virtual */ void DrawPanel::OnFocus(wxFocusEvent& event)
 {
 	event.Skip();
+}
+
+/* virtual */ void DrawPanel::OnChildFocus(wxChildFocusEvent& event)
+{
+	event.Skip();
+}
+
+/* virtual */ bool DrawPanel::MouseButton( int btn, bool up  )
+{
+	if ( up && !PointInZone( mMousePoint ) && btn != wxMOUSE_BTN_NONE )
+	{
+		ResetZone();
+		return true;
+	}
+	return false;
+}
+
+/* virtual */ bool DrawPanel::MouseModifiersButton( int modifier, int btn, bool up  )
+{
+	if ( SelectionDragging() )
+	{
+		if ( btn == wxMOUSE_BTN_LEFT && up )
+		{
+			SelectionEnd();
+			return true;
+		}
+	}
+	if ( modifier == wxMOD_CONTROL )
+	{
+		if (btn == wxMOUSE_BTN_LEFT && !up)
+		{
+			SelectionBegin();
+			if ( SelectionDragging() )
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/* virtual */ bool DrawPanel::MouseMoving( int WXUNUSED( modifier ), int WXUNUSED( btn ) )
+{
+	if ( SelectionDragging() )
+	{
+		OnSelectionMotion();
+		return true;
+	}
+	return false;
+}
+
+/* virtual */ bool DrawPanel::MouseWheel( int modifier, int delta )
+{
+	if ( modifier == wxMOD_CONTROL )
+	{
+		PlusMinusPressed( delta > 0 );
+		return true;
+	}
+	return false;
 }

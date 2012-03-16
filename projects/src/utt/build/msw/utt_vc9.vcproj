@@ -448,6 +448,14 @@
 				Name="fonteditor"
 				>
 				<File
+					RelativePath="..\..\src\controlline.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\controlline.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\fonteditimpl.cpp"
 					>
 				</File>
@@ -477,6 +485,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\lettercodesimpl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\symboleditgui.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\symboleditgui.h"
 					>
 				</File>
 			</Filter>

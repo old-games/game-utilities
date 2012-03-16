@@ -12,6 +12,8 @@
 namespace Helpers
 {
 
+extern wxWindowID wxCustomPanelId;
+
 // копирует буфер в новый с соотвествующими параметрами
 void CropBuffer(Pixel* dst, int dstWidth, int dstHeight, Pixel* src, int srcWidth, int srcHeight);
 

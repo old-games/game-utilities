@@ -30,6 +30,11 @@ public:
 		return mToolTip;
 	}
 
+	const wxCursor& GetCursor()
+	{
+		return mCursor;
+	}
+	
 protected:
 	
 	
@@ -50,6 +55,7 @@ private:
 	wxCoord				mZoneWidth;
 	wxCoord				mZoneHeight;
 	wxFloat32			mScale;
+	wxCursor			mCursor;
 	wxString			mToolTip;
 };
 

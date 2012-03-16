@@ -10,17 +10,16 @@
 #define EDITPANEL_H_INCLUDED
 
 #include "drawpanel.h"
-#include "selectrect.h"
 
 class EditPanel :
-	public DrawPanel, public SelectionRectangle
+	public DrawPanel
 {
 
 friend class EditPanelImpl;
 
 public:
 
-	EditPanel( wxWindow* parent,  wxWindowID id = wxID_ANY  );
+	EditPanel( wxWindow* parent );
 	virtual ~EditPanel(void); 
 	
 	void SetGridColour(const wxColour& color);
@@ -41,15 +40,23 @@ public:
 		mDrawFocus = b;
 	}
 	
+	void SetAllowEdit( bool b /* true */)
+	{
+		mAllowEdit = b;
+	}
+
 	static wxColour		gGlobalLeftColour;
 	static wxColour		gGlobalRightColour;
 
 protected:
 
-	virtual void OnBtnDown( wxMouseEvent& event );
-	virtual void OnMotion( wxMouseEvent& event );
-	virtual void OnBtnUp( wxMouseEvent& event );
-	virtual void OnFocus( wxFocusEvent& );
+	virtual bool MouseButton( int btn, bool up );
+	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
+	virtual bool MouseMoving( int modifier, int btn );
+		
+	virtual bool KeyDown( int modifier, int keyCode );	
+	virtual bool KeyUp( int modifier, int keyCode );
+	virtual bool CursorPressed( int directon );
 
 	virtual void Render(wxDC& dc);
 	virtual void SetShowParams();
@@ -59,10 +66,15 @@ protected:
 	bool GetPixel( const wxPoint& pos, wxColour& color );
 
 	bool		mDrawing;
+	bool		mDrawCursor;
+	wxPoint     mCursor;				// coordinates of current pixel, must be always valid
 	
 private:
 	
 	void ClearGridPoints();
+	bool DoEdit();
+	bool BeginDrawing();
+	void EndDrawing();
 	
 	bool		mDrawGrid;
 	bool		mDrawFocus;
@@ -74,6 +86,7 @@ private:
 
 	wxColour	mCurrentColour;
 	wxPoint		mPreviousPoint;
+	bool		mAllowEdit;
 
 };
 

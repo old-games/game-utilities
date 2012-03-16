@@ -15,6 +15,7 @@
 enum ControlLines
 {
 	clSymbolWidth,
+	clSymbolHeight,
 	clBaseLine,
 	clCapLine,
 	clLowLine,
@@ -25,7 +26,7 @@ class SymbolPanel :
 	public EditPanel
 {
 public:
-	SymbolPanel( wxWindow* parent, wxWindowID id = wxID_ANY );
+	SymbolPanel( wxWindow* parent );
 	~SymbolPanel(void); 
 	
 	void SetFontInfo( FontInfo* info, int symbolNumber );
@@ -34,16 +35,20 @@ protected:
 		
 	virtual void Render( wxDC& dc );
 	virtual void SetShowParams();
-	virtual void OnMotion( wxMouseEvent& event );
-	virtual void OnBtnDown( wxMouseEvent& event );
-	virtual void OnBtnUp( wxMouseEvent& event );
+	
+	virtual bool MouseButton( int btn, bool up );
+	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
+	virtual bool MouseMoving( int modifier, int btn );
 
 private:
 
 	void UpdateBitmap();
 	void UpdateControlLines();
-	void DrawAdditionalLine( wxDC& dc, int x );
-
+	bool CheckControlLines();
+	bool BeginDragLine();
+	bool DragLine();
+	void EndDragLine();
+	
 	FontInfo*		mFontInfo;
 	bool			mAllowEdit;
 	int				mSymbolNumber;

@@ -19,7 +19,7 @@ class SymbolEditGui :
 	public EditPanelImpl
 {
 public:
-	SymbolEditGui( wxWindow* parent, wxWindowID	 id = wxID_ANY );
+	SymbolEditGui( wxWindow* parent );
 	~SymbolEditGui(void); 
 
 	SymbolPanel* GetSymbolPanel()

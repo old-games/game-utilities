@@ -13,7 +13,7 @@
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
 	FontEditGui( parent ),
-	mSymbolEditor( new SymbolEditGui( this, wxID_FONT_EDITOR ) ),
+	mSymbolEditor( new SymbolEditGui( this ) ),
 	mCurrentFont( NULL ),
 	mCurrentSymbol( 0 ),
 	mHasChanges( false )

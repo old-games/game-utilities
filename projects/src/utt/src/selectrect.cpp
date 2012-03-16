@@ -14,7 +14,7 @@ SelectionRectangle::SelectionRectangle(  wxScrolledWindow* parent ):
 	mParent( parent ),
 	mWorkZone( 0, 0, 0, 0 ),
 	mPointSize( 1.0f ),
-	mMouseDrag( false ),
+	mSelectionDrag( false ),
 	mIsZoneValid( false ),
 	mStartPoint( -1, -1 ),
 	mEndPoint( -1, -1 ),
@@ -84,16 +84,31 @@ inline void SelectionRectangle::Position2Coords( wxPoint& point )
 	}
 }
 
-
-/* virtual */ void SelectionRectangle::OnSelectionLeftDown( wxMouseEvent& event )
+void SelectionRectangle::SelectionBegin()
 {
-	wxPoint pos = this->MousePosition2PointCoords( event.GetPosition() );
+	SelectionBegin( GetMousePosition() );
+}
+
+void SelectionRectangle::OnSelectionMotion()
+{
+	OnSelectionMotion( GetMousePosition() );
+}
+
+void SelectionRectangle::SelectionEnd()
+{
+	SelectionEnd( GetMousePosition() );
+}
+
+
+void SelectionRectangle::SelectionBegin( const wxPoint& mousePos )
+{
+	wxPoint pos = this->MousePosition2PointCoords( mousePos );
 	bool coorValid = pos.x != -1 && pos.y != -1;
-	if ( event.ControlDown() && coorValid)
+	if ( coorValid )
 	{
 		mIsZoneValid = true;
-		mMouseDrag = true;
-		mStartPoint = event.GetPosition();
+		mSelectionDrag = true;
+		mStartPoint = mousePos;
 		mEndPoint = mStartPoint;
 		UpdateCoords();
 		return;
@@ -107,36 +122,31 @@ inline void SelectionRectangle::Position2Coords( wxPoint& point )
 			return;
 		}
 	}
-	event.Skip();
 }
 
-/* virtual */ void SelectionRectangle::OnSelectionMotion( wxMouseEvent& event )
+void SelectionRectangle::OnSelectionMotion( const wxPoint& mousePos )
 {
-	if (mMouseDrag)
+	if (mSelectionDrag)
 	{
-		wxPoint point = MousePosition2PointCoords( event.GetPosition() );
+		wxPoint point = MousePosition2PointCoords( mousePos );
 		if (point.x != -1 && point.y != -1)
 		{
-			DrawSelection();
-			mEndPoint = event.GetPosition();
+			mEndPoint = mousePos;
 			UpdateCoords();
-			DrawSelection();
+			mParent->Refresh();
 		}
 	}
-	event.Skip();
 }
 
-/* virtual */ void SelectionRectangle::OnSelectionLeftUp( wxMouseEvent& event )
+void SelectionRectangle::SelectionEnd( const wxPoint& mousePos )
 {
-	if (mMouseDrag)
+	if (mSelectionDrag)
 	{
-		DrawSelection();
-		mEndPoint = event.GetPosition();
+		mEndPoint = mousePos;
 		UpdateCoords();
-		mMouseDrag = false;
+		mSelectionDrag = false;
 		mParent->Refresh();
 	}
-	event.Skip();
 }
 
 void SelectionRectangle::DrawSelection()
@@ -150,7 +160,7 @@ void SelectionRectangle::RenderSelection(wxDC& dc)
 	int x, y;
 	mParent->GetViewStart( &x, &y );
 	wxPoint view(x, y);
-	if (mMouseDrag)
+	if (mSelectionDrag)
 	{
 		dc.SetBrush( *wxTRANSPARENT_BRUSH );
 		dc.SetPen( *wxWHITE_PEN );

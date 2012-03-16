@@ -14,8 +14,6 @@
 #include "gui/mainframeimpl.h"
 #include "luaconsole.h"
 
-#define WXK_CONSOLE	0x60
-
 IMPLEMENT_APP(UTTApp);
 
 bool UTTApp::OnInit()

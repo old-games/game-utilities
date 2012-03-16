@@ -43,13 +43,23 @@ public:
 	void ResetZone()
 	{
 		mIsZoneValid = false;
+		mParent->Refresh();
+	}
+	
+	bool SelectionDragging()
+	{
+		return mSelectionDrag;
 	}
 	
 protected:
 	
-	virtual void OnSelectionLeftDown( wxMouseEvent& event );
-	virtual void OnSelectionMotion( wxMouseEvent& event );
-	virtual void OnSelectionLeftUp( wxMouseEvent& event );
+	void SelectionBegin();
+	void OnSelectionMotion();
+	void SelectionEnd();
+	
+	void SelectionBegin( const wxPoint& mousePos );
+	void OnSelectionMotion( const wxPoint& mousePos );
+	void SelectionEnd( const wxPoint& mousePos );
 
 private:
 
@@ -59,7 +69,7 @@ private:
 	wxScrolledWindow*	mParent;
 	wxRect				mWorkZone;
 	wxFloat32			mPointSize;
-	bool				mMouseDrag;
+	bool				mSelectionDrag;
 	bool				mIsZoneValid;
 	wxPoint				mStartPoint;
 	wxPoint				mEndPoint;

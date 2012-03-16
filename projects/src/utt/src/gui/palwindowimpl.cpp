@@ -13,7 +13,7 @@
 PaletteWindowImpl::PaletteWindowImpl(  wxWindow* parent ):
 	PaletteWindowGui( parent )
 {
-	mPalPanel = new PalettePanel( this, true, wxID_PAL_WINDOW_ID );
+	mPalPanel = new PalettePanel( this, true );
 	mPalHolder->Add( mPalPanel, 1, wxEXPAND, 5 );
 	for (int i = 0; i < BPP::bppNum; ++i)
 	{

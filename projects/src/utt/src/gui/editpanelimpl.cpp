@@ -10,12 +10,10 @@
 #include "pch.h"
 #include "editpanelimpl.h"
 
-static wxInt32 wxEditPanelId = wxID_HIGHEST + 1;
-
 EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 	EditPanelGui( parent )
 {
-	mEditPanel = new EditPanel( this, wxEditPanelId++ );
+	mEditPanel = new EditPanel( this );
 	SetEditPanel( mEditPanel );
 }
 

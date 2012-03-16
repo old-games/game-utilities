@@ -32,8 +32,8 @@ static const wxFloat32	sSquares[BPP::bppNum] =
 	3.0f
 };
 
-PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true */,  wxWindowID id /* wxID_ANY */ ):
-	EditPanel( parent, id ),
+PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true */ ):
+	EditPanel( parent ),
 	mPalType( BPP::bppMono),
 	mCurrentCGAPal( 0 ),
 	mCGAIntensity( false ),
@@ -42,6 +42,7 @@ PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true 
 	mChangeGlobals( changeGlobalColours )
 {
 	SetAllowScaling( false );
+	SetAllowEdit( false );
 	SetDrawFocus( false );
 	SetAlign( utdHCenter | utdVCenter );
 	SetScale( 12.0f );
@@ -196,29 +197,6 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 	return res;
 }
 
-/* virtual */ void PalettePanel::OnBtnDown( wxMouseEvent& event )
-{
-	if ( !event.LeftIsDown() && !event.RightIsDown() )
-	{
-		return;
-	}
-	wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
-	if ( pos.x == -1 || pos.y == -1 )
-	{
-		return;
-	}
-	if ( event.RightIsDown() )
-	{
-		mRightPos = pos;
-	}
-	else
-	{
-		mLeftPos = pos;
-	}
-	GetBitmapColour( event.RightIsDown() );
-	PaintNow();
-}
-
 
 /* virtual */ void PalettePanel::Render(wxDC& dc)
 {
@@ -247,4 +225,56 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 		dc.SetPen( pen );
 		dc.DrawRectangle( view + from, size );
 	}
+}
+
+/* virtual */ bool PalettePanel::MouseButton( int btn, bool up )
+{
+	if ( EditPanel::MouseButton( btn, up ) )
+	{
+		return true;
+	}
+	
+	if ( up && mBitmapRect.Contains( mMousePoint) && ( btn != wxMOUSE_BTN_LEFT || btn != wxMOUSE_BTN_RIGHT ) )
+	{
+		return false;
+	}
+	
+	if ( btn == wxMOUSE_BTN_RIGHT )
+	{
+		mRightPos = mMousePoint;
+	}
+	else
+	{
+		mLeftPos = mMousePoint;
+	}
+	GetBitmapColour( btn == wxMOUSE_BTN_RIGHT );
+	return true;
+}
+
+/* virtual */ bool PalettePanel::KeyDown( int modifier, int keyCode )
+{
+	if ( EditPanel::KeyDown( modifier, keyCode ) )
+	{
+		return true;
+	}
+	bool res = true;
+	switch ( keyCode )
+	{
+		case WXK_NUM_ONE:
+			mLeftPos = mCursor;
+		break;
+		
+		case WXK_NUM_TWO:
+			mRightPos = mCursor;
+		break;
+		
+		default:
+			res = false;
+	}
+	if (res)
+	{
+		GetBitmapColour( keyCode == WXK_NUM_TWO );
+		PaintNow();
+	}
+	return res;
 }

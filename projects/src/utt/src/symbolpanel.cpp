@@ -10,8 +10,8 @@
 #include "pch.h"
 #include "symbolpanel.h"
 
-SymbolPanel::SymbolPanel(  wxWindow* parent, wxWindowID id /* wxID_ANY */):
-	EditPanel( parent, id ),
+SymbolPanel::SymbolPanel(  wxWindow* parent ):
+	EditPanel( parent ),
 	mFontInfo( NULL ),
 	mAllowEdit( true ),
 	mSymbolNumber( 0 ),
@@ -71,6 +71,18 @@ void SymbolPanel::UpdateControlLines()
 	SymbolInfo& sym = mFontInfo->GetSymbol( mSymbolNumber );
 	mLines[ clSymbolWidth ]->SetParameters( wxVERTICAL, *wxRED, 3, wxSOLID, "Symbol width" );
 	mLines[ clSymbolWidth ]->SetValue( sym.mWidth );
+
+	mLines[ clSymbolHeight ]->SetParameters( wxHORIZONTAL, *wxBLUE, 3, wxSOLID, "Symbol height" );
+	mLines[ clSymbolHeight ]->SetValue( sym.mHeight );
+
+	mLines[ clBaseLine ]->SetParameters( wxHORIZONTAL, *wxGREEN, 3, wxSHORT_DASH, "Font base line" );
+	mLines[ clBaseLine ]->SetValue( mFontInfo->GetBaseLine() );
+
+	mLines[ clCapLine ]->SetParameters( wxHORIZONTAL, *wxGREEN, 3, wxSHORT_DASH, "Font capitals line" );
+	mLines[ clCapLine ]->SetValue( mFontInfo->GetCapLine() );
+
+	mLines[ clLowLine ]->SetParameters( wxHORIZONTAL, *wxGREEN, 3, wxSHORT_DASH, "Font lows line" );
+	mLines[ clLowLine ]->SetValue( mFontInfo->GetLowLine() );
 }
 
 /* virtual */ void SymbolPanel::Render( wxDC& dc )
@@ -82,10 +94,6 @@ void SymbolPanel::UpdateControlLines()
 	}
 }
 
-void SymbolPanel::DrawAdditionalLine( wxDC& dc, int x )
-{
-}
-
 /* virtual */ void SymbolPanel::SetShowParams()
 {
 	EditPanel::SetShowParams();
@@ -95,8 +103,53 @@ void SymbolPanel::DrawAdditionalLine( wxDC& dc, int x )
 	}
 }
 
-/* virtual */ void SymbolPanel::OnMotion( wxMouseEvent& event )
+/* virtual */ bool SymbolPanel::MouseButton( int btn, bool up )
 {
+	CheckControlLines();
+	bool res = false;
+	if ( btn == wxMOUSE_BTN_LEFT )
+	{
+		if (up)
+		{
+			EndDragLine();
+		}
+		else
+		{
+	    	res = BeginDragLine();
+		}
+	}
+	if ( !res )
+	{
+		res = EditPanel::MouseButton(btn, up);
+	}
+	return res;
+}
+
+/* virtual */ bool SymbolPanel::MouseModifiersButton( int modifier, int btn, bool up )
+{
+	if (EditPanel::MouseModifiersButton(modifier, btn, up))
+	{
+		return true;
+	}
+	return false;
+}
+
+/* virtual */ bool SymbolPanel::MouseMoving( int modifier, int btn )
+{
+	if ( !mDragLine &&  EditPanel::MouseMoving(modifier, btn) )
+	{
+		return true;
+	}
+	if ( DragLine() )
+	{
+		return true;
+	}
+	return CheckControlLines();
+}
+
+bool SymbolPanel::CheckControlLines()
+{
+	bool res = false;
 	if ( !mDragLine && !mDrawing )
 	{
 		mActiveLine = -1;
@@ -105,7 +158,7 @@ void SymbolPanel::DrawAdditionalLine( wxDC& dc, int x )
 			if ( mLines[i]->CheckMouse() )
 			{
 				mActiveLine = i;
-				this->SetCursor( *wxCROSS_CURSOR );
+				this->SetCursor( mLines[i]->GetCursor() );
 				this->SetToolTip( mLines[i]->GetToolTip() );
 			}
 		}
@@ -113,41 +166,43 @@ void SymbolPanel::DrawAdditionalLine( wxDC& dc, int x )
 		{
 			this->SetToolTip( "" );
 			this->SetCursor( wxNullCursor );
+			mDrawCursor = true;
 		}
-	}
-	else
-	{
-		if (mActiveLine != -1)
+		else
 		{
-			wxPoint pos = MousePosition2PointCoords( event.GetPosition(), false );
-			if (pos.x != -1 && pos.y != -1 && pos != mDragPoint )
-			{
-				mLines[mActiveLine]->SetValue( pos );
-				PaintNow();
-				mDragPoint = pos;
-				return;
-			}
+			mDrawCursor = false;
+			res = true;
+			PaintNow();
 		}
 	}
-	EditPanel::OnMotion(event);
-	event.Skip();
+	return res;
 }
 
-/* virtual */ void SymbolPanel::OnBtnDown( wxMouseEvent& event )
+bool SymbolPanel::BeginDragLine()
 {
-	if ( mActiveLine != -1 && event.LeftDown() )
-	{
-    	mDragLine = true;
-		return;
-	}
-	EditPanel::OnBtnDown(event);
-	event.Skip();
+	mDragLine = mActiveLine != -1 && !mDrawing;
+	return mDragLine;
 }
 
-/* virtual */ void SymbolPanel::OnBtnUp( wxMouseEvent& event )
+bool SymbolPanel::DragLine()
+{
+	if (mDragLine && mActiveLine != -1)
+	{
+		if (mMousePoint.x != -1 && mMousePoint.y != -1 && mMousePoint != mDragPoint )
+		{
+			mLines[mActiveLine]->SetValue( mMousePoint );
+			mDragPoint = mMousePoint;
+			PaintNow();
+			return true;
+		}
+	}
+	return false;
+}
+
+void SymbolPanel::EndDragLine()
 {
 	mDragLine = false;
+	mDrawCursor = true;
 	mActiveLine = -1;
-	EditPanel::OnBtnUp(event);
-	event.Skip();
 }
+

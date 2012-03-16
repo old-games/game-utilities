@@ -1,8 +1,8 @@
 /***************************************************************
  * Name:      editpanel.cpp
- * Purpose:   Code for EditPanel Class
+ * Purpose:   Code for EditPanel class
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
- * Created:   2012-02.29
+ * Created:   2012-02-29
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
@@ -15,10 +15,11 @@
 wxColour	EditPanel::gGlobalLeftColour = *wxBLACK;
 wxColour	EditPanel::gGlobalRightColour = *wxWHITE;
 
-EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
-	DrawPanel( parent, id ),
-	SelectionRectangle( this ),
+EditPanel::EditPanel(  wxWindow* parent ):
+	DrawPanel( parent ),
 	mDrawing( false ),
+	mDrawCursor( true ),
+	mCursor( 0, 0 ),
 	mDrawGrid( true ),
 	mDrawFocus( true ),
 	mGridColour( *wxGREEN ),
@@ -27,18 +28,14 @@ EditPanel::EditPanel(  wxWindow* parent,  wxWindowID id ):
 	mGridPen( mGridColour ),
 	mGridLogic( wxXOR ),
 	mCurrentColour( *wxBLACK ),
-	mPreviousPoint( -1, -1)
+	mPreviousPoint( -1, -1),
+	mAllowEdit( true )
 {
 }
 
 EditPanel::~EditPanel(void)
 {
 	ClearGridPoints();
-}
-
-/* virtual */ void EditPanel::OnFocus( wxFocusEvent& )
-{
-	this->PaintNow();
 }
 
 inline void EditPanel::ClearGridPoints()
@@ -72,8 +69,10 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 	{
 		DrawGrid( dc );
 	}
+	dc.SetBrush( *wxTRANSPARENT_BRUSH );
 	if (mDrawFocus)
 	{
+		dc.SetLogicalFunction(wxCOPY);
 		wxRect rect = this->GetClientRect();
 		if (rect.GetWidth() > mShowWidth)
 		{
@@ -83,13 +82,22 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		{
 			rect.SetHeight( mShowHeight );
 		}
-		dc.SetLogicalFunction(wxCOPY);
-		dc.SetBrush( *wxTRANSPARENT_BRUSH );
 		wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxDOT_DASH );
 		dc.SetPen( borderPen );
 		dc.DrawRectangle( mPosX, mPosY, rect.GetWidth(), rect.GetHeight() );
+	} 
+	if (mDrawCursor)
+	{
+		dc.SetLogicalFunction(wxXOR);
+		dc.SetPen( wxPen( *wxWHITE, 3, wxSOLID ) );
+		wxPoint cursPos( mCursor );
+		cursPos.x *= mScale;
+		cursPos.y *= mScale;
+		wxPoint view( mPosX, mPosY );
+		view -= this->GetViewStart();
+		cursPos += view;
+		dc.DrawRectangle( cursPos, wxSize( mScale, mScale ) );
 	}
-	RenderSelection( dc );
 }
 
 /* virtual */ void EditPanel::SetShowParams()
@@ -200,7 +208,7 @@ void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )
 	if (mScale < 1.0f)
 	{
 		wxLogMessage( "Unable to edit image with such scale.");
-		mDrawing = false;
+		EndDrawing();
 		return;
 	}
 
@@ -218,71 +226,177 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 	return temp_dc.GetPixel( pos , &color );
 }
 
-/* virtual */ void EditPanel::OnBtnDown( wxMouseEvent& event )
+/* virtual */ bool EditPanel::MouseButton( int btn, bool up )
 {
-	if ( (event.ShiftDown() || event.AltDown()) && ( event.LeftDown() || event.RightDown() ) )
+	if ( mDrawing && up )
 	{
-		wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
+		EndDrawing();
+		return true;
+	}
+	if ( DrawPanel::MouseButton( btn, up ) )
+	{
+		return true;
+	}
+	bool left = btn == wxMOUSE_BTN_LEFT;
+	bool right = btn == wxMOUSE_BTN_RIGHT;
+	if (mMousePoint.x == -1 || mMousePoint.y == -1 || PointInZone( mMousePoint ) || !this->HasFocus() )
+	{
+		return false;
+	}
+	if (left || right)
+	{
+		mCurrentColour = right ? gGlobalRightColour : gGlobalLeftColour;
+	}
+	if ( !up && ( left || right ) )
+	{
+		return BeginDrawing();
+	}
+	return false;
+}
+
+/* virtual */ bool EditPanel::MouseModifiersButton( int modifier, int btn, bool up )
+{
+	if ( DrawPanel::MouseModifiersButton( modifier, btn, up ) )
+	{
+		return true;
+	}
+	bool left = btn == wxMOUSE_BTN_LEFT;
+	bool right = btn == wxMOUSE_BTN_RIGHT;
+	bool both = left && right;
+	bool findColour = !up && !both && modifier == wxMOD_SHIFT;
+	bool setColour =  !up && !both && modifier == wxMOD_ALT;
+	if ( findColour || setColour )
+	{
 		wxColour colour;
-		if ( pos.x != -1 && pos.y != -1 && GetPixel(pos, colour) )
+		if ( mMousePoint.x != -1 && mMousePoint.y != -1 && GetPixel(mMousePoint, colour) )
 		{
-			ColourPickEvent* colourEvent = new ColourPickEvent( colour, event.GetButton(),
-				event.ShiftDown() ? ColourPickEvent::cpeFindThisColour : ColourPickEvent::cpeSetThisColour );
+			ColourPickEvent* colourEvent = new ColourPickEvent( colour, btn,
+				findColour ? ColourPickEvent::cpeFindThisColour : ColourPickEvent::cpeSetThisColour );
 			wxEvtHandler::QueueEvent( colourEvent );
+			return true;
 		}
 	}
-	if (event.LeftDown())
-	{
-		OnSelectionLeftDown( event );
-	}
+	return false;
+}
 
-	if ( event.ControlDown() || event.ShiftDown() || event.AltDown() )
+
+/* virtual */ bool EditPanel::MouseMoving( int modifier, int btn )
+{
+	if ( DrawPanel::MouseMoving( modifier, btn ) )
 	{
-		event.Skip();
-		return;
+		return true;
 	}
+	if ( this->HasFocus() && mBitmapRect.Contains( mMousePoint ) && mMousePoint != mPreviousPoint)
+	{
+		mPreviousPoint = mCursor;
+		mCursor = mMousePoint;
+		if (!DoEdit())
+		{
+			PaintNow();
+		}
+		return true;
+	}
+	return false;
+}
+
+/* virtual */ bool EditPanel::KeyDown( int modifier, int keyCode )
+{
+	if ( DrawPanel::KeyDown( modifier, keyCode ) )
+	{
+		return true;
+	}
+	bool res = false;
+	switch ( keyCode )
+	{
+		case WXK_NUM_ONE:
+		case WXK_NUM_TWO:
+			mCurrentColour = keyCode == WXK_NUM_TWO ? gGlobalRightColour : gGlobalLeftColour;
+			res = BeginDrawing();
+		break;
+
+		case WXK_LEFT:
+		case WXK_RIGHT:
+		case WXK_UP:
+		case WXK_DOWN:
+			CursorPressed( keyCode );
+			res = true;
+		break;
+
+	}
+	return res;
+}
+
+/* virtual */ bool EditPanel::KeyUp( int modifier, int keyCode )
+{
+	if ( DrawPanel::KeyDown( modifier, keyCode ) )
+	{
+		return true;
+	}
+	bool res = false;
+	switch ( keyCode )
+	{
+		case WXK_NUM_ONE:
+		case WXK_NUM_TWO:
+			EndDrawing();
+			res = true;
+		break;
+
+	}
+	return res;
+}
+
+/* virtual */ bool EditPanel::CursorPressed( int directon )
+{
+	wxPoint dir( 0, 0 );
+	switch ( directon )
+	{
+		case WXK_LEFT:
+			dir.x = -1;
+		break;
 	
-	wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
-	if (pos.x == -1 || pos.y == -1 || PointInZone( pos ) || !this->HasFocus() )
-	{
-		event.Skip();
-		return;
+		case WXK_RIGHT:
+			dir.x = 1;
+		break;
+	
+		case WXK_UP:
+			dir.y = -1;
+		break;
+	
+		case WXK_DOWN:
+			dir.y = 1;
+		break;
 	}
-	ResetZone();
-	mCurrentColour = event.LeftIsDown() ? gGlobalLeftColour : gGlobalRightColour;
-	mPreviousPoint = pos;
-	mDrawing = true;
-	PlacePixel( pos, mCurrentColour );
-	event.Skip();
+	if (mBitmapRect.Contains( mCursor + dir ))
+	{
+		mCursor += dir;
+	}
+	if (!DoEdit())
+	{
+		PaintNow();
+	}
+	return true;
 }
 
-/* virtual */ void EditPanel::OnMotion( wxMouseEvent& event )
+bool EditPanel::DoEdit()
 {
-	OnSelectionMotion( event );
-	if (!mDrawing)
+	if (!mAllowEdit || !mDrawing)
 	{
-		event.Skip();
-		return;
+		return false;
 	}
-	wxPoint pos = MousePosition2PointCoords( event.GetPosition() );
-	if (pos == mPreviousPoint || pos.x == -1 || pos.y == -1)
-	{
-		event.Skip();
-		return;
-	}
-	mPreviousPoint = pos;
-	PlacePixel( pos, mCurrentColour );
-	event.Skip();
+	PlacePixel( mCursor, mCurrentColour );
+	return true;
 }
 
-/* virtual */ void EditPanel::OnBtnUp( wxMouseEvent& event )
+bool EditPanel::BeginDrawing()
 {
-	if (event.LeftUp())
-	{
-		OnSelectionLeftUp( event );
-	}
+	mDrawing = mAllowEdit;
+	DoEdit();
+	return mDrawing;
+	
+}
+
+void EditPanel::EndDrawing()
+{
 	mDrawing = false;
-	mPreviousPoint.x = -1;
-	mPreviousPoint.y = -1;
-	event.Skip();
 }
+
