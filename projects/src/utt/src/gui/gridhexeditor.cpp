@@ -93,8 +93,8 @@ void GridHexEditor::Reset()
 inline bool GridHexEditor::IsKeyCodeValid( wxInt32 keycode )
 {
 	if ( (keycode < 128) &&
-		(	wxIsdigit(keycode) || keycode == '+' || keycode == '-') ||
-			keycode >= 'A' || keycode <= 'F' || keycode >= 'a' || keycode <= 'f' )
+		(	wxIsdigit(keycode) || keycode == '+' || keycode == '-' ||
+			keycode >= 'A' || keycode <= 'F' || keycode >= 'a' || keycode <= 'f' ) )
 	{
 		return true;
 	}

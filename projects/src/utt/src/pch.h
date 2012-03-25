@@ -42,7 +42,7 @@
 
 // Lua headers
 #include <lua.hpp>
-#include <oolua.h>
+#include <oolua/oolua.h>
 
 // project headers
 #include "uttypes.h"
