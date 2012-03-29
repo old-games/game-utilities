@@ -9,14 +9,12 @@
 #ifndef LOGWINDOWIMPL_H_INCLUDED
 #define LOGWINDOWIMPL_H_INCLUDED
 
-#include "uttgui.h"
-
 class LogWindowImpl :
 	public LogWindowGui
 {
 public:
 	LogWindowImpl( wxWindow* parent );
-	~LogWindowImpl(void); 
+	~LogWindowImpl(void);
 
 private:
 

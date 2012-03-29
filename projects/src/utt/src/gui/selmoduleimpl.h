@@ -9,14 +9,12 @@
 #ifndef SELMODULEIMPL_H_INCLUDED
 #define SELMODULEIMPL_H_INCLUDED
 
-#include "uttgui.h"
-
 class SelectModuleImpl :
 	public SelectModuleGui
 {
 public:
 	SelectModuleImpl( wxWindow* parent );
-	~SelectModuleImpl(void); 
+	~SelectModuleImpl(void);
 
 	void FillCombo(const wxArrayString& values);
 	wxString GetValue();

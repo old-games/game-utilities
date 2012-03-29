@@ -14,14 +14,14 @@ class ControlLine
 {
 public:
 	ControlLine( wxScrolledWindow* parent );
-	~ControlLine(void); 
-		
+	~ControlLine(void);
+
 	void SetParameters( int orientation, const wxColour& colour,  int width, int style, const wxString& txt );
 	void SetValue( int mValue );
 	void SetValue( const wxPoint& pos );
 	bool CheckMouse();
 
-	void SetOffsetXY( wxCoord sx, wxCoord sy, wxCoord zwidth, wxCoord zheight, wxFloat32 scale );
+	void SetOffsetXY( wxCoord sx, wxCoord sy, wxCoord zwidth, wxCoord zheight, wxDouble scale );
 
 	void DrawControlLine( wxDC& dc );
 
@@ -34,10 +34,10 @@ public:
 	{
 		return mCursor;
 	}
-	
+
 protected:
-	
-	
+
+
 private:
 
 	void CalcPoints( wxPoint& first, wxPoint& second );
@@ -45,7 +45,7 @@ private:
 	wxScrolledWindow*	mParent;
 	bool				mInitiated;
 	int					mOrientation;
-	wxColour			mColour;	
+	wxColour			mColour;
 	int					mWidth;
 	int					mStyle;
 	int					mValue;				// если линия горизонтальная, то это Y, если вертикальная то X
@@ -54,7 +54,7 @@ private:
 	wxCoord				mPosY;
 	wxCoord				mZoneWidth;
 	wxCoord				mZoneHeight;
-	wxFloat32			mScale;
+	wxDouble			mScale;
 	wxCursor			mCursor;
 	wxString			mToolTip;
 };

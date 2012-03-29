@@ -9,6 +9,7 @@
 #ifndef PALETTEPANEL_H_INCLUDED
 #define PALETTEPANEL_H_INCLUDED
 
+// TODO: remove when will be done
 #include "editpanel.h"
 
 class PaletteWindowImpl;
@@ -21,19 +22,19 @@ friend class PaletteWindowImpl;
 
 public:
 	PalettePanel( wxWindow* parent, bool changeGlobalColours = true );
-	~PalettePanel(); 
+	~PalettePanel();
 
 	const wxColour& GetColour( bool right );
 
 	void SetColour( bool right, const wxColour& colour );
 	int	FindColour( bool right, const wxColour& colour, bool andSet = false );
-	
+
 protected:
 
 	virtual void Render(wxDC& dc);
-	
+
 	virtual bool MouseButton( int btn, bool up );
-	virtual bool KeyDown( int modifier, int keyCode );	
+	virtual bool KeyDown( int modifier, int keyCode );
 
 private:
 
@@ -42,7 +43,7 @@ private:
 	void SetBitmapColour( bool right );
 	void CorrectColourPosition( bool right );
 	void SetGlobalColours();
-	
+
 	int			mPalType;
 	int			mCurrentCGAPal;
 	bool		mCGAIntensity;

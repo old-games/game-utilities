@@ -45,6 +45,7 @@
 #include <oolua/oolua.h>
 
 // project headers
+#include "gui/uttgui.h"
 #include "uttypes.h"
 #include "defaultpals.h"
 #include "helpers.h"

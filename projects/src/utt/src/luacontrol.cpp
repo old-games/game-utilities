@@ -8,9 +8,12 @@
  **************************************************************/
 
 #include "pch.h"
+
+#include "luaexports/common.h"
+#include "luaexports/luafont.h"
 #include "luacontrol.h"
 
-static OOLUA::Script* gLuaState = NULL;		
+static OOLUA::Script* gLuaState = NULL;
 static bool gRebootRequest = false;
 
 OOLUA::Script& Lua::Get()
@@ -34,15 +37,15 @@ bool Lua::Init()
 #ifdef _LUAJIT_H
 	luaopen_jit(Lua::gLuaState);
 #endif
-	CommonRegister();	
-	//FontRegister();
+	CommonRegister();
+	FontRegister();
 	return gLuaState->run_file("scripts/init.lua");
 }
 
 void Lua::Done()
 {
     wxLogMessage( "Closing Lua...\n" );
-	delete gLuaState;	
+	delete gLuaState;
     gLuaState = NULL;
 	gRebootRequest = false;
 }

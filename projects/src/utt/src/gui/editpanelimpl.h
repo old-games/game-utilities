@@ -9,18 +9,17 @@
 #ifndef EDITPANELIMPL_H_INCLUDED
 #define EDITPANELIMPL_H_INCLUDED
 
-#include "uttgui.h"
-#include "editpanel.h"
+class EditPanel;
 
 class EditPanelImpl:
 	public EditPanelGui
 {
 public:
 	EditPanelImpl( wxWindow* parent );
-	~EditPanelImpl(void); 
+	~EditPanelImpl(void);
 
 	void SetBitmap( wxBitmap* bitmap );
-	
+
 	EditPanel* GetEditPanel()
 	{
 		return mEditPanel;

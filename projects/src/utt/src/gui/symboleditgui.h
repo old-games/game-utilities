@@ -1,6 +1,6 @@
 /***************************************************************
  * Name:      symboleditgui.h
- * Purpose:   SymbolEditGui inherited from EditPanelImpl to use 
+ * Purpose:   SymbolEditGui inherited from EditPanelImpl to use
 				SymboPanel instead of EditPanel
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
  * Created:   2012-03-14
@@ -12,15 +12,14 @@
 
 #include "editpanelimpl.h"
 
-// TODO: replace when drawpanel will be finished
-#include "symbolpanel.h"
+class SymbolPanel;
 
 class SymbolEditGui :
 	public EditPanelImpl
 {
 public:
 	SymbolEditGui( wxWindow* parent );
-	~SymbolEditGui(void); 
+	~SymbolEditGui(void);
 
 	SymbolPanel* GetSymbolPanel()
 	{

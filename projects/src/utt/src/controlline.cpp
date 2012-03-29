@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "controlline.h"
 
@@ -14,7 +14,7 @@ ControlLine::ControlLine( wxScrolledWindow* parent ):
 	mParent( parent ),
 	mInitiated( false ),
 	mOrientation( wxVERTICAL ),
-	mColour( *wxBLACK ),	
+	mColour( *wxBLACK ),
 	mWidth( 3 ),
 	mStyle( wxSOLID ),
 	mValue( 0 ),
@@ -89,7 +89,7 @@ void ControlLine::CalcPoints( wxPoint& first, wxPoint& second)
 		first.x = 0;
 		second.x = mZoneWidth;
 	}
-	
+
 	wxPoint view( mPosX, mPosY );
 	view -= mParent->GetViewStart();
 	first += view;
@@ -110,7 +110,7 @@ void ControlLine::DrawControlLine( wxDC& dc )
 	dc.DrawLine( first, second );
 }
 
-void ControlLine::SetOffsetXY( wxCoord sx, wxCoord sy, wxCoord zwidth, wxCoord zheight, wxFloat32 scale )
+void ControlLine::SetOffsetXY( wxCoord sx, wxCoord sy, wxCoord zwidth, wxCoord zheight, wxDouble scale )
 {
 	mPosX = sx;
 	mPosY = sy;

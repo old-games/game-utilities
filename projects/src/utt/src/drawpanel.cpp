@@ -23,7 +23,7 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 	mPosY( 0 ),
 	mScale( 1.0f ),
 	mScaleMin( SCALE_STEP ),
-	mScaleMax( 50.0f ), 
+	mScaleMax( 50.0f ),
 	mScaledWidth( 0 ),
 	mScaledHeight( 0 ),
 	mBitmapRect(),
@@ -32,7 +32,8 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 	mWidth( 0 ),
 	mHeight( 0 ),
 	mAlign( utdNone ),
-	mAllowScaling( true )
+	mAllowScaling( true ),
+	mPreviousSize( 0, 0 )
 {
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
@@ -45,8 +46,8 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 	this->Bind( wxEVT_RIGHT_UP, &DrawPanel::OnBtnUp, this );
 	this->Bind( wxEVT_KEY_DOWN, &DrawPanel::OnKeyDown, this );
 	this->Bind( wxEVT_KEY_UP, &DrawPanel::OnKeyUp, this );
-	
-	
+
+
 	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this );
 	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this);
 	this->Bind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this );
@@ -114,8 +115,8 @@ void DrawPanel::ApplyBitmap()
 	mWidth = mBitmap->GetWidth();
 	mHeight = mBitmap->GetHeight();
 	mBitmapRect = wxRect( 0, 0, mWidth, mHeight );
-	SetScale( mScale );
-	SetShowParams();
+	SetBitmapScale( mScale );
+	//SetShowParams();
 }
 
 void DrawPanel::DestroyBitmap()
@@ -136,25 +137,25 @@ void DrawPanel::SetBuffer( Pixel* buffer )
 	PaintNow();
 }
 
-void DrawPanel::SetScale( wxFloat32 scale )
+void DrawPanel::SetBitmapScale( wxDouble scale )
 {
 	mScale = scale;
-	mScaledWidth = (wxFloat32) mWidth * mScale;	
-	mScaledHeight = (wxFloat32) mHeight * mScale;
+	mScaledWidth = (wxDouble) mWidth * mScale;
+	mScaledHeight = (wxDouble) mHeight * mScale;
 	SetShowParams();
 }
 
-void DrawPanel::SetScaleRange( wxFloat32 min, wxFloat32 max )
+void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
 {
 	mScaleMin = min;
 	mScaleMax = max;
 	if ( mScale < mScaleMin )
 	{
-		SetScale( mScaleMin );
+		SetBitmapScale( mScaleMin );
 	}
 	if ( mScale > mScaleMax )
 	{
-		SetScale( mScaleMax );
+		SetBitmapScale( mScaleMax );
 	}
 }
 
@@ -165,17 +166,22 @@ void DrawPanel::SetScaleRange( wxFloat32 min, wxFloat32 max )
 		return;
 	}
 	wxMemoryDC mdc;
-	mdc.SelectObject( *mBitmap );
+	mdc.SelectObjectAsSource( *mBitmap );
 	dc.Clear();
-	wxInt32 x = GetScrollPos(wxHORIZONTAL);
-	wxInt32 y = GetScrollPos(wxVERTICAL);
-	dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight);
+	int x, y;
+    this->GetViewStart(&x, &y);
+	//wxLogMessage( wxString::Format("posX: %d, posY: %d", mPosX, mPosY) );
+	if (!dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight))
+    {
+        wxLogError("DrawPanel::Render error: stretchblit failed!");
+    }
 	RenderSelection( dc );
 }
 
 /* virtual */ void DrawPanel::OnPaint( wxPaintEvent& event )
 {
-	wxAutoBufferedPaintDC dc(this);
+	//wxAutoBufferedPaintDC dc(this);
+	wxBufferedPaintDC dc(this, wxBUFFER_CLIENT_AREA);
 	if (!mBitmap || !mBitmap->IsOk())
 	{
 		dc.Clear();
@@ -184,51 +190,47 @@ void DrawPanel::SetScaleRange( wxFloat32 min, wxFloat32 max )
 	}
 	Render( dc );
 	event.Skip();
-	
+
 }
 
 void DrawPanel::PaintNow()
 {
-	if (!mBitmap || !mBitmap->IsOk())
-	{
-		return;
-	}
-	wxClientDC dc(this);
-	Render(dc);
+    this->Refresh();
 }
 
 inline void DrawPanel::CalculateScrollBars()
 {
-	wxCoord clw = 0;
-	wxCoord clh = 0;
-	this->GetClientSize( &clw, &clh );
-	wxInt32 x = GetScrollPos(wxHORIZONTAL);
-	wxInt32 y = GetScrollPos(wxVERTICAL);
-	const wxInt32 unitSize = 1;
-	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y);
+	int x,y;
+	this->GetViewStart( &x, &y );
+	wxSize bounds = this->GetClientSize();
+	const int unitSize = 1;
+	//SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y, true);
+	SetScrollbars(unitSize, unitSize, bounds.GetWidth(), bounds.GetHeight(), x, y, true);
+
 }
 
 /* virtual */ inline void DrawPanel::SetShowParams()
 {
-	mShowWidth = mScaledWidth; 
+	mShowWidth = mScaledWidth;
 	mShowHeight = mScaledHeight;
 
-	wxCoord clw = 0;
-	wxCoord clh = 0;
-	this->GetClientSize( &clw, &clh );
+	wxSize bounds = this->GetClientSize();
+	int clw = bounds.GetWidth();
+	int clh = bounds.GetHeight();
+//	wxLogMessage(wxString::Format("clw: %d, clh: %d", clw, clh));
 	mPosX = 0;
 	mPosY = 0;
 	if ( mAlign != utdNone )
 	{
-		wxInt32 halfHeight = clh / 2;
-		wxInt32 halfWidth = clw / 2;
-		
-		mXAspectRatio = (float) clw / (float) mScaledWidth;
-		mYAspectRatio = (float) clh / (float) mScaledHeight;
+		int halfHeight = clh / 2;
+		int halfWidth = clw / 2;
+
+		mXAspectRatio = (wxDouble) clw / (wxDouble) mScaledWidth;
+		mYAspectRatio = (wxDouble) clh / (wxDouble) mScaledHeight;
 
 		if ( (mAlign & utdExactFit) != 0)
 		{
-			float modifier = 1.000f;
+			wxDouble modifier = 1.000f;
 			if ( clw < mWidth && clh < mScaledHeight )
 			{
 				modifier = clw > clh ? mYAspectRatio : mXAspectRatio;
@@ -238,7 +240,7 @@ inline void DrawPanel::CalculateScrollBars()
 				if ( clw < mScaledWidth )
 				{
 					modifier = mXAspectRatio;
-				}		
+				}
 				if ( clh < mScaledHeight )
 				{
 					modifier = mYAspectRatio;
@@ -247,23 +249,23 @@ inline void DrawPanel::CalculateScrollBars()
 			mShowWidth *= modifier;
 			mShowHeight *= modifier;
 		}
-		
+
 		if ( (mAlign & utdExpand) != 0 )
 		{
 			if (clw > mScaledWidth && clh > mScaledHeight)
 			{
-				float modifier = mYAspectRatio > mXAspectRatio ? mXAspectRatio : mYAspectRatio;
+				wxDouble modifier = mYAspectRatio > mXAspectRatio ? mXAspectRatio : mYAspectRatio;
 				mShowWidth *= modifier;
 				mShowHeight *= modifier;
 			}
 		}
-		
+
 		if ( (mAlign & utdStretch) != 0 )
-		{ 
+		{
 			mShowHeight = clh;
 			mShowWidth = clw;
 		}
-		
+
 		if ( (mAlign & utdHCenter) != 0 && clw > mShowWidth )
 		{
 			mPosX = halfWidth - mShowWidth / 2;
@@ -294,7 +296,11 @@ inline void DrawPanel::CalculateScrollBars()
 
 /* virtual */ void DrawPanel::OnSize(wxSizeEvent& event)
 {
-	SetShowParams();
+    if ( event.GetSize() != mPreviousSize )
+    {
+        SetShowParams();
+        mPreviousSize = event.GetSize();
+    }
 	event.Skip();
 }
 
@@ -347,13 +353,12 @@ inline void DrawPanel::CalculateScrollBars()
 	{
 		return false;
 	}
-	wxFloat32 inc = plus ? SCALE_STEP : -SCALE_STEP;
+	wxDouble inc = plus ? SCALE_STEP : -SCALE_STEP;
 	if (mScale + inc < mScaleMin || mScale + inc > mScaleMax)
 	{
 		return false;
 	}
-	SetScale( mScale + inc );
-	SetShowParams();
+	SetBitmapScale( mScale + inc );
 	PaintNow();
 	return true;
 }

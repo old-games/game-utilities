@@ -1,3 +1,6 @@
+#ifndef DEFAULTPALS_H_INCLUDED
+#define DEFAULTPALS_H_INCLUDED
+
 #define CGA_PALS_NUMBER	3
 
 #define VGA_BLACK	{0x00, 0x00, 0x00}
@@ -337,3 +340,5 @@ static const Pixel sMonoPal[] =
 	VGA_BLACK,
 	VGA_WHITE
 };
+
+#endif // DEFAULTPALS_H_INCLUDED

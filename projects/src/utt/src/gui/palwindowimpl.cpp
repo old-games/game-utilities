@@ -6,8 +6,10 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
+
+#include "palettepanel.h"
 #include "palwindowimpl.h"
 
 PaletteWindowImpl::PaletteWindowImpl(  wxWindow* parent ):
@@ -105,8 +107,8 @@ void PaletteWindowImpl::UpdateSpin(bool right)
 	SetColour( right, mPalPanel->GetColour(right) );
 }
 
-/* virtual */ void PaletteWindowImpl::OnCommandEvent( wxCommandEvent& event ) 
-{ 
+/* virtual */ void PaletteWindowImpl::OnCommandEvent( wxCommandEvent& event )
+{
 	switch( event.GetId() )
 	{
 		case wxID_PAL_CHOICE:
@@ -114,7 +116,7 @@ void PaletteWindowImpl::UpdateSpin(bool right)
 		case wxID_INTENSITY_CHECK:
 			PalTypeChanged();
 		break;
-		
+
 		default:
 			wxLogError( wxString::Format( "PaletteWindow: unknown command %d", event.GetId() ) );
 	}

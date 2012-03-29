@@ -10,10 +10,6 @@
 #ifndef LUACONTROL_H_INCLUDED
 #define LUACONTROL_H_INCLUDED
 
-#include "uttypes.h"
-#include "luaexports/common.h"
-#include "luaexports/luafont.h"
-
 namespace Lua
 {
     bool Init();

@@ -1,14 +1,17 @@
 /***************************************************************
  * Name:      symbolpanel.cpp
- * Purpose:   Code for SymbolPanel class  
+ * Purpose:   Code for SymbolPanel class
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
  * Created:   2012-03-14
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
+
 #include "symbolpanel.h"
+#include "controlline.h"
+
 
 SymbolPanel::SymbolPanel(  wxWindow* parent ):
 	EditPanel( parent ),
@@ -62,7 +65,7 @@ void SymbolPanel::UpdateBitmap()
 	wxImage image( width, height, (wxByte*) buffer, true );
 	mBitmap = new wxBitmap( image );
 	delete[] buffer;
-	
+
 	ApplyBitmap();
 }
 

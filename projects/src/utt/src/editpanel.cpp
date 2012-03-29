@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "editpanel.h"
 
@@ -85,7 +85,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxDOT_DASH );
 		dc.SetPen( borderPen );
 		dc.DrawRectangle( mPosX, mPosY, rect.GetWidth(), rect.GetHeight() );
-	} 
+	}
 	if (mDrawCursor)
 	{
 		dc.SetLogicalFunction(wxXOR);
@@ -105,17 +105,17 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 	DrawPanel::SetShowParams();
 	SetWorkZone( wxRect(mPosX, mPosY, mShowWidth, mShowHeight), mScale );
 	ClearGridPoints();
-	
+
 	if (mScale < GRID_EDGE)
 	{
 		// ничего хорошего не нарисуется, один хрен
 		return;
 	}
-	
+
 	wxSize bounds = this->GetClientSize();
 	bool correctX = false;
 	bool correctY = false;
-	
+
 	if (bounds.GetWidth() > mShowWidth)
 	{
 		bounds.SetWidth( mShowWidth );
@@ -126,45 +126,45 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		bounds.SetHeight( mShowHeight );
 		correctY = true;
 	}
-		
+
 	wxCoord gridWidth = bounds.GetWidth();
 	wxCoord gridHeight = bounds.GetHeight();
-	wxCoord width = 1 + ceil( (wxFloat32) gridWidth / mScale );
-	wxCoord height = 1 + ceil( (wxFloat32) gridHeight / mScale );
+	wxCoord width = 1 + ceil( (wxDouble) gridWidth / mScale );
+	wxCoord height = 1 + ceil( (wxDouble) gridHeight / mScale );
 	if (width < 2 || height < 2)
 	{
 		return;
 	}
-	
+
 	mPointsNumber = (width + height) * 2;
 	mGridPoints = new wxPoint[mPointsNumber];
-	int count = 0;
-	wxFloat32 lx = 0, ly = 0;
+	wxDouble lx = 0, ly = 0;
 	wxCoord startX = 0, startY = 0;
 	bounds = this->GetClientSize();
-	
+
 	if (correctX)
 	{
-		startX = mPosX + mScale; 
+		startX = mPosX + mScale;
 		lx += startX;
 	}
 	else
 	{
 		gridWidth += ceil(mScale);
 	}
-	
+
 	if (correctY)
 	{
-		startY = mPosY + mScale; 
+		startY = mPosY + mScale;
 		ly += startY;
 	}
 	else
 	{
 		gridHeight += ceil(mScale);
 	}
-	
+
 	wxCoord endX = startX + gridWidth, endY = startY + gridHeight;
-	
+	int count = 0;
+
 	for (wxCoord y = 0; y < height; ++y)
 	{
 		mGridPoints[count++] = wxPoint(startX, ly);
@@ -187,14 +187,14 @@ void EditPanel::DrawGrid( wxDC& dc )
 	}
 	dc.SetPen( mGridPen );
 	dc.SetLogicalFunction( (wxRasterOperationMode) mGridLogic );
-	wxInt32 horPos = this->GetScrollPos( wxHORIZONTAL );
-	wxInt32 vertPos = this->GetScrollPos( wxVERTICAL );
-	wxFloat32 horFloat = (wxFloat32) horPos / mScale;
-	wxFloat32 vertFloat = (wxFloat32) vertPos / mScale;
-	wxInt32 horizCorr = ( (wxFloat32) horPos - ( ceil(horFloat) * mScale ) + mScale);
-	wxInt32 vertCorr = ( (wxFloat32) vertPos - ( ceil(vertFloat) * mScale ) + mScale); 
+	int horPos, vertPos;
+	this->GetViewStart( &horPos, &vertPos );
+	wxDouble horFloat = (wxDouble) horPos / mScale;
+	wxDouble vertFloat = (wxDouble) vertPos / mScale;
+	int horizCorr = ( (wxDouble) horPos - ( ceil(horFloat) * mScale ) + mScale);
+	int vertCorr = ( (wxDouble) vertPos - ( ceil(vertFloat) * mScale ) + mScale);
 	wxPoint corrPoint( horizCorr, vertCorr );
-	for (wxInt32 i = 0; i < mPointsNumber; )
+	for (int i = 0; i < mPointsNumber; )
 	{
 		wxPoint& first = mGridPoints[i++];
 		wxPoint& second = mGridPoints[i++];
@@ -353,15 +353,15 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 		case WXK_LEFT:
 			dir.x = -1;
 		break;
-	
+
 		case WXK_RIGHT:
 			dir.x = 1;
 		break;
-	
+
 		case WXK_UP:
 			dir.y = -1;
 		break;
-	
+
 		case WXK_DOWN:
 			dir.y = 1;
 		break;
@@ -392,7 +392,7 @@ bool EditPanel::BeginDrawing()
 	mDrawing = mAllowEdit;
 	DoEdit();
 	return mDrawing;
-	
+
 }
 
 void EditPanel::EndDrawing()

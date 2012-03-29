@@ -10,7 +10,8 @@
 #define SYMBOLPANEL_H_INCLUDED
 
 #include "editpanel.h"
-#include "controlline.h"
+
+class ControlLine;
 
 enum ControlLines
 {
@@ -27,15 +28,15 @@ class SymbolPanel :
 {
 public:
 	SymbolPanel( wxWindow* parent );
-	~SymbolPanel(void); 
-	
+	~SymbolPanel(void);
+
 	void SetFontInfo( FontInfo* info, int symbolNumber );
 
 protected:
-		
+
 	virtual void Render( wxDC& dc );
 	virtual void SetShowParams();
-	
+
 	virtual bool MouseButton( int btn, bool up );
 	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
 	virtual bool MouseMoving( int modifier, int btn );
@@ -48,7 +49,7 @@ private:
 	bool BeginDragLine();
 	bool DragLine();
 	void EndDragLine();
-	
+
 	FontInfo*		mFontInfo;
 	bool			mAllowEdit;
 	int				mSymbolNumber;

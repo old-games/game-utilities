@@ -9,11 +9,9 @@
 #ifndef FONTEDITIMPL_H_INCLUDED
 #define FONTEDITIMPL_H_INCLUDED
 
-#include "uttgui.h"
-
-// TODO: replace when drawpanel will be finished
-#include "symbolpanel.h"
-#include "symboleditgui.h"
+class FontEditGui;
+class SymbolEditGui;
+class SymbolPanel;
 
 class FontEditImpl :
 	public FontEditGui
@@ -27,26 +25,23 @@ public:
 	bool CreateFont();
 	bool CheckChanges();
 	bool SaveFont();
-	
-	SymbolPanel* GetSymbolPanel()
-	{
-		return mSymbolEditor->GetSymbolPanel();
-	}
+
+	SymbolPanel* GetSymbolPanel();
 
 protected:
 
 	void Render(wxDC& dc);
 	void OnPaint(wxPaintEvent& event);
-	
+
 	virtual void OnBtnClick( wxCommandEvent& event );
-private:	
+private:
 
 	SymbolEditGui*	mSymbolEditor;
 	FontInfo*		mCurrentFont;
 	int				mCurrentSymbol;
 	bool			mHasChanges;
-	
-	
+
+
 };
 
 #endif

@@ -9,6 +9,7 @@
 #ifndef DRAWPANEL_H_INCLUDED
 #define DRAWPANEL_H_INCLUDED
 
+// TODO: remove when will be done
 #include "selectrect.h"
 
 enum UTTDrawParams
@@ -37,8 +38,8 @@ public:
 	void SetBitmap( wxBitmap* bitmap );
 	void CreateBitmap(Pixel* buffer, int width, int height);
 	void SetBuffer( Pixel* buffer );
-	void SetScale( wxFloat32 scale );
-	void SetScaleRange( wxFloat32 min, wxFloat32 max );
+	void SetBitmapScale( wxDouble scale );
+	void SetScaleRange( wxDouble min, wxDouble max );
 	void SetAlign( int align );
 	void SetAllowScaling( bool b = true );
 
@@ -50,20 +51,20 @@ protected:
 	virtual void OnBtnUp( wxMouseEvent& event );
 	virtual void OnKeyDown( wxKeyEvent& event );
 	virtual void OnKeyUp( wxKeyEvent& event );
-	
+
 	virtual void OnFocus(wxFocusEvent& event);
 	virtual void OnChildFocus(wxChildFocusEvent& event);
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
 	virtual void Render(wxDC& dc);
-	
+
 	virtual bool MouseButton( int btn, bool up );
 	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
 	virtual bool MouseMoving( int modifier, int btn );
 	virtual bool MouseWheel( int modifier, int delta );
-	
-	virtual bool KeyDown( int modifier, int keyCode );	
-	virtual bool KeyUp( int modifier, int keyCode );	
+
+	virtual bool KeyDown( int modifier, int keyCode );
+	virtual bool KeyUp( int modifier, int keyCode );
 	virtual bool PlusMinusPressed( bool plus );
 
 	void PaintNow();
@@ -72,27 +73,29 @@ protected:
 	virtual void SetShowParams();
 	void CalculateScrollBars();
 
-	wxFloat32	mXAspectRatio;
-	wxFloat32	mYAspectRatio;
-	wxCoord		mShowWidth;				// ширина картинки для отображения
-	wxCoord		mShowHeight;			
-	wxCoord		mPosX;					// стартовая позиция для отображения
-	wxCoord		mPosY;
-	wxFloat32	mScale;
-	wxFloat32	mScaleMin;
-	wxFloat32	mScaleMax;
-	wxCoord		mScaledWidth;
-	wxCoord		mScaledHeight;
+	wxDouble	mXAspectRatio;
+	wxDouble	mYAspectRatio;
+	int		    mShowWidth;				// ширина картинки для отображения
+	int		    mShowHeight;
+	int		    mPosX;					// стартовая позиция для отображения
+	int		    mPosY;
+	wxDouble	mScale;
+	wxDouble	mScaleMin;
+	wxDouble	mScaleMax;
+	int 		mScaledWidth;
+	int		    mScaledHeight;
 	wxRect		mBitmapRect;
 	wxPoint		mMousePoint;			// pixel coordinats where mouse cursor points
-		
+
 	wxBitmap*	mBitmap;
-	wxCoord		mWidth;
-	wxCoord		mHeight;
-	
+	int		    mWidth;
+	int		    mHeight;
+
 private:
 	int			mAlign;
 	bool		mAllowScaling;			// allows scaling by mouse wheel
+	wxSize      mPreviousSize;
+
 };
 
 #endif

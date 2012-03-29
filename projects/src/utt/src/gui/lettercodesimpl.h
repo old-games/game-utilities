@@ -6,11 +6,9 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #ifndef LETTERCODESIMPL_H_INCLUDED
 #define LETTERCODESIMPL_H_INCLUDED
-
-#include "uttgui.h"
 
 class LetterCodesImpl :
 	public LetterCodesGui
@@ -25,7 +23,7 @@ protected:
 
 	virtual void OnBtnClick( wxCommandEvent& event );
 	virtual void OnCodePageChange( wxCommandEvent& event );
-	virtual void OnCellChange( wxGridEvent& event );	
+	virtual void OnCellChange( wxGridEvent& event );
 private:
 
 		void SetCurrentEncoding();
@@ -37,7 +35,7 @@ private:
 
 		int			mCurrentEncoding;
 		wxString	mEncodingName;
-		
+
 		int			mHexAlign;
 
 
@@ -45,7 +43,7 @@ private:
 		wxEncodingConverter mToSystem;
 		bool mCanFromSystem;
 		bool mCanToSystem;
-		
+
 		wxGridCellAttr*	mConvertedAttr;
 		wxGridCellAttr*	mValuesAttr;
 		wxGridCellAttr*	mSymbolAttr;

@@ -81,7 +81,7 @@ LetterBox* SymbolInfo::GetData()
 	return mData;
 }
 
-inline wxInt32 SymbolInfo::BoxOffset(wxInt32 x, wxInt32 y)
+inline int SymbolInfo::BoxOffset(int x, int y)
 {
 	wxInt32 offset = (x * MAXIMUM_SYMBOL_WIDTH) + y;
 	if ( (size_t) offset >= sizeof(LetterBox) )
@@ -92,9 +92,9 @@ inline wxInt32 SymbolInfo::BoxOffset(wxInt32 x, wxInt32 y)
 	return offset;
 }
 
-void SymbolInfo::SetPixel( wxInt32 x, wxInt32 y, RGBA color )
+void SymbolInfo::SetPixel( int x, int y, RGBA color )
 {
-	wxInt32 offset = BoxOffset(x, y);
+	int offset = BoxOffset(x, y);
 	if ( offset < 0 )
 	{
 		return;
@@ -105,10 +105,10 @@ void SymbolInfo::SetPixel( wxInt32 x, wxInt32 y, RGBA color )
 	val[2] = color.B;
 }
 
-RGBA SymbolInfo::GetPixel( wxInt32 x, wxInt32 y )
+RGBA SymbolInfo::GetPixel( int x, int y )
 {
 	RGBA res;
-	wxInt32 offset = BoxOffset(x, y);
+	int offset = BoxOffset(x, y);
 	if ( offset < 0 )
 	{
 		return res;

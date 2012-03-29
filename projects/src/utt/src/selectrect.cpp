@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "selectrect.h"
 
@@ -26,7 +26,7 @@ SelectionRectangle::~SelectionRectangle(void)
 {
 }
 
-void SelectionRectangle::SetWorkZone( const wxRect& rect, wxFloat32 pointSize )
+void SelectionRectangle::SetWorkZone( const wxRect& rect, wxDouble pointSize )
 {
 	mWorkZone = rect;
 	mPointSize = pointSize;
@@ -177,7 +177,7 @@ void SelectionRectangle::RenderSelection(wxDC& dc)
 		dc.SetPen( wxPen( *wxRED, 3, wxPENSTYLE_LONG_DASH ) );
 		dc.SetLogicalFunction( wxXOR );
 		dc.DrawRectangle( rect );
-	}	
+	}
 }
 
 void SelectionRectangle::UpdateCoords()

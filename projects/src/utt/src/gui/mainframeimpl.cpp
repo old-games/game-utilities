@@ -11,12 +11,18 @@
 #include "mainframeimpl.h"
 #include "luacontrol.h"
 
+#include "fonteditimpl.h"
+#include "logwindowimpl.h"
+#include "editpanelimpl.h"
+#include "palwindowimpl.h"
+#include "symbolpanel.h"
+
 MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
-	mFontEditor( this ),
-	mLogWindow( this ),
-	mEditWindow( this ),
-	mPalWindow( this )
+	mFontEditor( new FontEditImpl( this ) ),
+	mLogWindow( new LogWindowImpl( this ) ),
+	mEditWindow( new EditPanelImpl( this ) ),
+	mPalWindow( new PaletteWindowImpl( this ) )
 {
 	m_mgr.SetFlags( wxAUI_MGR_ALLOW_FLOATING		|
 					wxAUI_MGR_ALLOW_ACTIVE_PANE		|
@@ -24,23 +30,23 @@ MainFrameImpl::MainFrameImpl(void):
 					wxAUI_MGR_TRANSPARENT_HINT		|
 					wxAUI_MGR_HINT_FADE				|
 					wxAUI_MGR_LIVE_RESIZE              );
-					
-	this->AddPane(&mFontEditor, "Font editor");
-	this->AddPane(&mLogWindow, "Log window");
-	this->AddPane(&mEditWindow, "Image editor");
-	this->AddPane(&mPalWindow, "Palette window");
+
+	this->AddPane(mFontEditor, "Font editor");
+	this->AddPane(mLogWindow, "Log window");
+	this->AddPane(mEditWindow, "Image editor");
+	this->AddPane(mPalWindow, "Palette window");
 
 	wxImage::AddHandler(new wxPNGHandler);
 	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
 	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
-	mEditWindow.GetEditPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
-	mFontEditor.GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
-	
+	mEditWindow->GetEditPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
+	mFontEditor->GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
+
 	// test
-	wxBitmap* bmp = new wxBitmap();
-	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
+	//wxBitmap* bmp = new wxBitmap();
+	//bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
 	//bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
-	mEditWindow.SetBitmap( bmp );
+	//mEditWindow.SetBitmap( bmp );
 }
 
 MainFrameImpl::~MainFrameImpl(void)
@@ -59,11 +65,11 @@ void MainFrameImpl::OnColourPickEvent( ColourPickEvent& event )
 	switch ( event.GetAction() )
 	{
 		case ColourPickEvent::cpeSetThisColour:
-			mPalWindow.SetColour(right, event.GetColour() );
+			mPalWindow->SetColour(right, event.GetColour() );
 		break;
 
 		case ColourPickEvent::cpeFindThisColour:
-			mPalWindow.FindColour(right, event.GetColour(), true );
+			mPalWindow->FindColour(right, event.GetColour(), true );
 		break;
 
 		default:
@@ -142,18 +148,18 @@ void MainFrameImpl::DoFileOpen()
 	std::string result;
 	OOLUA::pull2cpp(Lua::Get(), result);
 	wxString extensions( result );
-	
+
 	wxFileDialog openFileDialog(this, "Open file", "./", "", extensions, wxFD_OPEN|wxFD_FILE_MUST_EXIST);
 	if (openFileDialog.ShowModal() == wxID_CANCEL)
 	{
-		return;     
+		return;
 	}
 	if ( !Lua::Get().call( "openFile", openFileDialog.GetPath().ToStdString() ) )
 	{
 		Lua::ShowLastError();
 		return;
 	}
-	
+
 }
 
 void MainFrameImpl::DoSelectModule()
@@ -166,26 +172,26 @@ void MainFrameImpl::DoSelectModule()
 }
 
 
-void MainFrameImpl::OnClose( wxCloseEvent& event ) 
-{ 
+void MainFrameImpl::OnClose( wxCloseEvent& event )
+{
 	this->Deinit();
 	event.Skip();
 }
 
-void MainFrameImpl::OnMenuSelect( wxCommandEvent& event ) 
+void MainFrameImpl::OnMenuSelect( wxCommandEvent& event )
 {
 	switch ( event.GetId() )
 	{
 		case wxID_FILE_OPEN:
 			DoFileOpen();
 		break;
-		
+
 		case wxID_FILE_SELECT:
 			DoSelectModule();
 		break;
 
 		default:
 			wxLogMessage( wxString::Format("Unknown command from main menu: %d", event.GetId()) );
-		break;	
+		break;
 	}
 }

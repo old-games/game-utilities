@@ -9,6 +9,7 @@
 #ifndef EDITPANEL_H_INCLUDED
 #define EDITPANEL_H_INCLUDED
 
+// TODO: remove when will be done
 #include "drawpanel.h"
 
 class EditPanel :
@@ -20,16 +21,16 @@ friend class EditPanelImpl;
 public:
 
 	EditPanel( wxWindow* parent );
-	virtual ~EditPanel(void); 
-	
+	virtual ~EditPanel(void);
+
 	void SetGridColour(const wxColour& color);
 	const wxColour& GetGridColour()
 	{
 		return mGridColour;
 	}
-	
+
 	void SetGridLogic(wxInt32 logic);
-	
+
 	void SetGridEnabled(bool b = true)
 	{
 		mDrawGrid = b;
@@ -39,7 +40,7 @@ public:
 	{
 		mDrawFocus = b;
 	}
-	
+
 	void SetAllowEdit( bool b /* true */)
 	{
 		mAllowEdit = b;
@@ -53,8 +54,8 @@ protected:
 	virtual bool MouseButton( int btn, bool up );
 	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
 	virtual bool MouseMoving( int modifier, int btn );
-		
-	virtual bool KeyDown( int modifier, int keyCode );	
+
+	virtual bool KeyDown( int modifier, int keyCode );
 	virtual bool KeyUp( int modifier, int keyCode );
 	virtual bool CursorPressed( int directon );
 
@@ -68,14 +69,14 @@ protected:
 	bool		mDrawing;
 	bool		mDrawCursor;
 	wxPoint     mCursor;				// coordinates of current pixel, must be always valid
-	
+
 private:
-	
+
 	void ClearGridPoints();
 	bool DoEdit();
 	bool BeginDrawing();
 	void EndDrawing();
-	
+
 	bool		mDrawGrid;
 	bool		mDrawFocus;
 	wxColour	mGridColour;

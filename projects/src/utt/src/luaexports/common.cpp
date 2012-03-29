@@ -80,21 +80,24 @@ static int selectModuleDialog(lua_State *L)
 		wxLogMessage("selectModuleDialog: empty table received");
 		return 0;
 	}
-	
+
 	SelectModuleImpl dlg(NULL);
 	dlg.FillCombo( strings );
-	
+
 	wxString result;
 	if (dlg.ShowModal() == wxID_OK)
 	{
 		result = dlg.GetValue();
 	}
-	
+
 	lua_pushstring(L, result.c_str().AsChar());
 	return 1;
 }
 
-void Lua::CommonRegister()
+namespace Lua
+{
+
+void CommonRegister()
 {
 	lua_register(Lua::Get(), "reboot", reboot);
 	lua_register(Lua::Get(), "writeToStdCout", writeToStdCout);
@@ -102,3 +105,5 @@ void Lua::CommonRegister()
 	lua_register(Lua::Get(), "parseFileName", parseFileName);
 	lua_register(Lua::Get(), "selectModuleDialog", selectModuleDialog);
 }
+
+} // namespace Lua

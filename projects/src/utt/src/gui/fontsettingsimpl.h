@@ -9,17 +9,15 @@
 #ifndef FONTSEETINGSIMPL_H_INCLUDED
 #define FONTSEETINGSIMPL_H_INCLUDED
 
-#include "uttgui.h"
-
 class FontSettingsImpl :
 	public FontSettingsGui
 {
 public:
 	FontSettingsImpl( wxWindow* parent, FontInfo* finfo );
 	~FontSettingsImpl(void);
-	
+
 protected:
-	
+
 	virtual void OnBtnClick( wxCommandEvent& event );
 	virtual void OnSpinCtrl( wxSpinEvent& event );
 

@@ -6,8 +6,11 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
+
+#include "symbolpanel.h"
+#include "symboleditgui.h"
 #include "fonteditimpl.h"
 #include "fontsettingsimpl.h"
 
@@ -25,6 +28,11 @@ FontEditImpl::FontEditImpl(  wxWindow* parent ):
 FontEditImpl::~FontEditImpl(void)
 {
 	delete mCurrentFont;
+}
+
+SymbolPanel* FontEditImpl::GetSymbolPanel()
+{
+    return mSymbolEditor->GetSymbolPanel();
 }
 
 void FontEditImpl::SetFont( const FontInfo& newFont )
@@ -58,7 +66,7 @@ bool FontEditImpl::CreateFont()
 	}
 	mCurrentFont = new FontInfo();
 	if ( ShowSettings() )
-	{	
+	{
 		mCurrentSymbol = 0;
 		mSymbolEditor->GetSymbolPanel()->SetFontInfo( mCurrentFont, mCurrentSymbol );
 		return true;
@@ -68,11 +76,11 @@ bool FontEditImpl::CreateFont()
 
 bool FontEditImpl::ShowSettings()
 {
-	if (mCurrentFont == NULL) 
+	if (mCurrentFont == NULL)
 	{
 		return CreateFont();
 	}
-	
+
 	FontSettingsImpl settings( this, mCurrentFont );
 	return settings.ShowModal() != wxID_CANCEL;
 }

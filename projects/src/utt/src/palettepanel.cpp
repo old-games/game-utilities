@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "palettepanel.h"
 
@@ -21,7 +21,7 @@ static const wxSize	sBitmapSize[BPP::bppNum] =
 	wxSize(256, 256)	// Truecolor with alpha
 };
 
-static const wxFloat32	sSquares[BPP::bppNum] =
+static const wxDouble	sSquares[BPP::bppNum] =
 {
 	50.0f,
 	40.0f,
@@ -45,7 +45,7 @@ PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true 
 	SetAllowEdit( false );
 	SetDrawFocus( false );
 	SetAlign( utdHCenter | utdVCenter );
-	SetScale( 12.0f );
+	SetBitmapScale( 12.0f );
 	SetGridEnabled();
 	SetGridLogic( wxXOR );
 	GeneratePalBitmap();
@@ -66,7 +66,7 @@ void PalettePanel::GeneratePalBitmap()
 		case BPP::bppMono:
 			srcPal = (Pixel*) sMonoPal;
 		break;
-		
+
 		case BPP::bpp2:
 			srcPal = mCGAIntensity ? (Pixel*) sICGApal[ mCurrentCGAPal ] : (Pixel*) sCGApal[ mCurrentCGAPal ];
 		break;
@@ -88,7 +88,7 @@ void PalettePanel::GeneratePalBitmap()
 				int lightness = 64 + x / 2;
 				wxColour newCol = col.ChangeLightness( lightness );
 				Pixel& dst = * (dstPal++) ;
-				dst[0] = newCol.Red();		
+				dst[0] = newCol.Red();
 				dst[1] = newCol.Green();
 				dst[2] = newCol.Blue();
 			}
@@ -99,7 +99,7 @@ void PalettePanel::GeneratePalBitmap()
 	delete[] colorMap;
 	CorrectColourPosition( false );
 	CorrectColourPosition( true );
-	SetScale( sSquares[ mPalType ] );
+	SetBitmapScale( sSquares[ mPalType ] );
 }
 
 void PalettePanel::CorrectColourPosition( bool right )
@@ -172,7 +172,7 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 	for ( int y = 0; y < mHeight && res == -1; ++y )
 	{
 		for ( int x = 0; x < mWidth; ++x )
-		{	
+		{
 			if ( temp_dc.GetPixel( x, y, &compare ) && compare == colour )
 			{
 				res = (y * mWidth) + x;
@@ -233,12 +233,12 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 	{
 		return true;
 	}
-	
+
 	if ( up && mBitmapRect.Contains( mMousePoint) && ( btn != wxMOUSE_BTN_LEFT || btn != wxMOUSE_BTN_RIGHT ) )
 	{
 		return false;
 	}
-	
+
 	if ( btn == wxMOUSE_BTN_RIGHT )
 	{
 		mRightPos = mMousePoint;
@@ -263,11 +263,11 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 		case WXK_NUM_ONE:
 			mLeftPos = mCursor;
 		break;
-		
+
 		case WXK_NUM_TWO:
 			mRightPos = mCursor;
 		break;
-		
+
 		default:
 			res = false;
 	}

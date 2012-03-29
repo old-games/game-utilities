@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #ifndef UTTTYPES_H_INCLUDED
 #define UTTTYPES_H_INCLUDED
 
@@ -61,14 +61,14 @@ struct SymbolInfo
 	{
 	}
 
-	RGBA GetPixel( wxInt32 x, wxInt32 y );
-	void SetPixel( wxInt32 x, wxInt32 y, RGBA color );
+	RGBA GetPixel( int x, int y );
+	void SetPixel( int x, int y, RGBA color );
 
 	virtual ~SymbolInfo()
 	{
 		EraseData();
 	}
-	
+
 	LetterBox* GetData();
 
 	SymbolInfo &operator = ( const SymbolInfo &src );
@@ -76,10 +76,10 @@ struct SymbolInfo
 	wxInt32	mWidth;											// ширина символа
 	wxInt32 mHeight;										// высота символа
 	wxUint32 mCode;											// код символа, для пробела 32 и т.д.
-	
+
 protected:
 
-	LetterBox* mData;										// данные символа, в protected - для 
+	LetterBox* mData;										// данные символа, в protected - для
 															// контроля за инициализацией
 
 private:
@@ -87,7 +87,7 @@ private:
 	void SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const LetterBox* data = NULL);
 	void CreateData();
 	void EraseData();
-	wxInt32 BoxOffset(wxInt32 x, wxInt32 y);
+	int BoxOffset(int x, int y);
 };
 
 typedef wxVector<SymbolInfo> Symbols;
@@ -111,7 +111,7 @@ public:
 		SetSymbolsNum( MINIMUM_SYMBOLS_NUM );
 		memset(mPalette, 0, sizeof(mPalette));
 	}
-	
+
 	size_t GetSymbolsNum()
 	{
 		return mSymbols.size();
@@ -123,7 +123,7 @@ public:
 	{
 		return mFontCodePage;
 	}
-	
+
 	void SetEncoding(wxInt32 n)
 	{
 		mFontCodePage = n;
@@ -137,27 +137,27 @@ public:
 		}
 		return sBadSymbol;
 	}
-	
+
 	Symbols& GetSymbols()
 	{
 		return mSymbols;
 	}
-	
+
 	void SetSymbols(const Symbols& src)
 	{
 		mSymbols = src;
 	}
-	
+
 	wxInt32 GetMaxWidth()
 	{
 		return mMaxWidth;
 	}
-	
+
 	void SetMaxWidth( wxInt32 width )
 	{
 		mMaxWidth = width;
 	}
-	
+
 	wxInt32 GetMaxHeight()
 	{
 		return mMaxHeight;
@@ -187,37 +187,37 @@ public:
 	{
 		mMinHeight = height;
 	}
-	
+
 	wxInt32	GetBaseLine()
 	{
-		return mBaseLine;							
+		return mBaseLine;
 	}
-	
+
 	void SetBaseLine(wxInt32 baseLine)
 	{
-		mBaseLine = baseLine;							
+		mBaseLine = baseLine;
 	}
 
 	wxInt32	GetCapLine()
 	{
-		return mCapLine;							
+		return mCapLine;
 	}
 
 	void SetCapLine(wxInt32 capLine)
 	{
-		mCapLine = capLine;							
+		mCapLine = capLine;
 	}
-	
+
 	wxInt32	GetLowLine()
 	{
-		return mLowLine;							
+		return mLowLine;
 	}
 
 	void SetLowLine(wxInt32 lowLine)
 	{
-		mLowLine = lowLine;							
+		mLowLine = lowLine;
 	}
-	
+
 	static SymbolInfo	sBadSymbol;
 
 protected:

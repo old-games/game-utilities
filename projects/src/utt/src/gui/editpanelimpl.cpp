@@ -6,9 +6,11 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
 #include "editpanelimpl.h"
+#include "editpanel.h"
+
 
 EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 	EditPanelGui( parent )
@@ -26,22 +28,22 @@ void EditPanelImpl::SetBitmap( wxBitmap* bitmap )
 	mEditPanel->SetBitmap( bitmap );
 }
 
-/* virtual */ void EditPanelImpl::OnCommandEvent( wxCommandEvent& event ) 
-{ 
+/* virtual */ void EditPanelImpl::OnCommandEvent( wxCommandEvent& event )
+{
 	switch (event.GetId())
 	{
 		case wxID_GRID_CHECK:
 			SetGridEnabled();
 		break;
-		
+
 		case wxID_GRID_MODE:
 			SetGridMode();
 		break;
-		
+
 		case wxID_GRIDCOL_BTN:
 			SetGridColour();
 		break;
-		
+
 		default:
 			wxLogError( wxString::Format("EditPanel::OnCommandEvent: unknown command %d", event.GetId()) );
 			return;
@@ -65,7 +67,7 @@ void EditPanelImpl::SetGridMode()
 		case 1:
 			mEditPanel->SetGridLogic( wxXOR );
 		break;
-		
+
 		default:
 			wxLogError( wxString::Format("EditPanel::SetGridMode: unknown grid draw logic %d", mGridModeChoice->GetSelection()) );
 	}

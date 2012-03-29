@@ -6,9 +6,11 @@
  * Copyright: Pavlovets Ilia
  * License:
  **************************************************************/
- 
+
 #include "pch.h"
+
 #include "symboleditgui.h"
+#include "symbolpanel.h"
 
 SymbolEditGui::SymbolEditGui(  wxWindow* parent ):
 	EditPanelImpl( parent ),
