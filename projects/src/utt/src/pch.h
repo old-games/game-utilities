@@ -42,7 +42,11 @@
 
 // Lua headers
 #include <lua.hpp>
+#ifndef __VISUALC__
 #include <oolua/oolua.h>
+#else
+#include <oolua.h>
+#endif
 
 // project headers
 #include "gui/uttgui.h"

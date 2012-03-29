@@ -20,6 +20,10 @@ private:
 
 	wxLogTextCtrl*				mLogCtrl;
 	wxStreamToTextRedirector	mRedirector;
+
+	std::ofstream				mFileStdStream;
+	wxLogChain*					mLogChain;
+
 };
 
 #endif

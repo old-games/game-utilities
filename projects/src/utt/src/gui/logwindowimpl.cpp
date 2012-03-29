@@ -17,12 +17,11 @@ LogWindowImpl::LogWindowImpl(  wxWindow* parent ):
 	mLogCtrl = new wxLogTextCtrl( mLogTxt );
 	delete wxLog::SetActiveTarget( mLogCtrl );
 
-	std::ostream logStream;// = new std::ostream();
-	//wxFileOutputStream* logOut = new wxFileOutputStream( *logStream );
-	wxLogStream* fileLog = new wxLogStream( &logStream );
-	wxLogChain* logChain = new wxLogChain( fileLog );
+	mFileStdStream.open("utt.log");
+	mLogChain = new wxLogChain( new wxLogStream(reinterpret_cast<std::ostream*>(&mFileStdStream)) );
 }
 
 LogWindowImpl::~LogWindowImpl(void)
 {
+	delete wxLog::SetActiveTarget( NULL );
 }
