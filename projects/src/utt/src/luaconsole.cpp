@@ -10,35 +10,35 @@
 #include "pch.h"
 #include "luaconsole.h"
 #include "luacontrol.h"
+#include <wx/tokenzr.h>
 
-#define LUACONSOLE_ID	999
-#define STDOUT_SIZE		640
-#define STREAM_FILE		"lua.log"
-
-const wxString sPrompt = "Lua >";
+const wxString  sPrompt = ">";
+const wxString  sHistoryFile = "luahistory.utt";
+const size_t    sMaxCommands = 100;
 
 LuaConsole::LuaConsole( wxWindow* parent ):
-	wxFrame( parent, LUACONSOLE_ID, "Lua console" ),
+	wxFrame( parent, wxID_ANY, "Lua console" ),
 	mHistoryCounter( 0 )
 {
 	wxGridSizer* gSizer1;
 	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
 
-	mOutput = new wxTextCtrl( this, LUACONSOLE_ID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_AUTO_URL|wxTE_MULTILINE );
+	mOutput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_AUTO_URL|wxTE_MULTILINE );
 
 	gSizer1->Add( mOutput, 1, wxEXPAND, 5 );
 
 	this->SetSizer( gSizer1 );
 	this->Layout();
-	
+
 	this->Bind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
 	mOutput->Bind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	SetPrompt();
+	LoadHistory();
 }
 
 LuaConsole::~LuaConsole()
 {
-
+    SaveHistory();
 	mOutput->Unbind( wxEVT_KEY_DOWN, &LuaConsole::OnKeyDown, this );
 	this->Unbind( wxEVT_CLOSE_WINDOW, &LuaConsole::OnCloseWindow, this );
 }
@@ -85,7 +85,7 @@ void LuaConsole::OnKeyDown( wxKeyEvent& event )
 
 void LuaConsole::InsertText(const wxString& txt)
 {
-	wxInt32 n = mOutput->GetNumberOfLines() - 1;
+	int n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos oldPos = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length();
@@ -110,14 +110,16 @@ void LuaConsole::Do(const wxString& command)
 	{
 		Lua::ShowLastError();
 	}
+	CheckCommandDoublicate( toExecute );
 	mCommands.Add( toExecute );
 	mHistoryCounter = mCommands.size();
 	SetPrompt();
+    SaveHistory();
 }
 
 void LuaConsole::ClearLastLine()
 {
-	wxInt32 n = mOutput->GetNumberOfLines() - 1;
+	int n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length();
 	mOutput->Remove( l, r );
@@ -125,7 +127,7 @@ void LuaConsole::ClearLastLine()
 
 bool LuaConsole::CanContinueEvent()
 {
-	wxInt32 n = mOutput->GetNumberOfLines() - 1;
+	int n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos current = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length() + sPrompt.length();
@@ -135,7 +137,7 @@ bool LuaConsole::CanContinueEvent()
 bool LuaConsole::CorrectCaret()
 {
 	bool forbid = false;
-	wxInt32 n = mOutput->GetNumberOfLines() - 1;
+	int n = mOutput->GetNumberOfLines() - 1;
 	wxTextPos current = mOutput->GetInsertionPoint();
 	wxTextPos r = mOutput->GetLastPosition();
 	wxTextPos l = r - mOutput->GetLineText(n).length() + sPrompt.length();
@@ -150,7 +152,7 @@ bool LuaConsole::CorrectCaret()
 
 void LuaConsole::SetPrompt( const wxString& place /* "" */ )
 {
-	wxInt32 n = mOutput->GetNumberOfLines() - 1;
+	int n = mOutput->GetNumberOfLines() - 1;
 	wxString txt = mOutput->GetLineText( n );
 	if ( txt.length() != 0 )
 	{
@@ -171,4 +173,57 @@ void LuaConsole::HistorySearch( bool down )
 	mHistoryCounter = n;
 	ClearLastLine();
 	SetPrompt( mCommands[n] );
+}
+
+bool LuaConsole::CheckCommandDoublicate( const wxString& command )
+{
+    bool res = false;
+    for (size_t i = 0; i < mCommands.size(); ++i )
+    {
+        if ( command == mCommands[i] )
+        {
+            mCommands.RemoveAt(i--);
+            res = true;
+        }
+    }
+    return res;
+}
+
+void LuaConsole::LoadHistory()
+{
+    wxFFile file;
+
+    if (!file.Open( sHistoryFile ))
+    {
+        return;
+    }
+    wxString all;
+    if (!file.ReadAll( &all ))
+    {
+        wxLogMessage("LuaConsole::LoadHistory: error while loading Lua commands history");
+    }
+    else
+    {
+        mCommands = wxStringTokenize(all);
+    }
+    mHistoryCounter = mCommands.size();
+    file.Close();
+    wxLogDebug(wxString::Format( "LuaConsole::LoadHistory() ok! %d commands loaded.", mCommands.size()) );
+}
+
+void LuaConsole::SaveHistory()
+{
+    wxFile file(sHistoryFile, wxFile::write );
+    if (!file.IsOpened())
+    {
+        wxLogError(wxString::Format("LuaConsole::SaveHistory: can't create %s to save commands history", sHistoryFile));
+        return;
+    }
+    size_t i = mCommands.size() > sMaxCommands ? mCommands.size() - sMaxCommands : 0;
+    for (; i < mCommands.size(); ++i)
+    {
+        file.Write( mCommands[i] + "\n");
+    }
+    file.Close();
+    wxLogDebug("LuaConsole::SaveHistory() ok!");
 }

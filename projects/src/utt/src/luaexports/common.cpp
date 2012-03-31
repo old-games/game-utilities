@@ -99,10 +99,15 @@ namespace Lua
 
 void CommonRegister()
 {
+    // sets flag to create new Lua VM
 	lua_register(Lua::Get(), "reboot", reboot);
+	// writes string to std::cout
 	lua_register(Lua::Get(), "writeToStdCout", writeToStdCout);
+	// writes string to wxLogMessage
 	lua_register(Lua::Get(), "writeToLog", writeToLog);
+	// parses full filename and returns it's volume, path, name and extension to Lua VM
 	lua_register(Lua::Get(), "parseFileName", parseFileName);
+	// calls dialog to select active plugin
 	lua_register(Lua::Get(), "selectModuleDialog", selectModuleDialog);
 }
 

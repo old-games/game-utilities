@@ -6,7 +6,7 @@
  * Copyright: Pavlovets Ilia
  * License:
  * Libs used: wxWidgets-last-svn,
- * Soft used: MS VS, Code::Blocks, GCC, 
+ * Soft used: MS VS, Code::Blocks, GCC,
  **************************************************************/
 
 #include "pch.h"
@@ -29,7 +29,7 @@ bool UTTApp::OnInit()
 }
 
 
-wxInt32 UTTApp::OnExit()
+int UTTApp::OnExit()
 {
 	this->Unbind( wxEVT_KEY_DOWN, &UTTApp::OnKeyDown, this );
 	return wxApp::OnExit();
@@ -38,9 +38,10 @@ wxInt32 UTTApp::OnExit()
 
 UTTApp::~UTTApp()
 {
+    delete mConsoleFrame;
 }
 
- 
+
 void UTTApp::OnKeyDown( wxKeyEvent& event )
 {
 	switch ( event.GetKeyCode() )

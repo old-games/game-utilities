@@ -15,23 +15,28 @@ class LuaConsole: public wxFrame
 public:
 	LuaConsole( wxWindow* parent );
 	~LuaConsole();
-	
+
 	void Do(const wxString& command);
 protected:
 	void OnCloseWindow( wxCloseEvent& event );
 	void OnKeyDown( wxKeyEvent& event );
 
 	wxTextCtrl*		mOutput;
-	
+
 private:
-	
+
+    void LoadHistory();
+    void SaveHistory();
+    // returns true if one or more strings were removed
+    bool CheckCommandDoublicate( const wxString& command );
+
 	void SetPrompt( const wxString& place = "" );
 	void InsertText(const wxString& txt);
 	void ClearLastLine();
 	void HistorySearch( bool down );
 	bool CorrectCaret();
 	bool CanContinueEvent();
-	
+
 	wxArrayString	mCommands;
 	int				mHistoryCounter;
 };

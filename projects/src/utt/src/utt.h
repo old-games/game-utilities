@@ -16,7 +16,7 @@ class LuaConsole;
 
 class UTTApp : public wxApp
 {
-	
+
 public:
 	UTTApp():
 		mConsoleFrame( NULL )
@@ -30,12 +30,12 @@ public:
 
 protected:
 	virtual bool OnInit();
-	virtual wxInt32 OnExit();
-	
+	virtual int OnExit();
+
 private:
 
 	void OnKeyDown( wxKeyEvent& event );
-	
+
 	LuaConsole*		mConsoleFrame;
 };
 
