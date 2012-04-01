@@ -37,8 +37,8 @@ MainFrameImpl::MainFrameImpl(void):
 	this->AddPane(mPalWindow, "Palette window");
 
 	wxImage::AddHandler(new wxPNGHandler);
-	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
-	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
+	this->Bind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
+	this->Bind( wxEVT_SHOW, &MainFrameImpl::OnShow, this );
 	mEditWindow->GetEditPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 	mFontEditor->GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 
@@ -51,8 +51,8 @@ MainFrameImpl::MainFrameImpl(void):
 
 MainFrameImpl::~MainFrameImpl(void)
 {
-	this->Unbind( wxEVT_SHOW, &MainFrameImpl::OnShow, this, wxID_MAIN_FRAME );
-	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this, wxID_MAIN_FRAME );
+	this->Unbind( wxEVT_SHOW, &MainFrameImpl::OnShow, this );
+	this->Unbind( wxEVT_IDLE, &MainFrameImpl::OnIdle, this );
 }
 
 void MainFrameImpl::OnColourPickEvent( ColourPickEvent& event )

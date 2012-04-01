@@ -34,9 +34,6 @@ bool Lua::Init()
 		Lua::Done();
 	}
 	gLuaState = new OOLUA::Script();
-#ifdef _LUAJIT_H
-	luaopen_jit(Lua::gLuaState);
-#endif
 	CommonRegister();
 	FontRegister();
 	return gLuaState->run_file("scripts/init.lua");
@@ -44,8 +41,9 @@ bool Lua::Init()
 
 void Lua::Done()
 {
-    wxLogMessage( "Closing Lua...\n" );
-	delete gLuaState;
+    wxLogMessage( "Closing Lua... HERE IS MEMORY LEAK!!! \n" );
+	// TODO: uncomment when OOLua will support Lua 5.2 fully
+	//delete gLuaState;
     gLuaState = NULL;
 	gRebootRequest = false;
 }
