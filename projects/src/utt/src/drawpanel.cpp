@@ -170,18 +170,28 @@ void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
 	dc.Clear();
 	int x, y;
     this->GetViewStart(&x, &y);
-	//wxLogMessage( wxString::Format("posX: %d, posY: %d", mPosX, mPosY) );
-	if (!dc.StretchBlit(mPosX - x, mPosY - y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight))
+    x = mPosX - x;
+    y = mPosY - y;
+    #ifndef __VISUAL_C__
+        dc.SetDeviceOrigin( x, y);  // i don't understand why i have to do it
+                                    // but this the only way now to show picture
+                                    // in Linux correctly
+        x = 0;
+        y = 0;
+    #endif
+	if (!dc.StretchBlit(x, y, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight))
     {
         wxLogError("DrawPanel::Render error: stretchblit failed!");
     }
+    #ifndef __VISUAL_C__
+        dc.SetDeviceOrigin( 0, 0 );
+    #endif
 	RenderSelection( dc );
 }
 
 /* virtual */ void DrawPanel::OnPaint( wxPaintEvent& event )
 {
-	//wxAutoBufferedPaintDC dc(this);
-	wxBufferedPaintDC dc(this, wxBUFFER_CLIENT_AREA);
+	wxAutoBufferedPaintDC dc(this);
 	if (!mBitmap || !mBitmap->IsOk())
 	{
 		dc.Clear();
@@ -202,10 +212,9 @@ inline void DrawPanel::CalculateScrollBars()
 {
 	int x,y;
 	this->GetViewStart( &x, &y );
-	wxSize bounds = this->GetClientSize();
-	const int unitSize = 1;
-	//SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y, true);
-	SetScrollbars(unitSize, unitSize, bounds.GetWidth(), bounds.GetHeight(), x, y, true);
+//	const int unitSize = 1;
+//	SetScrollbars(unitSize, unitSize, mShowWidth / unitSize, mShowHeight / unitSize, x, y, true);
+	SetScrollbars(1, 1, mShowWidth, mShowHeight, x, y, true);
 
 }
 

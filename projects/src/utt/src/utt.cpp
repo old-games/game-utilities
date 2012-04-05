@@ -38,7 +38,6 @@ int UTTApp::OnExit()
 
 UTTApp::~UTTApp()
 {
-    delete mConsoleFrame;
 }
 
 

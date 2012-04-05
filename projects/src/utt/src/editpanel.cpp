@@ -322,6 +322,8 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 			res = true;
 		break;
 
+		default:
+		break;
 	}
 	return res;
 }
@@ -341,6 +343,8 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 			res = true;
 		break;
 
+		default:
+		break;
 	}
 	return res;
 }
@@ -364,6 +368,10 @@ bool EditPanel::GetPixel( const wxPoint& pos, wxColour& color )
 
 		case WXK_DOWN:
 			dir.y = 1;
+		break;
+
+		default:
+            return false;
 		break;
 	}
 	if (mBitmapRect.Contains( mCursor + dir ))
