@@ -84,7 +84,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		}
 		wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxDOT_DASH );
 		dc.SetPen( borderPen );
-		dc.DrawRectangle( mPosX, mPosY, rect.GetWidth(), rect.GetHeight() );
+		dc.DrawRectangle( 0, 0, rect.GetWidth(), rect.GetHeight() );
 	}
 	if (mDrawCursor)
 	{
@@ -93,9 +93,9 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		wxPoint cursPos( mCursor );
 		cursPos.x *= mScale;
 		cursPos.y *= mScale;
-		wxPoint view( mPosX, mPosY );
-		view -= this->GetViewStart();
-		cursPos += view;
+		//wxPoint view( mPosX, mPosY );
+		//view -= this->GetViewStart();
+		//cursPos += view;
 		dc.DrawRectangle( cursPos, wxSize( mScale, mScale ) );
 	}
 }
@@ -103,7 +103,6 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 /* virtual */ void EditPanel::SetShowParams()
 {
 	DrawPanel::SetShowParams();
-	SetWorkZone( wxRect(mPosX, mPosY, mShowWidth, mShowHeight), mScale );
 	ClearGridPoints();
 
 	if (mScale < GRID_EDGE)
@@ -144,7 +143,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 
 	if (correctX)
 	{
-		startX = mPosX + mScale;
+		startX = mScale;
 		lx += startX;
 	}
 	else
@@ -154,7 +153,7 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 
 	if (correctY)
 	{
-		startY = mPosY + mScale;
+		startY = mScale;
 		ly += startY;
 	}
 	else
@@ -191,16 +190,16 @@ void EditPanel::DrawGrid( wxDC& dc )
 	this->GetViewStart( &horPos, &vertPos );
 	wxDouble horFloat = (wxDouble) horPos / mScale;
 	wxDouble vertFloat = (wxDouble) vertPos / mScale;
-	int horizCorr = ( (wxDouble) horPos - ( ceil(horFloat) * mScale ) + mScale);
-	int vertCorr = ( (wxDouble) vertPos - ( ceil(vertFloat) * mScale ) + mScale);
+	int horizCorr = ( ceil(horFloat) * mScale ) + mScale;
+	int vertCorr = ( ceil(vertFloat) * mScale ) + mScale;
 	wxPoint corrPoint( horizCorr, vertCorr );
+
 	for (int i = 0; i < mPointsNumber; )
 	{
 		wxPoint& first = mGridPoints[i++];
 		wxPoint& second = mGridPoints[i++];
 		dc.DrawLine( first - corrPoint, second - corrPoint );
 	}
-	dc.SetLogicalFunction( wxCOPY );
 }
 
 void EditPanel::PlacePixel( const wxPoint& pos, const wxColour& color )

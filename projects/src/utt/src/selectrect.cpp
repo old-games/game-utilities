@@ -157,15 +157,13 @@ void SelectionRectangle::DrawSelection()
 
 void SelectionRectangle::RenderSelection(wxDC& dc)
 {
-	int x, y;
-	mParent->GetViewStart( &x, &y );
-	wxPoint view(x, y);
+	wxPoint view = mParent->GetViewStart();
 	if (mSelectionDrag)
 	{
 		dc.SetBrush( *wxTRANSPARENT_BRUSH );
 		dc.SetPen( *wxWHITE_PEN );
 		dc.SetLogicalFunction( wxXOR );
-		wxRect rect( mStartPoint, mEndPoint );
+		wxRect rect( mStartPoint - mWorkZone.GetLeftTop(), mEndPoint - mWorkZone.GetLeftTop() );
 		dc.DrawRectangle( rect );
 	}
 	if (mIsZoneValid)
