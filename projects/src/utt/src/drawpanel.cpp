@@ -168,24 +168,10 @@ void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
 	wxMemoryDC mdc;
 	mdc.SelectObjectAsSource( *mBitmap );
 	dc.Clear();
-	//int x, y;
- //   this->GetViewStart(&x, &y);
- //   x = mPosX - x;
- //   y = mPosY - y;
-    //#ifndef __VISUAL_C__
-    //    dc.SetDeviceOrigin( x, y);  // i don't understand why i have to do it
-    //                                // but this the only way now to show picture
-    //                                // in Linux correctly
-    //    x = 0;
-    //    y = 0;
-    //#endif
 	if (!dc.StretchBlit(0, 0, mShowWidth, mShowHeight, &mdc, 0, 0, mWidth, mHeight))
     {
         wxLogError("DrawPanel::Render error: stretchblit failed!");
     }
-    //#ifndef __VISUAL_C__
-    //    dc.SetDeviceOrigin( 0, 0 );
-    //#endif
 	RenderSelection( dc );
 }
 

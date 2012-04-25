@@ -201,9 +201,6 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 /* virtual */ void PalettePanel::Render(wxDC& dc)
 {
 	EditPanel::Render( dc );
-	int x, y;
-	this->GetViewStart( &x, &y );
-	wxPoint view(mPosX - x, mPosY - y);
 	wxSize size( mScale + 2, mScale + 2);
 	dc.SetBrush( *wxTRANSPARENT_BRUSH );
 	dc.SetLogicalFunction( wxCOPY );
@@ -223,7 +220,7 @@ int	PalettePanel::FindColour( bool right, const wxColour& colour, bool andSet /*
 			}
 		}
 		dc.SetPen( pen );
-		dc.DrawRectangle( view + from, size );
+		dc.DrawRectangle( from, size );
 	}
 }
 

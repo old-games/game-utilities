@@ -84,7 +84,8 @@ void EditPanel::SetGridLogic(wxInt32 logic)
 		}
 		wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxDOT_DASH );
 		dc.SetPen( borderPen );
-		dc.DrawRectangle( 0, 0, rect.GetWidth(), rect.GetHeight() );
+		rect.SetLeftTop( this->GetViewStart() );
+		dc.DrawRectangle(rect);
 	}
 	if (mDrawCursor)
 	{
@@ -186,19 +187,17 @@ void EditPanel::DrawGrid( wxDC& dc )
 	}
 	dc.SetPen( mGridPen );
 	dc.SetLogicalFunction( (wxRasterOperationMode) mGridLogic );
-	int horPos, vertPos;
-	this->GetViewStart( &horPos, &vertPos );
-	wxDouble horFloat = (wxDouble) horPos / mScale;
-	wxDouble vertFloat = (wxDouble) vertPos / mScale;
-	int horizCorr = ( ceil(horFloat) * mScale ) + mScale;
-	int vertCorr = ( ceil(vertFloat) * mScale ) + mScale;
+	wxPoint view = this->GetViewStart();
+	wxDouble horFloat = (wxDouble) view.x / mScale;
+	wxDouble vertFloat = (wxDouble) view.y / mScale;
+	int horizCorr = ( ceil(horFloat) * mScale ) - mScale;
+	int vertCorr = ( ceil(vertFloat) * mScale ) - mScale;
 	wxPoint corrPoint( horizCorr, vertCorr );
-
 	for (int i = 0; i < mPointsNumber; )
 	{
 		wxPoint& first = mGridPoints[i++];
 		wxPoint& second = mGridPoints[i++];
-		dc.DrawLine( first - corrPoint, second - corrPoint );
+		dc.DrawLine( first + corrPoint, second + corrPoint);
 	}
 }
 
