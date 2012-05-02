@@ -19,10 +19,9 @@
 
 MainFrameImpl::MainFrameImpl(void):
 	UttMainFrame(0L),
-	mFontEditor( new FontEditImpl( this ) ),
-	mLogWindow( new LogWindowImpl( this ) ),
-	mEditWindow( new EditPanelImpl( this ) ),
-	mPalWindow( new PaletteWindowImpl( this ) )
+	mFontEditor( new FontEditImpl( mAUINotebook ) ),
+	mEditWindow( new EditPanelImpl( mAUINotebook ) ),
+	mPalWindow( new PaletteWindowImpl( mAUINotebook ) )
 {
 	m_mgr.SetFlags( wxAUI_MGR_ALLOW_FLOATING		|
 					wxAUI_MGR_ALLOW_ACTIVE_PANE		|
@@ -31,8 +30,8 @@ MainFrameImpl::MainFrameImpl(void):
 					wxAUI_MGR_HINT_FADE				|
 					wxAUI_MGR_LIVE_RESIZE              );
 
+
 	this->AddPane(mFontEditor, "Font editor");
-	this->AddPane(mLogWindow, "Log window");
 	this->AddPane(mEditWindow, "Image editor");
 	this->AddPane(mPalWindow, "Palette window");
 
@@ -42,6 +41,7 @@ MainFrameImpl::MainFrameImpl(void):
 	mEditWindow->GetEditPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 	mFontEditor->GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 
+	m_mgr.Update();
 	// test
 	wxBitmap* bmp = new wxBitmap();
 	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
@@ -81,31 +81,7 @@ void MainFrameImpl::OnColourPickEvent( ColourPickEvent& event )
 
 void MainFrameImpl::AddPane( wxWindow* wnd, const wxString& name )
 {
-	wxAuiPaneInfo paneInfo;
-	wxString _name = name;
-	_name.Replace(" ", "");
-	_name.MakeLower();
-	paneInfo.Name( _name );
-	paneInfo.Caption( name );
-	paneInfo.Gripper( false );
-	paneInfo.Dockable( true );
-	paneInfo.Floatable( true );
-	paneInfo.MinimizeButton( true );
-	paneInfo.MaximizeButton( true );
-	paneInfo.PinButton( true );
-	paneInfo.CloseButton( true );
-	wnd->InvalidateBestSize();
-	paneInfo.MinSize( wnd->GetMinSize() );
-	paneInfo.MaxSize( wnd->GetMaxSize() );
-	paneInfo.BestSize( wnd->GetBestSize() );
-	static bool where = false;
-	if (where)
-		paneInfo.Bottom();
-	else
-		paneInfo.Left();
-	where = !where;
-	paneInfo.Layer(1);
-	m_mgr.InsertPane( wnd, paneInfo, wxAUI_INSERT_DOCK);
+	mAUINotebook->AddPage( wnd, name );
 }
 
 void MainFrameImpl::OnIdle( wxIdleEvent& )

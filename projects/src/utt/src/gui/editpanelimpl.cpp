@@ -15,7 +15,7 @@
 EditPanelImpl::EditPanelImpl(  wxWindow* parent ):
 	EditPanelGui( parent )
 {
-	mEditPanel = new EditPanel( this );
+	mEditPanel = new EditPanel( mEditScrolledBack );
 	SetEditPanel( mEditPanel );
 }
 
@@ -107,6 +107,7 @@ void EditPanelImpl::SetEditPanel( EditPanel* editPanel )
 	mEditPanel = editPanel;
 	mDrawHolder->Add( mEditPanel, 1, wxEXPAND, 5 );
 	mEditPanel->SetAlign( utdHCenter | utdVCenter );
+	mEditPanel->Reparent( mEditScrolledBack );
 	SetGridEnabled();
 	SetGridMode();
 }

@@ -35,6 +35,14 @@ UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& tit
 	
 	this->SetMenuBar( mMainMenu );
 	
+	mAUINotebook = new wxAuiNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxAUI_NB_TAB_EXTERNAL_MOVE|wxAUI_NB_TAB_MOVE|wxAUI_NB_TAB_SPLIT|wxWANTS_CHARS );
+	m_mgr.AddPane( mAUINotebook, wxAuiPaneInfo() .Center() .CaptionVisible( false ).CloseButton( false ).PaneBorder( false ).Dock().Resizable().FloatingSize( wxDefaultSize ).DockFixed( false ).CentrePane() );
+	
+	
+	mLogWindow = new LogWindowImpl( this );
+	m_mgr.AddPane( mLogWindow, wxAuiPaneInfo() .Bottom() .MaximizeButton( true ).PinButton( true ).Dock().Resizable().FloatingSize( wxDefaultSize ) );
+	
+	mStatusBar = this->CreateStatusBar( 6, wxST_SIZEGRIP, wxID_ANY );
 	
 	m_mgr.Update();
 	this->Centre( wxBOTH );
@@ -56,95 +64,6 @@ UttMainFrame::~UttMainFrame()
 	
 }
 
-FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
-{
-	this->SetMinSize( wxSize( 300,400 ) );
-	
-	wxGridSizer* gSizer1;
-	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
-	
-	wxFlexGridSizer* fgSizer1;
-	fgSizer1 = new wxFlexGridSizer( 3, 1, 0, 0 );
-	fgSizer1->AddGrowableCol( 0 );
-	fgSizer1->AddGrowableRow( 2 );
-	fgSizer1->SetFlexibleDirection( wxBOTH );
-	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-	
-	wxStaticBoxSizer* sbSizer4;
-	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxVERTICAL );
-	
-	wxFlexGridSizer* fgSizer2;
-	fgSizer2 = new wxFlexGridSizer( 1, 2, 0, 0 );
-	fgSizer2->AddGrowableCol( 0 );
-	fgSizer2->AddGrowableRow( 0 );
-	fgSizer2->SetFlexibleDirection( wxBOTH );
-	fgSizer2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-	
-	mCreateBtn = new wxButton( this, wxID_CREATE_FONT, wxT("Create new..."), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer2->Add( mCreateBtn, 0, wxALL, 5 );
-	
-	mSettingsBtn = new wxButton( this, wxID_FONT_SETTINGS, wxT("Font settings..."), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer2->Add( mSettingsBtn, 0, wxALL, 5 );
-	
-	
-	sbSizer4->Add( fgSizer2, 1, wxEXPAND, 5 );
-	
-	
-	fgSizer1->Add( sbSizer4, 1, wxEXPAND, 5 );
-	
-	wxStaticBoxSizer* sbSizer11;
-	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Symbols:") ), wxVERTICAL );
-	
-	sbSizer11->SetMinSize( wxSize( 256,128 ) ); 
-	mPreviewHolder = new wxFlexGridSizer( 1, 3, 0, 0 );
-	mPreviewHolder->AddGrowableCol( 1 );
-	mPreviewHolder->AddGrowableRow( 0 );
-	mPreviewHolder->SetFlexibleDirection( wxBOTH );
-	mPreviewHolder->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-	
-	mScrollSymbolsLeft = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxBitmap( to_left_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	mPreviewHolder->Add( mScrollSymbolsLeft, 1, wxALL|wxEXPAND, 5 );
-	
-	mPreviewSymbols = new wxStaticBitmap( this, wxID_PREVIEW_SYMBOLS, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	mPreviewHolder->Add( mPreviewSymbols, 1, wxALL|wxEXPAND, 5 );
-	
-	mScrollSymbolsRight = new wxBitmapButton( this, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	mPreviewHolder->Add( mScrollSymbolsRight, 1, wxALL|wxEXPAND, 5 );
-	
-	
-	sbSizer11->Add( mPreviewHolder, 1, wxEXPAND, 5 );
-	
-	
-	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
-	
-	mCentralSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Editor:") ), wxVERTICAL );
-	
-	mCentralSizer->SetMinSize( wxSize( 256,128 ) ); 
-	
-	fgSizer1->Add( mCentralSizer, 1, wxEXPAND, 5 );
-	
-	
-	gSizer1->Add( fgSizer1, 1, wxEXPAND, 5 );
-	
-	
-	this->SetSizer( gSizer1 );
-	this->Layout();
-	
-	// Connect Events
-	mCreateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mSettingsBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mScrollSymbolsLeft->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-}
-
-FontEditGui::~FontEditGui()
-{
-	// Disconnect Events
-	mCreateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mSettingsBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mScrollSymbolsLeft->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	
-}
-
 FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
@@ -152,6 +71,8 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	wxGridSizer* gSizer3;
 	gSizer3 = new wxGridSizer( 1, 1, 0, 0 );
 	
+	m_scrolledWindow1 = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
+	m_scrolledWindow1->SetScrollRate( 5, 5 );
 	wxFlexGridSizer* fgSizer3;
 	fgSizer3 = new wxFlexGridSizer( 10, 2, 0, 0 );
 	fgSizer3->AddGrowableCol( 1 );
@@ -159,77 +80,80 @@ FontSettingsGui::FontSettingsGui( wxWindow* parent, wxWindowID id, const wxStrin
 	fgSizer3->SetFlexibleDirection( wxBOTH );
 	fgSizer3->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Total symbols:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Total symbols:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1->Wrap( -1 );
 	fgSizer3->Add( m_staticText1, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	mNumSpinCtrl = new wxSpinCtrl( this, wxID_NUM_SPIN_CTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 2048, 130 );
+	mNumSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_NUM_SPIN_CTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 2048, 130 );
 	fgSizer3->Add( mNumSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText2 = new wxStaticText( this, wxID_ANY, wxT("Codes:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Codes:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2->Wrap( -1 );
 	fgSizer3->Add( m_staticText2, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mSetCodesBtn = new wxButton( this, wxID_SET_CODES_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	mSetCodesBtn = new wxButton( m_scrolledWindow1, wxID_SET_CODES_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	fgSizer3->Add( mSetCodesBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	m_staticText5 = new wxStaticText( this, wxID_ANY, wxT("Max width:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText5 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Max width:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText5->Wrap( -1 );
 	fgSizer3->Add( m_staticText5, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mMaxWidthSpinCtrl = new wxSpinCtrl( this, wxID_MAX_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mMaxWidthSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_MAX_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMaxWidthSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText3 = new wxStaticText( this, wxID_ANY, wxT("Max height:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Max height:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3->Wrap( -1 );
 	fgSizer3->Add( m_staticText3, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mMaxHeightSpinCtrl = new wxSpinCtrl( this, wxID_MAX_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mMaxHeightSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_MAX_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMaxHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText6 = new wxStaticText( this, wxID_ANY, wxT("Min width:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText6 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Min width:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText6->Wrap( -1 );
 	fgSizer3->Add( m_staticText6, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mMinWidthSpinCtrl = new wxSpinCtrl( this, wxID_MIN_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mMinWidthSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_MIN_WIDTH_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMinWidthSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Min height:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Min height:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText4->Wrap( -1 );
 	fgSizer3->Add( m_staticText4, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mMinHeightSpinCtrl = new wxSpinCtrl( this, wxID_MIN_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mMinHeightSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_MIN_HEIGHT_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mMinHeightSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText8 = new wxStaticText( this, wxID_ANY, wxT("Base line:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText8 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Base line:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText8->Wrap( -1 );
 	fgSizer3->Add( m_staticText8, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mBaseLineSpinCtrl = new wxSpinCtrl( this, wxID_BASE_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mBaseLineSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_BASE_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mBaseLineSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText9 = new wxStaticText( this, wxID_ANY, wxT("Capitals line:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText9 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Capitals line:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText9->Wrap( -1 );
 	fgSizer3->Add( m_staticText9, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mCapLineSpinCtrl = new wxSpinCtrl( this, wxID_CAP_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mCapLineSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_CAP_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mCapLineSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	m_staticText10 = new wxStaticText( this, wxID_ANY, wxT("Lower line"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10 = new wxStaticText( m_scrolledWindow1, wxID_ANY, wxT("Lower line"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText10->Wrap( -1 );
 	fgSizer3->Add( m_staticText10, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mLowLineSpinCtrl = new wxSpinCtrl( this, wxID_LOW_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	mLowLineSpinCtrl = new wxSpinCtrl( m_scrolledWindow1, wxID_LOW_LINE_SPIN, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer3->Add( mLowLineSpinCtrl, 0, wxALL|wxEXPAND, 5 );
 	
-	mOkBtn = new wxButton( this, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	mOkBtn = new wxButton( m_scrolledWindow1, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer3->Add( mOkBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+	mCancelBtn = new wxButton( m_scrolledWindow1, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer3->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
 	
-	gSizer3->Add( fgSizer3, 1, wxEXPAND, 5 );
+	m_scrolledWindow1->SetSizer( fgSizer3 );
+	m_scrolledWindow1->Layout();
+	fgSizer3->Fit( m_scrolledWindow1 );
+	gSizer3->Add( m_scrolledWindow1, 1, wxEXPAND, 5 );
 	
 	
 	this->SetSizer( gSizer3 );
@@ -271,6 +195,8 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	wxGridSizer* gSizer4;
 	gSizer4 = new wxGridSizer( 1, 1, 0, 0 );
 	
+	m_scrolledWindow2 = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
+	m_scrolledWindow2->SetScrollRate( 5, 5 );
 	wxFlexGridSizer* fgSizer4;
 	fgSizer4 = new wxFlexGridSizer( 3, 1, 0, 0 );
 	fgSizer4->AddGrowableCol( 0 );
@@ -278,7 +204,7 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	fgSizer4->SetFlexibleDirection( wxBOTH );
 	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
+	mAutoSizer = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow2, wxID_ANY, wxT("Auto:") ), wxHORIZONTAL );
 	
 	wxFlexGridSizer* fgSizer5;
 	fgSizer5 = new wxFlexGridSizer( 1, 6, 0, 0 );
@@ -287,24 +213,24 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	fgSizer5->SetFlexibleDirection( wxBOTH );
 	fgSizer5->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	m_staticText11 = new wxStaticText( this, wxID_ANY, wxT("Initial:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11 = new wxStaticText( m_scrolledWindow2, wxID_ANY, wxT("Initial:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText11->Wrap( -1 );
 	fgSizer5->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mInitialSpinCtrl = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2048, 32 );
+	mInitialSpinCtrl = new wxSpinCtrl( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2048, 32 );
 	fgSizer5->Add( mInitialSpinCtrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mGenerateBtn = new wxButton( this, wxID_GENERATE_CODES_BTN, wxT("Generate..."), wxDefaultPosition, wxDefaultSize, 0 );
+	mGenerateBtn = new wxButton( m_scrolledWindow2, wxID_GENERATE_CODES_BTN, wxT("Generate..."), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer5->Add( mGenerateBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	m_staticText111 = new wxStaticText( this, wxID_ANY, wxT("Codepage:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText111 = new wxStaticText( m_scrolledWindow2, wxID_ANY, wxT("Codepage:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText111->Wrap( -1 );
 	fgSizer5->Add( m_staticText111, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
-	mCodeTxt = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
+	mCodeTxt = new wxTextCtrl( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
 	fgSizer5->Add( mCodeTxt, 0, wxALL, 5 );
 	
-	mGetEncodingBtn = new wxButton( this, wxID_GET_ENCODING_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	mGetEncodingBtn = new wxButton( m_scrolledWindow2, wxID_GET_ENCODING_BTN, wxT("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	fgSizer5->Add( mGetEncodingBtn, 0, wxALL, 5 );
 	
 	
@@ -313,15 +239,15 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	fgSizer4->Add( mAutoSizer, 1, wxEXPAND, 5 );
 	
-	mBtnsSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
+	mBtnsSizer = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow2, wxID_ANY, wxT("Controls:") ), wxHORIZONTAL );
 	
 	wxGridSizer* gSizer5;
 	gSizer5 = new wxGridSizer( 1, 2, 0, 0 );
 	
-	mOkBtn = new wxButton( this, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	mOkBtn = new wxButton( m_scrolledWindow2, wxID_OK, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer5->Add( mOkBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	mCancelBtn = new wxButton( this, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+	mCancelBtn = new wxButton( m_scrolledWindow2, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer5->Add( mCancelBtn, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
 	
@@ -330,9 +256,9 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	
 	fgSizer4->Add( mBtnsSizer, 1, wxEXPAND, 5 );
 	
-	mGridSizer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
+	mGridSizer = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow2, wxID_ANY, wxT("Letters:") ), wxVERTICAL );
 	
-	mCodesGrid = new wxGrid( this, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
+	mCodesGrid = new wxGrid( m_scrolledWindow2, wxID_CODES_GRID, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
 	mCodesGrid->CreateGrid( 0, 0 );
@@ -362,7 +288,10 @@ LetterCodesGui::LetterCodesGui( wxWindow* parent, wxWindowID id, const wxString&
 	fgSizer4->Add( mGridSizer, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
 	
 	
-	gSizer4->Add( fgSizer4, 1, wxALL|wxEXPAND|wxFIXED_MINSIZE, 5 );
+	m_scrolledWindow2->SetSizer( fgSizer4 );
+	m_scrolledWindow2->Layout();
+	fgSizer4->Fit( m_scrolledWindow2 );
+	gSizer4->Add( m_scrolledWindow2, 1, wxEXPAND, 5 );
 	
 	
 	this->SetSizer( gSizer4 );
@@ -385,25 +314,6 @@ LetterCodesGui::~LetterCodesGui()
 	mGetEncodingBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	mOkBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( LetterCodesGui::OnBtnClick ), NULL, this );
 	
-}
-
-LogWindowGui::LogWindowGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
-{
-	this->SetMinSize( wxSize( 500,100 ) );
-	
-	wxGridSizer* gSizer2;
-	gSizer2 = new wxGridSizer( 1, 1, 0, 0 );
-	
-	mLogTxt = new wxTextCtrl( this, wxID_LOG_TXT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_AUTO_URL|wxTE_MULTILINE|wxTE_READONLY );
-	gSizer2->Add( mLogTxt, 1, wxEXPAND, 5 );
-	
-	
-	this->SetSizer( gSizer2 );
-	this->Layout();
-}
-
-LogWindowGui::~LogWindowGui()
-{
 }
 
 SelectModuleGui::SelectModuleGui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
@@ -445,13 +355,109 @@ SelectModuleGui::~SelectModuleGui()
 	
 }
 
+FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
+{
+	this->SetMinSize( wxSize( 400,300 ) );
+	
+	wxGridSizer* gSizer1;
+	gSizer1 = new wxGridSizer( 1, 1, 0, 0 );
+	
+	mFontScrolledBack = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
+	mFontScrolledBack->SetScrollRate( 5, 5 );
+	wxFlexGridSizer* fgSizer1;
+	fgSizer1 = new wxFlexGridSizer( 3, 1, 0, 0 );
+	fgSizer1->AddGrowableCol( 0 );
+	fgSizer1->AddGrowableRow( 2 );
+	fgSizer1->SetFlexibleDirection( wxBOTH );
+	fgSizer1->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	wxStaticBoxSizer* sbSizer4;
+	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( mFontScrolledBack, wxID_ANY, wxT("Controls:") ), wxVERTICAL );
+	
+	wxFlexGridSizer* fgSizer2;
+	fgSizer2 = new wxFlexGridSizer( 1, 2, 0, 0 );
+	fgSizer2->AddGrowableCol( 0 );
+	fgSizer2->AddGrowableRow( 0 );
+	fgSizer2->SetFlexibleDirection( wxBOTH );
+	fgSizer2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	mCreateBtn = new wxButton( mFontScrolledBack, wxID_CREATE_FONT, wxT("Create new..."), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer2->Add( mCreateBtn, 0, wxALL, 5 );
+	
+	mSettingsBtn = new wxButton( mFontScrolledBack, wxID_FONT_SETTINGS, wxT("Font settings..."), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer2->Add( mSettingsBtn, 0, wxALL, 5 );
+	
+	
+	sbSizer4->Add( fgSizer2, 1, wxEXPAND, 5 );
+	
+	
+	fgSizer1->Add( sbSizer4, 1, wxEXPAND, 5 );
+	
+	wxStaticBoxSizer* sbSizer11;
+	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( mFontScrolledBack, wxID_ANY, wxT("Symbols:") ), wxVERTICAL );
+	
+	sbSizer11->SetMinSize( wxSize( 256,128 ) ); 
+	mPreviewHolder = new wxFlexGridSizer( 1, 3, 0, 0 );
+	mPreviewHolder->AddGrowableCol( 1 );
+	mPreviewHolder->AddGrowableRow( 0 );
+	mPreviewHolder->SetFlexibleDirection( wxBOTH );
+	mPreviewHolder->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	mScrollSymbolsLeft = new wxBitmapButton( mFontScrolledBack, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxBitmap( to_left_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	mPreviewHolder->Add( mScrollSymbolsLeft, 1, wxALL|wxEXPAND, 5 );
+	
+	mPreviewSymbols = new wxStaticBitmap( mFontScrolledBack, wxID_PREVIEW_SYMBOLS, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
+	mPreviewHolder->Add( mPreviewSymbols, 1, wxALL|wxEXPAND, 5 );
+	
+	mScrollSymbolsRight = new wxBitmapButton( mFontScrolledBack, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	mPreviewHolder->Add( mScrollSymbolsRight, 1, wxALL|wxEXPAND, 5 );
+	
+	
+	sbSizer11->Add( mPreviewHolder, 1, wxEXPAND, 5 );
+	
+	
+	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
+	
+	mCentralSizer = new wxStaticBoxSizer( new wxStaticBox( mFontScrolledBack, wxID_ANY, wxT("Editor:") ), wxVERTICAL );
+	
+	mCentralSizer->SetMinSize( wxSize( 256,128 ) ); 
+	
+	fgSizer1->Add( mCentralSizer, 1, wxEXPAND, 5 );
+	
+	
+	mFontScrolledBack->SetSizer( fgSizer1 );
+	mFontScrolledBack->Layout();
+	fgSizer1->Fit( mFontScrolledBack );
+	gSizer1->Add( mFontScrolledBack, 1, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( gSizer1 );
+	this->Layout();
+	
+	// Connect Events
+	mCreateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mSettingsBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mScrollSymbolsLeft->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+}
+
+FontEditGui::~FontEditGui()
+{
+	// Disconnect Events
+	mCreateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mSettingsBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	mScrollSymbolsLeft->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
+	
+}
+
 EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style ) : wxPanel( parent, id, pos, size, style )
 {
-	this->SetMinSize( wxSize( 400,200 ) );
+	this->SetMinSize( wxSize( 400,300 ) );
 	
 	wxGridSizer* gSizer7;
 	gSizer7 = new wxGridSizer( 1, 1, 0, 0 );
 	
+	mEditScrolledBack = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
+	mEditScrolledBack->SetScrollRate( 5, 5 );
 	wxFlexGridSizer* fgSizer6;
 	fgSizer6 = new wxFlexGridSizer( 2, 1, 0, 0 );
 	fgSizer6->AddGrowableCol( 0 );
@@ -459,13 +465,13 @@ EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	fgSizer6->SetFlexibleDirection( wxBOTH );
 	fgSizer6->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	mDrawHolder = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Image:") ), wxVERTICAL );
+	mDrawHolder = new wxStaticBoxSizer( new wxStaticBox( mEditScrolledBack, wxID_ANY, wxT("Image:") ), wxVERTICAL );
 	
 	
 	fgSizer6->Add( mDrawHolder, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer10;
-	sbSizer10 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxEmptyString ), wxVERTICAL );
+	sbSizer10 = new wxStaticBoxSizer( new wxStaticBox( mEditScrolledBack, wxID_ANY, wxEmptyString ), wxVERTICAL );
 	
 	wxGridSizer* gSizer8;
 	gSizer8 = new wxGridSizer( 1, 1, 0, 0 );
@@ -473,20 +479,20 @@ EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	wxGridSizer* gSizer9;
 	gSizer9 = new wxGridSizer( 1, 4, 0, 0 );
 	
-	mGridCheck = new wxCheckBox( this, wxID_GRID_CHECK, wxT("Enable grid"), wxDefaultPosition, wxDefaultSize, 0 );
+	mGridCheck = new wxCheckBox( mEditScrolledBack, wxID_GRID_CHECK, wxT("Enable grid"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer9->Add( mGridCheck, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	m_staticText12 = new wxStaticText( this, wxID_ANY, wxT("Gridmode:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText12 = new wxStaticText( mEditScrolledBack, wxID_ANY, wxT("Gridmode:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText12->Wrap( -1 );
 	gSizer9->Add( m_staticText12, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
 	wxString mGridModeChoiceChoices[] = { wxT("Copy"), wxT("Xor") };
 	int mGridModeChoiceNChoices = sizeof( mGridModeChoiceChoices ) / sizeof( wxString );
-	mGridModeChoice = new wxChoice( this, wxID_GRID_MODE, wxDefaultPosition, wxDefaultSize, mGridModeChoiceNChoices, mGridModeChoiceChoices, 0 );
+	mGridModeChoice = new wxChoice( mEditScrolledBack, wxID_GRID_MODE, wxDefaultPosition, wxDefaultSize, mGridModeChoiceNChoices, mGridModeChoiceChoices, 0 );
 	mGridModeChoice->SetSelection( 0 );
 	gSizer9->Add( mGridModeChoice, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mGetGridColour = new wxButton( this, wxID_GRIDCOL_BTN, wxT("Grid colour..."), wxDefaultPosition, wxDefaultSize, 0 );
+	mGetGridColour = new wxButton( mEditScrolledBack, wxID_GRIDCOL_BTN, wxT("Grid colour..."), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer9->Add( mGetGridColour, 0, wxALL, 5 );
 	
 	
@@ -499,7 +505,10 @@ EditPanelGui::EditPanelGui( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 	fgSizer6->Add( sbSizer10, 1, wxEXPAND, 5 );
 	
 	
-	gSizer7->Add( fgSizer6, 1, wxEXPAND, 5 );
+	mEditScrolledBack->SetSizer( fgSizer6 );
+	mEditScrolledBack->Layout();
+	fgSizer6->Fit( mEditScrolledBack );
+	gSizer7->Add( mEditScrolledBack, 1, wxEXPAND, 5 );
 	
 	
 	this->SetSizer( gSizer7 );
@@ -527,6 +536,8 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	wxGridSizer* gSizer10;
 	gSizer10 = new wxGridSizer( 1, 1, 0, 0 );
 	
+	mPalScrolledBack = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
+	mPalScrolledBack->SetScrollRate( 5, 5 );
 	wxFlexGridSizer* fgSizer7;
 	fgSizer7 = new wxFlexGridSizer( 2, 1, 0, 0 );
 	fgSizer7->AddGrowableCol( 0 );
@@ -534,59 +545,59 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	fgSizer7->SetFlexibleDirection( wxBOTH );
 	fgSizer7->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	mPalHolder = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Available colours:") ), wxVERTICAL );
+	mPalHolder = new wxStaticBoxSizer( new wxStaticBox( mPalScrolledBack, wxID_ANY, wxT("Available colours:") ), wxVERTICAL );
 	
 	
 	fgSizer7->Add( mPalHolder, 1, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer12;
-	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("Palette:") ), wxVERTICAL );
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( mPalScrolledBack, wxID_ANY, wxT("Palette:") ), wxVERTICAL );
 	
 	wxFlexGridSizer* fgSizer8;
 	fgSizer8 = new wxFlexGridSizer( 0, 12, 0, 0 );
 	fgSizer8->SetFlexibleDirection( wxBOTH );
 	fgSizer8->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	m_staticText15 = new wxStaticText( this, wxID_ANY, wxT("Left R:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText15 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("Left R:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText15->Wrap( -1 );
 	fgSizer8->Add( m_staticText15, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mLRSpin = new wxSpinCtrl( this, wxID_LR_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mLRSpin = new wxSpinCtrl( mPalScrolledBack, wxID_LR_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mLRSpin, 0, wxALL, 5 );
 	
-	m_staticText16 = new wxStaticText( this, wxID_ANY, wxT("G:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText16 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("G:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText16->Wrap( -1 );
 	fgSizer8->Add( m_staticText16, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mLGSpin = new wxSpinCtrl( this, wxID_LG_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mLGSpin = new wxSpinCtrl( mPalScrolledBack, wxID_LG_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mLGSpin, 0, wxALL, 5 );
 	
-	m_staticText17 = new wxStaticText( this, wxID_ANY, wxT("B:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText17 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("B:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText17->Wrap( -1 );
 	fgSizer8->Add( m_staticText17, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mLBSpin = new wxSpinCtrl( this, wxID_LB_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mLBSpin = new wxSpinCtrl( mPalScrolledBack, wxID_LB_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mLBSpin, 0, wxALL, 5 );
 	
-	m_staticText18 = new wxStaticText( this, wxID_ANY, wxT("Right R:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText18 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("Right R:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText18->Wrap( -1 );
 	fgSizer8->Add( m_staticText18, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mRRSpin = new wxSpinCtrl( this, wxID_RR_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mRRSpin = new wxSpinCtrl( mPalScrolledBack, wxID_RR_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mRRSpin, 0, wxALL, 5 );
 	
-	m_staticText19 = new wxStaticText( this, wxID_ANY, wxT("G:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText19 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("G:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText19->Wrap( -1 );
 	fgSizer8->Add( m_staticText19, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mRGSpin = new wxSpinCtrl( this, wxID_RG_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mRGSpin = new wxSpinCtrl( mPalScrolledBack, wxID_RG_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mRGSpin, 0, wxALL, 5 );
 	
-	m_staticText20 = new wxStaticText( this, wxID_ANY, wxT("B:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText20 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("B:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText20->Wrap( -1 );
 	fgSizer8->Add( m_staticText20, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mRBSpin = new wxSpinCtrl( this, wxID_RB_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
+	mRBSpin = new wxSpinCtrl( mPalScrolledBack, wxID_RB_SPIN, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 255, 0 );
 	fgSizer8->Add( mRBSpin, 0, wxALL, 5 );
 	
 	
@@ -595,21 +606,21 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	wxGridSizer* gSizer11;
 	gSizer11 = new wxGridSizer( 1, 5, 0, 0 );
 	
-	m_staticText13 = new wxStaticText( this, wxID_ANY, wxT("Palette type:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText13 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("Palette type:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText13->Wrap( -1 );
 	gSizer11->Add( m_staticText13, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
-	mPalType = new wxComboBox( this, wxID_PAL_CHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY ); 
+	mPalType = new wxComboBox( mPalScrolledBack, wxID_PAL_CHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY ); 
 	gSizer11->Add( mPalType, 0, wxALL|wxALIGN_RIGHT, 5 );
 	
-	m_staticText14 = new wxStaticText( this, wxID_ANY, wxT("Set of CGA colours:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText14 = new wxStaticText( mPalScrolledBack, wxID_ANY, wxT("Set of CGA colours:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText14->Wrap( -1 );
 	gSizer11->Add( m_staticText14, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
 	
-	mCGAType = new wxComboBox( this, wxID_CGA_CHOICE, wxEmptyString, wxDefaultPosition, wxSize( 80,-1 ), 0, NULL, wxCB_READONLY ); 
+	mCGAType = new wxComboBox( mPalScrolledBack, wxID_CGA_CHOICE, wxEmptyString, wxDefaultPosition, wxSize( 80,-1 ), 0, NULL, wxCB_READONLY ); 
 	gSizer11->Add( mCGAType, 0, wxALL, 5 );
 	
-	mCGAIntensity = new wxCheckBox( this, wxID_INTENSITY_CHECK, wxT("CGA intensity"), wxDefaultPosition, wxDefaultSize, 0 );
+	mCGAIntensity = new wxCheckBox( mPalScrolledBack, wxID_INTENSITY_CHECK, wxT("CGA intensity"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer11->Add( mCGAIntensity, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	
 	
@@ -619,7 +630,10 @@ PaletteWindowGui::PaletteWindowGui( wxWindow* parent, wxWindowID id, const wxPoi
 	fgSizer7->Add( sbSizer12, 1, wxEXPAND, 5 );
 	
 	
-	gSizer10->Add( fgSizer7, 1, wxEXPAND, 5 );
+	mPalScrolledBack->SetSizer( fgSizer7 );
+	mPalScrolledBack->Layout();
+	fgSizer7->Fit( mPalScrolledBack );
+	gSizer10->Add( mPalScrolledBack, 1, wxEXPAND, 5 );
 	
 	
 	this->SetSizer( gSizer10 );

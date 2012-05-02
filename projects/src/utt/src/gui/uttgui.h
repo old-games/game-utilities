@@ -19,20 +19,24 @@
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/aui/auibook.h>
+#include "logwindowimpl.h"
+#include <wx/statusbr.h>
 #include <wx/frame.h>
 #include <wx/aui/aui.h>
+#include <wx/stattext.h>
+#include <wx/spinctrl.h>
 #include <wx/button.h>
 #include <wx/sizer.h>
+#include <wx/scrolwin.h>
+#include <wx/dialog.h>
+#include <wx/textctrl.h>
 #include <wx/statbox.h>
+#include <wx/grid.h>
+#include <wx/combobox.h>
 #include <wx/bmpbuttn.h>
 #include <wx/statbmp.h>
 #include <wx/panel.h>
-#include <wx/stattext.h>
-#include <wx/spinctrl.h>
-#include <wx/dialog.h>
-#include <wx/textctrl.h>
-#include <wx/grid.h>
-#include <wx/combobox.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
 
@@ -41,43 +45,38 @@
 #define wxID_MAIN_FRAME 1000
 #define wxID_FILE_SELECT 1001
 #define wxID_FILE_OPEN 1002
-#define wxID_FONT_EDITOR 1003
-#define wxID_CREATE_FONT 1004
-#define wxID_FONT_SETTINGS 1005
-#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1006
-#define wxID_PREVIEW_SYMBOLS 1007
-#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1008
-#define wxID_FONT_SETTINGS_ID 1009
-#define wxID_NUM_SPIN_CTRL 1010
-#define wxID_SET_CODES_BTN 1011
-#define wxID_MAX_WIDTH_SPIN 1012
-#define wxID_MAX_HEIGHT_SPIN 1013
-#define wxID_MIN_WIDTH_SPIN 1014
-#define wxID_MIN_HEIGHT_SPIN 1015
-#define wxID_BASE_LINE_SPIN 1016
-#define wxID_CAP_LINE_SPIN 1017
-#define wxID_LOW_LINE_SPIN 1018
-#define wxID_LETTER_CODES_ID 1019
-#define wxID_GENERATE_CODES_BTN 1020
-#define wxID_GET_ENCODING_BTN 1021
-#define wxID_CODES_GRID 1022
-#define wxID_LOG_WINDOW 1023
-#define wxID_LOG_TXT 1024
-#define wxID_SELECT_MODULE_ID 1025
-#define wxID_EDIT_PANEL_ID 1026
-#define wxID_GRID_CHECK 1027
-#define wxID_GRID_MODE 1028
-#define wxID_GRIDCOL_BTN 1029
-#define wxID_PAL_WINDOW_ID 1030
-#define wxID_LR_SPIN 1031
-#define wxID_LG_SPIN 1032
-#define wxID_LB_SPIN 1033
-#define wxID_RR_SPIN 1034
-#define wxID_RG_SPIN 1035
-#define wxID_RB_SPIN 1036
-#define wxID_PAL_CHOICE 1037
-#define wxID_CGA_CHOICE 1038
-#define wxID_INTENSITY_CHECK 1039
+#define wxID_FONT_SETTINGS_ID 1003
+#define wxID_NUM_SPIN_CTRL 1004
+#define wxID_SET_CODES_BTN 1005
+#define wxID_MAX_WIDTH_SPIN 1006
+#define wxID_MAX_HEIGHT_SPIN 1007
+#define wxID_MIN_WIDTH_SPIN 1008
+#define wxID_MIN_HEIGHT_SPIN 1009
+#define wxID_BASE_LINE_SPIN 1010
+#define wxID_CAP_LINE_SPIN 1011
+#define wxID_LOW_LINE_SPIN 1012
+#define wxID_LETTER_CODES_ID 1013
+#define wxID_GENERATE_CODES_BTN 1014
+#define wxID_GET_ENCODING_BTN 1015
+#define wxID_CODES_GRID 1016
+#define wxID_SELECT_MODULE_ID 1017
+#define wxID_CREATE_FONT 1018
+#define wxID_FONT_SETTINGS 1019
+#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1020
+#define wxID_PREVIEW_SYMBOLS 1021
+#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1022
+#define wxID_GRID_CHECK 1023
+#define wxID_GRID_MODE 1024
+#define wxID_GRIDCOL_BTN 1025
+#define wxID_LR_SPIN 1026
+#define wxID_LG_SPIN 1027
+#define wxID_LB_SPIN 1028
+#define wxID_RR_SPIN 1029
+#define wxID_RG_SPIN 1030
+#define wxID_RB_SPIN 1031
+#define wxID_PAL_CHOICE 1032
+#define wxID_CGA_CHOICE 1033
+#define wxID_INTENSITY_CHECK 1034
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -89,6 +88,9 @@ class UttMainFrame : public wxFrame
 	protected:
 		wxMenuBar* mMainMenu;
 		wxMenu* mFileMenu;
+		wxAuiNotebook* mAUINotebook;
+		LogWindowImpl* mLogWindow;
+		wxStatusBar* mStatusBar;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
@@ -105,33 +107,6 @@ class UttMainFrame : public wxFrame
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class FontEditGui
-///////////////////////////////////////////////////////////////////////////////
-class FontEditGui : public wxPanel 
-{
-	private:
-	
-	protected:
-		wxButton* mCreateBtn;
-		wxButton* mSettingsBtn;
-		wxFlexGridSizer* mPreviewHolder;
-		wxBitmapButton* mScrollSymbolsLeft;
-		wxStaticBitmap* mPreviewSymbols;
-		wxBitmapButton* mScrollSymbolsRight;
-		wxStaticBoxSizer* mCentralSizer;
-		
-		// Virtual event handlers, overide them in your derived class
-		virtual void OnBtnClick( wxCommandEvent& event ) { event.Skip(); }
-		
-	
-	public:
-		
-		FontEditGui( wxWindow* parent, wxWindowID id = wxID_FONT_EDITOR, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,400 ), long style = wxTAB_TRAVERSAL ); 
-		~FontEditGui();
-	
-};
-
-///////////////////////////////////////////////////////////////////////////////
 /// Class FontSettingsGui
 ///////////////////////////////////////////////////////////////////////////////
 class FontSettingsGui : public wxDialog 
@@ -139,6 +114,7 @@ class FontSettingsGui : public wxDialog
 	private:
 	
 	protected:
+		wxScrolledWindow* m_scrolledWindow1;
 		wxStaticText* m_staticText1;
 		wxSpinCtrl* mNumSpinCtrl;
 		wxStaticText* m_staticText2;
@@ -180,6 +156,7 @@ class LetterCodesGui : public wxDialog
 	private:
 	
 	protected:
+		wxScrolledWindow* m_scrolledWindow2;
 		wxStaticBoxSizer* mAutoSizer;
 		wxStaticText* m_staticText11;
 		wxSpinCtrl* mInitialSpinCtrl;
@@ -202,23 +179,6 @@ class LetterCodesGui : public wxDialog
 		
 		LetterCodesGui( wxWindow* parent, wxWindowID id = wxID_LETTER_CODES_ID, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,500 ), long style = wxCAPTION|wxCLOSE_BOX|wxRESIZE_BORDER|wxSTAY_ON_TOP|wxSYSTEM_MENU ); 
 		~LetterCodesGui();
-	
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class LogWindowGui
-///////////////////////////////////////////////////////////////////////////////
-class LogWindowGui : public wxPanel 
-{
-	private:
-	
-	protected:
-		wxTextCtrl* mLogTxt;
-	
-	public:
-		
-		LogWindowGui( wxWindow* parent, wxWindowID id = wxID_LOG_WINDOW, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,100 ), long style = wxTAB_TRAVERSAL ); 
-		~LogWindowGui();
 	
 };
 
@@ -246,6 +206,34 @@ class SelectModuleGui : public wxDialog
 };
 
 ///////////////////////////////////////////////////////////////////////////////
+/// Class FontEditGui
+///////////////////////////////////////////////////////////////////////////////
+class FontEditGui : public wxPanel 
+{
+	private:
+	
+	protected:
+		wxScrolledWindow* mFontScrolledBack;
+		wxButton* mCreateBtn;
+		wxButton* mSettingsBtn;
+		wxFlexGridSizer* mPreviewHolder;
+		wxBitmapButton* mScrollSymbolsLeft;
+		wxStaticBitmap* mPreviewSymbols;
+		wxBitmapButton* mScrollSymbolsRight;
+		wxStaticBoxSizer* mCentralSizer;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnBtnClick( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		FontEditGui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 640,400 ), long style = wxTAB_TRAVERSAL ); 
+		~FontEditGui();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
 /// Class EditPanelGui
 ///////////////////////////////////////////////////////////////////////////////
 class EditPanelGui : public wxPanel 
@@ -253,6 +241,7 @@ class EditPanelGui : public wxPanel
 	private:
 	
 	protected:
+		wxScrolledWindow* mEditScrolledBack;
 		wxStaticBoxSizer* mDrawHolder;
 		wxCheckBox* mGridCheck;
 		wxStaticText* m_staticText12;
@@ -265,7 +254,7 @@ class EditPanelGui : public wxPanel
 	
 	public:
 		
-		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_EDIT_PANEL_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400,200 ), long style = wxTAB_TRAVERSAL ); 
+		EditPanelGui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 640,400 ), long style = wxTAB_TRAVERSAL|wxWANTS_CHARS ); 
 		~EditPanelGui();
 	
 };
@@ -278,6 +267,7 @@ class PaletteWindowGui : public wxPanel
 	private:
 	
 	protected:
+		wxScrolledWindow* mPalScrolledBack;
 		wxStaticBoxSizer* mPalHolder;
 		wxStaticText* m_staticText15;
 		wxSpinCtrl* mLRSpin;
@@ -304,7 +294,7 @@ class PaletteWindowGui : public wxPanel
 	
 	public:
 		
-		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_PAL_WINDOW_ID, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 625,200 ), long style = wxTAB_TRAVERSAL ); 
+		PaletteWindowGui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 735,400 ), long style = wxTAB_TRAVERSAL ); 
 		~PaletteWindowGui();
 	
 };

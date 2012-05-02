@@ -16,7 +16,7 @@
 
 FontEditImpl::FontEditImpl(  wxWindow* parent ):
 	FontEditGui( parent ),
-	mSymbolEditor( new SymbolEditGui( this ) ),
+	mSymbolEditor( new SymbolEditGui( mFontScrolledBack ) ),
 	mCurrentFont( NULL ),
 	mCurrentSymbol( 0 ),
 	mHasChanges( false )

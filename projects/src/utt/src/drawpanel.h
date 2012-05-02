@@ -52,11 +52,11 @@ protected:
 	virtual void OnKeyDown( wxKeyEvent& event );
 	virtual void OnKeyUp( wxKeyEvent& event );
 
-	virtual void OnFocus(wxFocusEvent& event);
-	virtual void OnChildFocus(wxChildFocusEvent& event);
 	virtual void OnPaint(wxPaintEvent& event);
 	virtual void OnSize(wxSizeEvent& event);
 	virtual void Render(wxDC& dc);
+
+	virtual void OnEnterWindow( wxMouseEvent& event );
 
 	virtual bool MouseButton( int btn, bool up );
 	virtual bool MouseModifiersButton( int modifier, int btn, bool up );

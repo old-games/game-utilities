@@ -21,7 +21,7 @@ EditPanel::EditPanel(  wxWindow* parent ):
 	mDrawCursor( true ),
 	mCursor( 0, 0 ),
 	mDrawGrid( true ),
-	mDrawFocus( true ),
+	mDrawFocus( false ),
 	mGridColour( *wxGREEN ),
 	mGridPoints( NULL ),
 	mPointsNumber( 0 ),

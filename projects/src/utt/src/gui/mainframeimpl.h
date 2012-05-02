@@ -39,7 +39,6 @@ private:
 	void DoSelectModule();
 
 	FontEditImpl*		mFontEditor;
-	LogWindowImpl*		mLogWindow;
 	EditPanelImpl*		mEditWindow;
 	PaletteWindowImpl*	mPalWindow;
 };

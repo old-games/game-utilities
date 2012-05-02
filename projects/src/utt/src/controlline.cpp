@@ -62,6 +62,7 @@ bool ControlLine::CheckMouse()
 	}
 	wxPoint first, second;
 	CalcPoints( first, second );
+	
 	int half = mWidth / 2;
 	first.x -= half;
 	second.x += half;
@@ -107,6 +108,11 @@ void ControlLine::DrawControlLine( wxDC& dc )
 	dc.SetLogicalFunction( wxXOR );
 	wxPoint first, second;
 	CalcPoints( first, second );
+	
+	wxPoint drawPos( mPosX, mPosY );
+	first -= drawPos;
+	second -= drawPos;
+
 	dc.DrawLine( first, second );
 }
 

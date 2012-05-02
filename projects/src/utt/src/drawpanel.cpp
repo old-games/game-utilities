@@ -50,10 +50,9 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 
 	this->Bind( wxEVT_PAINT, &DrawPanel::OnPaint, this );
 	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this);
-	this->Bind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this );
-	this->Bind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this );
-	this->Bind( wxEVT_CHILD_FOCUS, &DrawPanel::OnChildFocus, this );
-	this->SetCanFocus( true );
+
+	this->Bind( wxEVT_ENTER_WINDOW, &DrawPanel::OnEnterWindow, this );
+
 }
 
 DrawPanel::~DrawPanel(void)
@@ -70,8 +69,11 @@ DrawPanel::~DrawPanel(void)
 
 	this->Unbind( wxEVT_PAINT, &DrawPanel::OnPaint, this );
 	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this );
-	this->Unbind( wxEVT_SET_FOCUS, &DrawPanel::OnFocus, this );
-	this->Unbind( wxEVT_KILL_FOCUS, &DrawPanel::OnFocus, this );
+
+	this->Unbind( wxEVT_ENTER_WINDOW, &DrawPanel::OnEnterWindow, this );
+
+
+
 	DestroyBitmap();
 }
 
@@ -116,7 +118,6 @@ void DrawPanel::ApplyBitmap()
 	mHeight = mBitmap->GetHeight();
 	mBitmapRect = wxRect( 0, 0, mWidth, mHeight );
 	SetBitmapScale( mScale );
-	//SetShowParams();
 }
 
 void DrawPanel::DestroyBitmap()
@@ -157,6 +158,12 @@ void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
 	{
 		SetBitmapScale( mScaleMax );
 	}
+}
+
+/* virtual */ void DrawPanel::OnEnterWindow( wxMouseEvent& event )
+{
+	this->SetFocus();
+	event.Skip();
 }
 
 /* virtual */ void DrawPanel::Render(wxDC& dc)
@@ -397,16 +404,6 @@ inline void DrawPanel::CalculateScrollBars()
 			MouseButton( event.GetButton(), true );
 		}
 	}
-	event.Skip();
-}
-
-/* virtual */ void DrawPanel::OnFocus(wxFocusEvent& event)
-{
-	event.Skip();
-}
-
-/* virtual */ void DrawPanel::OnChildFocus(wxChildFocusEvent& event)
-{
 	event.Skip();
 }
 

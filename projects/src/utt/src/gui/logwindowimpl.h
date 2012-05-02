@@ -1,6 +1,6 @@
 /***************************************************************
  * Name:      logwindow.h
- * Purpose:   LogWindowGui implementation
+ * Purpose:   Log window
  * Author:    Pavlovets Ilia (ilia.pavlovets@gmail.com)
  * Created:   2012-01-19
  * Copyright: Pavlovets Ilia
@@ -9,8 +9,9 @@
 #ifndef LOGWINDOWIMPL_H_INCLUDED
 #define LOGWINDOWIMPL_H_INCLUDED
 
-class LogWindowImpl :
-	public LogWindowGui
+#include "uttgui.h"
+
+class LogWindowImpl : public wxPanel
 {
 public:
 	LogWindowImpl( wxWindow* parent );
@@ -18,6 +19,7 @@ public:
 
 private:
 
+	wxTextCtrl*					mLogTxt;
 	wxLogTextCtrl*				mLogCtrl;
 	wxStreamToTextRedirector	mRedirector;
 
