@@ -42,11 +42,6 @@ MainFrameImpl::MainFrameImpl(void):
 	mFontEditor->GetSymbolPanel()->Bind( wxEVT_COLOURPICK, &MainFrameImpl::OnColourPickEvent, this );
 
 	m_mgr.Update();
-	// test
-	wxBitmap* bmp = new wxBitmap();
-	bmp->LoadFile("D:/test.png", wxBITMAP_TYPE_PNG);
-	//bmp->LoadFile("D:/bad.bmp", wxBITMAP_TYPE_BMP);
-	mEditWindow->SetBitmap( bmp );
 }
 
 MainFrameImpl::~MainFrameImpl(void)

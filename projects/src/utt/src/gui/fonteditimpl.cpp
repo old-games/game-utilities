@@ -23,6 +23,18 @@ FontEditImpl::FontEditImpl(  wxWindow* parent ):
 {
 	mCentralSizer->Add( mSymbolEditor, 1, wxEXPAND, 5 );
 	this->Layout();
+
+	//
+	
+	//size_t n = 10;
+	//mSymbolsRibbon->Reserve( n );
+	//for ( size_t i = 0; i < n; ++i )
+	//{
+	//	wxBitmap* bmp = new wxBitmap();
+	//	bmp->LoadFile( wxString::Format( "D:/tstb/%d.bmp", i ), wxBITMAP_TYPE_BMP);
+	//	mSymbolsRibbon->SetBitmap( i, bmp );
+	//}
+	//mSymbolsRibbon->RefillHolder();
 }
 
 FontEditImpl::~FontEditImpl(void)

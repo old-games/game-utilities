@@ -9,12 +9,18 @@
 
 #include "pch.h"
 #include "drawpanel.h"
+#include <wx/arrimpl.cpp> 
 
+//WX_DEFINE_OBJARRAY( DrawPanelArray );
 #define SCALE_STEP	0.25f
+
+int			DrawPanel::sRefCount = 0;
+
 
 DrawPanel::DrawPanel(  wxWindow* parent ):
 	wxScrolledWindow( parent, Helpers::wxCustomPanelId++ ),
 	SelectionRectangle( this ),
+	mDrawFocus( false ),
 	mXAspectRatio( 0.0f ),
 	mYAspectRatio( 0.0f ),
 	mShowWidth( 0 ),
@@ -35,6 +41,8 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 	mAllowScaling( true ),
 	mPreviousSize( 0, 0 )
 {
+	++sRefCount;
+
 	this->SetBackgroundStyle( wxBG_STYLE_PAINT );
 	this->SetDoubleBuffered( true );
 
@@ -52,6 +60,7 @@ DrawPanel::DrawPanel(  wxWindow* parent ):
 	this->Bind( wxEVT_SIZE, &DrawPanel::OnSize, this);
 
 	this->Bind( wxEVT_ENTER_WINDOW, &DrawPanel::OnEnterWindow, this );
+	this->Bind( wxEVT_LEAVE_WINDOW, &DrawPanel::OnLeaveWindow, this );
 
 }
 
@@ -71,20 +80,32 @@ DrawPanel::~DrawPanel(void)
 	this->Unbind( wxEVT_SIZE, &DrawPanel::OnSize, this );
 
 	this->Unbind( wxEVT_ENTER_WINDOW, &DrawPanel::OnEnterWindow, this );
-
-
+	this->Unbind( wxEVT_LEAVE_WINDOW, &DrawPanel::OnLeaveWindow, this );
 
 	DestroyBitmap();
+
+	--sRefCount;
 }
+
+void DrawPanel::RefCheck()
+{
+	wxASSERT_MSG( sRefCount == 0, "DrawPanel: ref counter is not zero!" );
+}
+
 
 void DrawPanel::SetAlign( int align )
 {
 	mAlign = align;
 }
 
-void DrawPanel::SetAllowScaling( bool b /* true */)
+void DrawPanel::SetAllowScaling( bool b /* true */ ) 
 {
 	mAllowScaling = b;
+}
+
+void DrawPanel::SetDrawFocus( bool b /* true */ )
+{
+	mDrawFocus = b;
 }
 
 void DrawPanel::CreateBitmap( Pixel* buffer, int width, int height )
@@ -160,9 +181,39 @@ void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
 	}
 }
 
+void DrawPanel::DrawFocus(wxDC& dc)
+{
+	if (!mDrawFocus)
+	{
+		return;
+	}
+	dc.SetBrush( *wxTRANSPARENT_BRUSH );
+	dc.SetLogicalFunction(wxCOPY);
+	wxRect rect = this->GetClientRect();
+	if (rect.GetWidth() > mShowWidth)
+	{
+		rect.SetWidth( mShowWidth );
+	}
+	if (rect.GetHeight() > mShowHeight)
+	{
+		rect.SetHeight( mShowHeight );
+	}
+	wxPen borderPen( this->HasFocus() ? *wxRED : *wxWHITE, 3, wxSOLID );
+	dc.SetPen( borderPen );
+	rect.SetLeftTop( this->GetViewStart() );
+	dc.DrawRectangle(rect);
+}
+
 /* virtual */ void DrawPanel::OnEnterWindow( wxMouseEvent& event )
 {
 	this->SetFocus();
+	PaintNow();
+	event.Skip();
+}
+
+/* virtual */ void DrawPanel::OnLeaveWindow( wxMouseEvent& event )
+{
+	PaintNow();
 	event.Skip();
 }
 
@@ -180,6 +231,7 @@ void DrawPanel::SetScaleRange( wxDouble min, wxDouble max )
         wxLogError("DrawPanel::Render error: stretchblit failed!");
     }
 	RenderSelection( dc );
+	DrawFocus( dc );
 }
 
 /* virtual */ void DrawPanel::OnPaint( wxPaintEvent& event )

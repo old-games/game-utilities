@@ -34,8 +34,7 @@
 #include <wx/statbox.h>
 #include <wx/grid.h>
 #include <wx/combobox.h>
-#include <wx/bmpbuttn.h>
-#include <wx/statbmp.h>
+#include "bmpribbonctrl.h"
 #include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
@@ -62,21 +61,18 @@
 #define wxID_SELECT_MODULE_ID 1017
 #define wxID_CREATE_FONT 1018
 #define wxID_FONT_SETTINGS 1019
-#define wxID_SCROLL_SYMBOLS_LEFT_BTN 1020
-#define wxID_PREVIEW_SYMBOLS 1021
-#define wxID_SCROLL_SYMBOLS_RIGHT_BTN 1022
-#define wxID_GRID_CHECK 1023
-#define wxID_GRID_MODE 1024
-#define wxID_GRIDCOL_BTN 1025
-#define wxID_LR_SPIN 1026
-#define wxID_LG_SPIN 1027
-#define wxID_LB_SPIN 1028
-#define wxID_RR_SPIN 1029
-#define wxID_RG_SPIN 1030
-#define wxID_RB_SPIN 1031
-#define wxID_PAL_CHOICE 1032
-#define wxID_CGA_CHOICE 1033
-#define wxID_INTENSITY_CHECK 1034
+#define wxID_GRID_CHECK 1020
+#define wxID_GRID_MODE 1021
+#define wxID_GRIDCOL_BTN 1022
+#define wxID_LR_SPIN 1023
+#define wxID_LG_SPIN 1024
+#define wxID_LB_SPIN 1025
+#define wxID_RR_SPIN 1026
+#define wxID_RG_SPIN 1027
+#define wxID_RB_SPIN 1028
+#define wxID_PAL_CHOICE 1029
+#define wxID_CGA_CHOICE 1030
+#define wxID_INTENSITY_CHECK 1031
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class UttMainFrame
@@ -216,10 +212,7 @@ class FontEditGui : public wxPanel
 		wxScrolledWindow* mFontScrolledBack;
 		wxButton* mCreateBtn;
 		wxButton* mSettingsBtn;
-		wxFlexGridSizer* mPreviewHolder;
-		wxBitmapButton* mScrollSymbolsLeft;
-		wxStaticBitmap* mPreviewSymbols;
-		wxBitmapButton* mScrollSymbolsRight;
+		BitmapRibbonCtrl* mSymbolsRibbon;
 		wxStaticBoxSizer* mCentralSizer;
 		
 		// Virtual event handlers, overide them in your derived class

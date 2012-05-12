@@ -78,7 +78,6 @@ private:
 	void EndDrawing();
 
 	bool		mDrawGrid;
-	bool		mDrawFocus;
 	wxColour	mGridColour;
 	wxPoint*	mGridPoints;
 	wxInt32		mPointsNumber;

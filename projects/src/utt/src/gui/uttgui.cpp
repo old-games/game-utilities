@@ -9,9 +9,6 @@
 
 #include "uttgui.h"
 
-#include "../icon/to_left.xpm"
-#include "../icon/to_right.xpm"
-
 ///////////////////////////////////////////////////////////////////////////
 
 UttMainFrame::UttMainFrame( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
@@ -397,23 +394,8 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( mFontScrolledBack, wxID_ANY, wxT("Symbols:") ), wxVERTICAL );
 	
 	sbSizer11->SetMinSize( wxSize( 256,128 ) ); 
-	mPreviewHolder = new wxFlexGridSizer( 1, 3, 0, 0 );
-	mPreviewHolder->AddGrowableCol( 1 );
-	mPreviewHolder->AddGrowableRow( 0 );
-	mPreviewHolder->SetFlexibleDirection( wxBOTH );
-	mPreviewHolder->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-	
-	mScrollSymbolsLeft = new wxBitmapButton( mFontScrolledBack, wxID_SCROLL_SYMBOLS_LEFT_BTN, wxBitmap( to_left_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	mPreviewHolder->Add( mScrollSymbolsLeft, 1, wxALL|wxEXPAND, 5 );
-	
-	mPreviewSymbols = new wxStaticBitmap( mFontScrolledBack, wxID_PREVIEW_SYMBOLS, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	mPreviewHolder->Add( mPreviewSymbols, 1, wxALL|wxEXPAND, 5 );
-	
-	mScrollSymbolsRight = new wxBitmapButton( mFontScrolledBack, wxID_SCROLL_SYMBOLS_RIGHT_BTN, wxBitmap( to_right_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	mPreviewHolder->Add( mScrollSymbolsRight, 1, wxALL|wxEXPAND, 5 );
-	
-	
-	sbSizer11->Add( mPreviewHolder, 1, wxEXPAND, 5 );
+	mSymbolsRibbon = new BitmapRibbonCtrl( mFontScrolledBack );
+	sbSizer11->Add( mSymbolsRibbon, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
 	
 	fgSizer1->Add( sbSizer11, 1, wxEXPAND, 5 );
@@ -437,7 +419,6 @@ FontEditGui::FontEditGui( wxWindow* parent, wxWindowID id, const wxPoint& pos, c
 	// Connect Events
 	mCreateBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	mSettingsBtn->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mScrollSymbolsLeft->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 }
 
 FontEditGui::~FontEditGui()
@@ -445,7 +426,6 @@ FontEditGui::~FontEditGui()
 	// Disconnect Events
 	mCreateBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	mSettingsBtn->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
-	mScrollSymbolsLeft->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FontEditGui::OnBtnClick ), NULL, this );
 	
 }
 

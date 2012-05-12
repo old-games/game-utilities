@@ -47,7 +47,7 @@ PalettePanel::PalettePanel(  wxWindow* parent, bool changeGlobalColours /* true 
 	SetAlign( utdHCenter | utdVCenter );
 	SetBitmapScale( 12.0f );
 	SetGridEnabled();
-	SetGridLogic( wxXOR );
+	SetGridLogic( wxCOPY );
 	GeneratePalBitmap();
 }
 

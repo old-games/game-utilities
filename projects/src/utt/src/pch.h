@@ -33,6 +33,7 @@
 #include <wx/colordlg.h>
 #include <wx/rawbmp.h>
 #include <wx/utils.h> 
+#include <wx/dynarray.h>
 
 // own written but wx compatible
 #include "customevents.h"

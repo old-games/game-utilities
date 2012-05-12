@@ -32,7 +32,7 @@ class DrawPanel :
 {
 public:
 
-	DrawPanel( wxWindow* parent );
+	explicit DrawPanel( wxWindow* parent );
 	virtual ~DrawPanel(void);
 
 	void SetBitmap( wxBitmap* bitmap );
@@ -42,6 +42,9 @@ public:
 	void SetScaleRange( wxDouble min, wxDouble max );
 	void SetAlign( int align );
 	void SetAllowScaling( bool b = true );
+	void SetDrawFocus( bool b = true );
+
+	static void RefCheck();
 
 protected:
 
@@ -57,6 +60,7 @@ protected:
 	virtual void Render(wxDC& dc);
 
 	virtual void OnEnterWindow( wxMouseEvent& event );
+	virtual void OnLeaveWindow( wxMouseEvent& event );
 
 	virtual bool MouseButton( int btn, bool up );
 	virtual bool MouseModifiersButton( int modifier, int btn, bool up );
@@ -67,12 +71,14 @@ protected:
 	virtual bool KeyUp( int modifier, int keyCode );
 	virtual bool PlusMinusPressed( bool plus );
 
+	virtual void SetShowParams();
+
 	void PaintNow();
 	void DestroyBitmap();
 	void ApplyBitmap();
-	virtual void SetShowParams();
-	void CalculateScrollBars();
 
+
+	bool		mDrawFocus;
 	wxDouble	mXAspectRatio;
 	wxDouble	mYAspectRatio;
 	int		    mShowWidth;				// ширина картинки для отображения
@@ -92,10 +98,18 @@ protected:
 	int		    mHeight;
 
 private:
+	void DrawFocus(wxDC& dc);
+	void CalculateScrollBars();
+
 	int			mAlign;
 	bool		mAllowScaling;			// allows scaling by mouse wheel
 	wxSize      mPreviousSize;
 
+
+	static int			sRefCount;
 };
+
+
+WX_DEFINE_ARRAY( DrawPanel* , DrawPanelArray );
 
 #endif

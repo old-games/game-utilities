@@ -305,6 +305,14 @@
 			Name="gui"
 			>
 			<File
+				RelativePath="..\..\src\gui\bmpribbonctrl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\bmpribbonctrl.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\gui\editpanelimpl.cpp"
 				>
 			</File>
@@ -342,6 +350,14 @@
 			</File>
 			<File
 				RelativePath="..\..\src\gui\selmoduleimpl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\simplegui.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\simplegui.h"
 				>
 			</File>
 			<File
@@ -418,6 +434,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\gui\uttgui.fbp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\gui\uttsimplegui.fbp"
 				>
 			</File>
 		</Filter>
