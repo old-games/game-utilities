@@ -41,9 +41,8 @@ bool Lua::Init()
 
 void Lua::Done()
 {
-    wxLogMessage( "Closing Lua... HERE IS MEMORY LEAK!!! \n" );
-	// TODO: uncomment when OOLua will support Lua 5.2 fully
-	//delete gLuaState;
+    wxLogMessage( "Closing Lua...\n" ); // http://code.google.com/p/oolua/issues/detail?id=29
+	delete gLuaState;
     gLuaState = NULL;
 	gRebootRequest = false;
 }
