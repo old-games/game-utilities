@@ -1,13 +1,16 @@
-require 'scripts/common'
+package.path = package.path .. ";./scripts"
 
-logWrite "Starting Lua initiate..."
+require 'common'
+
+
+print "Starting Lua initiate..."
 
 gModuleNames = { 'example', 'privateer2' }
 gModules = {}
 
 function initModules()
 	for i = 1, #gModuleNames do
-		local modulePath = 'scripts/'..gModuleNames[i]..'/'
+		local modulePath = gModuleNames[i]..'/'
 		local fileName = modulePath..'initmodule'
 		require( fileName )
 	end
@@ -37,7 +40,7 @@ function selectModule()
 	if not name or string.len(name) == 0 then
 		return
 	end
-	logWrite (name..' module selected.')
+	print (name..' module selected.')
 	gCurrentModule = gModules[ name ]
 end
 
@@ -45,4 +48,4 @@ if gCurrentModule == nil then
 	selectModule()
 end
 
-logWrite "Scripts initiated. Press '~' to show Lua console. Call reboot() to restart scripts."
+print "Scripts initiated. Press '~' to show Lua console. Call reboot() to restart scripts."

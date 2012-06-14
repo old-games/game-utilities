@@ -20,7 +20,7 @@ function gExample.openFile( fileName )
 	vol, path, name, ext = parseFileName( fileName )
 	key = gFuncsForExt[ ext ]
 	if key == nil then
-		logWrite( "Can't find function for '"..ext.."' extension" )
+		print( "Can't find function for '"..ext.."' extension" )
 		return
 	end
 	gOnDo[ key ]( fileName )
@@ -34,7 +34,7 @@ function gOnDo.loadBMP( filename )
 	data = readData( fh, BMPFileHeader )
 	showTable( data )
 	if(data.ID ~= 0x4D42) then
-		logWrite("Not a bitmap file (Invalid BMP id) ", data.ID);
+		print("Not a bitmap file (Invalid BMP id) ", data.ID);
 		return;
 	end
 	data2 = readData(fh, BMPInfoHeader )
@@ -75,4 +75,4 @@ BMPInfoHeader[11] 	= { CLRIMPORTANT	= "DWORD" 	}
 
 
 
-logWrite 'Example module loaded'
+print 'Example module loaded'

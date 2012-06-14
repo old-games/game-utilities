@@ -1,7 +1,16 @@
 
 ReadFunctions = { }
 
+originalPrint = print
 
+function print( ... )
+	originalPrint(...)
+	if writeToLog ~= nil then
+		logWrite(...)
+	end
+end
+
+-- wxLogMessage
 function logWrite(...)
 	local arg = {...}
 	if #arg == 0 then 
