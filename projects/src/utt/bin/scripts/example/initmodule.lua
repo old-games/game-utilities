@@ -1,32 +1,32 @@
 
-local gName = 'example'
-local gExample = {}
+local ModuleName = 'example'
+local Example = {}
 
-local gFuncsForExt = 
+local ActionsOnExtension = 
 { 
 	bmp = "loadBMP",
 	txt = "loadTXT"
 }
 
-local gOnDo = {}
+local Operations = {}
 
-gModules[gName] = gExample
+UTTModules[ModuleName] = Example
 
-function gExample.getExtensions()
+function Example.getExtensions()
 	return 'BMP files (*.bmp)|*.bmp|TXT files (*.txt)|*.txt'
 end
 
-function gExample.openFile( fileName )
+function Example.openFile( fileName )
 	vol, path, name, ext = parseFileName( fileName )
-	key = gFuncsForExt[ ext ]
+	key = ActionsOnExtension[ ext ]
 	if key == nil then
 		print( "Can't find function for '"..ext.."' extension" )
 		return
 	end
-	gOnDo[ key ]( fileName )
+	Operations[ key ]( fileName )
 end
 
-function gOnDo.loadBMP( filename )
+function Operations.loadBMP( filename )
 	local fh = assert(io.open(filename, "rb"))
 	if not fh then
 		return
@@ -42,7 +42,7 @@ function gOnDo.loadBMP( filename )
 	fh:close()
 end
 
-function gOnDo.loadTXT( filename )
+function Operations.loadTXT( filename )
 	local fh = assert(io.open(filename, "r"))
 	if not fh then
 		return

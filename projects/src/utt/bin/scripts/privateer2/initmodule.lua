@@ -1,10 +1,10 @@
 
-local gName = 'privateer2'
-local gPrivateer2 = {}
+local ModuleName = 'privateer2'
+local Privateer2 = {}
 
-gModules[gName] = gPrivateer2
+UTTModules[ModuleName] = Privateer2
 
-function gPrivateer2.getExtensions()
+function Privateer2.getExtensions()
 	return { 'IFF', 'IFF' }
 end
 

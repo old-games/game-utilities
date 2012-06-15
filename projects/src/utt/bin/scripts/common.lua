@@ -35,7 +35,7 @@ end
 
 function showTable( tab )
 	for k, v in pairs( tab ) do
-		logWrite(k, v)
+		print(k, v)
 	end
 end
 
