@@ -5,7 +5,8 @@ local Example = {}
 local ActionsOnExtension = 
 { 
 	bmp = "loadBMP",
-	txt = "loadTXT"
+	txt = "loadTXT",
+	dat = "loadDAT"
 }
 
 local Operations = {}
@@ -13,10 +14,11 @@ local Operations = {}
 UTTModules[ModuleName] = Example
 
 function Example.getExtensions()
-	return 'BMP files (*.bmp)|*.bmp|TXT files (*.txt)|*.txt'
+	return 'BMP files (*.bmp)|*.bmp|TXT files (*.txt)|*.txt|BIGLETS.DAT (biglets.dat)|biglets.dat'
 end
 
 function Example.openFile( fileName )
+	fileName = string.lower( fileName )
 	vol, path, name, ext = parseFileName( fileName )
 	key = ActionsOnExtension[ ext ]
 	if key == nil then
@@ -73,6 +75,14 @@ BMPInfoHeader[9] 	= { YPELSPERMETER	= "LONG" 	}
 BMPInfoHeader[10] 	= { CLRUSED			= "DWORD" 	}
 BMPInfoHeader[11] 	= { CLRIMPORTANT	= "DWORD" 	}
 
+
+function Operations.loadDAT( filename )
+	local fh = assert(io.open(filename, "r"))
+	if not fh then
+		return
+	end
+	fh:close()
+end
 
 
 print 'Example module loaded'

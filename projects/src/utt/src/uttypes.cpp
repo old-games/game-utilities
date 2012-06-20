@@ -37,7 +37,7 @@ const wxString BPP::Names[BPP::bppNum] =
 
 SymbolInfo FontInfo::sBadSymbol;
 
-void SymbolInfo::SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const LetterBox* data /* NULL */)
+void SymbolInfo::SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const char* data /* NULL */)
 {
 	mWidth = width;
 	mHeight = height;
@@ -55,8 +55,12 @@ void SymbolInfo::SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const L
 
 inline SymbolInfo &SymbolInfo::operator = ( const SymbolInfo &src )
 {
-	this->SetValues(src.mWidth, src.mHeight, src.mCode, src.mData);
+	this->SetValues(src.mWidth, src.mHeight, src.mCode, (char*) src.mData);
 	return *this;
+}
+
+void SymbolInfo::SetData(const char* data /* NULL */)
+{
 }
 
 inline void SymbolInfo::CreateData()

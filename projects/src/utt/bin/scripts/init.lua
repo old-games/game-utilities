@@ -1,18 +1,19 @@
-package.path = package.path .. ";./scripts"
-require 'common'
 print "Starting Lua initiate..."
+
+package.path = package.path..";./scripts/?.lua"
+require 'common'
+
 
 -- list of module names, there are no auto searching new module in UTT
 -- new module must be added to this list
-ModuleNames = { 'example', 'privateer2' }
+ModuleFolders = { 'example', 'privateer2' }
 
 -- table with references to modules
 UTTModules = {}
 
 function initModules()
-	for i = 1, #ModuleNames do
-		local modulePath = ModuleNames[i]..'/'
-		local fileName = modulePath..'initmodule'
+	for i = 1, #ModuleFolders do
+		local fileName = ModuleFolders[i]..'/initmodule'
 		require( fileName )
 	end
 end
@@ -53,7 +54,7 @@ function selectModule()
 	CurrentModule = UTTModules[ name ]
 end
 
-
+r = RGBA:new()
 if CurrentModule == nil then
 	selectModule()
 end

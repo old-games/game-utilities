@@ -204,7 +204,7 @@ void LuaConsole::LoadHistory()
     }
     else
     {
-        mCommands = wxStringTokenize(all);
+        mCommands = wxStringTokenize(all, "\r\n");
     }
     mHistoryCounter = mCommands.size();
     file.Close();

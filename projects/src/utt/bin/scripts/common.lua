@@ -10,6 +10,7 @@ function print( ... )
 	end
 end
 
+
 -- wxLogMessage
 function logWrite(...)
 	local arg = {...}
@@ -51,9 +52,11 @@ function ReadFunctions.LONG( file )
 	return bytes:byte(4) * 16777216 + bytes:byte(3) * 65536 + bytes:byte(2) * 256 + bytes:byte(1)
 end
 
+
 function ReadFunctions.DWORD( file )
 	return ReadFunctions.LONG(file)
 end
+
 
 function readData( file, dataTable )
 	local result = {}

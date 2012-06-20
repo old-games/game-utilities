@@ -70,6 +70,9 @@ struct SymbolInfo
 	}
 
 	LetterBox* GetData();
+	void SetData(const char* data = NULL);
+
+	void SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const char* data = NULL);
 
 	SymbolInfo &operator = ( const SymbolInfo &src );
 
@@ -84,7 +87,6 @@ protected:
 
 private:
 
-	void SetValues(wxInt32 width, wxInt32 height, wxUint32 code, const LetterBox* data = NULL);
 	void CreateData();
 	void EraseData();
 	int BoxOffset(int x, int y);
