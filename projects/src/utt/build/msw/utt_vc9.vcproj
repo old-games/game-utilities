@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
+				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswud&quot;;../../lua/include;../../oolua/include"
 				PreprocessorDefinitions="_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,10 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib lua52.lib oolua_d.lib"
+				AdditionalDependencies="ooluad.lib Rpcrt4.lib comctl32.lib wxbase29ud.lib wxbase29ud_xml.lib wxexpatd.lib wxjpegd.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxmsw29ud_core.lib wxmsw29ud_gl.lib wxmsw29ud_html.lib wxmsw29ud_media.lib wxmsw29ud_propgrid.lib wxmsw29ud_qa.lib wxmsw29ud_ribbon.lib wxmsw29ud_richtext.lib wxmsw29ud_stc.lib wxmsw29ud_webview.lib wxmsw29ud_xrc.lib wxpngd.lib wxregexud.lib wxscintillad.lib wxtiffd.lib wxzlibd.lib"
 				OutputFile="..\..\bin\$(ProjectName)_d.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;&quot;$(LUA_DEV)&quot;;&quot;$(OOLUA)/lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;../../lua;../../oolua/lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -119,7 +119,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswu&quot;;&quot;$(LUA_DEV)/include&quot;;&quot;$(OOLUA)/include&quot;"
+				AdditionalIncludeDirectories="../../src/.;&quot;$(WXWIN)/include&quot;;&quot;$(WXWIN)/lib/vc_lib/mswu&quot;;../../lua/include;../../oolua/include"
 				PreprocessorDefinitions="NDEBUG;__WXMSW__;_WINDOWS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -139,10 +139,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="lua52.lib Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib oolua.lib"
+				AdditionalDependencies="oolua.lib Rpcrt4.lib comctl32.lib wxbase29u.lib wxbase29u_net.lib wxbase29u_xml.lib wxexpat.lib wxjpeg.lib wxmsw29u_adv.lib wxmsw29u_aui.lib wxmsw29u_core.lib wxmsw29u_gl.lib wxmsw29u_html.lib wxmsw29u_media.lib wxmsw29u_propgrid.lib wxmsw29u_qa.lib wxmsw29u_ribbon.lib wxmsw29u_richtext.lib wxmsw29u_stc.lib wxmsw29u_webview.lib wxmsw29u_xrc.lib wxpng.lib wxregexu.lib wxscintilla.lib wxtiff.lib wxzlib.lib"
 				OutputFile="..\..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;&quot;$(LUA_DEV)&quot;;&quot;$(OOLUA)/lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(WXWIN)/lib/vc_lib&quot;;../../lua;../../oolua/lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
