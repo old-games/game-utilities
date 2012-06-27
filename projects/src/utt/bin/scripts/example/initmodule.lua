@@ -81,6 +81,16 @@ function Operations.loadDAT( filename )
 	if not fh then
 		return
 	end
+	local width = 16
+	local height = 16
+	local bufsize = width * height
+	local num = 0
+	repeat
+		local bytes = fh:read( bufsize )
+		num = num + 1
+		print ( bytes:len() )
+	until bytes ~= nil or bytes:len() ~= bufsize
+	print ("Symbols: ", num)
 	fh:close()
 end
 

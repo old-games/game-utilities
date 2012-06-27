@@ -25,17 +25,17 @@ OOLUA_CLASS_NO_BASES( RGBA )
 	OOLUA_PUBLIC_MEMBER_GET_SET(A)
 OOLUA_CLASS_END
 
-//OOLUA_CLASS_NO_BASES( SymbolInfo )
-//
-//	OOLUA_ONLY_DEFAULT_CONSTRUCTOR
-//	OOLUA_NO_TYPEDEFS
-//
-//	OOLUA_MEM_FUNC_2( RGBA, GetPixel, int, int )
-//    OOLUA_MEM_FUNC_3( void, SetPixel, int, int, RGBA )
-//	OOLUA_MEM_FUNC_1( void, SetData, const char* )
-//	OOLUA_MEM_FUNC_4( void, SetValues, int, int, unsigned int, const char*)
-//
-//OOLUA_CLASS_END
+OOLUA_CLASS_NO_BASES( SymbolInfo )
+
+	OOLUA_ONLY_DEFAULT_CONSTRUCTOR
+	OOLUA_NO_TYPEDEFS
+
+	OOLUA_MEM_FUNC_2( RGBA, GetPixel, int, int )
+    OOLUA_MEM_FUNC_3( void, SetPixel, int, int, RGBA )
+	OOLUA_MEM_FUNC_1( void, SetData, const char* )
+	OOLUA_MEM_FUNC_4( void, SetValues, int, int, unsigned int, const char*)
+
+OOLUA_CLASS_END
 
 
 

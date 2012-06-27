@@ -48,8 +48,8 @@ namespace OOLUA
 {
 	void setup_user_lua_state(lua_State* l)
 	{
-		//add_weaklookup_table(l);
-		//add_ownership_globals(l);
+		add_weaklookup_table(l);
+		add_ownership_globals(l);
 	}
 
 	Script::Script(): call(),m_lua(0)
