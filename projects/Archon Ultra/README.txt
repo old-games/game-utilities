@@ -2,6 +2,6 @@
 
 Авторы утилит: Dmitry Groshev.
 
-1. anvview, archview (c) Dmitry Groshev
+1. archview (c) Dmitry Groshev
 
 Просмотр графики. Исходный код: Forth (см. forth.ru).
