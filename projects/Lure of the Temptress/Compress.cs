@@ -284,8 +284,6 @@ namespace Vlure
                     bp=(Int16)(al << 2);
                 }
             }
-            throw new Exception("cant be here");
-            //return r.ToArray();
         }
 
         public static byte[] decompress(byte[] data)

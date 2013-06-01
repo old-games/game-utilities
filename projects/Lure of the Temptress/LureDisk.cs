@@ -135,27 +135,38 @@ namespace Vlure
         const int LANG_ID=3;
         int dskid=-1;
         string file="";
-        public FileEntry[] entries=new FileEntry[191];
+		public FileEntry[] entries=new FileEntry[191];
         byte[] diskData = null;
         public bool changed = false;
         public LureDisk(int id,string paths)
         {
-            dskid = id;
+			string file2="";
+			dskid = id;
             string[] pts = paths.Split(';');
             file="lure.dat";
-            if (id>0)
+            if (id>0){
                 file="disk"+id.ToString()+".vga";
-            if (!File.Exists(file))
+				file2="Disk"+id.ToString()+".vga";
+			}
+			if (!File.Exists(file))
+				if (File.Exists(file2)){
+					file=file2;
+				}else
                 foreach(string p in pts)
                 {
                     string s = p;
-                    if (s[s.Length-1]!='\\') s+="\\";
+                    if (s[s.Length-1]!='/') s+="/";
                     if (File.Exists(s+file))
                     {
                         file=s+file;
                         break;
                     }
-                }
+					if (File.Exists(s+file2))
+					{
+						file=s+file2;
+						break;
+					}
+			}
             if (!File.Exists(file))
                 throw new Exception("Disk not found "+file);
             string xfile = file;

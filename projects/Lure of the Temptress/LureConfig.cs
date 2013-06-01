@@ -104,12 +104,13 @@ namespace Vlure
         public string dir = "";
         public int textfmt = 0;
         public int lang_id = 3;
+		public bool compress=false;
         XmlNode txtConf = null;
         XmlNode fileConf = null;
         public LureConfig()
         {
             cpath = Path.GetDirectoryName(Application.ExecutablePath);
-            conf.Load(cpath+"\\vlure.xml");
+            conf.Load(cpath+"/vlure.xml");
             palettes.Add(new LurePalette(null,0));
             foreach (XmlNode nd in conf.DocumentElement.ChildNodes)
                 if (nd.NodeType==XmlNodeType.Element)
@@ -166,7 +167,11 @@ namespace Vlure
                         case 'i':
                             infile = x2;
                             break;
-                        case 'd':
+						case 'c':
+							compress=true;
+							carg--;
+							break;
+						case 'd':
                             dir = x2;
                             break;
                         case 'f':

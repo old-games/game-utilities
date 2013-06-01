@@ -71,9 +71,6 @@ namespace Vlure
             palette = pal;
             //xdata = LureDisks.getResource(resnum);
             xdata = Decompressor.decompress(LureDisks.getResource(resnum));
-            System.IO.FileStream f = new System.IO.FileStream("decoded.bin", System.IO.FileMode.Create);
-            f.Write(xdata, 0, xdata.Length);
-            f.Close();
         }
 
         public Bitmap export()

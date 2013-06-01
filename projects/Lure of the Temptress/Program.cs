@@ -1,14 +1,15 @@
-﻿//#define NO_CATCH
+﻿#define NO_CATCH
 
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace Vlure
 {
     class Program
     {
-        const string VERSION = "0.3";
+        const string VERSION = "0.4";
 
         static void usage()
         {
@@ -19,7 +20,7 @@ commands:
 \t
 help - show usage
 list [known][disk diskId] - list [known] resources [from disk diskId]
-dump fileId [-o file]- dump birary file
+dump fileId [-c] [-o file]- dump birary file
 export fileId [-o file] - export resource by id
 export all [-d dir] [-f textformat] - export all known resources
 import fileId [-i file] - import resource by id
@@ -35,6 +36,7 @@ args:
 -o file - outfile
 -i file - infile
 -f xml|txt - output/input text format
+-c - decompress
 ");
         }
 
@@ -82,7 +84,11 @@ args:
         {
             string of=LureConfig.get().outputFile(id.ToString()+".bin");
             Console.WriteLine("dumping "+id.ToString()+" to "+of);
-            LureCommon.dumpFile(LureDisks.getResource(id),of);
+			byte[] data=LureDisks.getResource(id);
+			if (LureConfig.get ().compress){
+				data=Decompressor.decompress(data);
+			}
+            LureCommon.dumpFile(data,of);
         }
 
         static void export(int id)
@@ -94,16 +100,16 @@ args:
                 string ext = ".xml";
                 if (mode == 1)
                     ext = ".txt";
-                string d = LureConfig.get().direcroty(".\\");
+                string d = LureConfig.get().direcroty("./");
                 if (!Directory.Exists(d))
                     Directory.CreateDirectory(d);
-                if (d[d.Length-1]!='\\' && d[d.Length-1]!='/') d+="\\";
+                if (d[d.Length-1]!='\\' && d[d.Length-1]!='/') d+="/";
                 foreach (LureConfig.LureFile f in LureConfig.get().lureFiles)
                 {
                     switch(f.type)
                     {
                         case "font":
-                            new LureFont(f.id).export().Save(d+"lure_font.bmp");
+							new LureFont(f.id).export().Save(d+"lure_font.bmp",ImageFormat.Bmp);
                             break;
                         case "text_decode_table":
                             TextDecoder.get().export().Save(d+"decoder.xml");
@@ -115,9 +121,16 @@ args:
                             string nm="image"+f.id.ToString();
                             if (f.node.Attributes["name"]!=null)
                                 nm=f.node.Attributes["name"].Value;
-                            new LureImage(f.id, w, h, pal).export().Save(d + nm+".bmp");
+                            new LureImage(f.id, w, h, pal).export().Save(d + nm+".bmp",ImageFormat.Bmp);
                             break;
-                    }
+						case "anim":
+							string apal=f.node.Attributes["palette"].Value;
+							string anm="anim"+f.id.ToString();
+							if (f.node.Attributes["name"]!=null)
+								anm=f.node.Attributes["name"].Value;
+							new LureAnim(f.id, apal).export().Save(d + anm+".bmp",ImageFormat.Bmp);
+							break;
+					}
                 }
                 LureTexts.getAllTexts().save(d+"lure_text"+ext,mode);
             }
@@ -137,10 +150,10 @@ args:
                 string ext = ".xml";
                 if (mode == 1)
                     ext = ".txt";
-                string d = LureConfig.get().direcroty(".\\");
+                string d = LureConfig.get().direcroty("./");
                 if (!Directory.Exists(d))
                     Directory.CreateDirectory(d);
-                if (d[d.Length - 1] != '\\' && d[d.Length - 1] != '/') d += "\\";
+                if (d[d.Length - 1] != '\\' && d[d.Length - 1] != '/') d += "/";
                 foreach (LureConfig.LureFile f in LureConfig.get().lureFiles)
                 {
                     switch (f.type)
@@ -160,6 +173,13 @@ args:
                                 nm = f.node.Attributes["name"].Value;
                             new LureImage(f.id, w, h, pal).import(new System.Drawing.Bitmap(d + nm + ".bmp"));
                             break;
+						case "anim":
+							string apal = f.node.Attributes["palette"].Value;
+							string anm = "anim" + f.id.ToString();
+							if (f.node.Attributes["name"] != null)
+								anm = f.node.Attributes["name"].Value;
+							new LureAnim(f.id, apal).import(new System.Drawing.Bitmap(d + anm + ".bmp"));
+							break;
                     }
                 }
                 LureTexts.getAllTexts().load(d + "lure_text" + ext, mode);
@@ -193,7 +213,7 @@ args:
                     break;
                 case "font":
                     outfile = LureConfig.get().outputFile(id.ToString() + ".bmp");
-                    new LureFont(f.id).export().Save(outfile);
+					new LureFont(f.id).export().Save(outfile,ImageFormat.Bmp);
                     break;
                 case "image":
                     int w = LureCommon.strToInt(f.node.Attributes["width"].Value);
@@ -203,9 +223,17 @@ args:
                     if (f.node.Attributes["name"] != null)
                         nm = f.node.Attributes["name"].Value;
                     outfile = LureConfig.get().outputFile(nm + ".bmp");
-                    new LureImage(f.id, w, h, pal).export().Save(outfile);
+					new LureImage(f.id, w, h, pal).export().Save(outfile,ImageFormat.Bmp);
                     break;
-                default:
+				case "anim":
+					string apal = f.node.Attributes["palette"].Value;
+					string anm = "image" + f.id.ToString();
+					if (f.node.Attributes["name"] != null)
+						anm = f.node.Attributes["name"].Value;
+					outfile = LureConfig.get().outputFile(anm + ".bmp");
+					new LureAnim(f.id, apal).export().Save(outfile,ImageFormat.Bmp);
+					break;
+			default:
                     throw new Exception("dont know how to export " + f.type);
             }
         }
@@ -248,6 +276,14 @@ args:
                     infile = LureConfig.get().outputFile(nm + ".bmp");
                     new LureImage(f.id, w, h, pal).import(new System.Drawing.Bitmap(infile));
                     break;
+				case "anim":
+					string apal = f.node.Attributes["palette"].Value;
+					string anm = "image" + f.id.ToString();
+					if (f.node.Attributes["name"] != null)
+						anm = f.node.Attributes["name"].Value;
+					infile = LureConfig.get().outputFile(anm + ".bmp");
+					new LureAnim(f.id, apal).import(new System.Drawing.Bitmap(infile));
+					break;
                 default:
                     throw new Exception("dont know how to import " + f.type);
             }

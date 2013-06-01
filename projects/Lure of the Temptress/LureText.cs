@@ -378,7 +378,7 @@ namespace Vlure
                 int prevtxt=prevblk;
                 foreach (XmlNode tnd in nd.ChildNodes)
                 {
-                    bool art = tnd.Attributes["art"].Value == "1";
+                    //bool art = tnd.Attributes["art"].Value == "1";
                     XmlNode txt = LureCommon.findNode(blk, "text", "id", tnd.Attributes["id"].Value);
                     string val="";
                     if (txt.ChildNodes.Count>0)

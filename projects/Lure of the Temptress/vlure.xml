@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <vlure-config>
-  <path>D:\Games\ScummVM;D:\Games\scummvm\lure</path>
+  <path>./lure</path>
   <files>
     <file id="0x3f19" type="text_decode_table"/>
     <file id="9" type="names"/>
@@ -20,6 +20,7 @@
     <file id="0x40" type="image" width="320" height="192" palette="mix1[1]" name="intro_txt_1"/>
     <file id="0x24" type="image" width="320" height="192" palette="mix1[4]" name="intro_txt_2"/>
     <file id="0x18" type="image" width="320" height="192" palette="intro1"/>
+    <file id="0x42" type="anim" palette="mix1[1]" name="intro_anim_1"/>
     <!--file id="0x1A" type="image" width="320" height="192" palette="intro2"/>
     <file id="0x1E" type="image" width="320" height="192" palette="intro3"/>
     <file id="0x1C" type="image" width="320" height="192" palette="intro4"/>

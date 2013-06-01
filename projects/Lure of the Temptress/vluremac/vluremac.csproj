@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F9ACB3F-95B5-4E1C-ACD7-8AF1592F6451}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>vluremac</RootNamespace>
+    <AssemblyName>vluremac</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+    <Commandlineparameters>export 66</Commandlineparameters>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="..\Compress.cs">
+      <Link>Compress.cs</Link>
+    </Compile>
+    <Compile Include="..\ImgForm.Designer.cs">
+      <Link>ImgForm.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\ImgForm.cs">
+      <Link>ImgForm.cs</Link>
+    </Compile>
+    <Compile Include="..\LureCommon.cs">
+      <Link>LureCommon.cs</Link>
+    </Compile>
+    <Compile Include="..\LureConfig.cs">
+      <Link>LureConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\LureDisk.cs">
+      <Link>LureDisk.cs</Link>
+    </Compile>
+    <Compile Include="..\LureImage.cs">
+      <Link>LureImage.cs</Link>
+    </Compile>
+    <Compile Include="..\LureText.cs">
+      <Link>LureText.cs</Link>
+    </Compile>
+    <Compile Include="..\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\LureAnim.cs">
+      <Link>LureAnim.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ImgForm.resx">
+      <Link>ImgForm.resx</Link>
+    </None>
+    <None Include="..\readme.txt">
+      <Link>readme.txt</Link>
+    </None>
+    <None Include="..\vlure.xml">
+      <Link>vlure.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
