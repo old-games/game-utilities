@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import net.sf.image4j.codec.bmp.BMPDecoder;
 import net.sf.image4j.codec.bmp.BMPEncoder;
 
@@ -298,170 +300,129 @@ public class ImageCodec {
 
 	private static void decode6(String fileName) throws EOFException, IOException {
 		File srcFile = new File(fileName);
+		int[] colors = null;
+		
+		int videoMemSize = 0x10000;
+		byte[] videoMem = new byte[videoMemSize];
+		Arrays.fill(videoMem, (byte)0);
 
 		CountingInputStream counter = new CountingInputStream(new FileInputStream(srcFile));
 		SwappedDataInputStream sdis = new SwappedDataInputStream(counter);
 
+		// file header
 		int frameCount = sdis.readInt();
 		System.out.println("frames[4b]: "+frameCount);
 		
-		int width = sdis.readUnsignedShort();
-		int height = sdis.readUnsignedShort();
-		System.out.println("frame size[2b+2b]: "+width+"x"+height);
-		
-		int fileSize = sdis.readInt();
-		System.out.println("internal file size[4b]: "+fileSize+", real file size:"+srcFile.length());
-		
-		int unknown1 = sdis.readInt();
-		System.out.println("unknown1[4b] = "+unknown1);
-		
-		int unknown2 = sdis.readInt();
-		System.out.println("unknown2[4b] = "+unknown2);
-		
-		int unknown3 = sdis.readUnsignedByte();
-		System.out.println("unknown3[1b] = "+unknown3);
-
-		int unknown4 = sdis.readInt();
-		System.out.println("unknown4[4b] = "+unknown4);
-		
-		int unknown5 = sdis.readInt();
-		System.out.println("unknown5[4b] = "+unknown5);
-		
-		byte[] pal = new byte[256*3];
-		sdis.readFully(pal);
-		int[] colors = pal2color(pal);
-		System.out.println("pal read, size: 256*3");
-		
-		// first frame data
-		int rleMarker = sdis.readUnsignedByte();
-		System.out.println("rle marker[1b] = "+rleMarker);
-		
-		int fullFrameSize = sdis.readInt();
-		System.out.println("fullFrameSize[4b] = "+fullFrameSize);
-		
 		int frameWidth = sdis.readUnsignedShort();
-		int frameHeight = sdis.readUnsignedShort();		
-		System.out.println("frame size[2b+2b]: "+frameWidth+"x"+frameHeight);
+		int frameHeight = sdis.readUnsignedShort();
+		System.out.println("video dimensions [2b+2b]: "+frameWidth+"x"+frameHeight);
 		
-		byte[] data = new byte[fullFrameSize - 1 - 4 - 2 - 2];
-		sdis.readFully(data);
-
-		System.out.println("Position in file: 0x"+Integer.toHexString(counter.getCount()).toUpperCase());
+		sdis.skip(0x0C);
+		System.out.println("skip 0x0C bytes (fullFileSize 4b, unknown 8b)");
 		
-		byte[] decodedImage = rleDecode(data, rleMarker);
+		int currentFrameNumber = 0;
 		
-		System.out.println("frame size should be: "+(frameWidth*frameHeight)+" but calculated: "+decodedImage.length);
+		while (currentFrameNumber < frameCount) {
+			System.out.println("=== frame #"+currentFrameNumber);
 
-		BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
+			// frame header
+			int palleteInfo = sdis.readUnsignedByte();
+			boolean hasPallete = false;
+			if (palleteInfo == 0x80) {
+				hasPallete = true;
+			}
+			System.out.println("has pallete: "+hasPallete);
 
-		SwappedDataInputStream sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(decodedImage));
-		for (int currentY = 0; currentY < frameHeight; currentY++) {
-			for (int currentX = 0; currentX < frameWidth; currentX++) {
-				image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
-			}			
+			int videoMemStartOffset = sdis.readInt();
+			System.out.println("videoMemStartOffset[4b] = "+videoMemStartOffset);
+
+			int compressedFrameSize = sdis.readInt();
+			System.out.println("compressedFrameSize[4b] = "+compressedFrameSize);
+
+			// pallete
+			if (hasPallete) {
+				byte[] pal = new byte[256*3];
+				sdis.readFully(pal);
+				colors = pal2color(pal);
+
+				System.out.println("Pallete read, size: 256*3");
+			}
+
+			// compressed frame
+			if (compressedFrameSize > 0) {
+				int rleMarker = sdis.readUnsignedByte();
+				System.out.println("rle marker[1b] = "+rleMarker);
+
+				int compressedBlockSize = sdis.readInt();
+				System.out.println("compressedBlockSize[4b] = "+compressedBlockSize);
+
+				byte[] compressedFrame = new byte[compressedFrameSize-1-4];
+				sdis.readFully(compressedFrame);
+
+				byte[] decodedImage = rleDecode(compressedFrame, rleMarker);
+				System.out.println("decoded image length: "+decodedImage.length);
+
+				SwappedDataInputStream temp = new SwappedDataInputStream(new ByteArrayInputStream(decodedImage));
+				int spriteWidth = temp.readUnsignedShort();
+				int spriteHeight = temp.readUnsignedShort();
+				temp.close();
+				System.out.println("sprite dimensions: "+spriteWidth+"x"+spriteHeight);
+				
+				int oneRowOffset = frameWidth - spriteWidth;
+				System.out.println("skip "+oneRowOffset+" pixels after every row of sprite");
+
+				int currentVideoMemPosition = videoMemStartOffset;
+				int currentSpritePosition = 4;
+
+				while (currentSpritePosition < decodedImage.length) {
+					int currentRowPosition = 0;
+					while (currentRowPosition < spriteWidth) {
+						if (decodedImage[currentSpritePosition] != 0) {
+							videoMem[currentVideoMemPosition] = decodedImage[currentSpritePosition];					
+						}
+						currentSpritePosition++;
+						currentVideoMemPosition++;
+						currentRowPosition++;
+					}
+					currentVideoMemPosition += oneRowOffset;
+				}
+
+				BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
+
+				SwappedDataInputStream sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(videoMem));
+				for (int currentY = 0; currentY < frameHeight; currentY++) {
+					for (int currentX = 0; currentX < frameWidth; currentX++) {
+						image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
+					}			
+				}
+				sdis2.close();
+				System.out.println("image in memory was built");
+
+				BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp"));
+				System.out.println("file "+srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp saved.");
+
+			} else {
+				System.out.println("empty frame");
+
+				BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
+
+				SwappedDataInputStream sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(videoMem));
+				for (int currentY = 0; currentY < frameHeight; currentY++) {
+					for (int currentX = 0; currentX < frameWidth; currentX++) {
+						image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
+					}			
+				}
+				sdis2.close();
+				System.out.println("image in memory was built");
+
+				BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp"));
+				System.out.println("file "+srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp saved.");
+			}
+			currentFrameNumber++;
 		}
-		
-		BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+".0.bmp"));
-		System.out.println("file "+srcFile.getAbsolutePath()+".0.bmp saved.");
-		
-		// second frame
-		System.out.println("======= second frame");
-		
-		int unknown = sdis.readUnsignedByte();
-		System.out.println("unknown1[1b]: "+unknown);
-
-		unknown = sdis.readInt();
-		System.out.println("unknown2[4b]: "+unknown);
-		
-		unknown = sdis.readInt();
-		System.out.println("unknown3[4b]: "+unknown);
-
-		unknown = sdis.readUnsignedByte();
-		System.out.println("unknown4[1b]: "+unknown);
-		
-		unknown = sdis.readInt();
-		System.out.println("unknown5[4b]: "+unknown);
-		
-		unknown = sdis.readInt();
-		System.out.println("unknown6[4b]: "+unknown);
-		
-		unknown = sdis.readUnsignedByte();
-		System.out.println("unknown7[1b]: "+unknown);
-		
-		int offsetX = sdis.readUnsignedByte();
-		System.out.println("offset x[1b]: "+offsetX);
-		
-		int offsetY = sdis.readUnsignedByte();
-		System.out.println("offset y[1b]: "+offsetY);
-		
-		unknown = sdis.readUnsignedShort();
-		System.out.println("unknown8[2b]: "+unknown);
-		
-		unknown = sdis.readInt();
-		System.out.println("unknown9[4b]: "+unknown);
-		
-		rleMarker = sdis.readUnsignedByte();
-		System.out.println("rle marker[1b] = "+rleMarker);
-		
-		fullFrameSize = sdis.readInt();
-		System.out.println("fullFrameSize[4b] = "+fullFrameSize);
-		
-		frameWidth = sdis.readUnsignedShort();
-		frameHeight = sdis.readUnsignedByte();		
-		System.out.println("frame size[2b+1b]: "+frameWidth+"x"+frameHeight);
-		
-		data = new byte[fullFrameSize - 1 - 4 - 2 - 1];
-		sdis.readFully(data);
-		
-		System.out.println("Position in file: 0x"+Integer.toHexString(counter.getCount()).toUpperCase());
-		
-		decodedImage = rleDecode(data, rleMarker);
-		
-		System.out.println("frame size should be: "+(frameWidth*frameHeight)+" but calculated: "+decodedImage.length);
-
-		image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
-
-		sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(decodedImage));
-		for (int currentY = 0; currentY < frameHeight; currentY++) {
-			for (int currentX = 0; currentX < frameWidth; currentX++) {
-				image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
-			}			
-		}
-		
-		BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+".1.bmp"));
-		System.out.println("file "+srcFile.getAbsolutePath()+".1.bmp saved.");
-
+		System.out.println("=== animation decoded successfully");
 		
 		sdis.close();
-		
-		
-/*
-		int rleMarker = sdis.readUnsignedByte();		
-		
-		int currentPosition = 1+4;
-		byte[] data = new byte[imgEndPosition - currentPosition];
-		sdis.readFully(data);
-		
-		byte[] pal = new byte[3*256];
-		sdis.readFully(pal);
-	
-		sdis.close();
-		
-		int[] colors = pal2color(pal);
-		
-		byte[] decodedImage = rleDecode(data, rleMarker);
-
-		BufferedImage image = new BufferedImage(maxWidth, maxHeight, BufferedImage.TYPE_INT_RGB);
-
-		sdis = new SwappedDataInputStream(new ByteArrayInputStream(decodedImage));
-		for (int currentY = 0; currentY < maxHeight; currentY++) {
-			for (int currentX = 0; currentX < maxWidth; currentX++) {
-				image.setRGB(currentX, currentY, colors[sdis.readUnsignedByte()]);
-			}			
-		}
-		
-		BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+".bmp"));
-	*/		
 	}
 
 	private static void encode1(String bmpFileName, String origFileName) throws IOException {
