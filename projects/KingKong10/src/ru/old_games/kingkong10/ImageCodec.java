@@ -1,21 +1,42 @@
 package ru.old_games.kingkong10;
 
+import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.IndexColorModel;
+import java.awt.image.Raster;
+import java.awt.image.SampleModel;
+import java.awt.image.WritableRaster;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import javax.imageio.ImageIO;
 
 import net.sf.image4j.codec.bmp.BMPDecoder;
 import net.sf.image4j.codec.bmp.BMPEncoder;
 
+import org.apache.commons.io.EndianUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.input.CountingInputStream;
 import org.apache.commons.io.input.SwappedDataInputStream;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class ImageCodec {
 
@@ -94,6 +115,12 @@ public class ImageCodec {
 				//    /e5 TRYAGAIN.0.bmp TRYAGAIN.1.bmp TRYAGAIN
 				System.out.println("encoding rle image: "+args[1]);
 				encode5(args[1], args[2], args[3]);				
+			}			
+
+			if (args[0].equals("/e6" )) {
+				//    /e6 TWP.CFG
+				System.out.println("encoding rle animation: "+args[1]);
+				encode6(args[1]);				
 			}			
 		}
 	}
@@ -300,7 +327,17 @@ public class ImageCodec {
 
 	private static void decode6(String fileName) throws EOFException, IOException {
 		File srcFile = new File(fileName);
-		int[] colors = null;
+		String dirName = FilenameUtils.getFullPath(srcFile.getAbsolutePath())+FilenameUtils.getBaseName(srcFile.getAbsolutePath())+File.separator;
+
+		File dir = new File(dirName);
+		if (dir.exists() && !dir.isDirectory()) {
+			throw new IOException("file \""+dirName+"\" exists, can't create folder");
+		}
+		dir.mkdir();
+		
+		Map<Integer, Integer> emptyFrames = new TreeMap<Integer, Integer>();
+		
+		IndexColorModel icm = null;
 		
 		int videoMemSize = 0x10000;
 		byte[] videoMem = new byte[videoMemSize];
@@ -322,16 +359,19 @@ public class ImageCodec {
 		
 		int currentFrameNumber = 0;
 		
+		int emptyFramesNumber = 0;
+		int lastNormalFrame = -1;
+		
 		while (currentFrameNumber < frameCount) {
 			System.out.println("=== frame #"+currentFrameNumber);
 
 			// frame header
-			int palleteInfo = sdis.readUnsignedByte();
-			boolean hasPallete = false;
-			if (palleteInfo == 0x80) {
-				hasPallete = true;
+			int paletteInfo = sdis.readUnsignedByte();
+			boolean hasPalette = false;
+			if (paletteInfo == 0x80) {
+				hasPalette = true;
 			}
-			System.out.println("has pallete: "+hasPallete);
+			System.out.println("has palette: "+hasPalette);
 
 			int videoMemStartOffset = sdis.readInt();
 			System.out.println("videoMemStartOffset[4b] = "+videoMemStartOffset);
@@ -339,17 +379,25 @@ public class ImageCodec {
 			int compressedFrameSize = sdis.readInt();
 			System.out.println("compressedFrameSize[4b] = "+compressedFrameSize);
 
-			// pallete
-			if (hasPallete) {
+			// Palette
+			if (hasPalette) {
 				byte[] pal = new byte[256*3];
 				sdis.readFully(pal);
-				colors = pal2color(pal);
+				
+				pal = pal6to8(pal);
+				
+				icm = new IndexColorModel(8, 0x100, pal, 0, false);
 
-				System.out.println("Pallete read, size: 256*3");
+				System.out.println("Palette read, size: 256*3");
 			}
 
 			// compressed frame
 			if (compressedFrameSize > 0) {
+				
+				if (emptyFramesNumber > 0) {
+					emptyFrames.put(lastNormalFrame, emptyFramesNumber);
+				}
+				
 				int rleMarker = sdis.readUnsignedByte();
 				System.out.println("rle marker[1b] = "+rleMarker);
 
@@ -387,42 +435,60 @@ public class ImageCodec {
 					currentVideoMemPosition += oneRowOffset;
 				}
 
-				BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
+				DataBufferByte dataBuffer = new DataBufferByte(videoMem, frameWidth*frameHeight);
+				SampleModel sm = icm.createCompatibleSampleModel(frameWidth, frameHeight);
+				WritableRaster raster = Raster.createWritableRaster(sm, dataBuffer, new Point(0,0));
 
-				SwappedDataInputStream sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(videoMem));
-				for (int currentY = 0; currentY < frameHeight; currentY++) {
-					for (int currentX = 0; currentX < frameWidth; currentX++) {
-						image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
-					}			
-				}
-				sdis2.close();
+				BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_BYTE_INDEXED, icm);
+				image.setData(raster);
+				
 				System.out.println("image in memory was built");
 
-				BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp"));
-				System.out.println("file "+srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp saved.");
-
+				ImageIO.write(image, "bmp", new File(dirName+Integer.toString(currentFrameNumber)+".bmp"));
+				System.out.println("file "+dirName+Integer.toString(currentFrameNumber)+".bmp saved.");
+				
+				lastNormalFrame = currentFrameNumber;
+				emptyFramesNumber = 0;
 			} else {
-				System.out.println("empty frame");
-
-				BufferedImage image = new BufferedImage(frameWidth, frameHeight, BufferedImage.TYPE_INT_RGB);
-
-				SwappedDataInputStream sdis2 = new SwappedDataInputStream(new ByteArrayInputStream(videoMem));
-				for (int currentY = 0; currentY < frameHeight; currentY++) {
-					for (int currentX = 0; currentX < frameWidth; currentX++) {
-						image.setRGB(currentX, currentY, colors[sdis2.readUnsignedByte()]);
-					}			
-				}
-				sdis2.close();
-				System.out.println("image in memory was built");
-
-				BMPEncoder.write(image, new File(srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp"));
-				System.out.println("file "+srcFile.getAbsolutePath()+"."+Integer.toString(currentFrameNumber)+".bmp saved.");
+				System.out.println("empty frame, skip");
+				emptyFramesNumber++;
 			}
 			currentFrameNumber++;
 		}
+		sdis.close();
+		if (emptyFramesNumber > 0) {
+			emptyFrames.put(lastNormalFrame, emptyFramesNumber);
+		}
+
 		System.out.println("=== animation decoded successfully");
 		
-		sdis.close();
+		File cfgFile = new File(FilenameUtils.getFullPath(srcFile.getAbsolutePath())+FilenameUtils.getBaseName(srcFile.getAbsolutePath())+".cfg");
+		BufferedWriter cfgWriter = new BufferedWriter(new FileWriter(cfgFile));
+		
+		cfgWriter.write(FilenameUtils.getBaseName(FilenameUtils.getPathNoEndSeparator(dirName)));
+		cfgWriter.newLine();
+		
+		if (emptyFrames.size() > 0) {
+			Set<Integer> keys = emptyFrames.keySet();
+			Iterator<Integer> iterator = keys.iterator();
+			while(iterator.hasNext()) {
+				Integer keyFrame = iterator.next();
+				Integer emptyNumber = emptyFrames.get(keyFrame);
+				
+				cfgWriter.write(keyFrame.toString());
+				cfgWriter.newLine();
+				
+				cfgWriter.write(emptyNumber.toString());
+				cfgWriter.newLine();
+				
+				cfgWriter.newLine();
+			}
+		}
+		cfgWriter.close();
+		
+		System.out.println("=== configuration file \""+cfgFile.getName()+"\" created");
+		
+		
 	}
 
 	private static void encode1(String bmpFileName, String origFileName) throws IOException {
@@ -747,6 +813,289 @@ public class ImageCodec {
 		fos.close();	
 	}
 
+	private static void encode6(String fileName) throws IOException {
+		
+		System.out.println("=== read configuration from \""+fileName+"\"");
+		AnimationConfiguration configuration = new AnimationConfiguration(fileName);
+		configuration.read();
+		
+		System.out.println("   directory with frames: "+configuration.getFramesDirectoryName());
+		
+		if (configuration.getEmptyFramesConfiguration().size() > 0) {
+			Iterator<Integer> keyIterator = configuration.getEmptyFramesConfiguration().keySet().iterator();
+			while (keyIterator.hasNext()) {
+				Integer key = keyIterator.next();
+				Integer value = configuration.getEmptyFramesConfiguration().get(key);
+				System.out.println("   empty frames: place "+value+" empty frames after frame #"+key);
+			}
+		}
+		
+		System.out.println("=== find frame files in \""+configuration.getFramesDirectoryName()+"\"");
+		Collection<File> frameFiles = configuration.findFrames();
+		
+		if (frameFiles.size() == 0) {
+			throw new IOException("can't find BMP files in directory "+configuration.getFramesDirectoryName());
+		} else {
+			System.out.println("   found "+frameFiles.size()+" bmp files plus "+configuration.getEmptyFramesNumber()+" empty frames from configuration");
+		}
+		
+		System.out.println("=== writing to new animation file");
+		File animationFile = new File(configuration.getFramesDirectoryName()+".pzm");
+		FileOutputStream animationStream = new FileOutputStream(animationFile);
+		
+		System.out.println("   animation name: "+animationFile.toString());
+		
+		EndianUtils.writeSwappedInteger(animationStream, frameFiles.size() + configuration.getEmptyFramesNumber());
+		EndianUtils.writeSwappedShort(animationStream, (short)320);
+		EndianUtils.writeSwappedShort(animationStream, (short)200);
+		EndianUtils.writeSwappedInteger(animationStream, 0);
+		EndianUtils.writeSwappedInteger(animationStream, 0);
+		EndianUtils.writeSwappedInteger(animationStream, 0);
+		
+		System.out.println("   animation header saved");
+		
+		Iterator<File> frameIterator = frameFiles.iterator();
+		byte[] oldPalette = new byte[256*3];
+		byte[] oldBitmap = new byte[320*200];
+		
+		Arrays.fill(oldPalette, (byte)0);
+		Arrays.fill(oldBitmap, (byte)0);
+		
+		while (frameIterator.hasNext()) {
+			File oneFrame = frameIterator.next();
+			System.out.println("=== frame "+oneFrame.getName());
+			
+			int currentFrameNumber = -1;
+
+			String currentFrameName = FilenameUtils.getBaseName(oneFrame.getAbsolutePath());
+			if (NumberUtils.isDigits(currentFrameName)) {
+				currentFrameNumber = Integer.parseInt(currentFrameName);
+			}
+
+			BufferedImage image = ImageIO.read(oneFrame);
+			
+			if (image.getWidth() != 320) {
+				throw new IOException("width of frame is not 320 pixels");
+			}
+			if (image.getHeight() != 200) {
+				throw new IOException("height of frame is not 200 pixels");
+			}
+			
+			byte[] palette = get6bitPalette(image);
+			byte[] bitmap = getBitmap(image);
+			
+			boolean needPalette = !Arrays.equals(oldPalette, palette);
+			
+			if (needPalette) {
+				byte[] packedFrame = rleEncodeFrame(bitmap, 320, 200);
+				
+				animationStream.write(0x80);
+				EndianUtils.writeSwappedInteger(animationStream, 0);
+				EndianUtils.writeSwappedInteger(animationStream, packedFrame.length);
+				
+				animationStream.write(palette);
+				animationStream.write(packedFrame);
+				
+				System.out.println("   different palette - write full frame");
+			} else {
+				boolean equalFrames = Arrays.equals(oldBitmap, bitmap);
+				
+				if (equalFrames) {
+					animationStream.write(0);
+					EndianUtils.writeSwappedInteger(animationStream, 0xFFFFFFFF);
+					EndianUtils.writeSwappedInteger(animationStream, 0);
+					System.out.println("   frames are equal - write empty frame");
+				} else {
+					byte[] data = createSprite(oldBitmap, bitmap);
+
+					animationStream.write(data);
+				}
+			}
+
+			if (configuration.getEmptyFramesConfiguration().containsKey(currentFrameNumber)) {
+				Integer emptyCount = configuration.getEmptyFramesConfiguration().get(currentFrameNumber);
+				if (emptyCount != null) {
+					System.out.println("   insert "+emptyCount+" empty frames after "+currentFrameNumber);
+					
+					for (int i=0; i<emptyCount.intValue(); i++) {
+						animationStream.write(0);
+						EndianUtils.writeSwappedInteger(animationStream, 0xFFFFFFFF);
+						EndianUtils.writeSwappedInteger(animationStream, 0);
+					}
+				}
+			}
+			
+			oldPalette = palette;
+			oldBitmap = bitmap;
+		}
+		
+		animationStream.close();
+		
+		RandomAccessFile raf = new RandomAccessFile(animationFile, "rw");
+		raf.seek(8);
+		raf.writeInt(EndianUtils.swapInteger((int)animationFile.length()));		
+		raf.close();
+
+		System.out.println("=== animation encoded successfully");
+
+	}
+
+	private static byte[] createSprite(byte[] oldBitmap, byte[] bitmap) throws IOException {
+		
+		int minX = 500;
+		int maxX = -1;
+		int minY = 300;
+		int maxY = -1;
+		
+		for (int i=0; i<200; i++) {
+			for (int j=0; j<320; j++) {
+				if (oldBitmap[i*320 + j] != bitmap[i*320 + j]) {
+					if (minX > j) {
+						minX = j;
+					}
+					
+					if (maxX < j) {
+						maxX = j;
+					}
+					
+					if (minY > i) {
+						minY = i;
+					}
+					
+					if (maxY < i) {
+						maxY = i;
+					}
+				}
+			}
+		}
+		
+		int width = (maxX-minX)+1;
+		int height = (maxY-minY)+1;
+		int offset = minY * 320 + minX;
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream(bitmap.length + 4);
+		
+		for (int i=minY; i<=maxY; i++) {
+			for (int j=minX; j<=maxX; j++) {
+				if (oldBitmap[i*320 + j] != bitmap[i*320 + j]) {
+					if (bitmap[i*320 + j] < 0) {
+						baos.write(bitmap[i*320 + j] + 256);
+					} else {
+						baos.write(bitmap[i*320 + j]);
+					}
+				} else {
+					baos.write(0);
+				}
+			}
+		}
+		byte[] source = baos.toByteArray();
+		baos.close();
+		
+		byte[] packedSprite = rleEncodeFrame(source, width, height);
+
+		baos = new ByteArrayOutputStream(1+4+4+packedSprite.length);
+		baos.write(0);
+		EndianUtils.writeSwappedInteger(baos, offset);
+		EndianUtils.writeSwappedInteger(baos, packedSprite.length);		
+		baos.write(packedSprite);
+		byte[] result = baos.toByteArray();
+		baos.close();
+		
+		System.out.println("   write sprite with size = "+width+"x"+height+", offset="+offset);
+		
+		return result;
+	}
+
+	private static byte[] rleEncodeFrame(byte[] bitmap, int width, int height) throws IOException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream(bitmap.length + 4);
+		EndianUtils.writeSwappedShort(baos, (short) width);
+		EndianUtils.writeSwappedShort(baos, (short) height);
+		baos.write(bitmap);
+		byte[] source = baos.toByteArray();
+		baos.close();
+
+		int rleMarker = calculateColorUsage(source);
+		
+		byte[] packedBitmap = rleEncode(source, rleMarker);
+		
+		baos = new ByteArrayOutputStream(packedBitmap.length + 5);
+		baos.write(rleMarker);
+		EndianUtils.writeSwappedInteger(baos, packedBitmap.length + 5);
+		baos.write(packedBitmap);
+		byte[] result = baos.toByteArray();
+		baos.close();
+		
+		return result;
+	}
+
+	private static int calculateColorUsage(byte[] bitmap) {
+		
+		int[] colorUsage = new int[256];
+		Arrays.fill(colorUsage, 0);
+		
+		for (int i=0; i<bitmap.length; i++) {
+			int color = bitmap[i];
+			if (color < 0) {
+				color += 256;
+			}
+			
+			colorUsage[color]++;
+		}
+		
+		int result = -1;
+		int minUsage = 0x10000;
+		
+		for (int i=0; i<256; i++) {
+			if (colorUsage[i] < minUsage) {
+				result = i;
+				minUsage = colorUsage[i];
+			}
+		}
+		
+		return result;
+	}
+
+	private static byte[] getBitmap(BufferedImage image) throws IOException {
+		Raster raster = image.getData();
+		DataBuffer dataBuffer = raster.getDataBuffer();
+		if (dataBuffer.getDataType() != DataBuffer.TYPE_BYTE) {
+			throw new IOException("frame doesn't have byte indexed bitmap");
+		}
+		DataBufferByte dataBufferByte = (DataBufferByte) dataBuffer;
+		byte[] bitmap = dataBufferByte.getData();
+		return bitmap;
+	}
+
+	private static byte[] get6bitPalette(BufferedImage image) throws IOException {
+
+		ColorModel colorModel = image.getColorModel();
+		if (!(colorModel instanceof IndexColorModel)) {
+			throw new IOException("frame is not image with palette");
+		}
+		IndexColorModel indexColorModel = (IndexColorModel) colorModel;
+
+		byte[] reds = new byte[indexColorModel.getMapSize()];
+		byte[] greens = new byte[indexColorModel.getMapSize()];
+		byte[] blues = new byte[indexColorModel.getMapSize()];
+		
+		indexColorModel.getReds(reds);
+		indexColorModel.getGreens(greens);
+		indexColorModel.getBlues(blues);
+		
+		ByteArrayInputStream redStream = new ByteArrayInputStream(reds);
+		ByteArrayInputStream greenStream = new ByteArrayInputStream(greens);
+		ByteArrayInputStream blueStream = new ByteArrayInputStream(blues);
+		
+		byte[] result = new byte[indexColorModel.getMapSize()*3];
+		
+		for (int i=0; i<indexColorModel.getMapSize(); i++) {
+			result[i*3 + 0] = (byte) (redStream.read() >> 2);
+			result[i*3 + 1] = (byte) (greenStream.read() >> 2);
+			result[i*3 + 2] = (byte) (blueStream.read() >> 2);
+		}
+		
+		return result;
+	}
 
 	private static int[] pal2color(byte[] pal) {
 		int[] colors = new int[256];
@@ -771,6 +1120,16 @@ public class ImageCodec {
 		
 		return colors;
 		
+	}
+	
+	private static byte[] pal6to8(byte[] srcPal) {
+		byte[] result = new byte[srcPal.length];
+		
+		for (int i=0; i<srcPal.length; i++) {
+			result[i] = (byte) (srcPal[i] << 2);
+		}
+		
+		return result;
 	}
 	
 	
@@ -940,8 +1299,14 @@ public class ImageCodec {
 						baos.write(rleLength);
 						baos.write(rleColor);						
 					} else {
-						for (int i=0; i<rleLength; i++) {
-							baos.write(rleColor);
+						if (rleColor == rleMarker) {
+							baos.write(rleMarker);
+							baos.write(rleLength);
+							baos.write(rleColor);						
+						} else {
+							for (int i=0; i<rleLength; i++) {
+								baos.write(rleColor);
+							}
 						}
 					}		
 					
@@ -956,8 +1321,14 @@ public class ImageCodec {
 					baos.write(rleLength);
 					baos.write(rleColor);						
 				} else {
-					for (int i=0; i<rleLength; i++) {
+					if (rleColor == rleMarker) {
+						baos.write(rleMarker);
+						baos.write(rleLength);
 						baos.write(rleColor);
+					} else {
+						for (int i=0; i<rleLength; i++) {
+							baos.write(rleColor);
+						}
 					}
 				}		
 				
@@ -966,7 +1337,4 @@ public class ImageCodec {
 		sdis.close();
 		return baos.toByteArray();		
 	}
-	
-	
-
 }

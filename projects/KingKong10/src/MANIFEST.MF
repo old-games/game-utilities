@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Created-By: 1.4.2_16 (Sun Microsystems Inc.)
 Main-Class: ru.old_games.kingkong10.ImageCodec
-Class-path: commons-io-1.4.jar image4j.jar
+Class-path: commons-io-1.4.jar image4j.jar commons-lang3-3.1.jar
 
 
 
