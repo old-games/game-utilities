@@ -1,14 +1,12 @@
-﻿              ---=== Утилиты по игре Thunderscape ===---
+﻿# Утилиты по игре Thunderscape
 
-Авторы утилит: Dmitry Groshev.
+Авторы утилит: **Dmitry Groshev**
 
 1. thunview, tshview (c) Dmitry Groshev
-
-Просмотр графики. Исходный код: ассемблер.
+ * Просмотр графики. Исходный код: ассемблер.
 
 2. thundunp (c) Dmitry Groshev
-
-Распаковка ресурсов. Исходный код: Turbo Pascal.
+ * Распаковка ресурсов. Исходный код: Turbo Pascal.
 
 
 

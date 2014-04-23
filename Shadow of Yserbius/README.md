@@ -1,13 +1,11 @@
-﻿              ---=== Утилиты по игре Shadow of Ysebius ===---
+﻿# Утилиты по игре Shadow of Ysebius
 
-Авторы утилит: Dmitry Groshev.
+Авторы утилит: **Dmitry Groshev**
 
 1. ysdatvw, ystsuvw (c) Dmitry Groshev
-
-Просмотр графики. Исходный код: ассемблер.
+ * Просмотр графики. Исходный код: ассемблер.
 
 2. yspal (c) Dmitry Groshev
-
-Работа с палитрой. Исходный код: Turbo Pascal.
+ * Работа с палитрой. Исходный код: Turbo Pascal.
 
 

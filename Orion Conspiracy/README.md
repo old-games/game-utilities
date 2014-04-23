@@ -1,9 +1,10 @@
-﻿              ---=== Утилиты по игре The Orion Conspiracy ===---
+﻿# Утилиты по игре The Orion Conspiracy
 
-Public release
-Бюро переводов Old-Games.Ru, 2012
+Public release, Бюро переводов Old-Games.Ru, 2012
 
-Авторы утилит: bjfn.
+Авторы утилит: **bjfn**
+
+
 
 Прога для декомпиляции скриптов ориона (с целью изъятия текстовок).
 

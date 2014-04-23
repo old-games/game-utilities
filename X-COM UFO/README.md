@@ -1,7 +1,6 @@
-﻿              ---=== Утилиты по игре UFO Enemy Unknown ===---
+﻿# Утилиты по игре UFO Enemy Unknown
 
-Авторы утилит: Dmitry Groshev.
+Авторы утилит: **Dmitry Groshev**
 
 1. ufopckvw (c) Dmitry Groshev
-
-Просмотр графики. Исходный код: ассемблер.
+ * Просмотр графики. Исходный код: ассемблер.

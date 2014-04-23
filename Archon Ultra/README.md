@@ -1,7 +1,6 @@
-﻿              ---=== Утилиты по игре Archon Ultra ===---
+﻿# Утилиты по игре Archon Ultra
 
-Авторы утилит: Dmitry Groshev.
+Авторы утилит: **Dmitry Groshev**
 
 1. archview (c) Dmitry Groshev
-
-Просмотр графики. Исходный код: Forth (см. forth.ru).
+ * Просмотр графики. Исходный код: Forth (см. forth.ru).

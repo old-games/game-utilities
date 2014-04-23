@@ -1,9 +1,9 @@
-﻿              ---=== Утилиты по играм Coktel Vision ===---
+﻿# Утилиты по играм Coktel Vision
 
 Public release
 Бюро переводов Old-Games.Ru, 2012
 
-Авторы утилит: Taralej & Jabocrack Software
+Авторы утилит: **Taralej & Jabocrack Software**
 
 1. Шрифты из игр
 
