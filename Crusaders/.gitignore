@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+*.userprefs
+**/build/
+**/dist/
+**/nbproject/
+build.xml
+manifest.mf
+
+
