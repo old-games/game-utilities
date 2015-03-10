@@ -5,12 +5,15 @@
  */
 package crusimg;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -48,6 +51,13 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         imgPanel=new ImagePanel();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent ev) {
+                frm.windowClosing();
+            }
+        });
     }
 
     /**
@@ -71,15 +81,12 @@ public class MainForm extends javax.swing.JFrame {
         scroll = new javax.swing.JScrollPane();
         frameCombo = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CrusImg v0.1");
         setLocation(new java.awt.Point(0, 0));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         fileCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "<open...>" }));
         fileCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +145,7 @@ public class MainForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -173,6 +180,13 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("import");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -185,7 +199,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(palCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(18, Short.MAX_VALUE))
             .addComponent(scroll)
         );
         jPanel2Layout.setVerticalGroup(
@@ -196,12 +212,21 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(palCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(singleCheck)
                     .addComponent(frameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(11, 11, 11)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel2);
+
+        saveBtn.setText("save");
+        saveBtn.setEnabled(false);
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,12 +235,14 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fileCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSplitPane1)))
+                        .addComponent(fileCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,15 +251,25 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fileCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(saveBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSplitPane1)
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(854, 569));
+        setSize(new java.awt.Dimension(822, 569));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+                
+    public void windowClosing() {
+        if (!askForSave())
+            return;
+        conf.save();
+        System.exit(0);
+    }
 
     
     private Config.FlxInfo currentConfig(boolean create){
@@ -267,6 +304,7 @@ public class MainForm extends javax.swing.JFrame {
     private void setPath(String path){
         try{
             skipdraw=true;
+            saveBtn.setEnabled(false);
             file=new FlxFile(path);
             Palettes.get().setPath(file.file.getParent());
             palCombo.removeAllItems();
@@ -354,7 +392,29 @@ public class MainForm extends javax.swing.JFrame {
         redraw();
     }
     
+    private boolean askForSave(){
+        if (file==null)
+            return true;
+        if (!file.changed)
+            return true;
+        int res=JOptionPane.showConfirmDialog(this, "File changed. Save?", "Save file",  JOptionPane.YES_NO_CANCEL_OPTION);
+        if (res==JOptionPane.CANCEL_OPTION)
+            return false;
+        if (res==JOptionPane.YES_OPTION){
+            try{
+                file.save();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+                return false;
+            }
+        }
+        saveBtn.setEnabled(file.changed);
+        return true;
+    }
+    
     private void fileComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileComboActionPerformed
+        if (!askForSave())
+            return;
         if(fileCombo.getSelectedItem().equals(" "))
             return;
         if (fileCombo.getSelectedItem().equals("<open...>")){
@@ -369,10 +429,6 @@ public class MainForm extends javax.swing.JFrame {
             setPath((String)fileCombo.getSelectedItem());
         }
     }//GEN-LAST:event_fileComboActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        conf.save();
-    }//GEN-LAST:event_formWindowClosing
 
     private void singleCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleCheckActionPerformed
        Config.FlxInfo info=currentConfig(false);
@@ -439,17 +495,52 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            FlxImage img=currentImage();
+            if (null==img)
+                throw new Exception("Image not selected");
+            final JFileChooser fc=new JFileChooser();
+            FileFilter ff=new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
+            fc.addChoosableFileFilter(ff);
+            fc.setFileFilter(ff);
+            if (fc.showOpenDialog(this)!=JFileChooser.APPROVE_OPTION)
+                return;
+            BufferedImage image=ImageIO.read(fc.getSelectedFile());
+            img.importImage(frameCombo.getSelectedIndex(), singleCheck.isSelected(), (String)palCombo.getSelectedItem(), image);
+            redraw();
+            file.changed=true;
+            saveBtn.setEnabled(file.changed);
+        }catch(Exception e){
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        if (null==file)
+            return;
+        try{
+            file.save();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+        }
+        saveBtn.setEnabled(file.changed);
+    }//GEN-LAST:event_saveBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox fileCombo;
     private javax.swing.JComboBox frameCombo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JComboBox palCombo;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JCheckBox singleCheck;
     private javax.swing.JTable table;

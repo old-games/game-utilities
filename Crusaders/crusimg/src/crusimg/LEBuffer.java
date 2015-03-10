@@ -11,7 +11,7 @@ package crusimg;
  */
 public class LEBuffer {
     
-    private byte[] data;
+    public byte[] data;
     private int _pos;
     
     public LEBuffer(byte[] data){

@@ -6,8 +6,11 @@
 package crusimg;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,18 +21,28 @@ import java.util.HashMap;
 public class FlxFile {
     
     public File file;
-    private RandomAccessFile fs;
+    public boolean changed=false;
     byte[] header=new byte[0x80];
     int count;
     public ArrayList<int[]> offsets=new ArrayList();
     public HashMap<Integer,FlxImage> images=new HashMap();
     
-    public int readShort() throws IOException{
+    public int readShort(RandomAccessFile fs) throws IOException{
         return (int) (fs.read() | (fs.read()<<8));
     }
 
-    public int readInt() throws IOException{
+    public int readInt(RandomAccessFile fs) throws IOException{
         return (int) (fs.read() | (fs.read()<<8) | (fs.read()<<16) | (fs.read()<<24));
+    }
+
+    
+    public void writeInt(FileOutputStream fs,int val) throws IOException{
+        byte b[]=new byte[4];
+        b[0]=(byte)(val & 0xFF);
+        b[1]=(byte)((val >> 8) & 0xFF);
+        b[2]=(byte)((val >> 16) & 0xFF);
+        b[3]=(byte)((val >> 24) & 0xFF);
+        fs.write(b);
     }
 
     
@@ -44,21 +57,21 @@ public class FlxFile {
     public final void load() throws Exception{
         if (file.length()<0x80)
             throw new Exception("Wrong file format.");
-        fs=new RandomAccessFile(file,"r");
+        RandomAccessFile fs=new RandomAccessFile(file,"r");
         fs.read(header);
         for (int i=0;i<0x52;i++){
             if (header[i]!=0x1A)
                 throw new Exception("Wrong file format.");
         }
         fs.seek(0x54);
-        count=readShort();
+        count=readShort(fs);
         if (count==0)
             throw new Exception("Wrong file format.");
         fs.seek(0x80);
         for (int i=0;i<count;++i){
             int[] ofs=new int[2];
-            ofs[0]=readInt();
-            ofs[1]=readInt();
+            ofs[0]=readInt(fs);
+            ofs[1]=readInt(fs);
             offsets.add(ofs);
         }
         for (int i=0;i<count;++i){
@@ -72,5 +85,60 @@ public class FlxFile {
             }
 
         }
+        fs.close();
+    }
+    
+    
+    private void backup() throws Exception{
+        Integer i=0;
+        File f=new File(file.getParentFile(),file.getName()+".backup0");
+        while (f.exists()){
+            i++;
+            f=new File(file.getParentFile(),file.getName()+".backup"+i.toString());
+        }
+        FileChannel fin=null;
+        FileChannel fout=null;
+        try {
+            fin = new FileInputStream(file).getChannel();
+            FileChannel foud = new FileOutputStream(f).getChannel();
+            foud.transferFrom(fin, 0, fin.size());
+        }finally {
+            if(fin != null)
+                fin.close();
+            if (fout!=null)
+                fout.close();
+        }
+    }
+    
+    public void save() throws Exception{
+        backup();
+        changed=false;
+        FileOutputStream fs=new FileOutputStream(file);
+        fs.write(header);
+        int fofs=0;
+        for (int i=0;i<count;i++){
+            if (images.containsKey(i)){
+                fofs=offsets.get(i)[0];
+                break;
+            }
+        }
+        int ofs=fofs;
+        for (int i=0;i<count;i++){
+            if (images.containsKey(i)){
+                writeInt(fs,ofs);
+                int sz=images.get(i).sz;
+                writeInt(fs,sz);
+                ofs+=sz;
+            }else{
+                writeInt(fs, offsets.get(i)[0]);
+                writeInt(fs, offsets.get(i)[1]);
+            }
+        }
+        for (int i=0;i<count;i++){
+            if (!images.containsKey(i))
+                continue;
+            fs.write(images.get(i).buf.data);
+        }
+        fs.close();
     }
 }

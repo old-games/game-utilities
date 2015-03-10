@@ -16,14 +16,16 @@ public final class FlxFrame {
     public byte[] bitmapData;
     public int width;
     public int height;
+    public int x;
+    public int y;
 
     
     public FlxFrame(LEBuffer buf){
         int comp=buf.getInt();
         width=buf.getInt();
         height=buf.getInt();
-        int wo=buf.getInt();
-        int ho=buf.getInt();
+        x=buf.getInt();
+        y=buf.getInt();
         bitmapData=new byte[width*height];
         unpack(buf,comp);
     }
@@ -68,6 +70,12 @@ public final class FlxFrame {
                 }
             }while(xpos<width);
         }
+    }
+    
+    public void setImage(byte[] data) throws Exception{
+        if (bitmapData.length!=data.length)
+            throw new Exception("Wrong bitmap buffer size");
+        bitmapData=data;
     }
     
 }

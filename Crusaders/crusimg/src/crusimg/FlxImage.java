@@ -9,7 +9,9 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 import java.awt.image.DataBufferByte;
+import java.awt.image.IndexColorModel;
 import java.awt.image.Raster;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,7 +22,7 @@ import java.util.HashMap;
  */
 public class FlxImage {
     
-    private LEBuffer buf;
+    public LEBuffer buf;
     public int id;
     public int ofs;
     public int sz;
@@ -126,4 +128,101 @@ public class FlxImage {
         img.setData(r);
         return img;
     }
+    
+    
+    private void updateFrame(int idx,FlxFrame frm,byte[] data) throws IOException{
+        byte[] res=new Compressor(frm).compress(data);
+        int[] f=frames.get(idx);
+        if (f[1]!=res.length){
+            sz+=res.length-f[1];
+        }
+        byte[] b=new byte[sz];
+        int pos=6+count*8;
+        System.arraycopy(buf.data, 0, b, 0, pos);
+        for (int i=0;i<count;i++){
+            f=frames.get(i);
+            if (f[0]==0)
+                continue;
+            if (i!=idx){
+                System.arraycopy(buf.data, f[0], b, pos, f[1]);
+                f[0]=pos;
+                pos+=f[1];
+            }else{
+                System.arraycopy(res, 0, b, pos, res.length);
+                f[0]=pos;
+                f[1]=res.length;
+                pos+=res.length;
+            }
+            frames.set(i, f);
+            int ppos=6+i*8;
+            b[ppos++]=(byte)(f[0] & 0xFF);
+            b[ppos++]=(byte)((f[0]>>8) & 0xFF);
+            b[ppos++]=(byte)((f[0]>>16) & 0xFF);
+            b[ppos++]=(byte)((f[0]>>24) & 0xFF);
+            b[ppos++]=(byte)(f[1] & 0xFF);
+            b[ppos++]=(byte)((f[1]>>8) & 0xFF);
+            b[ppos++]=(byte)((f[1]>>16) & 0xFF);
+            b[ppos++]=(byte)((f[1]>>24) & 0xFF);
+        }
+        buf=new LEBuffer(b);
+        frameObjects.remove(idx);
+    }
+    
+    private void setSingle(Dimension sz,byte[] data) throws Exception{
+        if (data.length!=sz.width*sz.height)
+            throw new Exception("Wrong bitmap buffer size");
+        int pos=0;
+        for (int i=0;i<count;i++){
+            FlxFrame frm=getFrame(i);
+            if (null==frm)
+                continue;
+            if (frm.width==0 || frm.height==0)
+                continue;
+            int src=0;
+            byte[] res=new byte[frm.width*frm.height];
+            for (int j=0;j<frm.height;j++){
+                System.arraycopy(data, pos, res, src, frm.width);
+                pos+=sz.width;
+                src+=frm.width;
+            }
+            updateFrame(i,frm,res);
+        }
+    }
+    
+
+    
+    public void importImage(int frame,boolean single,String palette,BufferedImage img) throws Exception{
+        Dimension sz;
+        FlxFrame frm=null;
+        if (single){
+            sz=wholeSize();
+        }else{
+            frm=getFrame(frame);
+            if (null==frm)
+                throw new Exception(String.format("Frame %d not found", frame));
+            sz=frm.getSize();
+        }
+        if (sz.width!=img.getWidth() || sz.height!=img.getHeight())
+            throw new Exception(String.format("Size mismatch %dx%d vs %dx%d", sz.width,sz.height,img.getWidth(),img.getHeight()));
+        Palettes.Palette pal=Palettes.get().palettes.get(palette);
+        if (!img.getColorModel().equals(pal.model)){
+            throw new Exception("Wrong bmp format: expected 8bpp indexed");
+        }
+        IndexColorModel im=(IndexColorModel)img.getColorModel();
+        if (pal.model.getMapSize()!=im.getMapSize())
+            throw new Exception("Wrong palette");
+        for (int i=0;i<256;i++){
+            if (pal.model.getRGB(i)!=im.getRGB(i))
+                throw new Exception("Wrong palette");
+        }
+        final DataBufferByte db=(DataBufferByte)img.getData().getDataBuffer();
+        byte[] imgdata=db.getData();
+        if (single){
+            setSingle(sz,imgdata);
+        }else{
+            updateFrame(frame,frm,imgdata);
+        }
+        
+    }
+
 }
