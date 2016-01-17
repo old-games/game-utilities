@@ -1,11 +1,26 @@
 #!/usr/bin/env ruby
 
-require 'wavefile'
-
 class Wave
-
+    attr_accessor(:bps, :rate)
     def initialize(file)
         @file = file
+    end
+
+    def read()
+        _data = nil
+        open(@file, "rb") { |f|
+            _nm = f.read(4)
+            _sz = f.read(4).unpack('V')[0]
+            _wv = f.read(8)
+            _fmt = f.read(8).unpack('Vvv')
+            raise "Wrong wav format" if (_nm!='RIFF' || _sz!=f.size-8 || _wv!='WAVEfmt ' || _fmt!=[16,1,1])
+            @rate, _bytePs, _block, @bps = f.read(12).unpack('VVvv')
+            _nm = f.read(4)
+            _sz = f.read(4).unpack('V')[0]
+            raise "Wrong wav format" if (_nm!='data')
+            _data = f.read(_sz)
+        }
+        return _data
     end
 
     def write(channels, bps, rate, data)
@@ -31,9 +46,12 @@ class Siff
     end
 
 
-    def readVb(fname, nuData=nil)
+    def procVb(fname, wave = nil)
         _data = ''
-        open(fname,'rb') {|f|
+        _dpos = 0
+        _data = wave.read() if wave
+        open(fname, wave ? "r+b" : 'rb') {|f|
+            f.seek(0)
             _name = f.read(4)
             _sz = f.read(4).unpack('N')[0]
             _ver = f.read(4)
@@ -46,6 +64,7 @@ class Siff
             @frames,@bps,@rate = f.read(6).unpack('v3')
             f.read(16)
             raise "Wrong vb format" if (_name!='VBHD')
+            raise "Wav format not equals vb format" if (wave && (wave.bps!=@bps || wave.rate!=@rate))
             _name = f.read(4)
             _sz = f.read(4).unpack('N')[0]
             raise "Wrong vb format" if (_name!='BODY')
@@ -64,7 +83,12 @@ class Siff
                 if (_fl & 4)!=0
                     _asz = f.read(4).unpack('V')[0]
                     _flags+=' audio(%d)' % _asz
-                    _data += f.read(_asz-4)
+                    if (wave) 
+                        f.write(_data.slice(_dpos,_asz-4))
+                        _dpos += _asz-4
+                    else
+                        _data += f.read(_asz-4)
+                    end
                 end
                 if (_fl & 8)!=0
                     _vsz = f.read(4).unpack('V')[0]
@@ -93,11 +117,13 @@ class Siff
     end
 
     def pack
-        return 1
+        wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
+        procVb(@file, wav)
+        return 0
     end
 
     def unpack
-        _data = readVb(@file)
+        _data = procVb(@file)
         wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
         wav.write(1, @bps, @rate, _data)
         return 0
