@@ -46,10 +46,12 @@ class Siff
     end
 
 
-    def procVb(fname, wave = nil)
+    def procVb(fname, wave = nil, subs = nil)
         _data = ''
         _dpos = 0
         _data = wave.read() if wave
+        _sdata = subs ? subs : ''
+        _spos = 0
         open(fname, wave ? "r+b" : 'rb') {|f|
             f.seek(0)
             _name = f.read(4)
@@ -80,6 +82,7 @@ class Siff
                     _mot = f.read(4).unpack('s2<')
                     _flags+=' motion='+_mot.to_s 
                 end
+
                 if (_fl & 4)!=0
                     _asz = f.read(4).unpack('V')[0]
                     _flags+=' audio(%d)' % _asz
@@ -90,6 +93,7 @@ class Siff
                         _data += f.read(_asz-4)
                     end
                 end
+
                 if (_fl & 8)!=0
                     _vsz = f.read(4).unpack('V')[0]
                     _flags+=' video(%d)' % _vsz
@@ -106,26 +110,33 @@ class Siff
                 end
                 if (_fl & 64)!=0
                     _ssz = f.read(4).unpack('V')[0]
-                    _flags+=' something(%d)' % _ssz
-                    f.read(_ssz-4)
+                    _flags+=' subs(%d)' % _ssz
+                    if (subs)
+                        f.write(subs.slice(_spos,_ssz-4))
+                        _spos += _ssz-4
+                    else
+                        _sdata += f.read(_ssz-4)
+                    end
                 end
                 #print "Block_%d @0x%08X %d %d: %s\n" % [_bid, _ps, _bsz, _fl, _flags]
             end
             raise "Bad file data" if (_pos != _sz)
         }
-        return _data
+        return _data, _sdata
     end
 
     def pack
         wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
-        procVb(@file, wav)
+        subs = File.read(File.join(File.dirname(@file), File.basename(@file, '.*')+".txt"))
+        procVb(@file, wav, subs)
         return 0
     end
 
     def unpack
-        _data = procVb(@file)
+        _data,_subs = procVb(@file)
         wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
         wav.write(1, @bps, @rate, _data)
+        File.write(File.join(File.dirname(@file), File.basename(@file, '.*')+".txt"), _subs)
         return 0
     end
 
