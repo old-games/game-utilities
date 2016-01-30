@@ -1,0 +1,46 @@
+.fnt
+
+-= header 10 bytes =-:
+01 01 01 21 7f 00 09 ff 00 00   - 13.fnt
+01 01 02 21 7f 02 08 ff ff 00   - 01.fnt
+01 01 01 21 7f 00 08 08 00 00   - 00.fnt
+01 01 01 21 7f 00 06 04 00 00   - 09 fnt
+ |  |  |  |  |  |  |  |  |  |
+ |  |  |  |  |  |  |  |  |  - H10  unk
+ |  |  |  |  |  |  |  |  ---- H9   unk
+ |  |  |  |  |  |  |  ------- H8   char width (ff - has kerning table)
+ |  |  |  |  |  |  ---------- H7   char height
+ |  |  |  |  |  ------------- H6   unk
+ |  |  |  |  ---------------- H5   characters amount in file (+1 ? )
+ |  |  |  ------------------- H4   start character stored in file
+ |  |  ---------------------- H3   bytes per char line 
+ |  ------------------------- H2   unk
+ ---------------------------- H1   unk
+
+ -= kerning table =-: if H8 == ff
+H5+1 bytes of real characters width. including empty characters (H4)
+
+ -= character data =-:
+(H5-H4)*H3 * H7 bytes. lines of points.
+'!' in font 13(8x9) - 40 40 40 40 00 40 00 00 00
+
+
+
+
+
+---logs
+0E53:001F  CD21                int  21 
+
+0E8C:01FD  9A4E015E0E          call 0E5E:014E --open file
+
+0E8C:0289  9AB6015E0E          call 0E5E:01B6 - readbyte
+
+0E8C:02E0  268A4708            mov  al,es:[bx+08]          es:[87F0]=007F  - read font
+
+0E8C:02F4  9A2A0D4513          call 1345:0D2A  - something
+
+0E8C:0326  9A00025E0E          call 0E5E:0200 - read font
+
+(7f-21)*01_@3 * 09 = 357
+
+1345:0D2A  55                  push bp - some decode
