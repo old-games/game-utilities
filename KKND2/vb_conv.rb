@@ -122,7 +122,7 @@ class Siff
                         _sdata += f.read(_ssz-4)
                     end
                 end
-                print "Block_%d @0x%08X %d %d: %s\n" % [_bid, _ps, _bsz, _fl, _flags]
+                #print "Block_%d @0x%08X %d %d: %s\n" % [_bid, _ps, _bsz, _fl, _flags]
             end
             #raise "Bad file data #{_pos} vs #{_sz}" if (_pos != _sz)
         }
