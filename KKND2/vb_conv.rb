@@ -57,7 +57,7 @@ class Siff
             _name = f.read(4)
             _sz = f.read(4).unpack('N')[0]
             _ver = f.read(4)
-            raise "Wrong vb format" if (_name!='SIFF' || _sz!=f.size-8 || _ver!="VBV1")
+            raise "Wrong vb format" if (_name!='SIFF' || _sz>f.size-8 || _ver!="VBV1")
             _name = f.read(4)
             _sz = f.read(4).unpack('N')
             f.read(2)
@@ -83,6 +83,10 @@ class Siff
                     _flags+=' motion='+_mot.to_s 
                 end
 
+                if (_fl & 2)!=0 
+                    raise "Unknown format"
+                end
+
                 if (_fl & 4)!=0
                     _asz = f.read(4).unpack('V')[0]
                     _flags+=' audio(%d)' % _asz
@@ -102,7 +106,7 @@ class Siff
                 if (_fl & 16)!=0
                     _psz,_from,_count = f.read(6).unpack('VCC')
                     _flags+=' palette(%d:%d:%d)' % [_psz,_from,_count]
-                    f.read(3*_count)
+                    f.read(_psz-6)
                 end
                 if (_fl & 32)!=0
                     _fdur = f.read(2).unpack('v')[0]
@@ -118,16 +122,20 @@ class Siff
                         _sdata += f.read(_ssz-4)
                     end
                 end
-                #print "Block_%d @0x%08X %d %d: %s\n" % [_bid, _ps, _bsz, _fl, _flags]
+                print "Block_%d @0x%08X %d %d: %s\n" % [_bid, _ps, _bsz, _fl, _flags]
             end
-            raise "Bad file data" if (_pos != _sz)
+            #raise "Bad file data #{_pos} vs #{_sz}" if (_pos != _sz)
         }
         return _data, _sdata
     end
 
     def pack
         wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
-        subs = File.read(File.join(File.dirname(@file), File.basename(@file, '.*')+".txt"))
+        sf = File.join(File.dirname(@file), File.basename(@file, '.*')+".txt")
+        subs = nil
+        if (File.exists?(sf))
+            subs = File.read(sf)
+        end
         procVb(@file, wav, subs)
         return 0
     end
@@ -136,7 +144,9 @@ class Siff
         _data,_subs = procVb(@file)
         wav = Wave.new(File.join(File.dirname(@file), File.basename(@file, '.*')+".wav"))
         wav.write(1, @bps, @rate, _data)
-        File.write(File.join(File.dirname(@file), File.basename(@file, '.*')+".txt"), _subs)
+        if _subs.length()>0
+            File.write(File.join(File.dirname(@file), File.basename(@file, '.*')+".txt"), _subs)
+        end
         return 0
     end
 
