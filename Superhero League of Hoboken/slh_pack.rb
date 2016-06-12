@@ -27,13 +27,46 @@ end
 
 
 class FontConvertCommand < Resedit::FontConvertCommand
-    def pack(file)
+    def initialize()
+        super('fnt')
+    end 
+
+    def pack(file, name)
     end
 
-    def unpack(file)
+    def unpack(file, name)
+        log('unpacking '+name)
+        head = file.read(10).bytes
+        bts=head[2]
+        strt = head[3]
+        cnt = head[4]+1
+        hgt = head[6]
+        wdt = head[7]
+        xwds = head[8]
+        wds = nil
+        if (wdt==0xff)
+            wdt=0
+            wds = file.read(xwds==0xFF ? 256 : cnt).bytes
+            wds.each { |w|
+                wdt=w if w>wdt && w<0x10
+            }
+        end
+        logd("reading font #{strt} #{cnt} #{hgt} #{wdt}")
+        fnt = Resedit::Font.new(wdt, hgt)
+        i=strt
+        while i<cnt do
+            w = wdt
+            w = wds[i] if wds
+            buf = file.read(hgt*bts).bytes
+            res = Resedit::BitConverter.bits2Bytes(buf, wdt)
+            fnt.setChar(i, res)
+            i+=1
+        end
+        return fnt
     end
 end
 
+=begin
 class TextConvertCommand < Resedit::TextConvertCommand
     def pack(file)
     end
@@ -41,11 +74,14 @@ class TextConvertCommand < Resedit::TextConvertCommand
     def unpack(file)
     end
 end
-
+=end
 
 class App < Resedit::App
     def initialize()
-        super('slh_pack','1.0',[FontConvertCommand.new(), TextConvertCommand.new()])
+        super('slh_pack','1.0',
+            [FontConvertCommand.new()],
+            false,
+            "by bjfn (c) old-games.ru, 2016")
     end
 end
 

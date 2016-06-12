@@ -18,7 +18,7 @@
  ---------------------------- H1   unk
 
  -= kerning table =-: if H8 == ff
-H5+1 bytes of real characters width. including empty characters (H4)
+256 bytes of real characters width. including empty characters
 
  -= character data =-:
 (H5-H4)*H3 * H7 bytes. lines of points.
