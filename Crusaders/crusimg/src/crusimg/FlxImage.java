@@ -186,7 +186,11 @@ public class FlxImage {
             int wd = frm.width;
             for (int j = 0; j < frm.height; j++) {
                 for (int k = 0; k < sz.width; k++) {
-                    if (data[j * sz.width + k] != 255 && k + 1 > wd) {
+                    if (k + 1 < wd) {
+                        continue;
+                    }
+                    byte px = data[pos + j * sz.width + k];
+                    if (px != 0) {
                         wd = k + 1;
                     }
                 }

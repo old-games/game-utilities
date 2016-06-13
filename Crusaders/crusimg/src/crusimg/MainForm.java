@@ -33,6 +33,7 @@ public class MainForm extends javax.swing.JFrame {
     private int prevrow = -1;
     private boolean skipdraw = true;
     private ImagePanel imgPanel;
+    private File myPath = null;
 
     /**
      * Creates new form MainForm
@@ -58,6 +59,11 @@ public class MainForm extends javax.swing.JFrame {
                 frm.windowClosing();
             }
         });
+        try {
+            File fl = new File(MainForm.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            myPath = fl.getParentFile();
+        } catch (URISyntaxException ex) {
+        }
     }
 
     /**
@@ -435,11 +441,8 @@ public class MainForm extends javax.swing.JFrame {
         if (fileCombo.getSelectedItem().equals("<open...>")) {
             final JFileChooser fc = new JFileChooser();
             FileFilter ff = new FileNameExtensionFilter("Flx files(*.flx)", "flx");
-            try {
-                File fl = new File(MainForm.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-                fc.setCurrentDirectory(fl.getParentFile());
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            if (null != myPath) {
+                fc.setCurrentDirectory(myPath);
             }
             fc.addChoosableFileFilter(ff);
             fc.setFileFilter(ff);
@@ -508,6 +511,9 @@ public class MainForm extends javax.swing.JFrame {
         FileFilter ff = new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
         fc.addChoosableFileFilter(ff);
         fc.setFileFilter(ff);
+        if (null != myPath) {
+            fc.setCurrentDirectory(myPath);
+        }
         if (fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
             File f = fc.getSelectedFile();
             if (!f.getName().endsWith(".bmp")) {
@@ -532,6 +538,9 @@ public class MainForm extends javax.swing.JFrame {
             FileFilter ff = new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
             fc.addChoosableFileFilter(ff);
             fc.setFileFilter(ff);
+            if (null != myPath) {
+                fc.setCurrentDirectory(myPath);
+            }
             if (fc.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) {
                 return;
             }
