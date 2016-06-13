@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -27,30 +28,29 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainForm extends javax.swing.JFrame {
 
-    private FlxFile file=null;
-    private Config conf=null;
-    private int prevrow=-1;
-    private boolean skipdraw=true;
+    private FlxFile file = null;
+    private Config conf = null;
+    private int prevrow = -1;
+    private boolean skipdraw = true;
     private ImagePanel imgPanel;
 
-    
     /**
      * Creates new form MainForm
      */
     public MainForm() throws Exception {
         initComponents();
-        conf=Config.get();
-        for (String e: Config.get().files.keySet()){
+        conf = Config.get();
+        for (String e : Config.get().files.keySet()) {
             fileCombo.insertItemAt(e, 1);
         }
-        final MainForm frm=this;
+        final MainForm frm = this;
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 frm.selectionChanged();
             }
         });
-        imgPanel=new ImagePanel();
+        imgPanel = new ImagePanel();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -262,200 +262,225 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-                
     public void windowClosing() {
-        if (!askForSave())
+        if (!askForSave()) {
             return;
+        }
         conf.save();
         System.exit(0);
     }
 
-    
-    private Config.FlxInfo currentConfig(boolean create){
-        if (null==file)
+    private Config.FlxInfo currentConfig(boolean create) {
+        if (null == file) {
             return null;
-        String idx=file.file.getAbsolutePath();
-        if (!conf.files.containsKey(idx) && create){
+        }
+        String idx = file.file.getAbsolutePath();
+        if (!conf.files.containsKey(idx) && create) {
             return conf.addFile(idx);
         }
-        if (!conf.files.containsKey(idx)) 
+        if (!conf.files.containsKey(idx)) {
             return null;
+        }
         return conf.files.get(idx);
     }
-    
-    private void updateTable(){
-        prevrow=-1;
-        DefaultTableModel mod=(DefaultTableModel)table.getModel();
+
+    private void updateTable() {
+        prevrow = -1;
+        DefaultTableModel mod = (DefaultTableModel) table.getModel();
         mod.setRowCount(0);
-        if (null==file)
+        if (null == file) {
             return;
-        Config.FlxInfo info=currentConfig(true);
-        for (FlxImage img:file.images.values()){
-            Object[] obj=new Object[4];
-            obj[0]=String.format("%d", img.id);
-            obj[1]=info.images.containsKey(img.id) ? info.images.get(img.id).name : "";
-            obj[2]=img.getSize();
-            obj[3]=String.format("%d", img.count);
+        }
+        Config.FlxInfo info = currentConfig(true);
+        for (FlxImage img : file.images.values()) {
+            Object[] obj = new Object[4];
+            obj[0] = String.format("%d", img.id);
+            obj[1] = info.images.containsKey(img.id) ? info.images.get(img.id).name : "";
+            obj[2] = img.getSize();
+            obj[3] = String.format("%d", img.count);
             mod.addRow(obj);
         }
     }
-    
-    private void setPath(String path){
-        try{
-            skipdraw=true;
+
+    private void setPath(String path) {
+        try {
+            skipdraw = true;
             saveBtn.setEnabled(false);
-            file=new FlxFile(path);
+            file = new FlxFile(path);
             Palettes.get().setPath(file.file.getParent());
             palCombo.removeAllItems();
-            for(String s:Palettes.get().palettes.keySet()){
+            for (String s : Palettes.get().palettes.keySet()) {
                 palCombo.addItem(s);
             }
-            Config.FlxInfo info=currentConfig(true);
+            Config.FlxInfo info = currentConfig(true);
             singleCheck.setSelected(info.single);
             frameCombo.setEnabled(!singleCheck.isSelected());
             fileCombo.removeAllItems();
-            for (String s:conf.files.keySet()){
+            for (String s : conf.files.keySet()) {
                 fileCombo.addItem(s);
-                if (s.equals(path)){
-                    fileCombo.setSelectedIndex(fileCombo.getItemCount()-1);
+                if (s.equals(path)) {
+                    fileCombo.setSelectedIndex(fileCombo.getItemCount() - 1);
                 }
             }
             fileCombo.addItem("<open...>");
-        }catch(Exception e){
-            file=null;
-            JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+        } catch (Exception e) {
+            file = null;
+            JOptionPane.showMessageDialog(this, e.getClass().getName() + "\n" + e.getMessage());
         }
         updateTable();
     }
-    
-    public FlxImage currentImage(){
-        if (file==null)
+
+    public FlxImage currentImage() {
+        if (file == null) {
             return null;
-        int row=table.getSelectedRow();
-        if (row<0)
+        }
+        int row = table.getSelectedRow();
+        if (row < 0) {
             return null;
-        int id=Integer.parseInt((String)table.getValueAt(row, 0));
+        }
+        int id = Integer.parseInt((String) table.getValueAt(row, 0));
         return file.images.get(id);
     }
 
-    public Config.ImgInfo currentImageConfig(){
-        Config.FlxInfo info=currentConfig(false);
-        if (null==info)
+    public Config.ImgInfo currentImageConfig() {
+        Config.FlxInfo info = currentConfig(false);
+        if (null == info) {
             return null;
-        FlxImage img=currentImage();
-        if (null==img)
+        }
+        FlxImage img = currentImage();
+        if (null == img) {
             return null;
-        if (info.images.containsKey(img.id))
+        }
+        if (info.images.containsKey(img.id)) {
             return info.images.get(img.id);
+        }
         return null;
     }
 
-    public void redraw(){
-        if (skipdraw)
+    public void redraw() {
+        if (skipdraw) {
             return;
+        }
         try {
-            FlxImage img=currentImage();
-            BufferedImage bmp=img.render(frameCombo.getSelectedIndex(), singleCheck.isSelected(), (String)palCombo.getSelectedItem());
+            FlxImage img = currentImage();
+            BufferedImage bmp = img.render(frameCombo.getSelectedIndex(), singleCheck.isSelected(), (String) palCombo.getSelectedItem());
             imgPanel.setImage(bmp);
             scroll.setViewportView(imgPanel);
         } catch (Exception ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void selectionChanged(){
-        int row=table.getSelectedRow();
-        if (row==prevrow){
+
+    public void selectionChanged() {
+        int row = table.getSelectedRow();
+        if (row == prevrow) {
             return;
         }
-        skipdraw=true;
+        skipdraw = true;
         frameCombo.removeAllItems();
-        if (row==-1)
+        if (row == -1) {
             return;
-        prevrow=row;
-        FlxImage img=currentImage();
-        if (null==img)
-            return;
-        for (int i=0;i<img.count;i++){
-            frameCombo.addItem(String.format("%d", i));
-            if (i==0)
-                frameCombo.setSelectedIndex(0);
         }
-        Config.ImgInfo info=currentImageConfig();
-        if (null!=info && Palettes.get().palettes.containsKey(info!=null ? info.palette : "")){
+        prevrow = row;
+        FlxImage img = currentImage();
+        if (null == img) {
+            return;
+        }
+        for (int i = 0; i < img.count; i++) {
+            frameCombo.addItem(String.format("%d", i));
+            if (i == 0) {
+                frameCombo.setSelectedIndex(0);
+            }
+        }
+        Config.ImgInfo info = currentImageConfig();
+        if (null != info && Palettes.get().palettes.containsKey(info != null ? info.palette : "")) {
             palCombo.setSelectedItem(info.palette);
-        }else{
+        } else {
             palCombo.setSelectedIndex(0);
         }
-        skipdraw=false;
+        skipdraw = false;
         redraw();
     }
-    
-    private boolean askForSave(){
-        if (file==null)
+
+    private boolean askForSave() {
+        if (file == null) {
             return true;
-        if (!file.changed)
+        }
+        if (!file.changed) {
             return true;
-        int res=JOptionPane.showConfirmDialog(this, "File changed. Save?", "Save file",  JOptionPane.YES_NO_CANCEL_OPTION);
-        if (res==JOptionPane.CANCEL_OPTION)
+        }
+        int res = JOptionPane.showConfirmDialog(this, "File changed. Save?", "Save file", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (res == JOptionPane.CANCEL_OPTION) {
             return false;
-        if (res==JOptionPane.YES_OPTION){
-            try{
+        }
+        if (res == JOptionPane.YES_OPTION) {
+            try {
                 file.save();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getClass().getName() + "\n" + e.getMessage());
                 return false;
             }
         }
         saveBtn.setEnabled(file.changed);
         return true;
     }
-    
+
     private void fileComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileComboActionPerformed
-        if (!askForSave())
+        if (!askForSave()) {
             return;
-        if(fileCombo.getSelectedItem().equals(" "))
+        }
+        if (fileCombo.getSelectedItem().equals(" ")) {
             return;
-        if (fileCombo.getSelectedItem().equals("<open...>")){
+        }
+        if (fileCombo.getSelectedItem().equals("<open...>")) {
             final JFileChooser fc = new JFileChooser();
-            FileFilter ff=new FileNameExtensionFilter("Flx files(*.flx)", "flx");
+            FileFilter ff = new FileNameExtensionFilter("Flx files(*.flx)", "flx");
+            try {
+                File fl = new File(MainForm.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+                fc.setCurrentDirectory(fl.getParentFile());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
             fc.addChoosableFileFilter(ff);
             fc.setFileFilter(ff);
-            if (fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 setPath(fc.getSelectedFile().getAbsolutePath());
             }
-        }else{
-            setPath((String)fileCombo.getSelectedItem());
+        } else {
+            setPath((String) fileCombo.getSelectedItem());
         }
     }//GEN-LAST:event_fileComboActionPerformed
 
     private void singleCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleCheckActionPerformed
-       Config.FlxInfo info=currentConfig(false);
-       if (null==info)
-           return;
-       info.single=singleCheck.isSelected();
-       frameCombo.setEnabled(!singleCheck.isSelected());
-       redraw();
+        Config.FlxInfo info = currentConfig(false);
+        if (null == info) {
+            return;
+        }
+        info.single = singleCheck.isSelected();
+        frameCombo.setEnabled(!singleCheck.isSelected());
+        redraw();
     }//GEN-LAST:event_singleCheckActionPerformed
 
     private void tablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tablePropertyChange
-        int row=table.getSelectedRow();
-        if (row<0)
-            return;
-        Config.FlxInfo info=currentConfig(false);
-        if (null==info)
-            return;
-        String pname=(String)table.getValueAt(row, 1);
-        int id=Integer.parseInt((String)table.getValueAt(row, 0));
-        if (!info.images.containsKey(id)){
-            if (pname.length()==0)
-                return;
-            info.getImg(id).name=pname;
+        int row = table.getSelectedRow();
+        if (row < 0) {
             return;
         }
-        if (!pname.equals(info.images.get(id).name)){
-            info.getImg(id).name=pname;
+        Config.FlxInfo info = currentConfig(false);
+        if (null == info) {
+            return;
+        }
+        String pname = (String) table.getValueAt(row, 1);
+        int id = Integer.parseInt((String) table.getValueAt(row, 0));
+        if (!info.images.containsKey(id)) {
+            if (pname.length() == 0) {
+                return;
+            }
+            info.getImg(id).name = pname;
+            return;
+        }
+        if (!pname.equals(info.images.get(id).name)) {
+            info.getImg(id).name = pname;
         }
     }//GEN-LAST:event_tablePropertyChange
 
@@ -464,70 +489,74 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_frameComboActionPerformed
 
     private void palComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palComboActionPerformed
-       FlxImage img=currentImage();
-       if (null==img)
-           return;
-        Config.ImgInfo info=currentImageConfig();
-       if (null==info && palCombo.getSelectedIndex()!=0){
-           info=currentConfig(true).getImg(img.id);
-       }
-       if (null!=info){
-           info.palette=(String)palCombo.getSelectedItem();
-       }
-       redraw();
+        FlxImage img = currentImage();
+        if (null == img) {
+            return;
+        }
+        Config.ImgInfo info = currentImageConfig();
+        if (null == info && palCombo.getSelectedIndex() != 0) {
+            info = currentConfig(true).getImg(img.id);
+        }
+        if (null != info) {
+            info.palette = (String) palCombo.getSelectedItem();
+        }
+        redraw();
     }//GEN-LAST:event_palComboActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        final JFileChooser fc=new JFileChooser();
-        FileFilter ff=new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
+        final JFileChooser fc = new JFileChooser();
+        FileFilter ff = new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
         fc.addChoosableFileFilter(ff);
         fc.setFileFilter(ff);
-        if (fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            File f=fc.getSelectedFile();
-            if (!f.getName().endsWith(".bmp"))
-                f=new File(f.getParentFile(),f.getName()+".bmp");
-            try{
-                ImagePanel ip=(ImagePanel)scroll.getViewport().getView();
+        if (fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File f = fc.getSelectedFile();
+            if (!f.getName().endsWith(".bmp")) {
+                f = new File(f.getParentFile(), f.getName() + ".bmp");
+            }
+            try {
+                ImagePanel ip = (ImagePanel) scroll.getViewport().getView();
                 ImageIO.write(ip.getImg(), "bmp", f);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getClass().getName() + "\n" + e.getMessage());
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            FlxImage img=currentImage();
-            if (null==img)
+        try {
+            FlxImage img = currentImage();
+            if (null == img) {
                 throw new Exception("Image not selected");
-            final JFileChooser fc=new JFileChooser();
-            FileFilter ff=new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
+            }
+            final JFileChooser fc = new JFileChooser();
+            FileFilter ff = new FileNameExtensionFilter("Bitmap files(*.bmp)", "bmp");
             fc.addChoosableFileFilter(ff);
             fc.setFileFilter(ff);
-            if (fc.showOpenDialog(this)!=JFileChooser.APPROVE_OPTION)
+            if (fc.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) {
                 return;
-            BufferedImage image=ImageIO.read(fc.getSelectedFile());
-            img.importImage(frameCombo.getSelectedIndex(), singleCheck.isSelected(), (String)palCombo.getSelectedItem(), image);
+            }
+            BufferedImage image = ImageIO.read(fc.getSelectedFile());
+            img.importImage(frameCombo.getSelectedIndex(), singleCheck.isSelected(), (String) palCombo.getSelectedItem(), image);
             redraw();
-            file.changed=true;
+            file.changed = true;
             saveBtn.setEnabled(file.changed);
-        }catch(Exception e){
+        } catch (Exception e) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getClass().getName() + "\n" + e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        if (null==file)
+        if (null == file) {
             return;
-        try{
+        }
+        try {
             file.save();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getClass().getName()+"\n"+e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getClass().getName() + "\n" + e.getMessage());
         }
         saveBtn.setEnabled(file.changed);
     }//GEN-LAST:event_saveBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox fileCombo;
