@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 open("./Gemfile", "w") {|f|
     f.write('source "http://rubygems.org"')
-    f.write("\ngem 'resedit', '>=1.0.3', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master' \n")
+    f.write("\ngem 'resedit', '~>1.0.4', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master' \n")
 }
 require 'rubygems'
 
 begin
+    system("bundle install --quiet")
     require 'bundler/setup'
 rescue LoadError
     puts "Bundler not found. Installing."
@@ -16,7 +17,6 @@ rescue LoadError
 end
 
 begin
-    system("bundle install --quiet")
     require 'resedit'
 rescue LoadError
     puts "Dependencies not loaded. Try to rerun this script again."
