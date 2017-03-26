@@ -1,0 +1,11 @@
+
+font import HOBO_00.FNT 
+font import HOBO_01.FNT 
+font import HOBO_09.FNT
+font import HOBO_10.FNT
+font import HOBO_13.FNT
+font import HOBO_14.FNT
+font import HOBO_15.FNT
+font import HOBO_16.FNT
+
+text import HOBOSTR.DAT

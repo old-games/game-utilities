@@ -1,0 +1,11 @@
+
+font export HOBO_00.FNT 
+font export HOBO_01.FNT 
+font export HOBO_09.FNT
+font export HOBO_10.FNT
+font export HOBO_13.FNT
+font export HOBO_14.FNT
+font export HOBO_15.FNT
+font export HOBO_16.FNT
+
+text export HOBOSTR.DAT

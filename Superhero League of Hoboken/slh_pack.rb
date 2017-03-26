@@ -209,6 +209,7 @@ class TextConvertCommand < Resedit::TextConvertCommand
     end
 
     def unpack(file)
+        log('unpacking '+@resname)
         for i in 0..@segcnt-1
             @segments[i]['sztbl'].each.with_index{|sz,j|
                 meta={'addr'=>sprintf("%02d:%03d", i,j)}
@@ -237,6 +238,7 @@ class TextConvertCommand < Resedit::TextConvertCommand
     end
 
     def pack(file, stream)
+        log('packing '+@resname)
         #balance huffman
         bal=@huff.balancer()
         for i in 0..@text.lines.length-1
