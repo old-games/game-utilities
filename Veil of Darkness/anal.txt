@@ -1,0 +1,18 @@
+
+
+0160:1AD8A0  E840320200          call 001D0AE5 ($+23240)
+
+
+veil
+
+03F8:9999  E8A4E5              call 00007F40 ($-1a5c) word proc
+
+03F8:9B89  9A07008B1D          call 1D8B:0007  - to_lower
+
+03F8:9981  9A01007E1D          call 1D7E:0001     - check cmd
+
+03F8:9824  9A2811D615          call 15D6:1128     - convert scan
+03F8:9829  8946D0              mov  [bp-30],ax   
+
+INT 09:  15D6:0FCB
+
