@@ -1,28 +1,16 @@
 #!/usr/bin/env ruby
-open("./Gemfile", "w") {|f|
-    f.write('source "http://rubygems.org"')
-    f.write("\ngem 'resedit', '~>1.1', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master' \n")
-}
-require 'rubygems'
-
-begin
-    system("bundle install --quiet")
-    require 'bundler/setup'
-rescue LoadError
-    puts "Bundler not found. Installing."
-    if !system("gem install bundler || sudo gem install bundler")
-        puts "Bundler installation failure.\nRun 'gem install bundler'."
-        exit(1)
-    end
-end
 
 begin
     require 'resedit'
 rescue LoadError
-    puts "Dependencies not loaded. Try to rerun this script again."
-    exit(1)
+    open("./Gemfile", "w") {|f|
+        f.write('source "http://rubygems.org"')
+        f.write("\ngem 'resedit', '~>1.3'\n")
+        f.write("gem 'builder', '~>3.2.2'\n")
+    }
+    system("bundle install")
+    abort
 end
-
 
 class FontConvertCommand < Resedit::FontConvertCommand
     def initialize()
