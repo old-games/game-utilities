@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
 begin
+    require 'bundler/setup'
     require 'resedit'
+    if Resedit::VERSION != '1.4'
+        raise LoadError.new("Wrong resedit version")
+    end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '~>1.3'\n")
+        f.write("\ngem 'resedit', '~>1.4'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -15,6 +19,7 @@ end
 class FontConvertCommand < Resedit::FontConvertCommand
     def initialize()
         super('*.fnt')
+        @flags = { 0x01 => [0xFF00FF00], 0x10 => [0xFF0000FF], 0x11 => [0xFF00FFFF]}
     end
 
     def mkfont(file)
@@ -24,14 +29,19 @@ class FontConvertCommand < Resedit::FontConvertCommand
         @cnt = @head[4]+1
         @hgt = @head[6]
         @wdt = @head[7]
-        @xwds = @head[8]
+        @flg = @head[8]
         @wds = nil
+        @flgs = nil
         if @wdt == 0xff
             @wdt = 0
-            @wds = file.read(@xwds==0xFF ? 256 : @cnt).bytes
+            @wds = file.read(@cnt).bytes
             @wds.each { |w|
                 @wdt = w if w > @wdt && w < 0x10
             }
+        end
+        if @flg == 0xff
+            @flg = 0
+            @flgs = file.read(@cnt).bytes
         end
         logd("reading font #{@resname} #{@strt} #{@cnt} #{@hgt} #{@wdt}")
         return Resedit::Font.new(@wdt, @hgt)
@@ -40,18 +50,19 @@ class FontConvertCommand < Resedit::FontConvertCommand
 
     def pack(file, stream)
         log('packing '+@resname)
-        @strt = @font.minChar if @font.minChar<@strt
-        @cnt = @font.maxChar+1 if @font.maxChar+1>@cnt
+        @strt = @font.minChar if @font.minChar < @strt
+        @cnt = @font.maxChar+1 if @font.maxChar+1 > @cnt
         @head[3] = @strt
         @head[4] = @cnt-1
+        flags = @flags.invert
         stream.write(@head.pack("C*"))
         if @head[7] == 0xff
             while @wds.length<@cnt
                 @wds << 0
             end
-            i=@strt
-            while i<@cnt
-                w=@font.charWidth(i)
+            i = @strt
+            while i < @cnt
+                w = @font.charWidth(i)
                 if w
                     @wds[i] = w
                 end
@@ -59,11 +70,25 @@ class FontConvertCommand < Resedit::FontConvertCommand
             end
             stream.write(@wds.pack("C*"))
         end
-        empty=[]
+        if @head[8] == 0xff
+            while @flgs.length<@cnt
+                @flgs << 0
+            end
+            i = @strt
+            while i < @cnt
+                f = @font.charFlags(i)
+                if f and flags.include?(f)
+                    @flgs[i] = flags[f]
+                end
+                i += 1
+            end
+            stream.write(@flgs.pack("C*"))
+        end
+        empty = []
         for i in 0..@bts*@hgt-1
             empty << 0
         end
-        i=@strt
+        i = @strt
         while i < @cnt
             buf = @font.getChar(i)
             res = buf ? Resedit::BitConverter.bytes2Bits(buf,@wdt,@bts) : empty
@@ -75,12 +100,13 @@ class FontConvertCommand < Resedit::FontConvertCommand
 
     def unpack(file)
         log('unpacking '+@resname)
-        i=@strt
+        i = @strt
         while i < @cnt
             buf = file.read(@hgt*@bts).bytes
             res = Resedit::BitConverter.bits2Bytes(buf, @wdt)
-            w=@wds[i] if @wds
-            @font.setChar(i, res, w)
+            w = @wds[i] if @wds
+            f = @flags[@flgs[i]] if @flgs
+            @font.setChar(i, res, w, f)
             i += 1
         end
     end
@@ -111,8 +137,8 @@ class TextFormatter < Resedit::TextFormat
     end
 
     def loadLines(fname)
-        lns=[]
-        buf=nil
+        lns = []
+        buf = nil
         open(fname+".txt", "r:cp866:utf-8").each_line {|l|
             if isTextStart(l)
                 if buf
@@ -145,7 +171,7 @@ class TextConvertCommand < Resedit::TextConvertCommand
         @segments.map{|s| s['count']}.reduce(0, :+)
     end
 
-    def readHuff(node,tbl,pos)
+    def readHuff(node, tbl, pos)
         v = tbl[pos]
         n = node.addLeft( (v & 0x8000) != 0 ? v^0xFFFF : nil)
         readHuff(n,tbl,v) if !n.value
@@ -155,13 +181,13 @@ class TextConvertCommand < Resedit::TextConvertCommand
     end
 
     def mktext(file, format, encoding)
-        txt=Resedit::Text.new(format,'cp866')
+        txt = Resedit::Text.new(format,'cp866')
         if !format
             txt.formatter = TextFormatter.new('cp866')
             txt.escaper = nil
         end
-        @segcnt=file.read(2).unpack('v')[0]
-        @segments=[]
+        @segcnt = file.read(2).unpack('v')[0]
+        @segments = []
         for i in 0..@segcnt-1
             @scnt,@size,@flags = file.read(6).unpack('vvv')
             @segments[i] = {'count'=>@scnt, 'sz'=>@size, 'flags'=>@flags, 'sztbl'=>nil}
@@ -185,12 +211,12 @@ class TextConvertCommand < Resedit::TextConvertCommand
     end
 
     def dictReplace(line)
-        res=''
+        res = ''
         line.each_byte{|b|
-            if (b>=0x80)
-                res+=@dict[b-0x80]
+            if (b >= 0x80)
+                res += @dict[b-0x80]
             else
-                res+=b.chr
+                res += b.chr
             end
         }
         return res
@@ -200,9 +226,9 @@ class TextConvertCommand < Resedit::TextConvertCommand
         log('unpacking '+@resname)
         for i in 0..@segcnt-1
             @segments[i]['sztbl'].each.with_index{|sz,j|
-                meta={'addr'=>sprintf("%02d:%03d", i,j)}
-                line=@huff.decode(file.read(sz))
-                line=dictReplace(line)
+                meta = {'addr'=>sprintf("%02d:%03d", i,j)}
+                line = @huff.decode(file.read(sz))
+                line = dictReplace(line)
                 @text.addLine(line, meta)
             }
         end
@@ -228,21 +254,21 @@ class TextConvertCommand < Resedit::TextConvertCommand
     def pack(file, stream)
         log('packing '+@resname)
         #balance huffman
-        bal=@huff.balancer()
+        bal = @huff.balancer()
         for i in 0..@text.lines.length-1
             bal.addData(@text.getLine(i)+"\0")
         end
         bal.balanceValues()
 
         #make segments buffers
-        curln=0
+        curln = 0
         for i in 0..@segcnt-1
             @segments[i]['buf'] = ''
             @segments[i]['sztbl'] = []
             for j in 0..@segments[i]['count']-1
-                ln=@text.getLine(curln)
+                ln = @text.getLine(curln)
                 curln += 1
-                enc=@huff.encode(ln)
+                enc = @huff.encode(ln)
                 @segments[i]['buf'] += enc
                 @segments[i]['sztbl'] += [enc.length]
             end
@@ -283,7 +309,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('slh_pack','1.2',
+        super('slh_pack','1.3',
             [
                 FontConvertCommand.new(),
                 TextConvertCommand.new()

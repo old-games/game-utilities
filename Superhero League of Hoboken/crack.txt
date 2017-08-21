@@ -6,19 +6,22 @@
 01 01 01 21 7f 00 08 08 00 00   - 00.fnt
 01 01 01 21 7f 00 06 04 00 00   - 09 fnt
  |  |  |  |  |  |  |  |  |  |
- |  |  |  |  |  |  |  |  |  - H10  unk
- |  |  |  |  |  |  |  |  ---- H9   unk
- |  |  |  |  |  |  |  ------- H8   char width (ff - has kerning table)
- |  |  |  |  |  |  ---------- H7   char height
- |  |  |  |  |  ------------- H6   unk
- |  |  |  |  ---------------- H5   characters amount in file (+1 ? )
- |  |  |  ------------------- H4   start character stored in file
- |  |  ---------------------- H3   bytes per char line 
- |  ------------------------- H2   unk
- ---------------------------- H1   unk
+ |  |  |  |  |  |  |  |  |  - H9   unk
+ |  |  |  |  |  |  |  |  ---- H8   flags (ff - has flags table)
+ |  |  |  |  |  |  |  ------- H7   char width (ff - has width table)
+ |  |  |  |  |  |  ---------- H6   char height
+ |  |  |  |  |  ------------- H5   unk
+ |  |  |  |  ---------------- H4   characters AMOUNT in file (+1 ? )
+ |  |  |  ------------------- H3   start character stored in file
+ |  |  ---------------------- H2   bytes per char line 
+ |  ------------------------- H1   unk
+ ---------------------------- H0   unk
 
- -= kerning table =-: if H8 == ff
-256 bytes of real characters width. including empty characters
+ -= width table =-: if H7 == ff
+AMOUNT bytes of real characters width.
+
+ -= flags table =-: if H8 == ff
+AMOUNT bytes of flags.
 
  -= character data =-:
 (H5-H4)*H3 * H7 bytes. lines of points.
