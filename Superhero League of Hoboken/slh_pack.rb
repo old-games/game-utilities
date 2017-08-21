@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 begin
-    require 'bundler/setup'
+    #require 'bundler/setup'
     require 'resedit'
     if Resedit::VERSION != '1.4'
         raise LoadError.new("Wrong resedit version")
