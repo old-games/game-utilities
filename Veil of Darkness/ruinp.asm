@@ -1,14 +1,14 @@
 section .text 
 
-    push cs
-    pop ds
+    mov    bx, indexTranslationTable   ; bx = offset of the translation table
+    add    ax, ax                      ; ax *= 2 since each element of the table is 16-bit
+    add    bx, ax 
+    mov    ax, [cs:bx]                 ; new index -> old index
+    neg    ax
+    add    ax, -2
+    retf
 
-    mov ax, 100
-    mov bx, 200
-    add ax,bx
-
-    pop ds
-    popaf
-    ret
+indexTranslationTable:
+dw 0
 
 

@@ -1,2 +1,4 @@
 source "http://rubygems.org"
-gem 'resedit', '~>1.3', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master'
+gem 'resedit', '~>1.5'
+#, :github => 'mypasswordisqwerty/gemresedit', :branch => 'master'
+gem 'roo-xls'
