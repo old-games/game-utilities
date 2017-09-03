@@ -123,7 +123,7 @@ public class FontFile extends EHFile
                 shortPallete[i * 3 + 2] = (byte)i;
             }
 
-            InputStream fis = ru/old_games/veil/FontFile.getResourceAsStream("res/COLORS");
+            InputStream fis = FontFile.class.getResourceAsStream("res/COLORS");
             fis.skip(3217L);
             fis.read(shortPallete, 48, 48);
             for(int i = 16; i < 32; i++)

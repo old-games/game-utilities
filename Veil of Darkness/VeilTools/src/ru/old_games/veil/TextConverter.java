@@ -6,6 +6,7 @@
 package ru.old_games.veil;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 import org.apache.commons.io.EndianUtils;
 import org.apache.commons.io.input.SwappedDataInputStream;
@@ -20,17 +21,14 @@ public class TextConverter
     public TextConverter()
     {
     }
-
+    
     public static void text2xls(String fileName)
         throws IOException
     {
         resources2xls(fileName, 4, 218);
-    }
-
-    public static void words2xls(String fileName)
-        throws IOException
-    {
-        resources2xls(fileName, 2, 0);
+		Path par = Paths.get(fileName).getParent();
+		String aname = (null!=par ? par + File.pathSeparator : "") + "A";
+        resources2xls(aname, 2, 0);
     }
 
     private static void resources2xls(String fileName, int fatRecordSize, int xorValue)
@@ -95,16 +93,29 @@ public class TextConverter
     public static void xls2text(String fileName)
         throws IOException
     {
-        xls2messages(fileName, 4, 218, false);
+		Path par = Paths.get(fileName).getParent();
+		String aname = (null!=par ? par + File.pathSeparator : "") + "A";
+		Map<Integer, Integer> newOrder = new HashMap<Integer, Integer>();
+        xls2messages(aname, 2, 0, true, newOrder);
+        xls2messages(fileName, 4, 218, false, newOrder);
+    }
+    
+    private static List<Object> reorderMessages(List<Object> messages, Map<Integer, Integer> reorderMap) {
+		//build reverse map
+    		HashMap<Integer,Integer> rev = new HashMap<Integer, Integer>();
+		//first index(0) at msg.last - 1
+    		int zero = messages.size()-2;
+    		for(Map.Entry<Integer, Integer> entry : reorderMap.entrySet()) {
+    			rev.put(zero - entry.getValue(), zero - entry.getKey());
+    		}
+    		List<Object> ret = new ArrayList<Object>();
+    		for (int i=0; i<messages.size(); ++i) {
+			ret.add( messages.get(rev.containsKey(i) ? rev.get(i) : i) );
+    		}
+    		return ret;
     }
 
-    public static void xls2words(String fileName)
-        throws IOException
-    {
-        xls2messages(fileName, 2, 0, true);
-    }
-
-    private static void xls2messages(String fileName, int fatRecordSize, int xorValue, boolean isWordList)
+    private static void xls2messages(String fileName, int fatRecordSize, int xorValue, boolean isWordList, Map<Integer,Integer> reorderMap)
         throws IOException
     {
         File xlsFile = new File((new StringBuilder(String.valueOf(fileName))).append(".xls").toString());
@@ -112,7 +123,7 @@ public class TextConverter
         FileInputStream fis = new FileInputStream(xlsFile);
         fis.read(excel);
         fis.close();
-        List messages = convert2messages(excel, "Veil of Darkness", xorValue, isWordList);
+        List messages = convert2messages(excel, "Veil of Darkness", xorValue, isWordList);        
         if(isWordList)
         {
             String parentPath = xlsFile.getParent();
@@ -127,11 +138,13 @@ public class TextConverter
             fis.close();
             LibFile libFile = new LibFile(interact, 4, true);
             List rawInteract = libFile.getResources();
-            prepareWords(messages, rawInteract);
+            reorderMap.putAll(prepareWords(messages, rawInteract));
             byte newLibFile[] = libFile.composeLibFile();
             FileOutputStream fos = new FileOutputStream((new StringBuilder(String.valueOf(interactFile.getCanonicalPath()))).append(".new").toString());
             fos.write(newLibFile);
             fos.close();
+        }else {
+        		messages = reorderMessages(messages, reorderMap);
         }
         LibFile libFile = new LibFile(fatRecordSize);
         libFile.setResources(messages);
@@ -141,7 +154,7 @@ public class TextConverter
         fos.close();
     }
 
-    private static void prepareWords(List messages, List rawInteract)
+    private static Map<Integer, Integer> prepareWords(List messages, List rawInteract)
     {
         class _cls1StringComparator
             implements Comparator
@@ -152,7 +165,7 @@ public class TextConverter
                 return o1.compareToIgnoreCase(o2);
             }
 
-            public volatile int compare(Object obj, Object obj1)
+            public int compare(Object obj, Object obj1)
             {
                 return compare((String)obj, (String)obj1);
             }
@@ -192,7 +205,7 @@ public class TextConverter
         }
 
         List source = new ArrayList(messages);
-        Map newOrder = new HashMap();
+        Map<Integer, Integer> newOrder = new HashMap<Integer, Integer>();
         Collection oldPositions = sortedMessages.values();
         Iterator iterator = oldPositions.iterator();
         for(int position = 0; iterator.hasNext(); position++)
@@ -431,6 +444,7 @@ public class TextConverter
             }
             rawInteract.set(i, baos.toByteArray());
         }
+        return newOrder;
 
     }
 
