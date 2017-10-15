@@ -4,8 +4,8 @@ section .text
 ; func ru_input (al - scancode, bx - eng table)
 ru_input:
     mov ah, 0
-    cmp byte [cs:keyb_ru], 0
-    je ru_inp_orig
+    test byte [cs:keyb_ru], 1
+    jz ru_inp_orig
     cmp al, 0x10
     jb ru_inp_orig
     cmp ax, 0x34
@@ -30,19 +30,43 @@ ru_lower:
     cmp al, 0xF0
     jne rl_not_yo
     inc ax
-    retf
+    jmp rl_done
 rl_not_yo:
+    cmp al, 0x41 ; check ranges eng(0x41 - 0x5A) ru (0x80 - 0x9F)
+    jb rl_done
+    cmp al, 0x9F ; 0x41 - 0x9F
+    ja rl_done
+    cmp al, 0x80 ; 0x80 - 0x9F
+    jae rl_make
+    cmp al, 0x5A ; 0x41 - 0x5A
+    ja rl_done
+rl_make:
     add ax, 0x20
     cmp al, 0xB0
     jb rl_done
     add ax, 0x30
 rl_done:
+    test byte [cs:tolower_far],1
+    jnz rl_retfar
+    ret
+rl_retfar:
+    retf
+    nop
+
+;func strincmp (al - first char, bl - nextchar, dx - range)
+ru_strincmp:
+    mov byte [cs:tolower_far],0
+    call ru_lower
+    xchg al,bl
+    call ru_lower
+    xchg al,bl
+    mov byte [cs:tolower_far],1
     retf
     nop
 
 
-
 keyb_ru db 1
+tolower_far db 1
 
 key_table
 dw  0x89 ; 0x10 'Q'
@@ -100,9 +124,9 @@ dw  0x9E ; 0x34 0x2e '.'
     call 0xFFFF:0xFFFF
 
     nop
-
 min3:
     int 3    
+
     nop
     ;0050:9AD7 max sym cmd
     cmp word [bp-0x30], 0x00F1

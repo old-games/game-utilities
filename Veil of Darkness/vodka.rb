@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 require 'bundler/setup'
 require 'resedit'
@@ -12,10 +13,6 @@ class PatchCommand < Resedit::AppCommand
         addOption('rebuild', 'r', false, 'rebuild asm')
     end
 
-    def swap16(word)
-        return ((word & 0xFF) << 8) | ((word>>8) & 0xFF)
-    end
-
     def patchCode2(fname)
         FileUtils.cp(fname, fname + '.bak') if ! File.exist?(fname + '.bak')
         patch = Resedit::CodePatch.loadPatch("ruinp.bin")
@@ -23,28 +20,33 @@ class PatchCommand < Resedit::AppCommand
         add = mz.replace(patch[0].hexdata())
         addr = add[1]
 
-        r122e = (0x122e + add[2]).to_s(16)
-        r50 = (0x50 + add[2]).to_s(16)
-        r19e3 = (0x19E3 + add[2]).to_s(16)
-        puts "Patching readkey func -> ru_input"
-        mz.change(r122e+":113A", patch[1].value(0, 10, patch[0].addr(0,addr)))
-        mz.reloc(r122e+":1140")
+        puts "readkey -> ru_input..."
+        mz.change("122E:113A:fix", patch[1].value(0, 10, patch[0].addr(0,addr)))
+        mz.reloc("122E:1140:fix")
 
-        puts "Patching peekkey func -> ru_inpu"
-        mz.change(r122e+":1162", patch[1].value(1, 10, patch[0].addr(0,addr)))
-        mz.reloc(r122e+":1168")
+        puts "peekkey -> ru_input..."
+        mz.change("122E:1162:fix", patch[1].value(1, 10, patch[0].addr(0,addr)))
+        mz.reloc("122E:1168:fix")
 
-        puts "Patch max key compare"
-        mz.change(r50+":9AD7", patch[1].value(3, 9))
-        mz.change(r50+":A704", patch[1].value(4, 4))
+        puts "max sym compare..."
+        mz.change("0050:9AD7:fix", patch[1].value(3, 9))
+        mz.change("0050:A704:fix", patch[1].value(4, 4))
 
-        puts "To lower change -> ru_lower"
-        mz.change(r19e3+":0026", patch[1].value(5, 5, patch[0].addr(1,addr)))
-        mz.reloc(r19e3+":0029")
+        puts "to_lower -> ru_lower..."
+        mz.change("19E3:0026:fix", patch[1].value(5, 5, patch[0].addr(1,addr)))
+        mz.reloc("19E3:0029:fix")
+
+        puts "Bye bye..."
+        mz.change("19EB:0B87:fix", mz.hexify("log\x00Пока\x00пока\x00".encode("cp866")))
+        mz.change("0050:9715:fix", "8B0B")
+        mz.change("0050:997A:fix", "900B")
+
+        puts "strincmp -> ru_stricmp..."
+        mz.change("19DD:0025:fix", patch[1].value(5, 21, patch[0].addr(2,addr)))
+        mz.reloc("19DD:0028:fix")
 
 
-
-        #mz.print("changes")
+        mz.print("changes")
         mz.print("header")
         mz.save(fname,"final")
         mz.close()
@@ -63,8 +65,6 @@ class PatchCommand < Resedit::AppCommand
         else
             raise "Don't know how to patch "+fname
         end
-
-
         log("File %s patched.", fname)
     end
 end
