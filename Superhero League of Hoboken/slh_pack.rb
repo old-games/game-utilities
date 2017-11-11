@@ -3,13 +3,13 @@
 begin
     #require 'bundler/setup'
     require 'resedit'
-    if Resedit::VERSION != '1.4'
+    if Resedit::VERSION != '1.7'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '~>1.4'\n")
+        f.write("\ngem 'resedit', '1.7'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -24,6 +24,8 @@ class FontConvertCommand < Resedit::FontConvertCommand
 
     def mkfont(file)
         @head = file.read(10).bytes
+        @bpp = @head[1]
+        raise "Unsupported font" if @bpp!=1 && @bpp!=8
         @bts = @head[2]
         @strt = @head[3]
         @cnt = @head[4]+1
@@ -36,7 +38,7 @@ class FontConvertCommand < Resedit::FontConvertCommand
             @wdt = 0
             @wds = file.read(@cnt).bytes
             @wds.each { |w|
-                @wdt = w if w > @wdt && w < 0x10
+                @wdt = w if w > @wdt
             }
         end
         if @flg == 0xff
@@ -44,7 +46,7 @@ class FontConvertCommand < Resedit::FontConvertCommand
             @flgs = file.read(@cnt).bytes
         end
         logd("reading font #{@resname} #{@strt} #{@cnt} #{@hgt} #{@wdt}")
-        return Resedit::Font.new(@wdt, @hgt)
+        return Resedit::Font.new(@wdt, @hgt, bpp: @bpp)
     end
 
 
@@ -90,8 +92,9 @@ class FontConvertCommand < Resedit::FontConvertCommand
         end
         i = @strt
         while i < @cnt
+            res = empty
             buf = @font.getChar(i)
-            res = buf ? Resedit::BitConverter.bytes2Bits(buf,@wdt,@bts) : empty
+            res = (@bpp==1 ? Resedit::BitConverter.bytes2Bits(buf,@wdt,@bts) : buf) if buf
             stream.write(res.pack("C*"))
             i += 1
         end
@@ -103,7 +106,11 @@ class FontConvertCommand < Resedit::FontConvertCommand
         i = @strt
         while i < @cnt
             buf = file.read(@hgt*@bts).bytes
-            res = Resedit::BitConverter.bits2Bytes(buf, @wdt)
+            if @bpp==1
+                res = Resedit::BitConverter.bits2Bytes(buf, @wdt)
+            else
+                res = buf
+            end
             w = @wds[i] if @wds
             f = @flags[@flgs[i]] if @flgs
             @font.setChar(i, res, w, f)
@@ -123,29 +130,17 @@ class TextFormatter < Resedit::TextFormat
         }
     end
 
-    def isTextStart(ln)
-        return false if ln[2]!=':'
-        return false if ln[6]!=':'
-        return false if ln[7]!=' '
-        return false if ln[8]!='<'
-        return false if ln[0]<'0' || ln[0]>'9'
-        return false if ln[1]<'0' || ln[1]>'9'
-        return false if ln[3]<'0' || ln[3]>'9'
-        return false if ln[4]<'0' || ln[4]>'9'
-        return false if ln[5]<'0' || ln[5]>'9'
-        return true
-    end
-
     def loadLines(fname)
         lns = []
         buf = nil
         open(fname+".txt", "r:cp866:utf-8").each_line {|l|
-            if isTextStart(l)
+            if l =~ /\d{2}:\d{3,4}: </
                 if buf
                     buf = buf[0..-3] if buf[-2..-1] == ">\n"
                     lns += [buf]
                 end
                 buf = l[9..-1]
+                buf = l[1..-1] if l[0]=='<'
             else
                 raise "Wrong format" if !l
                 buf += l

@@ -1,0 +1,2 @@
+source "http://rubygems.org"
+gem 'resedit', '~>1.6.1', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master'

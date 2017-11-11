@@ -5,6 +5,8 @@
 01 01 02 21 7f 02 08 ff ff 00   - 01.fnt
 01 01 01 21 7f 00 08 08 00 00   - 00.fnt
 01 01 01 21 7f 00 06 04 00 00   - 09 fnt
+01 08 0c 21 7f 00 08 ff 00 00   - shan015
+01 01 03 21 7f 02 14 ff ff 00   - shan101
  |  |  |  |  |  |  |  |  |  |
  |  |  |  |  |  |  |  |  |  - H9   unk
  |  |  |  |  |  |  |  |  ---- H8   flags (ff - has flags table)
@@ -14,7 +16,7 @@
  |  |  |  |  ---------------- H4   characters AMOUNT in file (+1 ? )
  |  |  |  ------------------- H3   start character stored in file
  |  |  ---------------------- H2   bytes per char line 
- |  ------------------------- H1   unk
+ |  ------------------------- H1   bits per pixel
  ---------------------------- H0   unk
 
  -= width table =-: if H7 == ff
@@ -24,7 +26,7 @@ AMOUNT bytes of real characters width.
 AMOUNT bytes of flags.
 
  -= character data =-:
-(H5-H4)*H3 * H7 bytes. lines of points.
+(H4)*H2 * H6 bytes. lines of points.
 '!' in font 13(8x9) - 40 40 40 40 00 40 00 00 00
 
 
