@@ -5,10 +5,26 @@ require 'bundler/setup'
 require 'resedit'
 require 'pathname'
 
+class Packer
+
+    def unpack(data)
+    end
+end
+
 
 class UnpackCommand < Resedit::AppCommand
     def initialize()
         super(['unpack'])
+        addParam('file', 'file to unpack')
+    end
+
+    def job(params)
+    end
+end
+
+class MzUnpackCommand < Resedit::AppCommand
+    def initialize()
+        super(['mzunpack'])
         addParam('file', 'file to unpack')
     end
 
@@ -81,6 +97,7 @@ class App < Resedit::App
     def initialize()
         super('VDV','0.1',
             [
+                MzUnpackCommand.new(),
                 UnpackCommand.new(),
             ],
             false,
