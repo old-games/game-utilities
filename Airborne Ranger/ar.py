@@ -33,7 +33,7 @@ class Ar(Program):
     def unpack(self, **kwargs):
         fid = self.wvar(0x18e)  # read file id
         logger.info("unpacking file %d (%s)", fid, self.files[fid])
-        Dosbox().cont()
+        # Dosbox().cont()
 
     def unpacked(self, **kwargs):
         self.lastFileId = self.wvar(0x18e)  # read file id
