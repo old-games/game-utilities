@@ -3,13 +3,13 @@
 begin
     #require 'bundler/setup'
     require 'resedit'
-    if Resedit::VERSION != '1.7'
+    if Resedit::VERSION != '1.7.2'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '1.7'\n")
+        f.write("\ngem 'resedit', '1.7.2'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -162,7 +162,7 @@ class TextConvertCommand < Resedit::TextConvertCommand
     end
 
 
-    def linesCount()
+    def expectedLines()
         @segments.map{|s| s['count']}.reduce(0, :+)
     end
 
@@ -301,13 +301,42 @@ class TextConvertCommand < Resedit::TextConvertCommand
 
 end
 
+class ObjectConvertCommand < Resedit::TextConvertCommand
+    def initialize()
+        super('object.dat', "object")
+    end
+
+    def mktext(file, format, encoding)
+        txt = Resedit::Text.new(format, 'cp866')
+        file.read(2)
+        file.read().split("\x00").each{|l|
+            txt.addLine(l)
+        }
+        return txt
+    end
+
+    def expectedLines; @text.lines.length end
+
+    def unpack(file)
+    end
+
+    def pack(file, stream)
+        buf = ''
+        @text.lines.each{|l|
+            buf+=[l].pack("Z*")
+        }
+        stream.write([buf.length].pack("v"))
+        stream.write(buf)
+    end
+end
 
 class App < Resedit::App
     def initialize()
-        super('slh_pack','1.3',
+        super('slh_pack','1.4',
             [
                 FontConvertCommand.new(),
-                TextConvertCommand.new()
+                TextConvertCommand.new(),
+                ObjectConvertCommand.new()
             ],
             false,
             "by bjfn (c) old-games.ru, 2016")
