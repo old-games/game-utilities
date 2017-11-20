@@ -3,6 +3,7 @@
 
 require 'bundler/setup'
 require 'resedit'
+require 'pathname'
 require 'free-image'
 
 class Palette
@@ -24,10 +25,10 @@ class Palette
             0x080808, 0x0B0B0B, 0x0E0E0E, 0x111111, 0x010F01, 0x011401, 0x021A02, 0x031F03, 0x042504, 0x052A05, 0x063007, 0x141100, 0x181501, 0x1D1903, 0x221D05, 0x262109,
             0x2B250D, 0x302A12, 0x140000, 0x1D0000, 0x270202, 0x310505, 0x330B0D, 0x361216, 0x391A1F, 0x000000, 0x111111, 0x1A1A1A, 0x232323, 0x2C2C2C, 0x363636, 0x3F3F3F]
 
-    attr_accessor :trans
+    attr_reader :name
 
     def initialize()
-        clear()
+        default()
     end
 
     def cconv(col)
@@ -41,51 +42,158 @@ class Palette
     end
 
 
-    def clear()
+    def default()
         @cols = COLS.map{|c| cconv(c)}
-        @idx = Array(0..255)
-        @trans = nil
+        @name = nil
     end
 
-    def setColors(buf)
+    def load(buf, name)
+        @name = name.downcase
         @cols = [0]*(buf.length/3)
         (buf.length/3).times{|i|
             @cols[i] = cconv(('X'+buf[i*3,3]).unpack('N')[0])
         }
     end
 
-    def reidx(buf)
-        @idx = buf.unpack("C*")
-    end
-
     def col(idx)
-        id = @idx[idx]
-        return 0x00FFFFFF if @trans==id
-        raise "Wrong palette index #{idx}" if !@cols[id]
-        @cols[id]
+        raise "Wrong palette index #{idx}" if !@cols[idx]
+        @cols[idx]
     end
 
-    def rcol(idx); @cols[idx] end
-
-    def self.reidx(buf); instance.reidx(buf) end
-    def self.clear(); instance.clear() end
-    def self.setColors(buf); instance.setColors(buf) end
     def self.col(idx); instance.col(idx) end
-    def self.rcol(idx); instance.rcol(idx) end
-
+    def self.load(buf, name); instance.load(buf, name) end
+    def self.default; instance.default end
+    def self.name; instance.name end
 end
 
-class ImgUnpacker
-    def initialize()
-        #Palette.clear()
+
+class PLFile
+    PALS = {/chargen.*/=>"chargen.face0"}
+
+    class PLImage
+        attr_reader :pal, :width, :height
+
+        def initialize(path, ofs)
+            @reidx=nil
+            @pal = nil
+            File.open(path, "rb") {|fp|
+                fp.seek(ofs)
+                @hdr = fp.read(0x1C).unpack("C20v4")
+                @width = @hdr[-2]
+                @height = @hdr[-3]
+                @flags = @hdr[0]
+                @packed = fp.read(@hdr[-1])
+                @pal = fp.read((@hdr[2]+1)*3) if (@flags & 1)!=0
+                @reidx = fp.read(@hdr[1]+1) if (@flags & 2)!=0
+            }
+        end
+
+        def unpack()
+            ctype = @hdr[4]
+            return @packed if ctype==0x10
+            raise "Unknown compression #{ctype}" if !ctype.between?(1,2)
+            unp = @hdr[-4]
+            out = [0] * (@width*@height - unp)
+            out += @packed[-unp..-1].unpack("C*") if unp>0
+            map = @hdr[5,15]
+            puts "#{@hdr}"
+            len = @hdr[1]+1
+            bs = Resedit::BitStream.new( @packed[0.. -unp-1] )
+            out[0] = bs.read(8)
+            prev = out[0]
+            op = 1
+            while !bs.eof?
+                b = bs.read(4)
+                if ctype == 2 && b == 0x0E
+                    c = bs.read(8)
+                    c = (bs.read(8) << 8 | bs.read(8)) if c==0xFF
+                    (c+2).times{
+                        out[op] = prev
+                        op += 1
+                    }
+                    next
+                end
+                if b == 0x0F
+                    b = bs.read(8)
+                else
+                    b = map[b] + prev
+                    b = (b&0xFF) - len if b>0xFF || b>=len
+                end
+                prev = b & 0xFF
+                out[op] = prev
+                op+=1
+            end
+            if @reidx
+                ridx = @reidx.unpack("C*")
+                out = out.map{|i|
+                    raise "No index #{i} in reindex_map #{ridx}" if !ridx[i]
+                    ridx[i]
+                }
+            end
+            return out
+        end
+
     end
 
-    def buildImg(buf)
-        Palette.instance.trans = @hdr[3]
+
+    attr_reader :path, :tbl
+
+    def initialize(path)
+        @path = Pathname.new(path)
+        @tbl = readTbl()
+    end
+
+    def name; @path.basename(".PL").to_s end
+    def imgname(name)
+        name.downcase!
+        @tbl.each{|nm,ofs|
+            return nm if nm.downcase==name
+        }
+        return nil
+    end
+
+    def loadPalette(img, roE=true)
+        f = PLImage.new(@path, @tbl[img])
+        raise "Image #{name}.#{img} has no palette" if !f.pal && roE
+        f.pal
+    end
+
+    def findPalette(img)
+        nm = "#{name}.#{img}".downcase
+        pname = nil
+        PALS.each{|k,v|
+            next if (k=~nm).nil?
+            pname = v
+            break
+        }
+        if !pname
+            nid = img =~ /\d*$/
+            pname = nid==img.length ? nil : "#{name}.#{img[0..nid-1]}0".downcase
+        end
+        return if Palette.name == pname
+        return Palette.default() if !pname
+        pl,im = pname.split('.')
+        lib = pl==name ? self : PLFile.new(@path.dirname.join(pl.upcase+".PL"))
+        im = lib.imgname(im)
+        return Palette.default() if !im
+        pal = lib.loadPalette(im, false)
+        return Palette.default() if !pal
+        Palette.load(pal, pname)
+    end
+
+    def loadImage(img)
+        f = PLImage.new(@path, @tbl[img])
+        if f.pal
+            Palette.load(f.pal, "#{name}.#{img}") if f.pal
+        else
+            findPalette(img)
+        end
+
+        img = Resedit::createImage(f.width, f.height)
+        buf = f.unpack()
         i = 0
-        img = Resedit::createImage(@width, @height)
-        @height.times{|y|
-            @width.times{|x|
+        f.height.times{|y|
+            f.width.times{|x|
                 img.setPixel(x, y, Palette.col(buf[i]))
                 i+=1
             }
@@ -93,62 +201,17 @@ class ImgUnpacker
         return img
     end
 
-    def _unpack(buf, out)
-        map = @hdr[5,15]
-        puts "#{@hdr}"
-        len = @hdr[1]+1
-        bs = Resedit::BitStream.new(buf)
-        out[0] = bs.read(8);
-        prev = out[0]
-        op = 1
-        while !bs.eof?
-            b = bs.read(4)
-            if @ctype == 2 && b == 0x0E
-                c = bs.read(8)
-                c = (bs.read(8) << 8 | bs.read(8)) if c==0xFF
-                (c+2).times{
-                    out[op] = prev
-                    op += 1
-                }
-                next
-            end
-            if b == 0x0F
-                b = bs.read(8)
-            else
-                b = map[b] + prev
-                b = (b&0xFF) - len if b>0xFF || b>=len
-            end
-            prev = b & 0xFF
-            out[op] = prev
-            op+=1
-        end
-    end
-
-    def unpack(fp)
-        @hdr = fp.read(0x1C).unpack("C20v4")
-        @width = @hdr[-2]
-        @height = @hdr[-3]
-        @flags = @hdr[0]
-        @ctype = @hdr[4]
-        raise "Unknown compression type #{@ctype}" if @ctype!=1 && @ctype!=2
-        unp = @hdr[-4]
-        packed = fp.read(@hdr[-1] - unp)
-        data = [0] * (@width*@height - unp)
-        data += fp.read(unp).unpack("C*") if unp>0
-        _unpack(packed, data)
-        Palette.setColors(fp.read((@hdr[2]+1)*3)) if (@flags & 1)!=0
-        Palette.reidx(fp.read(@hdr[1]+1)) if (@flags & 2)!=0
-        return buildImg(data)
-    end
-
-    def self.unpack(fp, pos=nil)
-        if pos
-            prev = fp.tell()
-            fp.seek(pos)
-        end
-        ret = ImgUnpacker.new().unpack(fp)
-        fp.seek(prev) if pos
-        return ret
+    def readTbl()
+        t = {}
+        File.open(@path, "rb") {|f|
+            cnt, ftbl = f.read(6).unpack("vV")
+            f.seek(ftbl)
+            cnt.times {
+                ofs,nm = f.read(12).unpack("VA*")
+                t[nm] = ofs
+            }
+        }
+        t.sort_by{|k,_| k.downcase}.to_h
     end
 end
 
@@ -167,15 +230,11 @@ class PlCommand < Resedit::ConvertCommand
         logd("exporting pl #{@resname} to #{outfile}")
         dname = "#{outfile}_pl"
         Dir.mkdir(dname) unless File.directory?(dname)
-        File.open(@resname, "rb"){|f|
-            cnt, ftbl = f.read(6).unpack("vV")
-            f.seek(ftbl)
-            for i in 0..cnt-1
-                ofs,nm = f.read(12).unpack("VA*")
-                puts "Unpaking #{nm} @ #{ofs.to_s(16)}"
-                img = ImgUnpacker::unpack(f, ofs)
-                img.save(File.join(dname,"#{nm}.png"))
-            end
+        f = PLFile.new(@resname)
+        f.tbl.each{|nm,ofs|
+            puts "Unpaking #{nm} @ #{ofs.to_s(16)}"
+            img = f.loadImage(nm)
+            img.save(File.join(dname,"#{nm}.png"))
         }
     end
 end
