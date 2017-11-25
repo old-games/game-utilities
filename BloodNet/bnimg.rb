@@ -116,6 +116,10 @@ end
 
 class PLFile
     PALS = {/chargen.*/=>"chargen.face0"}
+    PK_START = -10
+    PK_VAL = -1
+    PK_RPT = -2
+
 
     class PLImage
         attr_reader :pal, :width, :height
@@ -148,6 +152,97 @@ class PLFile
             end
         end
 
+        def mkindices(imgdata)
+            idx = [0]*256
+            imgdata.each{|b| idx[b] += 1 }
+            out = []
+            for i in 0..255
+                out += [i] if idx[i]>0
+            end
+            @ridx = out.pack("C*")
+            @hdr[1] = out.length-1
+            return out
+        end
+
+        def analyze(data)
+            # returns array of packdescr [ [byte, packtype(map/val/rpt), rptval], ...]
+            len = @hdr[1]+1
+            anal = {}
+            ctype = @hdr[4]
+            out = [[0, 0]] * data.length
+            prev = data[0]
+            out[0]=[prev, PK_START]
+            op = 1
+            for i in 1..data.length-1
+                f = data[i]
+                if out[op][1]==PK_RPT
+                    if f==out[op][0]
+                        out[op][2]+=1
+                        next
+                    end
+                    op+=1
+                end
+                s = i<data.length-2 ? data[i+1] : -1
+                if f==prev && s==prev && ctype==2
+                    out[op] = [f, PK_RPT, -1]
+                    next
+                end
+                #val delta 4 map
+                d = f<prev ? f+len-prev : f-prev
+                out[op] = [f, d]
+                prev = f
+                op+=1
+                anal[d] = 0 if !anal[d]
+                anal[d] += 1
+            end
+            op+=1 if out[op][1]==PK_RPT
+            out = out[0, op]
+            #build pack map
+            anal = anal.sort_by {|_, v| v}.reverse[0, 15].map{|v,_| v}
+            @hdr=@hdr[0, 5] + anal + [0]*(15-anal.length) + @hdr[20..-1]
+            anal = anal[0, 14] if ctype==2
+            anal = Hash[anal.map.with_index{|v,i| [v,i]}]
+            for i in 1..out.length-1
+                d = out[i][1]
+                next if d<0
+                out[i][1] = anal[d] ? anal[d] : PK_VAL
+            end
+            return out
+        end
+
+        def packData(data)
+            data = analyze(data)
+            #TODO: calc unpacked tail
+            tail = ''
+            # unp = data.length-1
+            # while data[unp][1]==-1
+            #     tail = data[unp][0].chr+tail
+            #     unp-=1
+            # end
+            # data = data[0..-tail.length] if tail.length>0
+            bs = Resedit::BitStream.new()
+            data.each{|v|
+                if v[1]==PK_START
+                    #first
+                    bs.write(v[0])
+                elsif v[1]==PK_RPT
+                    #repeat prev
+                    bs.write(0x0E, 4)
+                    bs.write(0xFF) if v[2]>0xFE  #2-bytes length
+                    bs.write(v[2]>>8) if v[2]>0xFE #hi byte
+                    bs.write(v[2] & 0xFF)	#lo byte or 1-byte length
+                elsif v[1]==PK_VAL
+                    #unmapped
+                    bs.write(0x0F, 4)
+                    bs.write(v[0])
+                else
+                    #mapped
+                    bs.write(v[1], 4)
+                end
+            }
+            return [bs.finish() + tail, tail.length]
+        end
+
         def pack(imgdata=nil)
             data = @packed
             loop do
@@ -158,16 +253,13 @@ class PLFile
                     break
                 end
                 if @reidx
-                    ridx = Hash[@reidx.unpack("C*").map.with_index{|x,i| [x,i]}]
-                    data = imgdata.map{|i|
-                        raise "No index #{i} in reindex_hash #{ridx} of #{@reidx.unpack("C*")}" if !ridx[i]
-                        ridx[i]
-                    }
+                    ridx = Hash[mkindices(imgdata).map.with_index{|x,i| [x,i]}]
+                    data = imgdata.map{|i| ridx[i]}
                 end
-                #TODO: compress nu image data
-                @hdr[-4] = data.length-1
+                data, unp = packData(data)
+                @hdr[-4] = unp
                 @hdr[-1] = data.length
-                data = data.pack("C*")
+                puts "#{@hdr}"
                 break
             end
             ret = @hdr.pack("C20v4")
@@ -185,6 +277,7 @@ class PLFile
             out = [0] * (@width*@height - unp)
             out += @packed[-unp..-1].unpack("C*") if unp>0
             if unp < @width*@height
+                sz = @width*@height-unp
                 len = @hdr[1]+1
                 map = @hdr[5,15]
                 puts "#{@hdr}"
@@ -192,7 +285,7 @@ class PLFile
                 out[0] = bs.read(8)
                 prev = out[0]
                 op = 1
-                while !bs.eof?
+                while op<sz
                     b = bs.read(4)
                     if ctype == 2 && b == 0x0E
                         c = bs.read(8)
@@ -213,6 +306,7 @@ class PLFile
                     out[op] = prev
                     op+=1
                 end
+                raise "Wrong unpacked length #{op} #{@width*@height} #{unp}" if op != sz
             end
             if @reidx
                 ridx = @reidx.unpack("C*")
@@ -365,7 +459,7 @@ class PlCommand < Resedit::ConvertCommand
     end
 
     def import(infile)
-        logd("exporting pl #{@resname} from #{infile}")
+        logd("importing pl #{@resname} from #{infile}")
         dname = "#{infile}_pl"
         f = PLFile.new(backup())
         f.tbl.each{|nm,ofs|

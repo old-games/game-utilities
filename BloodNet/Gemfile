@@ -1,2 +1,2 @@
 source "http://rubygems.org"
-gem 'resedit', '~>1.7'
+gem 'resedit', '>=1.7.3'
