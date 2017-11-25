@@ -4,9 +4,10 @@
 require 'bundler/setup'
 require 'resedit'
 require 'pathname'
-require 'free-image'
 
 class Palette
+    class NoColorError < StandardError; end
+
     include Singleton
     COLS = [0x030202, 0x040101, 0x010103, 0x030304, 0x050404, 0x050406, 0x050606, 0x070606, 0x080706, 0x080807, 0x090808, 0x0A0908, 0x0B0A09, 0x0D0C0A, 0x0E0D0B, 0x0F0E0C,
             0x100F0D, 0x11100E, 0x12110F, 0x111010, 0x131210, 0x131312, 0x141414, 0x161512, 0x181410, 0x1A140E, 0x1A120D, 0x18120D, 0x16110C, 0x15100B, 0x170F0A, 0x170E08,
@@ -41,13 +42,25 @@ class Palette
         return 0xFF000000 | ((r & 0xFF) << 16) | ((g&0xFF) << 8) | (b & 0xFF)
     end
 
+    def packCol(col)
+        r = (col>>16) & 0xFF
+        g = (col>>8) & 0xFF
+        b = col & 0xFF
+        r >>= 2
+        g >>= 2
+        b >>= 2
+        return [r,g,b].pack("CCC")
+    end
+
 
     def default()
-        @cols = COLS.map{|c| cconv(c)}
+        @rev = nil
         @name = nil
+        @cols = COLS.map{|c| cconv(c)}
     end
 
     def load(buf, name)
+        @rev = nil
         @name = name.downcase
         @cols = [0]*(buf.length/3)
         (buf.length/3).times{|i|
@@ -55,15 +68,49 @@ class Palette
         }
     end
 
+    def repack(transpIdx, nucols)
+        tcol = col(transpIdx)
+        out = ''
+        i = 0
+        nucols.each{|c|
+            next if c==tcol
+            out += packCol(tcol) if i==transpIdx
+            out += packCol(c)
+            i += 1
+        }
+        while i<=transpIdx
+            out += packCol(tcol)
+            i+=1
+        end
+        load(out, @name)
+        return out
+    end
+
     def col(idx)
-        raise "Wrong palette index #{idx}" if !@cols[idx]
-        @cols[idx]
+        ret = @cols[idx]
+        raise "Wrong palette index #{idx}" if !ret
+        ret
+    end
+
+    def idx(col)
+        if @rev==nil
+            @rev = {}
+            @cols.each.with_index{|c,i|
+                @rev[c] = i if !@rev[c]
+            }
+        end
+        #        @rev = Hash[@cols.map.with_index{|x,i| [x,i]}] if @rev==nil
+        ret = @rev[col]
+        raise NoColorError, "Wrong palette color: #{col.to_s(16)}" if ret==nil
+        ret
     end
 
     def self.col(idx); instance.col(idx) end
+    def self.idx(col); instance.idx(col) end
     def self.load(buf, name); instance.load(buf, name) end
     def self.default; instance.default end
     def self.name; instance.name end
+    def self.repack(transpId, cols); instance.repack(transpId, cols) end
 end
 
 
@@ -88,6 +135,48 @@ class PLFile
             }
         end
 
+        def trans; @hdr[3] end
+
+        def setCols(cols)
+            raise "No Palette in image" if (@flags & 1)==0
+            @pal = cols
+            clen = cols.length/3
+            @hdr[2] = clen-1
+            if @reidx.length<clen
+                @reidx = (0..clen-1).to_a.pack("C*")
+                @hdr[1] = clen-1
+            end
+        end
+
+        def pack(imgdata=nil)
+            data = @packed
+            loop do
+                break if !imgdata
+                ctype = @hdr[4]
+                if ctype==0x10
+                    data = imgdata.pack("C*")
+                    break
+                end
+                if @reidx
+                    ridx = Hash[@reidx.unpack("C*").map.with_index{|x,i| [x,i]}]
+                    data = imgdata.map{|i|
+                        raise "No index #{i} in reindex_hash #{ridx} of #{@reidx.unpack("C*")}" if !ridx[i]
+                        ridx[i]
+                    }
+                end
+                #TODO: compress nu image data
+                @hdr[-4] = data.length-1
+                @hdr[-1] = data.length
+                data = data.pack("C*")
+                break
+            end
+            ret = @hdr.pack("C20v4")
+            ret += data
+            ret += @pal if (@flags & 1)!=0
+            ret += @reidx if (@flags & 2)!=0
+            return ret
+        end
+
         def unpack()
             ctype = @hdr[4]
             return @packed if ctype==0x10
@@ -95,33 +184,35 @@ class PLFile
             unp = @hdr[-4]
             out = [0] * (@width*@height - unp)
             out += @packed[-unp..-1].unpack("C*") if unp>0
-            map = @hdr[5,15]
-            puts "#{@hdr}"
-            len = @hdr[1]+1
-            bs = Resedit::BitStream.new( @packed[0.. -unp-1] )
-            out[0] = bs.read(8)
-            prev = out[0]
-            op = 1
-            while !bs.eof?
-                b = bs.read(4)
-                if ctype == 2 && b == 0x0E
-                    c = bs.read(8)
-                    c = (bs.read(8) << 8 | bs.read(8)) if c==0xFF
-                    (c+2).times{
-                        out[op] = prev
-                        op += 1
-                    }
-                    next
+            if unp < @width*@height
+                len = @hdr[1]+1
+                map = @hdr[5,15]
+                puts "#{@hdr}"
+                bs = Resedit::BitStream.new( @packed[0.. -unp-1] )
+                out[0] = bs.read(8)
+                prev = out[0]
+                op = 1
+                while !bs.eof?
+                    b = bs.read(4)
+                    if ctype == 2 && b == 0x0E
+                        c = bs.read(8)
+                        c = (bs.read(8) << 8 | bs.read(8)) if c==0xFF
+                        (c+2).times{
+                            out[op] = prev
+                            op += 1
+                        }
+                        next
+                    end
+                    if b == 0x0F
+                        b = bs.read(8)
+                    else
+                        b = map[b] + prev
+                        b = (b&0xFF) - len if b>0xFF || b>=len
+                    end
+                    prev = b & 0xFF
+                    out[op] = prev
+                    op+=1
                 end
-                if b == 0x0F
-                    b = bs.read(8)
-                else
-                    b = map[b] + prev
-                    b = (b&0xFF) - len if b>0xFF || b>=len
-                end
-                prev = b & 0xFF
-                out[op] = prev
-                op+=1
             end
             if @reidx
                 ridx = @reidx.unpack("C*")
@@ -141,6 +232,7 @@ class PLFile
     def initialize(path)
         @path = Pathname.new(path)
         @tbl = readTbl()
+        @bodys = {}
     end
 
     def name; @path.basename(".PL").to_s end
@@ -152,14 +244,19 @@ class PLFile
         return nil
     end
 
-    def loadPalette(img, roE=true)
-        f = PLImage.new(@path, @tbl[img])
-        raise "Image #{name}.#{img} has no palette" if !f.pal && roE
-        f.pal
+    def loadPalette(inm, set=true)
+        f = PLImage.new(@path, @tbl[inm])
+        return f.pal if !set
+        if f.pal
+            Palette.load(f.pal, "#{name}.#{inm}")
+        else
+            findPalette(inm)
+        end
+        return f
     end
 
-    def findPalette(img)
-        nm = "#{name}.#{img}".downcase
+    def findPalette(inm)
+        nm = "#{name}.#{inm}".downcase
         pname = nil
         PALS.each{|k,v|
             next if (k=~nm).nil?
@@ -167,8 +264,8 @@ class PLFile
             break
         }
         if !pname
-            nid = img =~ /\d*$/
-            pname = nid==img.length ? nil : "#{name}.#{img[0..nid-1]}0".downcase
+            nid = inm =~ /\d*$/
+            pname = nid==inm.length ? nil : "#{name}.#{inm[0..nid-1]}0".downcase
         end
         return if Palette.name == pname
         return Palette.default() if !pname
@@ -181,13 +278,8 @@ class PLFile
         Palette.load(pal, pname)
     end
 
-    def loadImage(img)
-        f = PLImage.new(@path, @tbl[img])
-        if f.pal
-            Palette.load(f.pal, "#{name}.#{img}") if f.pal
-        else
-            findPalette(img)
-        end
+    def loadImage(inm)
+        f = loadPalette(inm)
 
         img = Resedit::createImage(f.width, f.height)
         buf = f.unpack()
@@ -201,7 +293,39 @@ class PLFile
         return img
     end
 
-    def readTbl()
+    def saveImage(inm, img=nil)
+        f = loadPalette(inm)
+        imgdata = nil
+        if img
+            raise "Wrong image size #{img.width}x#{img.height}. Expected #{f.width}x#{f.height}" if f.width!=img.width || f.height!=img.height
+            imgdata = [0]*img.width*img.height
+            pset = false
+            begin
+                i=0
+                img.height.times{|y|
+                    img.width.times{|x|
+                        col = img.getPixel(x, y)
+                        imgdata[i] = Palette.idx(col)
+                        i += 1
+                    }
+                }
+            rescue Palette::NoColorError
+                raise if !f.pal || pset
+                cols = Set.new
+                img.height.times{|y|
+                    img.width.times{|x|
+                        cols.add(img.getPixel(x, y))
+                }}
+                puts "!!!WARNING: Updating palette of #{inm}"
+                f.setCols(Palette.repack(f.trans, cols))
+                pset = true
+                retry
+            end
+        end
+        @bodys[inm] = f.pack(imgdata)
+    end
+
+    def readTbl(nosort=false)
         t = {}
         File.open(@path, "rb") {|f|
             cnt, ftbl = f.read(6).unpack("vV")
@@ -211,7 +335,25 @@ class PLFile
                 t[nm] = ofs
             }
         }
+        return t if nosort
         t.sort_by{|k,_| k.downcase}.to_h
+    end
+
+    def save(fname)
+        t = readTbl(true)
+        buf = ''
+        t.each{|nm,ofs|
+            t[nm] = buf.length+6
+            buf+=@bodys[nm]
+        }
+        File.open(fname,"wb"){|f|
+            f.write([t.length, buf.length+6].pack("vV"))
+            f.write(buf)
+            t.each{|nm, ofs|
+                f.write([ofs,nm].pack("VA*"))
+                f.write("\x00"*(8-nm.length)) if nm.length<8
+            }
+        }
     end
 end
 
@@ -223,7 +365,17 @@ class PlCommand < Resedit::ConvertCommand
     end
 
     def import(infile)
-        raise 'Not implemented'
+        logd("exporting pl #{@resname} from #{infile}")
+        dname = "#{infile}_pl"
+        f = PLFile.new(backup())
+        f.tbl.each{|nm,ofs|
+            fname = File.join(dname,"#{nm}.png")
+            img = File.exist?(fname) ? Resedit::loadImage(fname) : nil
+            puts "Packing file #{fname}" if img
+            f.saveImage(nm, img)
+        }
+        puts "Saving resource #{@resname}"
+        f.save(@resname)
     end
 
     def export(outfile)
@@ -246,6 +398,7 @@ class ReadPaletteCommand < Resedit::AppCommand
     end
 
     def job(params)
+        require 'free-image'
         FreeImage::Bitmap.open(params['file']){|img|
             img.width.times{|i|
                 puts if i%16==0
