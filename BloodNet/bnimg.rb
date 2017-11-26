@@ -195,7 +195,7 @@ class PLFile
                 anal[d] = 0 if !anal[d]
                 anal[d] += 1
             end
-            op+=1 if out[op][1]==PK_RPT
+            op+=1 if op<out.length && out[op][1]==PK_RPT
             out = out[0, op]
             #build pack map
             anal = anal.sort_by {|_, v| v}.reverse[0, 15].map{|v,_| v}
