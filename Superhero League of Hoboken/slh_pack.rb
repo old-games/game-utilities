@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
 
 begin
-    #require 'bundler/setup'
+    require 'bundler/setup'
+    require 'json'
     require 'resedit'
-    if Resedit::VERSION != '1.7.2'
+    if Resedit::VERSION != '1.8'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '1.7.2'\n")
+        f.write("\ngem 'resedit', '1.8'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -302,8 +303,13 @@ class TextConvertCommand < Resedit::TextConvertCommand
 end
 
 class ObjectConvertCommand < Resedit::TextConvertCommand
+    CONFIG = "execonfig.json"
+
     def initialize()
         super('object.dat', "object")
+        addParam("exefile","path to exe file","")
+        addParam("p1","subcommand parameter 1","")
+        addParam("p2","subcommand parameter 2","")
     end
 
     def mktext(file, format, encoding)
@@ -322,11 +328,79 @@ class ObjectConvertCommand < Resedit::TextConvertCommand
 
     def pack(file, stream)
         buf = ''
+        cfg = Resedit::Config.new(CONFIG, "SHANNARA.EXE")
+        raise "#{CONFIG} not found" if !cfg['objects']['words']
+        exe = File.join(File.dirname(@resname), "SHANNARA.EXE")
+        raise "Exe file #{exe} not found" if !File.exists?(exe)
+        wofs=[]
         @text.lines.each{|l|
-            buf+=[l].pack("Z*")
+            wofs += [buf.length]
+            buf += [l].pack("Z*")
         }
         stream.write([buf.length].pack("v"))
         stream.write(buf)
+        log("modifying exe offsets")
+        FileUtils.cp(exe, exe + '.bak') if !File.exist?(exe + '.bak')
+        le = Resedit::Multiexe.new(exe, true)
+        cfg['objects']['words'].each{|o,w|
+            ofs = wofs[w]+1
+            le.change(":"+o, "0x"+ofs.to_s(16), "h4")
+        }
+
+        #le.print("changes")
+        le.save(exe)
+    end
+
+    def mapExe(obj, exefile, ofs, cnt)
+        cfg = Resedit::Config.new(CONFIG, File.basename(exefile))
+        ofs = cfg['objects']['ofs'] if ofs.length==0
+        wofs = []
+        c = 0
+        mktext(open(obj), 'txt', nil).lines.each{|l|
+            wofs+=[c]
+            c+=l.length+1
+        }
+        wofs = wofs.map.with_index{|o,i| [o, [i,0]]}.to_h
+        cfg['objects']={} if !cfg['objects']
+        cfg['objects']['ofs'] = ofs
+        le = Resedit::Multiexe.new(exefile)
+        pos = le.env.s2i(ofs)
+        logd("pos = #{pos.to_s(16)}")
+        i=0
+        cnt = cnt.length ? le.env.s2i(cnt) : -1
+        cfg['objects']['words']={}
+        while true
+            val = le.readRelocated(pos, 5).unpack("CV")
+            pos += 5
+            break if val[0]<0 || val[0]>5
+            break if i==cnt
+            pofs = le.body.getData(le.body.addr2raw(val[1]),8).unpack("V*")
+            ad = val[1]-4
+            pofs.each{|o|
+                ad+=4
+                next if o==0
+                o-=1
+                raise "Word not found #{o}" if !wofs[o]
+                cfg['objects']['words'][ad.to_s(16)] = wofs[o][0]
+                wofs[o][1]+=1
+            }
+            i+=1
+        end
+        wofs.each{|k,v|
+            puts "Word #{v[0]} used #{v[1]} times" if v[1]!=1
+        }
+        log("#{i} objects found")
+
+        cfg.save()
+    end
+
+    def job(params)
+        cmd = params['action']
+        if cmd=="map"
+            mapExe(params['file'], params['exefile'], params['p1'], params['p2'])
+        else
+            super(params)
+        end
     end
 end
 
