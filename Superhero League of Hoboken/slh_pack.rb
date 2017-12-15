@@ -4,18 +4,20 @@ begin
     #require 'bundler/setup'
     require 'json'
     require 'resedit'
-    if Resedit::VERSION != '1.8'
+    if Resedit::VERSION != '1.8.1'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '1.8'\n")
+        f.write("\ngem 'resedit', '1.8.1'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
     abort
 end
+
+CONFIG = "execonfig.json"
 
 class FontConvertCommand < Resedit::FontConvertCommand
     def initialize()
@@ -156,10 +158,78 @@ class TextFormatter < Resedit::TextFormat
 end
 
 
+class ObjectConvert < Resedit::ITextConvert
+
+    def mktext(file, format, encoding)
+        txt = Resedit::Text.new(format, 'cp866')
+        file.read(2)
+        file.read().split("\x00").each{|l|
+            txt.addLine(l)
+        }
+        return txt
+    end
+
+    def expectedLines; @text.lines.length end
+    def unpack(file); end
+
+    def pack(file, stream)
+        buf = ''
+        cfg = Resedit::Config.new(CONFIG)
+        exe = cfg.enterOnFile(File.dirname(@resname))
+        cfg.enter(["objects","words"], false)
+        raise "No words in config" if cfg.length<1
+        wofs=[]
+        @text.lines.each{|l|
+            wofs += [buf.length]
+            buf += [l].pack("Z*")
+        }
+        stream.write([buf.length].pack("v"))
+        stream.write(buf)
+        log("modifying exe offsets")
+        FileUtils.cp(exe, exe + '.bak') if !File.exist?(exe + '.bak')
+        le = Resedit::Multiexe.new(exe, true)
+        cfg.each{|o,w|
+            ofs = wofs[w]+1
+            le.change(":"+o, "0x"+ofs.to_s(16), "h4")
+        }
+
+        #le.print("changes")
+        le.save(exe, "final")
+    end
+end
+
+class ExeText < Resedit::ITextConvert
+    def mktext(file, format, encoding)
+        txt = Resedit::Text.new(format, 'cp866')
+        cfg = Resedit::Config.new(CONFIG, [File.basename(@resname), "exestrings"])
+        esc = Resedit::StdEscaper.new()
+        cfg.each{|s|
+            arr = s.split(" \t ")
+            puts "#{arr}"
+            txt.addLine(esc.unescape(arr[0]))
+        }
+        return txt
+    end
+
+    def expectedLines; @text.lines.length end
+    def unpack(file); end
+end
+
 class TextConvertCommand < Resedit::TextConvertCommand
 
     def initialize()
-        super('hobostr.dat')
+        super('*.dat')
+    end
+
+    def getInterface(resname, params)
+        f = File.basename(resname)
+        if f.downcase=="object.dat"
+            return ObjectConvert.new(resname, params)
+        elsif f.downcase[-4,4]==".exe"
+            return ExeText.new(resname, params)
+        else
+            return self
+        end
     end
 
 
@@ -302,73 +372,35 @@ class TextConvertCommand < Resedit::TextConvertCommand
 
 end
 
-class ObjectConvertCommand < Resedit::TextConvertCommand
-    CONFIG = "execonfig.json"
+class ExeConfigCommand < Resedit::AppCommand
+
 
     def initialize()
-        super('object.dat', "object")
-        addParam("exefile","path to exe file","")
-        addParam("p1","subcommand parameter 1","")
-        addParam("p2","subcommand parameter 2","")
+        super(['config'])
+        addParam("action","config action objects/reloc/strings")
+        addParam("exefile","exe file")
+        addParam("p1","action parameter 1","")
+        addParam("p2","action parameter 2","")
     end
 
-    def mktext(file, format, encoding)
-        txt = Resedit::Text.new(format, 'cp866')
-        file.read(2)
-        file.read().split("\x00").each{|l|
-            txt.addLine(l)
-        }
-        return txt
-    end
-
-    def expectedLines; @text.lines.length end
-
-    def unpack(file)
-    end
-
-    def pack(file, stream)
-        buf = ''
-        cfg = Resedit::Config.new(CONFIG, "SHANNARA.EXE")
-        raise "#{CONFIG} not found" if !cfg['objects']['words']
-        exe = File.join(File.dirname(@resname), "SHANNARA.EXE")
-        raise "Exe file #{exe} not found" if !File.exists?(exe)
-        wofs=[]
-        @text.lines.each{|l|
-            wofs += [buf.length]
-            buf += [l].pack("Z*")
-        }
-        stream.write([buf.length].pack("v"))
-        stream.write(buf)
-        log("modifying exe offsets")
-        FileUtils.cp(exe, exe + '.bak') if !File.exist?(exe + '.bak')
-        le = Resedit::Multiexe.new(exe, true)
-        cfg['objects']['words'].each{|o,w|
-            ofs = wofs[w]+1
-            le.change(":"+o, "0x"+ofs.to_s(16), "h4")
-        }
-
-        #le.print("changes")
-        le.save(exe)
-    end
-
-    def mapExe(obj, exefile, ofs, cnt)
-        cfg = Resedit::Config.new(CONFIG, File.basename(exefile))
-        ofs = cfg['objects']['ofs'] if ofs.length==0
+    def mapObjects(exefile, ofs, cnt)
+        cfg = Resedit::Config.new(CONFIG, [File.basename(exefile),"objects"])
+        ofs = cfg['ofs'] if ofs.length==0
         wofs = []
         c = 0
-        mktext(open(obj), 'txt', nil).lines.each{|l|
+        objs = File.join(File.dirname(exefile), "OBJECT.DAT")
+        ObjectConvert.new(nil,nil).mktext(open(objs), 'txt', nil).lines.each{|l|
             wofs+=[c]
             c+=l.length+1
         }
         wofs = wofs.map.with_index{|o,i| [o, [i,0]]}.to_h
-        cfg['objects']={} if !cfg['objects']
-        cfg['objects']['ofs'] = ofs
+        cfg['ofs'] = ofs
         le = Resedit::Multiexe.new(exefile)
         pos = le.env.s2i(ofs)
         logd("pos = #{pos.to_s(16)}")
         i=0
         cnt = cnt.length ? le.env.s2i(cnt) : -1
-        cfg['objects']['words']={}
+        cfg['words']={}
         while true
             val = le.readRelocated(pos, 5).unpack("CV")
             pos += 5
@@ -381,7 +413,7 @@ class ObjectConvertCommand < Resedit::TextConvertCommand
                 next if o==0
                 o-=1
                 raise "Word not found #{o}" if !wofs[o]
-                cfg['objects']['words'][ad.to_s(16)] = wofs[o][0]
+                cfg['words'][ad.to_s(16)] = wofs[o][0]
                 wofs[o][1]+=1
             }
             i+=1
@@ -394,12 +426,67 @@ class ObjectConvertCommand < Resedit::TextConvertCommand
         cfg.save()
     end
 
+    def findReloc(exe, val)
+        le = Resedit::Multiexe.new(exe)
+        out = le.relocfind(val, "z")
+        return if !out
+        out.each{|k,v|
+            puts "#{val} @ #{k.to_s(16)} <= #{v.map{|v| v.to_s(16)}}"
+        }
+    end
+
+    def findStrings(exe, minsz)
+        le = Resedit::Multiexe.new(exe)
+        out = le.stringfind(minsz)
+        esc = Resedit::StdEscaper.new()
+        cfg = Resedit::Config.new(CONFIG, File.basename(exe))
+        lst = []
+        out.each{|s|
+            str = esc.escape(s[0]) + " \t " + s[1].to_s(16)
+            str += " \t " + s[2].map{|v| v.to_s(16)}.join(",")
+            lst += [str]
+        }
+        cfg["exestrings"] = lst
+        cfg.save()
+    end
+
+    def extendExe(exe)
+        FileUtils.cp(exe, exe + '.bak') if !File.exist?(exe + '.bak')
+        le = Resedit::Multiexe.new(exe+".bak")
+
+        #cseg01:00021B71 E8 1A 37 06 00                    call    FOPEN
+        #cseg01:00021B76 89 C6                             mov     esi, eax
+        #change to
+        #cseg01:00021B71 BE 04 03 02 01                          mov     esi, 1020304h
+        #cseg01:00021B76 FF D6                                   call    esi
+        #----
+        #cseg01:00021B60 READ_OBJECT_DAT proc near
+
+        ofs = le.append("9090CCBE12345678FFD689C6C39090")  #nop nop int3; mov esi,12345678; call esi; mov esi,eax; ret; nop; nop
+        le.change(":00021B71", "BE04030201FFD6")
+        le.reloc(":00021B72",":"+(ofs[0]+2).to_s(16))  #mov esi, myfunc (int3)
+        le.reloc(":"+(ofs[0]+4).to_s(16), ":00085290")  #call FOPEN instead of 12345678 in myfunc
+
+        le.header.print("changes")
+        le.print("header")
+        le.print("tables")
+
+        puts "Inserted at #{ofs.map{|v| v.to_s(16)}}"
+        le.hex("0x"+(ofs[1]-10).to_s(16), "21", "r")
+        le.dump("test.exe","[3,4]")
+        le.save(exe,"final")
+    end
+
     def job(params)
         cmd = params['action']
-        if cmd=="map"
-            mapExe(params['file'], params['exefile'], params['p1'], params['p2'])
+        if cmd=="objects"
+            mapObjects(params['exefile'], params['p1'], params['p2'])
+        elsif cmd=="reloc"
+            findReloc(params['exefile'], params['p1'])
+        elsif cmd=="strings"
+            findStrings(params['exefile'], params['p1'])
         else
-            super(params)
+            raise "Unknown action #{cmd}"
         end
     end
 end
@@ -410,7 +497,7 @@ class App < Resedit::App
             [
                 FontConvertCommand.new(),
                 TextConvertCommand.new(),
-                ObjectConvertCommand.new()
+                ExeConfigCommand.new()
             ],
             false,
             "by bjfn (c) old-games.ru, 2016")
