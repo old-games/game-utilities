@@ -1,16 +1,16 @@
 #!/usr/bin/env ruby
 
 begin
-    #require 'bundler/setup'
+    №require 'bundler/setup'
     require 'json'
     require 'resedit'
-    if Resedit::VERSION != '1.8.1'
+    if Resedit::VERSION != '1.8.2'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '1.8.1'\n")
+        f.write("\ngem 'resedit', '1.8.2'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -205,7 +205,6 @@ class ExeText < Resedit::ITextConvert
         esc = Resedit::StdEscaper.new()
         cfg.each{|s|
             arr = s.split(" \t ")
-            puts "#{arr}"
             txt.addLine(esc.unescape(arr[0]))
         }
         return txt
@@ -493,7 +492,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('slh_pack','1.4',
+        super('slh_pack','1.5',
             [
                 FontConvertCommand.new(),
                 TextConvertCommand.new(),
