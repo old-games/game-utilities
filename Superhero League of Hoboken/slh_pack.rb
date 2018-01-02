@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 begin
-    №require 'bundler/setup'
+    #require 'bundler/setup'
     require 'json'
     require 'resedit'
     if Resedit::VERSION != '1.8.2'
