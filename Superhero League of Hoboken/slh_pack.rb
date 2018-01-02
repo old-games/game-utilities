@@ -4,13 +4,13 @@ begin
     #require 'bundler/setup'
     require 'json'
     require 'resedit'
-    if Resedit::VERSION != '1.8.3'
+    if Resedit::VERSION != '1.8.4'
         raise LoadError.new("Wrong resedit version")
     end
 rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
-        f.write("\ngem 'resedit', '1.8.3'\n")
+        f.write("\ngem 'resedit', '1.8.4'\n")
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
