@@ -11,6 +11,7 @@ rescue LoadError
     open("./Gemfile", "w") {|f|
         f.write('source "http://rubygems.org"')
         f.write("\ngem 'resedit', '1.8.4'\n")
+        #gem 'resedit', '~>1.8.4', :github => 'mypasswordisqwerty/gemresedit', :branch => 'master'
         f.write("gem 'builder', '~>3.2.2'\n")
     }
     system("bundle install")
@@ -179,10 +180,11 @@ class ObjectConvert < Resedit::ITextConvert
         cfg.enter(["objects","words"], false)
         raise "No words in config" if cfg.length<1
         wofs=[]
-        @text.lines.each{|l|
+        for i in 0..@text.lines.length-1
+            l = @text.getLine(i)
             wofs += [buf.length]
             buf += [l].pack("Z*")
-        }
+        end
         stream.write([buf.length].pack("v"))
         stream.write(buf)
         log("modifying exe offsets")
@@ -492,7 +494,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('slh_pack','1.5',
+        super('slh_pack','1.6',
             [
                 FontConvertCommand.new(),
                 TextConvertCommand.new(),
