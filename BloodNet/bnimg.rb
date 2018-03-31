@@ -105,12 +105,19 @@ class Palette
         ret
     end
 
+    def save(fname)
+        File.open(fname,"w"){|f|
+            f.write(@cols.map{|c| c.to_s(16)}.to_json())
+        }
+    end
+
     def self.col(idx); instance.col(idx) end
     def self.idx(col); instance.idx(col) end
     def self.load(buf, name); instance.load(buf, name) end
     def self.default; instance.default end
     def self.name; instance.name end
     def self.repack(transpId, cols); instance.repack(transpId, cols) end
+    def self.save(fname); instance.save(fname) end
 end
 
 
@@ -159,7 +166,7 @@ class PLFile
             for i in 0..255
                 out += [i] if idx[i]>0
             end
-            @ridx = out.pack("C*")
+            @reidx = out.pack("C*")
             @hdr[1] = out.length-1
             return out
         end
@@ -230,7 +237,7 @@ class PLFile
                     bs.write(0x0E, 4)
                     bs.write(0xFF) if v[2]>0xFE  #2-bytes length
                     bs.write(v[2]>>8) if v[2]>0xFE #hi byte
-                    bs.write(v[2] & 0xFF)	#lo byte or 1-byte length
+                    bs.write(v[2] & 0xFF)   #lo byte or 1-byte length
                 elsif v[1]==PK_VAL
                     #unmapped
                     bs.write(0x0F, 4)
@@ -280,7 +287,6 @@ class PLFile
                 sz = @width*@height-unp
                 len = @hdr[1]+1
                 map = @hdr[5,15]
-                puts "#{@hdr}"
                 bs = Resedit::BitStream.new( @packed[0.. -unp-1] )
                 out[0] = bs.read(8)
                 prev = out[0]
@@ -480,6 +486,7 @@ class PlCommand < Resedit::ConvertCommand
         f.tbl.each{|nm,ofs|
             puts "Unpaking #{nm} @ #{ofs.to_s(16)}"
             img = f.loadImage(nm)
+            #Palette.save(File.join(dname,"#{nm}.pal"))
             img.save(File.join(dname,"#{nm}.png"))
         }
     end
@@ -507,7 +514,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('bnimg','0.1',
+        super('bnimg','0.2',
             [
                 PlCommand.new(),
                 ReadPaletteCommand.new()
