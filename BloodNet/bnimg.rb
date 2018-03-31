@@ -380,7 +380,6 @@ class PLFile
 
     def loadImage(inm)
         f = loadPalette(inm)
-
         img = Resedit::createImage(f.width, f.height)
         buf = f.unpack()
         i = 0
@@ -396,6 +395,7 @@ class PLFile
     def saveImage(inm, img=nil)
         f = loadPalette(inm)
         imgdata = nil
+        cx=cy=0
         if img
             raise "Wrong image size #{img.width}x#{img.height}. Expected #{f.width}x#{f.height}" if f.width!=img.width || f.height!=img.height
             imgdata = [0]*img.width*img.height
@@ -403,14 +403,19 @@ class PLFile
             begin
                 i=0
                 img.height.times{|y|
+                    cy = y
                     img.width.times{|x|
+                        cx = x
                         col = img.getPixel(x, y)
                         imgdata[i] = Palette.idx(col)
                         i += 1
                     }
                 }
             rescue Palette::NoColorError
-                raise if !f.pal || pset
+                if !f.pal || pset
+                    puts "Wrong color at #{cx},#{cy}"
+                    raise
+                end
                 cols = Set.new
                 img.height.times{|y|
                     img.width.times{|x|
