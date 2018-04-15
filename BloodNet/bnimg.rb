@@ -126,6 +126,7 @@ class PLFile
     PK_START = -10
     PK_VAL = -1
     PK_RPT = -2
+    TRANSPARENT=00000000
 
 
     class PLImage
@@ -218,15 +219,16 @@ class PLFile
         end
 
         def packData(data)
+            #return [data.pack("C*"), data.length-1]
             data = analyze(data)
             #TODO: calc unpacked tail
             tail = ''
             # unp = data.length-1
-            # while data[unp][1]==-1
+            # while data[unp][1]!=PK_RPT
             #     tail = data[unp][0].chr+tail
             #     unp-=1
             # end
-            # data = data[0..-tail.length] if tail.length>0
+            # data = data[0..-tail.length-1] if tail.length>0
             bs = Resedit::BitStream.new()
             data.each{|v|
                 if v[1]==PK_START
@@ -247,32 +249,55 @@ class PLFile
                     bs.write(v[1], 4)
                 end
             }
-            return [bs.finish() + tail, tail.length]
+            return [bs.finish() + tail+'\0', tail.length]
+        end
+
+        def getpal(data)
+            pal={}
+            data.each{|b|
+                pal[b]=1 if not pal[b]
+            }
+            return pal.keys().sort()
         end
 
         def pack(imgdata=nil)
             data = @packed
             loop do
                 break if !imgdata
+                puts "#{@hdr}\n#{getpal(unpack())}"
                 ctype = @hdr[4]
                 if ctype==0x10
                     data = imgdata.pack("C*")
                     break
                 end
                 if @reidx
+                    #puts "#{@reidx.unpack('C*')}"
                     ridx = Hash[mkindices(imgdata).map.with_index{|x,i| [x,i]}]
                     data = imgdata.map{|i| ridx[i]}
+                    #puts "#{@reidx.unpack('C*')}"
                 end
                 data, unp = packData(data)
                 @hdr[-4] = unp
                 @hdr[-1] = data.length
                 puts "#{@hdr}"
+                #puts "#{getpal(imgdata)}"
                 break
             end
             ret = @hdr.pack("C20v4")
             ret += data
             ret += @pal if (@flags & 1)!=0
             ret += @reidx if (@flags & 2)!=0
+
+            return ret if !imgdata
+
+            # tst = imgdata
+            # @packed = data
+            # res = unpack()
+            # for i in 0..tst.length
+            #     if tst[i]!=res[i]
+            #         puts "wrong #{i} #{tst[i]} #{res[i]}"
+            #     end
+            # end
             return ret
         end
 
@@ -378,14 +403,19 @@ class PLFile
         Palette.load(pal, pname)
     end
 
-    def loadImage(inm)
+    def loadImage(inm, trans='')
         f = loadPalette(inm)
         img = Resedit::createImage(f.width, f.height)
         buf = f.unpack()
         i = 0
         f.height.times{|y|
             f.width.times{|x|
-                img.setPixel(x, y, Palette.col(buf[i]))
+                if (trans=='ff' and buf[i]==0xFF) or (trans=='header' and buf[i]==f.trans)
+                    col = TRANSPARENT
+                else
+                    col = Palette.col(buf[i])
+                end
+                img.setPixel(x, y, col)
                 i+=1
             }
         }
@@ -407,7 +437,11 @@ class PLFile
                     img.width.times{|x|
                         cx = x
                         col = img.getPixel(x, y)
-                        imgdata[i] = Palette.idx(col)
+                        if col==TRANSPARENT
+                            imgdata[i] = f.trans()
+                        else
+                            imgdata[i] = Palette.idx(col)
+                        end
                         i += 1
                     }
                 }
@@ -467,6 +501,7 @@ class PlCommand < Resedit::ConvertCommand
 
     def initialize()
         super("pl","*.pl")
+        addOption('transparent','t',nil,'transparent mode (no/ff/header)')
     end
 
     def import(infile)
@@ -490,7 +525,7 @@ class PlCommand < Resedit::ConvertCommand
         f = PLFile.new(@resname)
         f.tbl.each{|nm,ofs|
             puts "Unpaking #{nm} @ #{ofs.to_s(16)}"
-            img = f.loadImage(nm)
+            img = f.loadImage(nm, @params['transparent'])
             #Palette.save(File.join(dname,"#{nm}.pal"))
             img.save(File.join(dname,"#{nm}.png"))
         }
@@ -519,7 +554,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('bnimg','0.2',
+        super('bnimg','0.3',
             [
                 PlCommand.new(),
                 ReadPaletteCommand.new()
