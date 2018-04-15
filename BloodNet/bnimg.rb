@@ -219,7 +219,7 @@ class PLFile
         end
 
         def packData(data)
-            #return [data.pack("C*"), data.length-1]
+            return [data.pack("C*"), data.length-1]
             data = analyze(data)
             #TODO: calc unpacked tail
             tail = ''
