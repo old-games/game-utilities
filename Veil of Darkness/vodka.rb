@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require 'bundler/setup'
+#require 'bundler/setup'
 require 'resedit'
 require 'pathname'
 
@@ -40,6 +40,29 @@ class PatchCommand < Resedit::AppCommand
         mz.change("19EB:0B87:fix", mz.hexify("log\x00Пока\x00пока\x00".encode("cp866")))
         mz.change("0050:9715:fix", "8B0B")
         mz.change("0050:997A:fix", "900B")
+
+        puts "y/n fixes..."
+        # seg003:23EF 83 FE 4E                                cmp     si, 4Eh ; 'N'
+        # seg003:23F2 74 0A                                   jz      short loc_246DE
+        # seg003:23F4 83 FE 59                                cmp     si, 59h ; 'Y'
+        # seg003:23F7 74 05                                   jz      short loc_246DE
+        # seg003:23F9 83 FE 53                                cmp     si, 53h ; 'S'
+        # seg003:23FC 75 EA                                   jnz     short loc_246C8
+        # seg003:23FE
+        # seg003:23FE                         loc_246DE:                              ; CODE XREF: sub_2455D+175↑j
+        # seg003:23FE                                                                 ; sub_2455D+17A↑j
+        # seg003:23FE 83 FE 53                                cmp     si, 53h ; 'S'
+        # seg003:2401 75 16                                   jnz     short loc_246F9
+        # seg003:2403 BE 59 00                                mov     si, 59h ; 'Y'
+        # seg003:2406 EB 11                                   jmp     short loc_246F9
+
+        # seg003:2513 3D 59 00                                cmp     ax, 'Y'
+        # seg001:006B 3D 59 00                                cmp     ax, 59h ; 'Y'
+        mz.change("122E:23EF:fix", "3D8D00")
+        mz.change("122E:23F4:fix", "3D8400")
+        mz.change("122E:2404:fix", mz.hexify("Д".encode("cp866")))
+        mz.change("122E:2514:fix", mz.hexify("Д".encode("cp866")))
+        mz.change("0050:006C:fix", mz.hexify("Д".encode("cp866")))
 
         puts "strincmp -> ru_stricmp..."
         mz.change("19DD:0025:fix", patch[1].value(5, 21, patch[0].addr(2,addr)))

@@ -1,23 +1,23 @@
 GIT
   remote: git://github.com/mypasswordisqwerty/gemresedit.git
-  revision: 359615b1462cfc1cbe846c5e5093811709dfd98a
+  revision: 1835545e1ff2d8ba2abf2f4aaf38775a14e13418
   branch: master
   specs:
-    resedit (1.5.2)
-      builder (= 3.2.3)
-      chunky_png (= 1.3.5)
+    resedit (1.8.5)
+      builder (~> 3.2)
+      chunky_png (~> 1.3)
 
 GEM
   remote: http://rubygems.org/
   specs:
     builder (3.2.3)
-    chunky_png (1.3.5)
+    chunky_png (1.3.11)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  resedit (~> 1.5.2)!
+  resedit (~> 1.8.5)!
 
 BUNDLED WITH
-   1.15.4
+   2.0.1
