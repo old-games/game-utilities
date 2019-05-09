@@ -1,0 +1,2 @@
+source "http://rubygems.org"
+gem 'resedit', '~>1.8.6'
