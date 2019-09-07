@@ -219,7 +219,7 @@ class PLFile
         end
 
         def packData(data)
-            return [data.pack("C*"), data.length-1]
+            #return [data.pack("C*"), data.length-1]
             data = analyze(data)
             #TODO: calc unpacked tail
             tail = ''
@@ -249,7 +249,10 @@ class PLFile
                     bs.write(v[1], 4)
                 end
             }
-            return [bs.finish() + tail+'\0', tail.length]
+            ln = bs.bytes.length
+            out = bs.finish()
+            out+='\0' if ln==out.length
+            return [out + tail, tail.length]
         end
 
         def getpal(data)
@@ -264,7 +267,7 @@ class PLFile
             data = @packed
             loop do
                 break if !imgdata
-                puts "#{@hdr}\n#{getpal(unpack())}"
+                #puts "#{@hdr}\n#{getpal(unpack())}"
                 ctype = @hdr[4]
                 if ctype==0x10
                     data = imgdata.pack("C*")
@@ -478,6 +481,26 @@ class PLFile
         t.sort_by{|k,_| k.downcase}.to_h
     end
 
+    def extract(dir)
+        File.open(@path, "rb") {|fp|
+            cnt, ftbl = fp.read(6).unpack("vV")
+            prev = 0
+            prevnm = 0
+            readTbl(true).each{|nm, ofs|
+                if prev!=0
+                    File.open(File.join(dir,prevnm),"wb"){|f|
+                        f.write(fp.read(ofs-prev))
+                    }
+                end
+                prev = ofs
+                prevnm = nm
+            }
+            File.open(File.join(dir,prevnm),"wb"){|f|
+                f.write(fp.read(ftbl-prev))
+            }
+        }
+    end
+
     def save(fname)
         t = readTbl(true)
         buf = ''
@@ -532,6 +555,22 @@ class PlCommand < Resedit::ConvertCommand
     end
 end
 
+class ExtractPLCommand < Resedit::AppCommand
+    def initialize
+        super('extractpl')
+        addParam('file', 'PL filename')
+    end
+
+    def job(params)
+        file = params['file']
+        dname = "#{file}_pl"
+        logd("extracting pl #{file} to #{dname}")
+        Dir.mkdir(dname) unless File.directory?(dname)
+        f = PLFile.new(file)
+        f.extract(dname)
+    end
+end
+
 class ReadPaletteCommand < Resedit::AppCommand
     def initialize
         super('readpal')
@@ -554,10 +593,11 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('bnimg','0.3',
+        super('bnimg','0.4',
             [
                 PlCommand.new(),
-                ReadPaletteCommand.new()
+                ReadPaletteCommand.new(),
+                ExtractPLCommand.new()
             ],
             false,
             "by bjfn (c) old-games.ru, 2017")

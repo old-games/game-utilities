@@ -21,7 +21,6 @@ ru_inp_orig:
     add bx, ax
     mov ax, word [bx]
     retf
-
     nop
 
 ; func tolower (al - char)
@@ -61,6 +60,23 @@ ru_strincmp:
     call ru_lower
     xchg al,bl
     mov byte [cs:tolower_far],1
+    retf
+    nop
+
+;func hotkey_conv ax - hotkey
+hotkey_conv:
+    mov bx, hotkey_table
+hk_next:
+    mov cx, word[cs:bx]
+    test cx, cx
+    jz hk_ret
+    add bx, 2
+    cmp al, ch
+    jnz hk_next
+    mov al, cl 
+hk_ret:
+    mov     cx, 21h 
+    mov     bx, 54Eh
     retf
     nop
 
@@ -107,6 +123,20 @@ dw  0x9C ; 'M'
 dw  0x81 ; ','
 dw  0x9E ; 0x34 0x2e '.'
 
+hotkey_table
+dw 0x9441
+dw 0x9143
+dw 0x8244
+dw 0x9849
+dw 0x9C4D
+dw 0x994F
+dw 0x8750
+dw 0x8554
+dw 0x8C56
+dw 0x955B
+dw 0x9A5D
+dw 0
+
 ;HELPER CHUNK CODE.2
     nop
     nop
@@ -137,5 +167,5 @@ min3:
     cmp byte [bp-01], 0
 
     nop
-    ; 19E3:0026  to lower
+    ; 19E3:0026  to lower, 0050:0538 hotkey_conv
     call 0xFFFF:0xFFFF

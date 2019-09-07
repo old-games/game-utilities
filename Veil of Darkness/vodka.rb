@@ -48,14 +48,13 @@ class PatchCommand < Resedit::AppCommand
         mz.change("122E:2514:fix", mz.hexify("Д".encode("cp866")))
         mz.change("0050:006C:fix", mz.hexify("Д".encode("cp866")))
 
-        puts "hotkey fixes..." # 11 dwords in jump table at 0050:054E + 9dw
-        mz.change("0050:0560:fix", "94009100820098009C009900870085008C0095009A00")
-
-
         puts "strincmp -> ru_stricmp..."
         mz.change("19DD:0025:fix", patch[1].value(5, 21, patch[0].addr(2,addr)))
         mz.reloc("19DD:0028:fix")
 
+        puts "hotkey convert..." # 11 dwords in jump table at 0050:054E + 9dw
+        mz.change("0050:0538:fix", patch[1].value(5, 6, patch[0].addr(3,addr)))
+        mz.reloc("0050:053B:fix")
 
         mz.print("changes")
         mz.print("header")
@@ -82,7 +81,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('VoD key adjust','0.1',
+        super('VoD key adjust','0.2',
             [
                 PatchCommand.new(),
             ],

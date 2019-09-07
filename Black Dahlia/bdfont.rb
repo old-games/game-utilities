@@ -7,6 +7,10 @@ require 'resedit'
 
 class PLImage
     attr_reader :pal, :width, :height
+    PK_START = -10
+    PK_VAL = -1
+    PK_RPT = -2
+
 
     def initialize(fp)
         @reidx=nil
@@ -155,14 +159,14 @@ class PLImage
 
         return ret if !imgdata
 
-        # tst = imgdata
-        # @packed = data
-        # res = unpack()
-        # for i in 0..tst.length
-        #     if tst[i]!=res[i]
-        #         puts "wrong #{i} #{tst[i]} #{res[i]}"
-        #     end
-        # end
+        tst = imgdata
+        @packed = data
+        res = unpack()
+        for i in 0..tst.length
+            if tst[i]!=res[i]
+                puts "wrong #{i} #{tst[i]} #{res[i]}"
+            end
+        end
         return ret
     end
 
@@ -240,22 +244,62 @@ class FontCommand < Resedit::FontConvertCommand
             @wdt = prm[1]+prm[3] if prm[1]+prm[3]>@wdt
             @hgt = prm[2]+prm[4] if prm[2]+prm[4]>@hgt
         }
-        @img = PLImage.new(file).unpack()
+        @img = PLImage.new(file)
         return Resedit::Font.new(@wdt, @hgt, bpp: 8)
     end
 
-    def pack(file, outstream)
-        raise "Not implemented."
+    def parseChar(data, len)
+        return {map:[len,0,0,0,0], buf:[]} if !data
+        raise "Wrong font size" if data.length!=@wdt*@hgt
+        map = [len,0,0,0xFF,0xFF]
+        buf = [];
+        @hgt.times{ |j|
+            @wdt.times{ |i|
+                px = data[j*@wdt+i]
+                next if px==0
+                map[1] = i if i>map[3]
+                map[3] = i if i<map[3]
+                map[2] = j if j>map[2]
+                map[4] = j if j<map[4]
+            }
+        }
+        map[1] = map[1]-map[3]
+        map[2] = map[2]-map[4]
+        map[2].times{ |j|
+            k = j+map[4]
+            map[1].times{ |i|
+                buf << ((0xFF - data[k*@wdt+i+map[3]]) & 0xFF)
+            }
+        }
+        return {map:map, buf:buf}
     end
 
-    def mkchar(prm)
-        buf = @img[prm[0], prm[1]*prm[2]]
+    def pack(file, stream)
+        log('packing '+@resname)
+        @first = @font.minChar if @font.minChar < @first
+        @count = @font.maxChar-@first if @font.maxChar-@first > @count
+        @hdr[1] = @first
+        @hdr[2] = @count
+        buf=[]
+        @count.times{|i|
+            data = parseChar(@font.getChar(i+@first), buf.length)
+            @map[i] = data[:map]
+            buf += data[:buf]
+        }
+        stream.write(@hdr.pack("a4C8"))
+        @count.times{|i|
+            stream.write(@map[i].pack("VC4"))
+        }
+        stream.write(@img.pack(buf))
+    end
+
+    def mkchar(prm, buf)
         res = ("\x00"*(@wdt*@hgt)).bytes
         id = 0
         prm[2].times{|j|
             k = j+prm[4]
             prm[1].times{|i|
-                res[k*@wdt+i+prm[3]] = buf[id] == 0 ? 0xFF : 0
+                res[k*@wdt+i+prm[3]] = 0xFF-buf[id]
                 id+=1
             }
         }
@@ -264,10 +308,12 @@ class FontCommand < Resedit::FontConvertCommand
 
     def unpack(file)
         log('extracting '+@resname)
+        imgdata = @img.unpack()
         i = 0
         while i < @count
             prm = @map[i]
-            @font.setChar(i+@first, mkchar(prm), prm[1])
+            buf = imgdata[prm[0], prm[1]*prm[2]]
+            @font.setChar(i+@first, mkchar(prm, buf), prm[1])
             i += 1
         end
     end
@@ -276,7 +322,7 @@ end
 
 class App < Resedit::App
     def initialize()
-        super('bdfont','0.1',
+        super('bdfont','0.2',
             [
                 FontCommand.new(),
             ],

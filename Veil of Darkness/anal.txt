@@ -16,3 +16,12 @@ veil
 
 INT 09:  15D6:0FCB
 
+dw    0Dh,   20h,   2Dh,   2Fh ; value table for switch statement
+seg001:054E 31 00 32 00 33 00 34 00+                dw    31h,   32h,   33h,   34h
+seg001:054E 3D 00 41 00 43 00 44 00+                dw    3Dh,   41h,   43h,   44h
+seg001:054E 49 00 4D 00 4F 00 50 00+                dw    49h,   4Dh,   4Fh,   50h
+seg001:054E 54 00 56 00 5B 00 5D 00+                dw    54h,   56h,   5Bh,   5Dh
+seg001:054E 3B 01 3C 01 47 01 48 01+                dw   13Bh,  13Ch,  147h,  148h
+seg001:054E 49 01 4A 01 4B 01 4C 01+                dw   149h,  14Ah,  14Bh,  14Ch
+seg001:054E 4D 01 4E 01 4F 01 50 01+                dw   14Dh,  14Eh,  14Fh,  150h
+seg001:054E 51 01                                   dw   151h
