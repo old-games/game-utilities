@@ -18,4 +18,4 @@ FAQ
 Instruction to compile with MSYS2 here https://www.old-games.ru/wiki/ScummVM_%D0%B4%D0%BB%D1%8F_%D0%B7%D0%BD%D0%B0%D1%82%D0%BE%D0%BA%D0%BE%D0%B2
 
 2. Any issues?
-There could be IMD files with the header at different offset then the default one
+There could be IMD files with the header at different offset other that the default one
